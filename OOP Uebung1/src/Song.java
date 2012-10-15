@@ -29,6 +29,6 @@ public class Song {
 	}
 	
 	public String toString() {
-		return ("Song "+this.name+", Dauer "+DateFormatter.toString(duration, DateType.Song)+", Release "+DateFormatter.toString(releaseDate, DateType.Date));
+		return ("Song "+this.name+", Dauer "+DateFormatter.toString(duration, DateType.Song)+"min, Release "+DateFormatter.toString(releaseDate, DateType.Date));
 	}
 }
