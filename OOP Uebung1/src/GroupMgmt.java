@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import java.util.Date;
 
 class GroupMgmt {
@@ -11,4 +12,36 @@ class GroupMgmt {
     public static void getSum(Date startDate, Date endDate, Eventtype eventtype) {
 
     }
-}
+
+  public static Member[] getMembers(Group group, Date timestamp) {
+    ArrayList<Member> members = Group.getMembers();
+    ArrayList<Member> retMem = new ArrayList<Member>();
+
+    for(Member mem : members) {
+      if(mem.getJoinDate().compareTo(timestamp) > 0)
+        continue;
+
+      if(mem.getLeftDate().compareTo(timestamp) < 0)
+        continue;
+
+      retMem.add(mem);
+    }
+  
+    return retMem.toArray();
+  }
+
+  public static Song[] getSongs(Group group, Date timestamp) {
+    ArrayList<Song> songs = Group.getSongs();
+    ArrayList<Song> retSong = new ArrayList<Member>();
+
+    for(Song song: songs) {
+      if(songs.getReleaseDate().compareTo(timestamp) > 0)
+        continue;
+
+      retSong.add(song);
+    }
+
+    return retSong.toArray();
+  }
+
+>>>>>>> 1f178c3be4bebf405fe92a8a46d1a5791bdc3d08
