@@ -5,13 +5,22 @@ public class Member {
 	private String name;
 	private String phone;
 	private String instrument;
-	private Date timestamp;
+	private Date joinDate;
+	private Date leftDate;
 	
-	public Member(String name, String phone, String instrument) {
+	public Member(String name, String phone, String instrument, Date joinDate) {
+		standardConstructor(name,phone,instrument,joinDate);
+	}
+	public Member(String name, String phone, String instrument, Date joinDate, Date leftDate) {
+		standardConstructor(name,phone,instrument,joinDate);
+		this.leftDate = leftDate;
+	}
+	
+	private void standardConstructor(String name, String phone, String instrument, Date joinDate) {
 		this.name = name;
 		this.phone = phone;
 		this.instrument = instrument;
-		this.timestamp = Calendar.getInstance().getTime();
+		this.joinDate = joinDate;
 	}
 	
 	public String getName() {
@@ -26,7 +35,11 @@ public class Member {
 		return this.instrument;
 	}
 	
-	public Date getTimestamp() {
-		return this.timestamp;
+	public Date getJoinDate() {
+		return this.joinDate;
+	}
+	
+	public Date getLeftDate() {
+		return this.leftDate;
 	}
 }

@@ -5,7 +5,7 @@ public abstract class Event {
 	private Date date;
 	private Date duration;
 	
-	protected Event(String place, Date date, String duration) {
+	protected Event(String place, Date date, Date duration) {
 		this.place = place;
 		this.date = date;
 		this.duration = duration;
@@ -19,7 +19,7 @@ public abstract class Event {
 		return this.date;
 	}
 	
-	public String getDuration() {
+	public Date getDuration() {
 		return this.duration;
 	}
 }
