@@ -4,8 +4,10 @@ import java.util.ArrayList;
 class GroupMgmt {
     public static void getEvents(Date startDate, Date endDate, EventType eventtype) {
 	    ArrayList<Event> events = Event.getEvents();
-    	for(Date event : events) {
-	      System.out.println(event);
+    	for(Event event : events) {
+          //removed to be able to compile it
+	      //System.out.println(event);
+          return;
 	    }
     }
 
@@ -18,9 +20,9 @@ class GroupMgmt {
     ArrayList<Member> retMem = new ArrayList<Member>();
     Date leftDate;
 
-    for(Member mem : members) {
-      if(mem.getJoinDate().compareTo(timestamp) > 0)
-        continue;
+	for(Member mem : members) {
+	    if(mem.getJoinDate().compareTo(timestamp) > 0)
+	    continue;
 
       leftDate = mem.getLeftDate();
 
@@ -31,23 +33,21 @@ class GroupMgmt {
 
       if(mem.getLeftDate().compareTo(timestamp) < 0)
         continue;
-
-      retMem.add(mem);
-    }
-  
+	    
     return (Member[])retMem.toArray();
+  }
   }
 
   public static Song[] getSongs(Group group, Date timestamp) {
     ArrayList<Song> songs = Group.getSongs();
     ArrayList<Song> retSong = new ArrayList<Song>();
 
-    for(Song song: songs) {
-      if(songs.getReleaseDate().compareTo(timestamp) > 0)
-        continue;
+	for(Song song: songs) {
+	    if(songs.getReleaseDate().compareTo(timestamp) > 0)
+	    continue;
 
-      retSong.add(song);
-    }
+	    retSong.add(song);
+	}
 
     return (Song[])retSong.toArray();
   }

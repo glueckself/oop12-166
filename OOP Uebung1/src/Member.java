@@ -9,6 +9,7 @@ public class Member {
 	public Member(Person person, Instrument instrument, Date joinDate) {
 		standardConstructor(person,instrument,joinDate);
 	}
+
 	public Member(Person person, Instrument instrument, Date joinDate, Date leftDate) {
 		standardConstructor(person,instrument,joinDate);
 		this.leftDate = leftDate;

@@ -1,14 +1,14 @@
 import java.util.Date;
 
 public class Practice extends Event {
-	private float rent;
+	private double rent;
 	
-	public Practice(String place, Date date, Date duration, float rent) {
+	public Practice(String place, Date date, Date duration, double rent) {
 		super(place,date,duration);
 		this.rent = rent;
 	}
 	
-	public float getRent() {
+	public double getRent() {
 		return this.rent;
 	}
 }
