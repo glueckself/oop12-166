@@ -107,8 +107,8 @@ public class Group {
 		}
 	}
     
-    public void removeMember(Person person) {
-        removeMember(person,new Date());
+    public boolean removeMember(Person person) {
+        return this.removeMember(person,new Date());
     }
     
 	public boolean addSong(String name, String durationString, String releaseDateString) {
@@ -124,11 +124,15 @@ public class Group {
 	}
 	
 	//Remove
-	public boolean removeMember(Person person, String leftDate) {
+    public boolean removeMember(Person person, String leftDate) {
+      return this.removeMember(person, DateFormatter.toDate(leftDate, DateType.Date));
+    }
+
+	public boolean removeMember(Person person, Date leftDate) {
         for(Member mem: members) {
             if(mem.getPerson() != person) continue;
             
-			mem.setLeftDate(DateFormatter.toDate(leftDate, DateType.Date));
+			mem.setLeftDate(leftDate);
 			return true;
         }
 		return false;
@@ -138,7 +142,7 @@ public class Group {
         for(Song song: songs) {
             if(song.getName() != name) continue;
                 song.delete();
-		return true;
+	    	return true;
         }
 		return false;
     }

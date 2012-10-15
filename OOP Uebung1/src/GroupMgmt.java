@@ -1,4 +1,4 @@
-/*import java.util.Date;
+import java.util.Date;
 import java.util.ArrayList;
 
 final class GroupMgmt {
@@ -16,7 +16,7 @@ final class GroupMgmt {
     }
     
     public static Member[] getMembers(Group group, Date timestamp) {
-        ArrayList<Member> members = Group.getMembers();
+        ArrayList<Member> members = group.getMembers();
         ArrayList<Member> retMem = new ArrayList<Member>();
         Date leftDate;
         
@@ -33,13 +33,15 @@ final class GroupMgmt {
             
             if(mem.getLeftDate().compareTo(timestamp) < 0)
                 continue;
-            
-            return (Member[])retMem.toArray();
+        
+            retMem.add(mem);
         }
+
+        return (Member[])retMem.toArray();
     }
     
     public static Song[] getSongs(Group group, Date timestamp) {
-        ArrayList<Song> songs = Group.getSongs();
+        ArrayList<Song> songs = group.getSongs();
         ArrayList<Song> retSong = new ArrayList<Song>();
         
         for(Song song: songs) {
@@ -51,4 +53,4 @@ final class GroupMgmt {
         
         return (Song[])retSong.toArray();
     }
-}*/
+}
