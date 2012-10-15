@@ -7,15 +7,14 @@ public class Member {
 	private Date leftDate = null;
 	
 	public Member(Person person, Instrument instrument, Date joinDate) {
-		standardConstructor(person,instrument,joinDate);
+		stdConstructor(person,instrument,joinDate);
 	}
-
 	public Member(Person person, Instrument instrument, Date joinDate, Date leftDate) {
-		standardConstructor(person,instrument,joinDate);
+		stdConstructor(person,instrument,joinDate);
 		this.leftDate = leftDate;
 	}
 	
-	private void standardConstructor(Person person, Instrument instrument, Date joinDate) {
+	private void stdConstructor(Person person, Instrument instrument, Date joinDate) {
 		this.person = person;
 		this.instrument = instrument;
 		this.joinDate = joinDate;
@@ -36,8 +35,8 @@ public class Member {
 	public Date getLeftDate() {
 		return this.leftDate;
 	}
-
-  public void setLeftDate(Date leftDate) {
-    this.leftDate = leftDate;
-  }
+	
+	public void setLeftDate(Date leftDate) {
+	    this.leftDate = leftDate;
+	}
 }
