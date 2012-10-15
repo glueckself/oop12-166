@@ -3,10 +3,10 @@ import java.util.Calendar;
 
 public class Song {
 	private String name;
-	private String duration;
+	private Date duration;
 	private Date releaseDate;
 	
-	public Song(String name, String duration, Date releaseDate) {
+	public Song(String name, Date duration, Date releaseDate) {
 		this.name = name;
 		this.duration = duration;
 		this.releaseDate = releaseDate;
@@ -16,7 +16,7 @@ public class Song {
 		return this.name;
 	}
 	
-	public String getDuration() {
+	public Date getDuration() {
 		return this.duration;
 	}
 	

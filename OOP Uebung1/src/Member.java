@@ -2,19 +2,19 @@ import java.util.Date;
 
 public class Member {
 	private Person person;
-	private String instrument;
+	private Instrument instrument;
 	private Date joinDate;
-	private Date leftDate;
+	private Date leftDate = null;
 	
-	public Member(Person person, String instrument, Date joinDate) {
+	public Member(Person person, Instrument instrument, Date joinDate) {
 		standardConstructor(person,instrument,joinDate);
 	}
-	public Member(Person person, String instrument, Date joinDate, Date leftDate) {
+	public Member(Person person, Instrument instrument, Date joinDate, Date leftDate) {
 		standardConstructor(person,instrument,joinDate);
 		this.leftDate = leftDate;
 	}
 	
-	private void standardConstructor(Person person, String instrument, Date joinDate) {
+	private void standardConstructor(Person person, Instrument instrument, Date joinDate) {
 		this.person = person;
 		this.instrument = instrument;
 		this.joinDate = joinDate;
@@ -24,7 +24,7 @@ public class Member {
 		return this.person;
 	}
 	
-	public String getInstrument() {
+	public Instrument getInstrument() {
 		return this.instrument;
 	}
 	
@@ -35,4 +35,8 @@ public class Member {
 	public Date getLeftDate() {
 		return this.leftDate;
 	}
+
+  public void setLeftDate(Date leftDate) {
+    this.leftDate = leftDate;
+  }
 }

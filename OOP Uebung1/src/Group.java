@@ -35,15 +35,36 @@ public class Group {
 		this.events.add(new Performance(place,date,duration,salary));
 	}
 	
-	public void addMember(Person person, String instrument, Date joinDate) {
+	public void addMember(Person person, Instrument instrument, Date joinDate) {
 		this.members.add(new Member(person,instrument,joinDate));
 	}
 	
-	public void addMember(Person person, String instrument, Date joinDate, Date leftDate) {
+	public void addMember(Person person, Instrument instrument, Date joinDate, Date leftDate) {
 		this.members.add(new Member(person,instrument,joinDate,leftDate));
 	}
+
+  public void removeMember(Person person) {
+    removeMember(person,Calendar.getInstance().now);
+  }
+
+  public void removeMember(Person person, Date leftDate) {
+    for(Member mem: members) {
+      if(mem.getPerson() != person) continue;
+      
+      mem.setLeftDate(leftDate);
+      break;
+    }
+  }
 	
-	public void addSong(String name, String duration, Date releaseDate) {
+	public void addSong(String name, Date duration, Date releaseDate) {
 		this.songs.add(new Song(name,duration,releaseDate));
 	}
+
+  public void removeSong(String name) {
+    for(Song song: songs) {
+      if(song.getName() != name) continue;
+      //how to remove song? (remove from list or mark removed?)
+     }
+  }
+
 }
