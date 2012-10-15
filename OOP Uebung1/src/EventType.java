@@ -1,3 +1,3 @@
 public enum EventType {
-  All, Probe, Performance
+    All, Probe, Performance
 }

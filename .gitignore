@@ -3,3 +3,5 @@ OOP\ Uebung1/.settings
 OOP\ Uebung1/.classpath
 OOP\ Uebung1/.project
 OOP\ Uebung1/.metadata
+*.class
+*~

@@ -1,14 +1,14 @@
 import java.util.Date;
 
 public class Performance extends Event{
-	private double salary;
-	
-	public Performance(String place, Date date, Date duration, double salary) {
-		super(place,date,duration);
-		this.salary = salary;
-	}
-	
-	public double getSalary() {
-		return this.salary;
-	}
+    private double salary;
+    
+    public Performance(String place, Date date, Date duration, double salary) {
+        super(place,date,duration);
+        this.salary = salary;
+    }
+    
+    public double getSalary() {
+        return this.salary;
+    }
 }
