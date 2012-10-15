@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import java.util.Date;
 
 class GroupMgmt {
@@ -43,5 +42,4 @@ class GroupMgmt {
 
     return retSong.toArray();
   }
-
->>>>>>> 1f178c3be4bebf405fe92a8a46d1a5791bdc3d08
+}
