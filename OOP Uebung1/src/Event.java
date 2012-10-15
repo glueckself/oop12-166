@@ -3,7 +3,7 @@ import java.util.Date;
 public abstract class Event {
 	private String place;
 	private Date date;
-	private String duration;
+	private Date duration;
 	
 	protected Event(String place, Date date, String duration) {
 		this.place = place;
