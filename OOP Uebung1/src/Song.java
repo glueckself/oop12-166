@@ -4,12 +4,12 @@ import java.util.Calendar;
 public class Song {
 	private String name;
 	private String duration;
-	private Date timestamp;
+	private Date releaseDate;
 	
-	public Song(String name, String duration) {
+	public Song(String name, String duration, Date releaseDate) {
 		this.name = name;
 		this.duration = duration;
-		this.timestamp = Calendar.getInstance().getTime();
+		this.releaseDate = releaseDate;
 	}
 	
 	public String getName() {
@@ -20,7 +20,7 @@ public class Song {
 		return this.duration;
 	}
 	
-	public Date getTimestamp() {
-		return this.timestamp;
+	public Date getReleaseDate() {
+		return this.releaseDate;
 	}
 }

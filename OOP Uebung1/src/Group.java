@@ -45,7 +45,7 @@ public class Group {
 		this.member.add(new Member(name,phone,instrument));
 	}
 	
-	public void addSong(String name, String duration) {
-		this.song.add(new Song(name,duration));
+	public void addSong(String name, String duration, Date releaseDate) {
+		this.song.add(new Song(name,duration,releaseDate));
 	}
 }
