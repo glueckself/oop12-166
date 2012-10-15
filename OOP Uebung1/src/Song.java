@@ -22,9 +22,9 @@ public class Song {
     
     public Date getReleaseDate() {
         return this.releaseDate;
-	}
+    }
 	
-	public void delete() {
-		this.deleted = true;
+    public void delete() {
+       this.deleted = true;
     }
 }

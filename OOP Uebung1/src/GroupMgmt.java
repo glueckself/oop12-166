@@ -2,8 +2,8 @@ import java.util.Date;
 import java.util.ArrayList;
 
 final class GroupMgmt {
-    public static void getEvents(Date startDate, Date endDate, EventType eventtype) {
-        ArrayList<Event> events = Event.getEvents();
+    public static void getEvents(Group group, Date startDate, Date endDate, EventType eventtype) {
+        ArrayList<Event> events = group.getEvents();
         for(Event event : events) {
             //removed to be able to compile it
             //System.out.println(event);
@@ -43,7 +43,7 @@ final class GroupMgmt {
         ArrayList<Song> retSong = new ArrayList<Song>();
         
         for(Song song: songs) {
-            if(songs.getReleaseDate().compareTo(timestamp) > 0)
+            if(song.getReleaseDate().compareTo(timestamp) > 0)
                 continue;
             
             retSong.add(song);
