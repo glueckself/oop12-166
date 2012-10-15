@@ -29,7 +29,7 @@ public class Group {
 		return this.name;
 	}
 	
-	public String genre() {
+	public String getGenre() {
 		return this.genre;
 	}
 	
