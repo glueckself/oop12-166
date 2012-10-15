@@ -125,6 +125,25 @@ public class Group {
 		}
 	}
 	
+	//Remove
+	public void removeMember(Person person, Date leftDate) {
+		for(Member mem: members) {
+			if(mem.getPerson() != person) continue;
+	      
+			mem.setLeftDate(leftDate);
+			break;
+		}
+	}
+		
+	public void removeSong(String name) {
+		for(Song song: songs) {
+			if(song.getName() != name) continue;
+	     	
+			song.delete();
+			break;
+		}
+	}
+	
 	//Helper
 	private Date getSimpleDateFormat(String date, DateFormat format) {
 		try {
@@ -158,21 +177,4 @@ public class Group {
 			return null;
 		}
 	}
-	
-	public void removeMember(Person person, Date leftDate) {
-	    for(Member mem: members) {
-	      if(mem.getPerson() != person) continue;
-	      
-	      mem.setLeftDate(leftDate);
-	      break;
-	    }
-	  }
-		
-	  public void removeSong(String name) {
-	    for(Song song: songs) {
-	      if(song.getName() != name) continue;
-	      //how to remove song? (remove from list or mark removed?)
-	     }
-	  }
-
 }

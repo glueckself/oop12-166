@@ -4,6 +4,7 @@ public class Song {
 	private String name;
 	private Date duration;
 	private Date releaseDate;
+	private boolean deleted = false;
 	
 	public Song(String name, Date duration, Date releaseDate) {
 		this.name = name;
@@ -21,5 +22,9 @@ public class Song {
 	
 	public Date getReleaseDate() {
 		return this.releaseDate;
+	}
+	
+	public void delete() {
+		this.deleted = true;
 	}
 }
