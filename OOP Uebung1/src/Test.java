@@ -1,21 +1,14 @@
-import java.util.Date;
-import java.text.SimpleDateFormat;
 
 
 public class Test {
     public static void main(String[] args) {
-        
-    }
-    
-    public void createEvents() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy hh:mm");
-        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm");
-        try {
-            Date date = dateFormat.parse("14.09.2013 12:45");
-            Date duration = timeFormat.parse("03:00");
-            Event event = new Performance("London", date, duration, 2400);
-        } catch(Exception e) {
-            System.out.println("Fehler");
+		Group group = new Group("Hansi Hinterseer","Death Metal");
+		group.addPerformance("London", "12.03.2013 19:45", "02:30", 2500);
+		group.addPerformance("Paris", "23.11.2014 20:30", "01:50", 1000.50);
+		group.addPractice("Wien", "19.12.2012 16:00", "02:00", 150);
+		for (Event event : group.getEvents())
+		{
+		    System.out.println(event.toString());
         }
     }
 }

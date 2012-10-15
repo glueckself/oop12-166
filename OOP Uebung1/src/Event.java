@@ -22,4 +22,6 @@ public abstract class Event {
     public Date getDuration() {
         return this.duration;
     }
+	
+	public abstract String toString();
 }

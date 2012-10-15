@@ -1,6 +1,15 @@
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Calendar;
+
+enum DateFormat {
+    DateTime,
+    Date,
+    Time,
+    Song
+}
 
 public class Group {
     private String name;
@@ -55,30 +64,69 @@ public class Group {
         this.events.add(event);
     }
     
-    public void addPerformance(String place, Date date, Date duration, float salary) {
-        this.events.add(new Performance(place,date,duration,salary));
-    }
+	public void addPerformance(String place, String dateString, String durationString, double salary) {
+		Date date = getSimpleDateFormat(dateString,DateFormat.DateTime);
+		Date duration = getSimpleDateFormat(durationString,DateFormat.Time);
+		if(date != null && duration != null) {
+		this.events.add(new Performance(place,date,duration,salary));
+	}
+		else {
+			System.out.println("Konnte Auftritt nicht hinzufuegen!");
+		}
+	}
     
-    public void addPractice(String place, Date date, Date duration, float rent) {
-        this.events.add(new Practice(place,date,duration,rent));
-    }
+	public void addPractice(String place, String dateString, String durationString, double rent) {
+		Date date = getSimpleDateFormat(dateString,DateFormat.DateTime);
+		Date duration = getSimpleDateFormat(durationString,DateFormat.Time);
+		if(date != null && duration != null) {
+			this.events.add(new Practice(place,date,duration,rent));
+		}
+		else {
+			System.out.println("Konnte Probe nicht hinzufuegen!");
+		}
+	}
     
     public void addMember(Member member) {
         this.members.add(member);
     }
     
-    public void addMember(Person person, Instrument instrument, Date joinDate) {
-        this.members.add(new Member(person,instrument,joinDate));
-    }
-    
-    public void addMember(Person person, Instrument instrument, Date joinDate, Date leftDate) {
+	public void addMember(Person person, Instrument instrument, String joinDateString) {
+		Date joinDate = getSimpleDateFormat(joinDateString,DateFormat.Date);
+		if(joinDate != null) {
+			this.members.add(new Member(person,instrument,joinDate));
+		}
+		else {
+			System.out.println("Konnte Mitglied nicht hinzufuegen!");
+		}
+	}
+	
+	public void addMember(Person person, Instrument instrument, String joinDateString, String leftDateString) {
+		Date joinDate = getSimpleDateFormat(joinDateString,DateFormat.Date);
+		Date leftDate = getSimpleDateFormat(leftDateString,DateFormat.Date);
+		if(joinDate != null && leftDate != null) {
         this.members.add(new Member(person,instrument,joinDate,leftDate));
     }
+		else {
+			System.out.println("Konnte Mitglied nicht hinzufuegen!");
+		}
+	}
     
     public void removeMember(Person person) {
         removeMember(person,new Date());
     }
     
+	public void addSong(String name, String durationString, String releaseDateString) {
+		Date duration = getSimpleDateFormat(durationString,DateFormat.Time);
+		Date releaseDate = getSimpleDateFormat(releaseDateString,DateFormat.Date);
+		if(duration != null && releaseDate != null) {
+			this.songs.add(new Song(name,duration,releaseDate));
+		}
+		else {
+			System.out.println("Konnte Song nicht hinzufuegen!");
+		}
+	}
+	
+	//Remove
     public void removeMember(Person person, Date leftDate) {
         for(Member mem: members) {
             if(mem.getPerson() != person) continue;
@@ -91,12 +139,43 @@ public class Group {
     public void removeSong(String name) {
         for(Song song: songs) {
             if(song.getName() != name) continue;
-            //how to remove song? (remove from list or mark removed?)
+                song.delete();
+                break;
         }
     }
     
-    public void addSong(Song song) {
-        this.songs.add(song);
+	//Helper
+	private Date getSimpleDateFormat(String date, DateFormat format) {
+		try {
+			Date simpleDate= new Date();
+			if(format == DateFormat.DateTime) {
+				SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy hh:mm");
+				simpleDate = dateFormat.parse(date);
+				return simpleDate;
+			}
+			if(format == DateFormat.Date) {
+				SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+				simpleDate = dateFormat.parse(date);
+				return simpleDate;
+			}
+			else if(format == DateFormat.Time) {
+				SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm");
+				simpleDate = timeFormat.parse(date);
+				return simpleDate;
+			}
+			else if(format == DateFormat.Song) {
+				SimpleDateFormat timeFormat = new SimpleDateFormat("mm:ss");
+				simpleDate = timeFormat.parse(date);
+				return simpleDate;
+			}
+			else {
+				System.out.println("Unbekanntes Datumsformat als Argument!");
+				return null;
+			}
+		} catch (ParseException e) {
+			System.out.println("Datum/Zeit falsch formatiert!");
+			return null;
+		}
     }
     
 }

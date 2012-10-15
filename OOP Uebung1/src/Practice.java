@@ -11,4 +11,8 @@ public class Practice extends Event {
     public double getRent() {
         return this.rent;
     }
+	
+	public String toString() {
+		return ("Probe in "+getPlace()+", Zeit "+getDate()+", Dauer "+getDuration()+", Raummiete "+rent);
+	}
 }
