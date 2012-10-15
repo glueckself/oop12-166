@@ -27,4 +27,8 @@ public class Song {
     public void delete() {
        this.deleted = true;
     }
+	
+	public String toString() {
+		return ("Song "+this.name+", Dauer "+DateFormatter.toString(duration, DateType.Song)+"min, Release "+DateFormatter.toString(releaseDate, DateType.Date));
+	}
 }

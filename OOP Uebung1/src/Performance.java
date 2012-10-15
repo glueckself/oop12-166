@@ -13,6 +13,6 @@ public class Performance extends Event{
     }
 	
 	public String toString() {
-		return ("Auftritt in "+getPlace()+", Zeit "+getDate()+", Dauer "+getDuration()+", Raummiete "+salary);
+		return ("Auftritt in "+getPlace()+", Zeit "+DateFormatter.toString(getDate(),DateType.DateTime)+", Dauer "+DateFormatter.toString(getDuration(),DateType.Time)+"h, Raummiete "+salary);
 	}
 }

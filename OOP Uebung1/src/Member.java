@@ -40,4 +40,11 @@ public class Member {
     public void setLeftDate(Date leftDate) {
         this.leftDate = leftDate;
     }
+	
+	public String toString() {
+		if(this.leftDate == null)
+			return ("Mitglied "+this.person.toString()+", Instrument "+this.instrument.toString()+" , seit "+DateFormatter.toString(joinDate, DateType.Date));
+		else
+			return ("Mitglied "+this.person.toString()+", Instrument "+this.instrument.toString()+" , von "+DateFormatter.toString(joinDate, DateType.Date)+" bis "+DateFormatter.toString(leftDate, DateType.Date));
+	}
 }

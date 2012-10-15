@@ -8,5 +8,9 @@ public class Instrument {
     public String getName() {
         return _name;
     }
+  
+  public String toString() {
+	  return _name;
+  }
 }
 
