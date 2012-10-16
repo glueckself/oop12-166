@@ -1,12 +1,20 @@
 import java.util.Date;
 import java.util.ArrayList;
 
+/**
+ * Group Managment.
+ *
+ * @author Julian Grosshauser
+ * @author Srdjan Markovic
+ */
+
 final class GroupMgmt {
     public static Event[] getEvents(Group group, Date startDate, Date endDate, EventType eventType) {
         Event[] events = group.getEvents();
 	ArrayList<Event> retEvent = new ArrayList<Event>();
 	Date tmpDate;
 
+	/* error cases */
 	if(events == null) return null;
 	if(retEvent == null) return null;
 
@@ -14,8 +22,12 @@ final class GroupMgmt {
 	    tmpDate = event.getDate();
 	    if(tmpDate == null) continue;
 
-	    //if the date of event is between startDate and endDate, add it
+	    /* if the date of event is between startDate and endDate, add it */
 	    if(tmpDate.compareTo(startDate) > 0 && tmpDate.compareTo(endDate) < 0) {
+		/*
+		 * you can choose which type of events should be returned
+		 * to differentiate between the events, we use instanceof
+		 */
 		switch(eventType) {
 		    case ALL:
 			retEvent.add(event);
@@ -46,10 +58,13 @@ final class GroupMgmt {
     
     public static double getSum(Group group, Date startDate, Date endDate, EventType eventType) {
        Event[] events = GroupMgmt.getEvents(group, startDate, endDate, eventType);
-       if(events == null) return 0;
        double retValue = 0;
 
+       /* if there are no events, we can return 0 */
+       if(events == null) return 0;
+
 	for(Event event : events) {
+	    /* if the event is a practice, we subtract the rent */
 	    if(event instanceof Practice) {
 		retValue -= event.getValue();
 		continue;
