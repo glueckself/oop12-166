@@ -3,7 +3,7 @@ import java.util.Date;
 public class Test {
     public static void main(String[] args) {
 		Group group = new Group("Hansi Hinterseer","Death Metal");
-        if(group == null) {
+        if(group == null) { 
           System.err.println("Konnte Gruppe nicht erstellen");
           return;
         }
@@ -24,7 +24,7 @@ public class Test {
 
 		group.addSong(new Song("Testsong",
               DateFormatter.toDate("04:31",DateType.Song),
-              DateFormatter.toDate("23.08.2010",DateType.DateTime)));
+              DateFormatter.toDate("23.08.2010",DateType.Date)));
 
         System.out.println(">> Alle Songs");
         printSongs(group.getSongs());
