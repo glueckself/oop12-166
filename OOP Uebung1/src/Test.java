@@ -79,24 +79,18 @@ public class Test {
 	Instrument schlagzeug = new Instrument("Schlagzeug");
         Instrument gitarre = new Instrument("Gitarre");
 
-<<<<<<< HEAD
 	group.addMember(new Member(alex, schlagzeug, DateFormatter.toDate("03.09.2005",DateType.Date)));
         group.addMember(new Member(hans, gitarre, DateFormatter.toDate("01.01.2005",DateType.Date)));
-=======
 		group.addMember(new Member(alex, schlagzeug, DateFormatter.toDate("03.09.2005",DateType.Date)));
         group.addMember(new Member(hans, gitarre, DateFormatter.toDate("01.01.2006",DateType.Date)));
->>>>>>> 900fc0469084d3262404b1474e032aff12dfda51
 
         System.out.println(">> Alle Mitglieder");
         printMembers(group.getMembers());
 
-<<<<<<< HEAD
         System.out.println(">> Alle aktiven Mitglieder");
 	group.removeMember(alex, DateFormatter.toDate("08.10.2006",DateType.Date));
-=======
 		group.removeMember(alex, DateFormatter.toDate("08.10.2006",DateType.Date));
         System.out.println(">> Alle aktiven Mitglieder");
->>>>>>> 900fc0469084d3262404b1474e032aff12dfda51
         printMembers(GroupMgmt.getMembersActive(group));
 
         System.out.println(">> Alle Mitglieder am 01.10.2005");
