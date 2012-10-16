@@ -4,11 +4,11 @@ import java.util.Date;
  *
  * @author Alexander Huber
  */
-public class Performance extends Event{
+public class Performance extends Event {
     private double salary;
     /**
      * Constructor
-     * 
+     *
      * @param place Place of the performance
      * @param date Date of the performance
      * @param duration Duration of the performance
@@ -18,10 +18,10 @@ public class Performance extends Event{
         super(place,date,duration);
         this.salary = salary;
     }
-    
+
     /**
      * Get method for salary
-     * 
+     *
      * @return double Salary of the performance
      */
     public double getValue() {
