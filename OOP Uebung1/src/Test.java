@@ -7,7 +7,6 @@ import java.util.Date;
  * @author Julian Grosshauser
  * @author Srdjan Markovic
  */
-
 public class Test {
     public static void main(String[] args) {
 	Group group = new Group("Hansi Hinterseer","Death Metal");
@@ -142,7 +141,7 @@ public class Test {
       for(Member member : mems) {
         System.out.println("Mitglied: " + member.getPerson().getName() + " ("
             + "Telefon: "+member.getPerson().getPhone() + ", "
-            + "Spielt: "+member.getInstrument().toString()+")");
+            + "Spielt: "+member.getInstrument().getName()+")");
       }
       System.out.println();
     }
