@@ -19,6 +19,9 @@ public class Test {
               DateFormatter.toDate("02:00",DateType.Time),
               150));
 
+        System.out.println(">> Alle Events");
+        printEvents(group.getEvents());
+
         /* Songs-Test */
 		group.addSong(new Song("Testsong",
               DateFormatter.toDate("04:31",DateType.Song),
@@ -48,17 +51,17 @@ public class Test {
         Instrument gitarre = new Instrument("Gitarre");
 
 		group.addMember(new Member(alex, schlagzeug, DateFormatter.toDate("03.09.2005",DateType.Date)));
-        group.addMember(new Member(hans, gitarre, DateFormatter.toDate("01.01.2005",DateType.Date)));
+        group.addMember(new Member(hans, gitarre, DateFormatter.toDate("01.01.2006",DateType.Date)));
 
         System.out.println(">> Alle Mitglieder");
         printMembers(group.getMembers());
 
-        System.out.println(">> Alle aktiven Mitglieder");
 		group.removeMember(alex, DateFormatter.toDate("08.10.2006",DateType.Date));
+        System.out.println(">> Alle aktiven Mitglieder");
         printMembers(GroupMgmt.getMembersActive(group));
 
-        System.out.println(">> Alle Mitglieder am 01.01.2006");
-        printMembers(GroupMgmt.getMembersTimestamp(group,DateFormatter.toDate("01.01.2006",DateType.Date)));
+        System.out.println(">> Alle Mitglieder am 01.10.2005");
+        printMembers(GroupMgmt.getMembersTimestamp(group,DateFormatter.toDate("01.10.2005",DateType.Date)));
     }
 
     private static void printEvents(Event events[]) {

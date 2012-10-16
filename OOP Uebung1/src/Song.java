@@ -1,8 +1,17 @@
 import java.util.Date;
+/**
+ * Represents a song.
+ *
+ * @author Alexander Huber
+ * @author Srdjan Markovic
+ */
 
 public class Song {
     private String name;
     private Date duration;
+    /* releaseDate and discardedDate are used to enable listing only songs that are
+     * "available" on a specific date
+     */
     private Date releaseDate;
 	private Date discardedDate;
     
