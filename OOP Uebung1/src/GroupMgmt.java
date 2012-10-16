@@ -14,8 +14,12 @@ final class GroupMgmt {
     public static void getSum(Date startDate, Date endDate, EventType eventtype) {
         
     }
+
+    public static Member[] getMembersActive(Group group) {
+      return getMembersTimestamp(group, new Date());
+    }
     
-    public static Member[] getMembers(Group group, Date timestamp) {
+    public static Member[] getMembersTimestamp(Group group, Date timestamp) {
         Member[] members = group.getMembers();
         ArrayList<Member> retMem = new ArrayList<Member>();
         Date tmpDate;
@@ -46,7 +50,11 @@ final class GroupMgmt {
         return retMem.toArray(new Member[retMem.size()]);
     }
     
-    public static Song[] getSongs(Group group, Date timestamp) {
+    public static Song[] getSongsActive(Group group) {
+      return getSongsTimestamp(group, new Date());
+    }
+
+    public static Song[] getSongsTimestamp(Group group, Date timestamp) {
         Song[] songs = group.getSongs();
         ArrayList<Song> retSong = new ArrayList<Song>();
         Date tmpDate;
@@ -62,6 +70,11 @@ final class GroupMgmt {
                 continue;
             
             tmpDate = song.getDiscardedDate();
+            if(tmpDate == null) {
+              retSong.add(song);
+              continue;
+            }
+
             if(tmpDate.compareTo(timestamp) < 0)
                 continue;
 

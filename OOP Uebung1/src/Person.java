@@ -12,7 +12,7 @@ public class Person {
         return this.name;
     }
     
-    public String getphone() {
+    public String getPhone() {
         return this.phone;
     }
 }

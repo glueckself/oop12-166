@@ -30,10 +30,13 @@ public class Member {
     }
     
     public Date getJoinDate() {
+      if(this.joinDate == null) return null;
         return (Date)this.joinDate.clone();
     }
     
     public Date getLeftDate() {
+      if(this.leftDate == null) return null;
+
         return (Date)this.leftDate.clone();
     }
     
