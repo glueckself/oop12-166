@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 final class GroupMgmt {
     public static void getEvents(Group group, Date startDate, Date endDate, EventType eventtype) {
-        ArrayList<Event> events = group.getEvents();
+        Event[] events = group.getEvents();
         for(Event event : events) {
             //removed to be able to compile it
             //System.out.println(event);
@@ -16,41 +16,58 @@ final class GroupMgmt {
     }
     
     public static Member[] getMembers(Group group, Date timestamp) {
-        ArrayList<Member> members = group.getMembers();
+        Member[] members = group.getMembers();
         ArrayList<Member> retMem = new ArrayList<Member>();
-        Date leftDate;
+        Date tmpDate;
+
+        if(members == null) return null;
+        if(retMem == null) return null;
         
         for(Member mem : members) {
+            tmpDate = mem.getJoinDate();
+            if(tmpDate == null) continue;
+
             if(mem.getJoinDate().compareTo(timestamp) > 0)
                 continue;
             
-            leftDate = mem.getLeftDate();
+            tmpDate = mem.getLeftDate();
             
-            if(leftDate == null) {
+            if(tmpDate == null) { //joined, but not left yet -> we can add the member.
                 retMem.add(mem);
                 continue;
             }
             
-            if(mem.getLeftDate().compareTo(timestamp) < 0)
+            if(tmpDate.compareTo(timestamp) < 0)
                 continue;
         
             retMem.add(mem);
         }
 
-        return (Member[])retMem.toArray();
+        return retMem.toArray(new Member[retMem.size()]);
     }
     
     public static Song[] getSongs(Group group, Date timestamp) {
-        ArrayList<Song> songs = group.getSongs();
+        Song[] songs = group.getSongs();
         ArrayList<Song> retSong = new ArrayList<Song>();
-        
+        Date tmpDate;
+
+        if(songs == null) return null;
+        if(retSong == null) return null;
+
         for(Song song: songs) {
-            if(song.getReleaseDate().compareTo(timestamp) > 0)
+          tmpDate = song.getReleaseDate();
+          if(tmpDate == null) continue;
+
+            if(tmpDate.compareTo(timestamp) > 0)
                 continue;
             
+            tmpDate = song.getDiscardedDate();
+            if(tmpDate.compareTo(timestamp) < 0)
+                continue;
+
             retSong.add(song);
         }
         
-        return (Song[])retSong.toArray();
+        return retSong.toArray(new Song[retSong.size()]);
     }
 }

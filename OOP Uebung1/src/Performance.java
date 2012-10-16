@@ -11,8 +11,4 @@ public class Performance extends Event{
     public double getSalary() {
         return this.salary;
     }
-	
-	public String toString() {
-		return ("Auftritt in "+getPlace()+", Zeit "+DateFormatter.toString(getDate(),DateType.DateTime)+", Dauer "+DateFormatter.toString(getDuration(),DateType.Time)+"h, Raummiete "+salary);
-	}
 }

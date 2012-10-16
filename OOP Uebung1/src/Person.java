@@ -15,8 +15,4 @@ public class Person {
     public String getphone() {
         return this.phone;
     }
-	
-	public String toString() {
-		return (this.name+", Telefon "+this.phone);
-	}
 }

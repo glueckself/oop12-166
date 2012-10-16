@@ -1,59 +1,36 @@
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
 public class DateFormatter {
 	public static Date toDate(String date, DateType format) {
-		try {
-			Date simpleDate= new Date();
-			if(format == DateType.DateTime) {
-				SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy hh:mm");
-				simpleDate = dateFormat.parse(date);
-				return simpleDate;
-			}
-			if(format == DateType.Date) {
-				SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-				simpleDate = dateFormat.parse(date);
-				return simpleDate;
-			}
-			else if(format == DateType.Time) {
-				SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm");
-				simpleDate = dateFormat.parse(date);
-				return simpleDate;
-			}
-			else if(format == DateType.Song) {
-				SimpleDateFormat dateFormat = new SimpleDateFormat("mm:ss");
-				simpleDate = dateFormat.parse(date);
-				return simpleDate;
-			}
-			else {
-				return null;
-			}
-		} catch (ParseException e) {
-			return null;
-		}
-	}
-	public static String toString(Date date, DateType format) {
-		if(format == DateType.DateTime) {
-			SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy hh:mm");
-			return dateFormat.format(date);
-		}
-		if(format == DateType.Date) {
-			SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-			return dateFormat.format(date);
-		}
-		else if(format == DateType.Time) {
-			SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm");
-			return dateFormat.format(date);
-		}
-		else if(format == DateType.Song) {
-			SimpleDateFormat dateFormat = new SimpleDateFormat("mm:ss");
-			return dateFormat.format(date);
-		}
-		else {
-			return null;
-		}
-	}
+      SimpleDateFormat dateFormat = createSDF(format);
+      try {
+	    return dateFormat.parse(date);
+      } catch (Exception e) {
+        //catching general exception because dateFormat could also be null
+        //(not only ParseException)
+        return null;
+      }
+    }
+
+    public static String toString(Date date, DateType format) {
+      SimpleDateFormat dateFormat = createSDF(format);
+      try {
+		return dateFormat.format(date);
+      } catch (Exception e) {
+        return null;
+      }
+    }
+
+	public static SimpleDateFormat createSDF(DateType format) {
+        switch(format) {
+          case DateTime: return new SimpleDateFormat("dd.MM.yyyy hh:mm");
+          case Date:     return new SimpleDateFormat("dd.MM.yyyy");
+          case Time:     return new SimpleDateFormat("hh:mm");
+          case Song:     return new SimpleDateFormat("mm:ss");
+          default:       return null;
+        }
+    }
 }

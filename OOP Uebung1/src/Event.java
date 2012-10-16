@@ -16,12 +16,10 @@ public abstract class Event {
     }
     
     public Date getDate() {
-        return this.date;
+        return (Date)this.date.clone();
     }
     
     public Date getDuration() {
-        return this.duration;
+        return (Date)this.duration.clone();
     }
-	
-	public abstract String toString();
 }

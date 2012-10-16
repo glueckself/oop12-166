@@ -4,7 +4,7 @@ public class Song {
     private String name;
     private Date duration;
     private Date releaseDate;
-	private boolean deleted = false;
+	private Date discardedDate;
     
     public Song(String name, Date duration, Date releaseDate) {
         this.name = name;
@@ -17,18 +17,27 @@ public class Song {
     }
     
     public Date getDuration() {
-        return this.duration;
+        if(duration == null)
+          return null;
+
+        return (Date)this.duration.clone();
     }
     
     public Date getReleaseDate() {
-        return this.releaseDate;
+      if(releaseDate == null)
+        return null;
+
+        return (Date)this.releaseDate.clone();
     }
 	
     public void delete() {
-       this.deleted = true;
+       this.discardedDate = new Date();
     }
-	
-	public String toString() {
-		return ("Song "+this.name+", Dauer "+DateFormatter.toString(duration, DateType.Song)+"min, Release "+DateFormatter.toString(releaseDate, DateType.Date));
-	}
+
+    public Date getDiscardedDate() {
+      if(discardedDate == null)
+        return null;
+
+      return (Date)this.discardedDate.clone();
+    }
 }

@@ -21,13 +21,15 @@ public class Group {
     
     //Set/Get
     public void setName(String name) {
+      if(name != "")
         this.name = name;
     }
     
     public void setGenre(String genre) {
+      if(genre != "")
         this.genre = genre;
     }
-    
+
     public String getName() {
         return this.name;
     }
@@ -35,99 +37,48 @@ public class Group {
     public String getGenre() {
         return this.genre;
     }
-    
-    public ArrayList<Event> getEvents()
+   
+    public final Event[] getEvents()
     {
-        return events;
+        return events.toArray(new Event[events.size()]);
     }
     
-    public ArrayList<Member> getMembers()
+    public final Member[] getMembers()
     {
-        return members;
+        return members.toArray(new Member[members.size()]);
     }
     
-    public ArrayList<Song> getSongs()
-    {
-        return songs;
+    public final Song[] getSongs() {
+        return songs.toArray(new Song[songs.size()]);
     }
-    
+
     //Add
-    public void addEvent(Event event) {
+    public boolean addEvent(Event event) {
+      if(event == null) return false;
         this.events.add(event);
+
+        return true;
+    }
+   
+    public boolean addMember(Member member) {
+      if(member == null) return false;
+
+      this.members.add(member);
+      return true;
     }
     
-	public boolean addPerformance(String place, String dateString, String durationString, double salary) {
-		Date date = DateFormatter.toDate(dateString,DateType.DateTime);
-		Date duration = DateFormatter.toDate(durationString,DateType.Time);
-		if(date != null && duration != null) {
-		this.events.add(new Performance(place,date,duration,salary));
-			return true;
-	}
-		else {
-			return false;
-		}
-	}
-    
-	public boolean addPractice(String place, String dateString, String durationString, double rent) {
-		Date date = DateFormatter.toDate(dateString,DateType.DateTime);
-		Date duration = DateFormatter.toDate(durationString,DateType.Time);
-		if(date != null && duration != null) {
-			this.events.add(new Practice(place,date,duration,rent));
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-    
-    public void addMember(Member member) {
-        this.members.add(member);
+    public boolean addSong(Song song) {
+      if(song == null) return false;
+
+      this.songs.add(song);
+      return true;
     }
-    
-	public boolean addMember(Person person, Instrument instrument, String joinDateString) {
-		Date joinDate = DateFormatter.toDate(joinDateString,DateType.Date);
-		if(joinDate != null) {
-			this.members.add(new Member(person,instrument,joinDate));
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-	
-	public boolean addMember(Person person, Instrument instrument, String joinDateString, String leftDateString) {
-		Date joinDate = DateFormatter.toDate(joinDateString,DateType.Date);
-		Date leftDate = DateFormatter.toDate(leftDateString,DateType.Date);
-		if(joinDate != null && leftDate != null) {
-        this.members.add(new Member(person,instrument,joinDate,leftDate));
-			return true;
-    }
-		else {
-			return false;
-		}
-	}
-    
+
+	//Remove
     public boolean removeMember(Person person) {
         return this.removeMember(person,new Date());
     }
     
-	public boolean addSong(String name, String durationString, String releaseDateString) {
-		Date duration = DateFormatter.toDate(durationString,DateType.Song);
-		Date releaseDate = DateFormatter.toDate(releaseDateString,DateType.Date);
-		if(duration != null && releaseDate != null) {
-			this.songs.add(new Song(name,duration,releaseDate));
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-	
-	//Remove
-    public boolean removeMember(Person person, String leftDate) {
-      return this.removeMember(person, DateFormatter.toDate(leftDate, DateType.Date));
-    }
-
 	public boolean removeMember(Person person, Date leftDate) {
         for(Member mem: members) {
             if(mem.getPerson() != person) continue;
@@ -146,5 +97,5 @@ public class Group {
         }
 		return false;
     }
-    
 }
+
