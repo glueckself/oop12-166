@@ -1,3 +1,3 @@
 public enum EventType {
-    ALL, PROBE, PERFORMANCE
+    ALL, PRACTICE, PERFORMANCE
 }
