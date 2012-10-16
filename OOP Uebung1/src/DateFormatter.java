@@ -11,7 +11,7 @@ public class DateFormatter {
    * Converts a string into Date
    *
    * @param date String to convert
-   * @param format Format used in {@see date}
+   * @param format Format used in date
    * @return Date object according to string or null on error
    */
 	public static Date toDate(String date, DateType format) {
@@ -30,7 +30,7 @@ public class DateFormatter {
      *
      * @param date Date object to convert
      * @param format Format used to display date
-     * @return String containing date from {@see date}
+     * @return String of date
      */
     public static String toString(Date date, DateType format) {
       SimpleDateFormat dateFormat = createSDF(format);
