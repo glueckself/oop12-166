@@ -44,8 +44,21 @@ final class GroupMgmt {
 	return retEvent.toArray(new Event[retEvent.size()]);
     }
     
-    public static void getSum(Date startDate, Date endDate, EventType eventType) {
-        
+    public static double getSum(Group group, Date startDate, Date endDate, EventType eventType) {
+       Event[] events = GroupMgmt.getEvents(group, startDate, endDate, eventType);
+       if(events == null) return 0;
+       double retValue = 0;
+
+	for(Event event : events) {
+	    if(event instanceof Practice) {
+		retValue -= event.getValue();
+		continue;
+	    }
+
+	    retValue += event.getValue();
+	}
+
+	return retValue;
     }
 
     public static Member[] getMembersActive(Group group) {
