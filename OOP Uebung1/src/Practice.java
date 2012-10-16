@@ -8,7 +8,7 @@ public class Practice extends Event {
         this.rent = rent;
     }
     
-    public double getRent() {
+    public double getValue() {
         return this.rent;
     }
 }

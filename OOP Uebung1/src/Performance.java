@@ -8,7 +8,7 @@ public class Performance extends Event{
         this.salary = salary;
     }
     
-    public double getSalary() {
+    public double getValue() {
         return this.salary;
     }
 }

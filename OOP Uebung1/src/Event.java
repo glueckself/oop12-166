@@ -22,4 +22,6 @@ public abstract class Event {
     public Date getDuration() {
         return (Date)this.duration.clone();
     }
+
+    abstract double getValue();
 }
