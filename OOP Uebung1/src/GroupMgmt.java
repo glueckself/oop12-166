@@ -9,6 +9,15 @@ import java.util.ArrayList;
  */
 
 final class GroupMgmt {
+    /**
+     * Get all events or a certain type of event of a group that happen/ed between a period of time.
+     * 
+     * @param group The group that played the events
+     * @param startDate Start of time interval
+     * @param endDate End of time interval
+     * @param eventType Which type of events
+     * @return Event[] that contains all requested events
+     */
     public static Event[] getEvents(Group group, Date startDate, Date endDate, EventType eventType) {
         Event[] events = group.getEvents();
 	ArrayList<Event> retEvent = new ArrayList<Event>();
@@ -56,6 +65,15 @@ final class GroupMgmt {
 	return retEvent.toArray(new Event[retEvent.size()]);
     }
     
+    /**
+     * Calculate sum of salaries/rents of events that happen/ed in a period of time.
+     *
+     * @param group The group that played the events
+     * @param startDate Start of time interval
+     * @param endDate End of time interval
+     * @param eventType Which type of events
+     * @return The calculated sum as a double
+     */
     public static double getSum(Group group, Date startDate, Date endDate, EventType eventType) {
        Event[] events = GroupMgmt.getEvents(group, startDate, endDate, eventType);
        double retValue = 0;
