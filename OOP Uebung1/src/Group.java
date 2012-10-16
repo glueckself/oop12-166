@@ -93,6 +93,7 @@ public class Group {
         for(Song song: songs) {
             if(song.getName() != name) continue;
                 song.delete();
+
 	    	return true;
         }
 		return false;
