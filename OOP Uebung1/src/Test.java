@@ -1,5 +1,13 @@
 import java.util.Date;
 
+/**
+ * A few testcases for the group managment program.
+ *
+ * @author Alexander Huber
+ * @author Julian Grosshauser
+ * @author Srdjan Markovic
+ */
+
 public class Test {
     public static void main(String[] args) {
 	Group group = new Group("Hansi Hinterseer","Death Metal");
@@ -43,7 +51,7 @@ public class Test {
         System.out.println(">> Alle am 25.08.2010 verfügbare Songs");
         printSongs(GroupMgmt.getSongsTimestamp(group,DateFormatter.toDate("25.08.2010",DateType.Date)));
 
-	//Event Test
+	/* getEvents testcases */
 	System.out.println(">> Alle Events zwischen 18.12.2012 und 24.11.2014 auflisten");
 	printEvents(GroupMgmt.getEvents(group, DateFormatter.toDate("18.12.2012", DateType.Date), DateFormatter.toDate("24.11.2014", DateType.Date), EventType.ALL));
 
@@ -59,7 +67,7 @@ public class Test {
 	System.out.println(">> Alle Performances zwischen 18.12.2012 und 24.11.2014 auflisten");
 	printEvents(GroupMgmt.getEvents(group, DateFormatter.toDate("18.12.2012", DateType.Date), DateFormatter.toDate("24.11.2014", DateType.Date), EventType.PERFORMANCE));
 
-	//Sum Test
+	/* getSum testcases */
 	System.out.println(">> Summe aller Events zwischen 18.12.2012 und 24.11.2014 ausgeben");
 	printSum(GroupMgmt.getSum(group, DateFormatter.toDate("18.12.2012", DateType.Date), DateFormatter.toDate("24.11.2014", DateType.Date), EventType.ALL));
 
@@ -97,6 +105,10 @@ public class Test {
         printMembers(GroupMgmt.getMembersTimestamp(group,DateFormatter.toDate("01.10.2005",DateType.Date)));
     }
 
+    /**
+     * Print events.
+     * @param events Contains the events to print
+     */
     private static void printEvents(Event events[]) {
       for(Event event : events) {
 	  System.out.print("Place: " + event.getPlace() + ", Date: " + DateFormatter.toString(event.getDate(), DateType.Date) + ", Duration: " + DateFormatter.toString(event.getDuration(), DateType.Time) + "h, ");
@@ -107,6 +119,11 @@ public class Test {
       System.out.println();
     }
 
+    /**
+     * Print sum.
+     *
+     * @param sum Sum to print
+     */
     private static void printSum(double sum) {
 	System.out.println("Sum: " + sum);
 	System.out.println();
