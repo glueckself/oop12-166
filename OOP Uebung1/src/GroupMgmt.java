@@ -32,7 +32,7 @@ final class GroupMgmt {
             if(tmpDate == null) continue;
 
             /* if the date of event is between startDate and endDate, add it */
-            if(tmpDate.compareTo(startDate) > 0 && tmpDate.compareTo(endDate) < 0) {
+            if(tmpDate.after(startDate) && tmpDate.before(endDate)) {
                 /*
                  * you can choose which type of events should be returned
                  * to differentiate between the events, we use instanceof
@@ -67,6 +67,7 @@ final class GroupMgmt {
 
     /**
      * Calculate sum of salaries/rents of events that happen/ed in a period of time.
+     * If the event is a practice, the rent returns a negative value.
      *
      * @param group The group that played the events
      * @param startDate Start of time interval
