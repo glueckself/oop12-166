@@ -12,6 +12,7 @@ public class Group {
     private ArrayList<Event> events;
     private ArrayList<Member> members;
     private ArrayList<Song> songs;
+    private ArrayList<IncomeSpending> incomeSpendings;
 
     /**
      * Constructor
@@ -25,6 +26,7 @@ public class Group {
         this.events = new ArrayList<Event>();
         this.members = new ArrayList<Member>();
         this.songs = new ArrayList<Song>();
+	this.incomeSpendings = new ArrayList<IncomeSpending>();
     }
 
     /**
@@ -172,6 +174,21 @@ public class Group {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Add an income or spending.
+     *
+     * @param incomeSpending Income or spending to be added.
+     * @return boolean true on success or false on failure.
+     */
+    public boolean addIncomeSpending(IncomeSpending incomeSpending) {
+	if(incomeSpending == null) {
+	    return false;
+	}
+
+	this.incomeSpendings.add(incomeSpendings);
+	return true;
     }
 }
 
