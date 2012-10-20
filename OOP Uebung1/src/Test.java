@@ -10,7 +10,7 @@ import java.util.Date;
 public class Test {
     public static void main(String[] args) {
         Group group = new Group("Hansi Hinterseer","Death Metal");
-        ModuleTest tests[4];
+        ModuleTest tests[] = new ModuleTest[4];
 
         if(group == null) {
             System.err.println("Could not create group");
@@ -22,14 +22,14 @@ public class Test {
         tests[2]=null; //member tests;
         tests[3]=null; //song tests;
 
-        for(int i=0; i<tests.length(); i++) {
+        for(int i=0; i<tests.length; i++) {
           if(tests[i] == null) {
             System.out.println("Missing test info for test #"+i+",skipping.");
             continue;
           }
 
           System.out.print("Running test: " + tests[i].getName()+"...");
-          if(tests[i].runTest()) {
+          if(tests[i].runTest(group)) {
             System.out.println("OK");
           } else {
             System.out.println("Fehler");
