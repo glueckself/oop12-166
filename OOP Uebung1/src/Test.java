@@ -21,7 +21,7 @@ public class Test {
         tests[0]=null; //event add/remove tests
         tests[1]=null; //event list/sum tests
         tests[2]=null; //member tests;
-        tests[3]=null; //song tests;
+        tests[3]=new Songtest(group); //song tests;
 
         for(int i=0; i<tests.length; i++) {
           if(tests[i] == null) {
@@ -35,6 +35,7 @@ public class Test {
               System.out.println("passed.");
             } else {
               System.out.println("FAILED.");
+              System.out.println(">> Error message: "+tests[i].getMessage());
             }
           } catch (Exception e) {
             System.out.println("CRITICAL ERROR: " +e.getMessage());

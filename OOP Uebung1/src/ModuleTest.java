@@ -14,6 +14,13 @@ interface ModuleTest {
   public String getName();
 
   /**
+   * Returns a info message for a failed test.
+   *
+   * @return Message
+   */
+  public String getMessage();
+
+  /**
    * Executes the test.
    *
    * @return true if test was successful, false if test failed.
