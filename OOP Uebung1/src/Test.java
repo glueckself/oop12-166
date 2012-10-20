@@ -30,10 +30,14 @@ public class Test {
           }
 
           System.out.print("Running test: " + tests[i].getName()+"...");
-          if(tests[i].runTest()) {
-            System.out.println("OK");
-          } else {
-            System.out.println("Fehler");
+          try {
+            if(tests[i].runTest()) {
+              System.out.println("passed.");
+            } else {
+              System.out.println("FAILED.");
+            }
+          } catch (Exception e) {
+            System.out.println("CRITICAL ERROR: " +e.getMessage());
           }
         }
     }
