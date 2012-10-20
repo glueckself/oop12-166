@@ -1,7 +1,7 @@
 import java.util.Date;
 
 /**
- * A few testcases for the group managment program.
+ * Test program for the group managment system.
  *
  * @author Alexander Huber
  * @author Julian Grosshauser
@@ -17,6 +17,7 @@ public class Test {
             return;
         }
 
+        /* Initialize tests here (and give them the right objects) */
         tests[0]=null; //event add/remove tests
         tests[1]=null; //event list/sum tests
         tests[2]=null; //member tests;
@@ -24,12 +25,12 @@ public class Test {
 
         for(int i=0; i<tests.length; i++) {
           if(tests[i] == null) {
-            System.out.println("Missing test info for test #"+i+",skipping.");
+            System.out.println("Missing test info for test #"+i+", skipping.");
             continue;
           }
 
           System.out.print("Running test: " + tests[i].getName()+"...");
-          if(tests[i].runTest(group)) {
+          if(tests[i].runTest()) {
             System.out.println("OK");
           } else {
             System.out.println("Fehler");
