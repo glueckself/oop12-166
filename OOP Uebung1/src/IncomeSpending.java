@@ -18,8 +18,8 @@ public class IncomeSpending {
      * @param identifier Identifies this income/spending.
      * @param value Value of this income/spending.
      */
-    public Finance(String identifier, BigDecimal value) {
-	this.identifier = Identifier;
+    public IncomeSpending(String identifier, BigDecimal value) {
+	this.identifier = identifier;
 	this.value = value;
     }
 
@@ -31,9 +31,10 @@ public class IncomeSpending {
      * @param value Value of this income/spending.
      * @param event Income/Spending belongs to this event.
      */
-    public Finance(String identifier, BigDecimal value, Event event) {
+    public IncomeSpending(String identifier, BigDecimal value, Event event) {
 	this.identifier = identifier;
 	this.value = value;
+    }
 
     /**
      * identifier getter.
