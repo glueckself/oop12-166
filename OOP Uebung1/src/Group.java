@@ -187,7 +187,7 @@ public class Group {
 	    return false;
 	}
 
-	this.incomeSpendings.add(incomeSpendings);
+	this.incomeSpendings.add(incomeSpending);
 	return true;
     }
 }
