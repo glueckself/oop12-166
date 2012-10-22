@@ -33,7 +33,7 @@ public class Group {
      * @param name Name of the Group
      */
     public void setName(String name) {
-        if(name != "")
+        if(!name.equals(""))
             this.name = name;
     }
 
@@ -43,7 +43,7 @@ public class Group {
      * @param genre Genre of the Group
      */
     public void setGenre(String genre) {
-        if(genre != "")
+        if(!genre.equals(""))
             this.genre = genre;
     }
 
