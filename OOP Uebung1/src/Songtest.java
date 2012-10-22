@@ -11,6 +11,7 @@ class Songtest implements ModuleTest {
 
   private Group _group;
 
+  //Format: Songname, Duration, Release
   private final String testData[][] = {
     {"Testsong","04:13","21.02.2008"},
     {"Testsong 2","02:15","15.08.2010"},
@@ -105,6 +106,8 @@ class Songtest implements ModuleTest {
   /**
    * Compares two Song arrays to verify result.
    * The arrays doesn't need to be sorted.
+   * The function uses false as "successful"-value to simplify usage, e.g.
+   * "if(verifyResult(...)) ..." instead of "if(!verifyResult(...)) ..."
    *
    * @param result Returned value (e.g. from _group.*)
    * @param expectedValue Integer array of indicies of testData/deletedSongs to compare to.

@@ -40,11 +40,23 @@ public class Member {
      * @param person Person that becomes a Member
      * @param instrument Instrument played
      * @param joinDate Date of joining a Group
+     * 
+     * @throws IllegalArgumentException
      */
-    private void stdConstructor(Person person, Instrument instrument, Date joinDate) {
+    private void stdConstructor(Person person, Instrument instrument, Date joinDate)
+    throws IllegalArgumentException {
+		if(person == null) 
+			throw new IllegalArgumentException("Missing argument: person");
         this.person = person;
+        
+        if(instrument == null) 
+			throw new IllegalArgumentException("Missing argument: instrument");
         this.instrument = instrument;
-        this.joinDate = joinDate;
+        
+        if(joinDate == null)
+			this.joinDate = new Date();
+		else
+			this.joinDate = joinDate;
     }
 
     /**
@@ -92,6 +104,11 @@ public class Member {
      * @param leftDate Date of leaving the Group
      */
     public void setLeftDate(Date leftDate) {
+		if(leftDate == null) return;
+		if(this.leftDate != null) return;
+		
+		if(leftDate.before(this.joinDate)) return;
+		
         this.leftDate = leftDate;
     }
 }

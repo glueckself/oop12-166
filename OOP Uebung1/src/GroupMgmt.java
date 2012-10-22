@@ -135,7 +135,7 @@ final class GroupMgmt {
                 continue;
             }
 
-            if(tmpDate.compareTo(timestamp) < 0)
+            if(tmpDate.compareTo(timestamp) <= 0)
                 continue;
 
             retMem.add(mem);
@@ -182,7 +182,7 @@ final class GroupMgmt {
                 continue;
             }
 
-            if(tmpDate.compareTo(timestamp) < 0)
+            if(tmpDate.compareTo(timestamp) <= 0)
                 continue;
 
             retSong.add(song);

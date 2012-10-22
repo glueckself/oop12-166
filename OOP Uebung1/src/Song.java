@@ -21,10 +21,19 @@ public class Song {
      * @param duration Duration of the song
      * @param releaseDate Date of releasing the song
      */
-    public Song(String name, Date duration, Date releaseDate) {
+    public Song(String name, Date duration, Date releaseDate)
+    throws IllegalArgumentException {
+		if(name == null) throw new IllegalArgumentException("name is null");
+		if(name.equals("")) throw new IllegalArgumentException("name is a empty string");
         this.name = name;
+        
+        if(duration == null) throw new IllegalArgumentException("duration is null");
         this.duration = duration;
-        this.releaseDate = releaseDate;
+        
+        if(releaseDate == null)
+			this.releaseDate=new Date();
+		else
+			this.releaseDate = releaseDate;
     }
 
     /**
@@ -65,7 +74,12 @@ public class Song {
      *
      */
     public void delete() {
-        this.discardedDate = new Date();
+      Date discard = new Date();
+      if(discard == null) {
+        System.out.println("error");
+      }
+
+      this.discardedDate = new Date();
     }
 
     /**

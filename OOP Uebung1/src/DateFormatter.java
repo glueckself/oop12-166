@@ -74,6 +74,7 @@ public class DateFormatter {
 	 */
     public static boolean compare(Date date1, Date date2, DateType type) {
       String string2 = DateFormatter.toString(date2,type);
+      if(string2 == null) return false;
       
       return compare(date1,string2,type); 
   }
@@ -89,6 +90,7 @@ public class DateFormatter {
    */
   public static boolean compare(Date date1, String date2, DateType type) {
 	  String string1 = DateFormatter.toString(date1,type);
+	  if(string1 == null) return false;
 	  
 	  return string1.equals(date2);
   }

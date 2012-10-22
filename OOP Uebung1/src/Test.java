@@ -3,8 +3,6 @@ import java.util.Date;
 /**
  * Test program for the group managment system.
  *
- * @author Alexander Huber
- * @author Julian Grosshauser
  * @author Srdjan Markovic
  */
 public class Test {
@@ -20,12 +18,12 @@ public class Test {
         /* Initialize tests here (and give them the right objects) */
         tests[0]=null; //event add/remove tests
         tests[1]=null; //event list/sum tests
-        tests[2]=null; //member tests;
+        tests[2]=new Membertest(group); //member tests;
         tests[3]=new Songtest(group); //song tests;
 
         for(int i=0; i<tests.length; i++) {
           if(tests[i] == null) {
-            System.out.println("Missing test info for test #"+i+", skipping.");
+            System.out.println("Missing test object for test #"+i+", skipping.");
             continue;
           }
 
