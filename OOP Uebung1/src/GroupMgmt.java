@@ -1,5 +1,6 @@
 import java.util.Date;
 import java.util.ArrayList;
+import java.math.BigDecimal;
 
 /**
  * Group Managment.
@@ -72,23 +73,25 @@ final class GroupMgmt {
      * @param startDate Start of time interval
      * @param endDate End of time interval
      * @param eventType Which type of events
-     * @return The calculated sum as a double
+     * @return The calculated sum as a BigDecimal
      */
-    public static double getSum(Group group, Date startDate, Date endDate, EventType eventType) {
+    public static BigDecimal getSum(Group group, Date startDate, Date endDate, EventType eventType) {
         Event[] events = GroupMgmt.getEvents(group, startDate, endDate, eventType);
-        double retValue = 0;
+        BigDecimal retValue = new BigDecimal("0");
 
         /* if there are no events, we can return 0 */
-        if(events == null) return 0;
+        if(events == null) {
+	    return retValue;
+	}
 
         for(Event event : events) {
             /* if the event is a practice, we subtract the rent */
             if(event instanceof Practice) {
-                retValue -= event.getValue();
+                retValue = retValue.subtract(event.getValue());
                 continue;
             }
 
-            retValue += event.getValue();
+            retValue = retValue.add(event.getValue());
         }
 
         return retValue;
