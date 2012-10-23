@@ -74,11 +74,6 @@ public class Song {
      *
      */
     public void delete() {
-      Date discard = new Date();
-      if(discard == null) {
-        System.out.println("error");
-      }
-
       this.discardedDate = new Date();
     }
 

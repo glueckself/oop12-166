@@ -1,5 +1,3 @@
-import java.util.Date;
-
 /**
  * Test program for the group managment system.
  *
@@ -9,11 +7,6 @@ public class Test {
     public static void main(String[] args) {
         Group group = new Group("Hansi Hinterseer","Death Metal");
         ModuleTest tests[] = new ModuleTest[4];
-
-        if(group == null) {
-            System.err.println("Could not create group");
-            return;
-        }
 
         /* Initialize tests here (and give them the right objects) */
         tests[0]=null; //event add/remove tests

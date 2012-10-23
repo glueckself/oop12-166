@@ -54,7 +54,6 @@ class Songtest implements ModuleTest {
   public boolean runTest() {
     Song testSongs[] = new Song[testData.length];
     Song result[];
-    boolean success;
 
     if(_group == null) {
       errorMessage="Group is null.";
