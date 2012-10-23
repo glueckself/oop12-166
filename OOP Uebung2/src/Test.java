@@ -9,7 +9,7 @@ public class Test {
         ModuleTest tests[] = new ModuleTest[4];
 
         /* Initialize tests here (and give them the right objects) */
-        tests[0]=null; //event add/remove tests
+        tests[0]=new EventTest(group); //event add/remove tests
         tests[1]=null; //event list/sum tests
         tests[2]=new Membertest(group); //member tests;
         tests[3]=new Songtest(group); //song tests;
