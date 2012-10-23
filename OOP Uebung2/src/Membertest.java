@@ -15,7 +15,7 @@ class Membertest implements ModuleTest {
         {"Alex","12345","Guitar","21.02.2010"},
         {"Hans","9879879","Drums","10.10.2010"},
         {"Max","81728","Bass","21.12.2011"},
-        {"Moriz","1209348","Guitar","20.4.2012"}
+        {"Moriz","1209348","Guitar","14.12.2011"}
     };
 
     private String leftDates[];
