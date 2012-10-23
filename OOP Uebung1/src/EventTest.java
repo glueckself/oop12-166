@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 
 public class EventTest implements ModuleTest{
 	private final String name = "Eventtest";
@@ -53,10 +54,10 @@ public class EventTest implements ModuleTest{
         }
     	
         for(int i=0; i<allEvents.length-2; i++) {
-            allEvents[i] = new Practice(testData[i][0],DateFormatter.toDate(testData[i][1],DateType.DateTime),DateFormatter.toDate(testData[i][2],DateType.Time),Double.parseDouble(testData[i][3]));
+            allEvents[i] = new Practice(testData[i][0],DateFormatter.toDate(testData[i][1],DateType.DateTime),DateFormatter.toDate(testData[i][2],DateType.Time),new BigDecimal(testData[i][3]));
         }
         for(int i=allEvents.length-2; i<allEvents.length; i++) {
-            allEvents[i] = new Performance(testData[i][0],DateFormatter.toDate(testData[i][1],DateType.DateTime),DateFormatter.toDate(testData[i][2],DateType.Time),Double.parseDouble(testData[i][3]));
+            allEvents[i] = new Performance(testData[i][0],DateFormatter.toDate(testData[i][1],DateType.DateTime),DateFormatter.toDate(testData[i][2],DateType.Time),new BigDecimal(testData[i][3]));
         }
     	for(int i=0; i<allEvents.length; i++) {
     		if(!group.addEvent(allEvents[i])) {
@@ -85,7 +86,7 @@ public class EventTest implements ModuleTest{
     			message = "Duration not matching";
     			return false;
     		}
-    		else if(e_result[i].getValue() != Double.parseDouble(testData[i][3])) {
+    		else if(e_result[i].getValue().compareTo(new BigDecimal(testData[i][3])) != 0) {
     			message = "Value not matching";
     			return false;
     		}
