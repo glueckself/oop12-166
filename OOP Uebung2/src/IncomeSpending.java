@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * Represents income if value is positiv or spending if value is negative.
@@ -9,6 +10,7 @@ import java.math.BigDecimal;
 public class IncomeSpending {
     private String identifier;
     private BigDecimal value;
+    private Date date;
     private Event event;
 
     /**
@@ -24,6 +26,18 @@ public class IncomeSpending {
     }
 
     /**
+     * With this constructor you can specify a date.
+     * 
+     * @param identifier Identifies this income/spending.
+     * @param value Value of this income/spending.
+     */
+    public IncomeSpending(String identifier, BigDecimal value, Date date) {
+	this.identifier = identifier;
+	this.value = value;
+	this.date = date;
+    }
+
+    /**
      * With this constructor you can specify a certain event to which this
      * income/outcome belongs.
      * 
@@ -34,6 +48,21 @@ public class IncomeSpending {
     public IncomeSpending(String identifier, BigDecimal value, Event event) {
 	this.identifier = identifier;
 	this.value = value;
+    }
+
+    /**
+     * With this constructor you can specify a certain event to which this
+     * income/outcome belongs and a date.
+     * 
+     * @param identifier Identifies this income/spending.
+     * @param value Value of this income/spending.
+     * @param event Income/Spending belongs to this event.
+     */
+    public IncomeSpending(String identifier, BigDecimal value, Date date, Event event) {
+	this.identifier = identifier;
+	this.value = value;
+	this.date = date;
+	this.event = event;
     }
 
     /**
@@ -61,5 +90,14 @@ public class IncomeSpending {
      */
     public Event getEvent() {
 	return this.event;
+    }
+
+    /**
+     * date getter.
+     *
+     * @return Date date of this income/spending.
+     */
+    public Date getDate() {
+	return this.date;
     }
 }
