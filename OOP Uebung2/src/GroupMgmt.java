@@ -1,5 +1,7 @@
 import java.util.Date;
 import java.util.ArrayList;
+import java.math.BigDecimal;
+import java.util.Scanner;
 
 /**
  * Group Managment.
@@ -10,7 +12,8 @@ import java.util.ArrayList;
 
 final class GroupMgmt {
     /**
-     * Get all events or a certain type of event of a group that happen/ed between a period of time.
+     * Get all events or a certain type of event of a group that happen/ed
+     * between a period of time.
      *
      * @param group The group that played the events
      * @param startDate Start of time interval
@@ -18,17 +21,24 @@ final class GroupMgmt {
      * @param eventType Which type of events
      * @return Event[] that contains all requested events
      */
-    public static Event[] getEvents(Group group, Date startDate, Date endDate, EventType eventType) {
+    public static Event[] getEvents(Group group, Date startDate, Date endDate,
+	    EventType eventType) {
+
         Event[] events = group.getEvents();
         ArrayList<Event> retEvent = new ArrayList<Event>();
         Date tmpDate;
 
         /* error cases */
-        if(events == null) return null;
+        if(events == null) {
+	    return null;
+	}
 
         for(Event event : events) {
             tmpDate = event.getDate();
-            if(tmpDate == null) continue;
+
+            if(tmpDate == null) {
+		continue;
+	    }
 
             /* if the date of event is between startDate and endDate, add it */
             if(tmpDate.after(startDate) && tmpDate.before(endDate)) {
@@ -65,8 +75,9 @@ final class GroupMgmt {
     }
 
     /**
-     * Calculate sum of salaries/rents of events that happen/ed in a period of time.
-     * If the event is a practice, the rent returns a negative value.
+     * Calculate sum of income/spendings that happen/ed in a period of
+     * time.
+     * If its a spending, it will be subtracted.
      *
      * @param group The group that played the events
      * @param startDate Start of time interval
@@ -74,24 +85,66 @@ final class GroupMgmt {
      * @param eventType Which type of events
      * @return The calculated sum as a double
      */
-    public static double getSum(Group group, Date startDate, Date endDate, EventType eventType) {
-        Event[] events = GroupMgmt.getEvents(group, startDate, endDate, eventType);
-        double retValue = 0;
+    public static BigDecimal getSum(Group group, Date startDate, Date endDate) {
 
-        /* if there are no events, we can return 0 */
-        if(events == null) return 0;
+        BigDecimal returnValue = new BigDecimal("0");
 
-        for(Event event : events) {
-            /* if the event is a practice, we subtract the rent */
-            if(event instanceof Practice) {
-                retValue -= event.getValue();
-                continue;
-            }
+	Finance[] finances = group.getFinances();
 
-            retValue += event.getValue();
-        }
+        /* if there are no finances, we can return 0 */
+        if(finances == null) {
+	    return returnValue;
+	}
 
-        return retValue;
+	for(Finance finance : finances) {
+	    if(finance.getDate().after(startDate) &&
+		    finance.getDate().before(endDate)) {
+
+		if(finance instanceof Spending) {
+		    returnValue = returnValue.subtract(finance.getValue());
+		} else {
+		    returnValue = returnValue.add(finance.getValue());
+		}
+	    }
+	}
+
+	return returnValue;
+    }
+
+    /**
+     * Calculate sum of income/spendings that happen/ed in a period of
+     * time.
+     * You can use filters to filter the result.
+     *
+     * @param group The group that played the events
+     * @param startDate Start of time interval
+     * @param endDate End of time interval
+     * @param eventType Which type of events
+     * @param Filter This filter will be used to filter the result.
+     * @return The calculated sum as a double
+     */
+    public static BigDecimal getSum(Group group, Date startDate, Date endDate,
+	    Filter filter) {
+
+        BigDecimal returnValue = new BigDecimal("0");
+        ArrayList<Finance> selectedFinances = new ArrayList<Finance>();
+
+	Finance[] finances = group.getFinances();
+
+        /* if there are no finances, we can return 0 */
+        if(finances == null) {
+	    return returnValue;
+	}
+
+	for(Finance finance : finances) {
+	    if(finance.getDate().after(startDate) &&
+		    finance.getDate().before(endDate)) {
+
+		selectedFinances.add(finance);
+	    }
+	}
+
+        return filter.filter(selectedFinances.toArray(new Finance[selectedFinances.size()]));
     }
 
     /**
