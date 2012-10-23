@@ -1,10 +1,12 @@
+import java.io.Serializable;
 import java.util.Date;
 /**
  * Represents a Member (of a Group)
  *
  * @author Alexander Huber
  */
-public class Member {
+public class Member implements Serializable {
+	private static final long serialVersionUID = 1L;
     private Person person;
     private Instrument instrument;
     private Date joinDate;
@@ -19,6 +21,7 @@ public class Member {
      */
     public Member(Person person, Instrument instrument, Date joinDate) {
         stdConstructor(person,instrument,joinDate);
+        Serializer.get().serialize();
     }
 
     /**
@@ -32,6 +35,7 @@ public class Member {
     public Member(Person person, Instrument instrument, Date joinDate, Date leftDate) {
         stdConstructor(person,instrument,joinDate);
         this.leftDate = leftDate;
+        Serializer.get().serialize();
     }
 
     /**
@@ -110,5 +114,6 @@ public class Member {
 		if(leftDate.before(this.joinDate)) return;
 		
         this.leftDate = leftDate;
+        Serializer.get().serialize();
     }
 }

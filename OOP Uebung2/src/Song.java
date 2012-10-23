@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.Date;
 /**
  * Represents a song.
@@ -6,7 +7,8 @@ import java.util.Date;
  * @author Srdjan Markovic
  */
 
-public class Song {
+public class Song implements Serializable {
+	private static final long serialVersionUID = 1L;
     private String name;
     private Date duration;
     /* releaseDate and discardedDate are used to enable listing only songs that are

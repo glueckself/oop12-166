@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 /**
@@ -6,7 +7,8 @@ import java.util.Date;
  * @author Alexander Huber
  * @author Srdjan Markovic
  */
-public class Group {
+public class Group implements Serializable {
+	private static final long serialVersionUID = 1L;
     private String name;
     private String genre;
     private ArrayList<Event> events;
@@ -27,6 +29,8 @@ public class Group {
         this.members = new ArrayList<Member>();
         this.songs = new ArrayList<Song>();
 	this.finances = new ArrayList<Finance>();
+        Serializer.get().setGroup(this);
+        Serializer.get().serialize();
     }
 
     /**
@@ -35,8 +39,11 @@ public class Group {
      * @param name Name of the Group
      */
     public void setName(String name) {
-        if(!name.equals(""))
-            this.name = name;
+        if(name.equals(""))
+          return;
+
+        this.name = name;
+        Serializer.get().serialize();
     }
 
     /**
@@ -45,8 +52,11 @@ public class Group {
      * @param genre Genre of the Group
      */
     public void setGenre(String genre) {
-        if(!genre.equals(""))
-            this.genre = genre;
+        if(genre.equals(""))
+          return;
+
+        this.genre = genre;
+        Serializer.get().serialize();
     }
 
     /**
@@ -103,7 +113,7 @@ public class Group {
     public boolean addEvent(Event event) {
         if(event == null) return false;
         this.events.add(event);
-
+        Serializer.get().serialize();
         return true;
     }
 
@@ -115,8 +125,8 @@ public class Group {
      */
     public boolean addMember(Member member) {
         if(member == null) return false;
-
         this.members.add(member);
+        Serializer.get().serialize();
         return true;
     }
 
@@ -128,8 +138,8 @@ public class Group {
      */
     public boolean addSong(Song song) {
         if(song == null) return false;
-
         this.songs.add(song);
+        Serializer.get().serialize();
         return true;
     }
 
@@ -153,8 +163,8 @@ public class Group {
     public boolean removeMember(Person person, Date leftDate) {
         for(Member mem: members) {
             if(mem.getPerson() != person) continue;
-
             mem.setLeftDate(leftDate);
+            Serializer.get().serialize();
             return true;
         }
         return false;
@@ -170,12 +180,12 @@ public class Group {
         for(Song song: songs) {
             if(song.getName() != name) continue;
             song.delete();
-
+            Serializer.get().serialize();
             return true;
         }
         return false;
     }
-
+    
     /**
      * Returns all finances.
      *
@@ -200,4 +210,3 @@ public class Group {
 	return true;
     }
 }
-

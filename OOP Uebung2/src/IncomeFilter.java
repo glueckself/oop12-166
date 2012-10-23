@@ -5,8 +5,6 @@ import java.math.BigDecimal;
  *
  * @author Julian Grosshauser
  */
-
-
 public class IncomeFilter implements Filter {
     /**
      * Returns the sum of all income values.

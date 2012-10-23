@@ -7,8 +7,8 @@ import java.util.Date;
  */
 class Membertest implements ModuleTest {
     private final String name = "Membertest";
-    private String message;
     private Group group;
+    private Logger log;
 
     //format: Name, Phonenumber, Instrument, Join date
     private final String testData[][] = {
@@ -31,6 +31,7 @@ class Membertest implements ModuleTest {
         allInstruments=new Instrument[testData.length];
         allMembers=new Member[testData.length];
         leftDates=new String[testData.length];
+        log = Test.getLogger("Membertest");
     }
 
     /**
@@ -48,7 +49,7 @@ class Membertest implements ModuleTest {
      * @return Message
      */
     public String getMessage() {
-        return message;
+        return "";
     }
 
     /**
@@ -58,9 +59,10 @@ class Membertest implements ModuleTest {
      */
     public boolean runTest() {
         Member[] m_result;
+        boolean success=true;
         
         if(group == null) {
-            message="group is null";
+            log.addMessage("Group is null");
             return false;
         }
         
@@ -72,47 +74,51 @@ class Membertest implements ModuleTest {
             allInstruments[i] = new Instrument(testData[i][2]);
         }
 
+        //we use here "return false" because we need to be sure that Person and
+        //Instrument are working correctly, otherwise Member won't work anyway.
         for(int i=0; i<allMembers.length; i++) {
             if(!allPersons[i].getName().equals(testData[i][0])) {
-                message="Person #"+i+" error: name mismatch";
+                log.addMessage("Person #"+i+" error: name mismatch");
                 return false;
             }
 
             if(!allPersons[i].getPhone().equals(testData[i][1])) {
-                message="Person #"+i+" error: phone mismatch";
+                log.addMessage("Person #"+i+" error: phone mismatch");
                 return false;
             }
 
             if(!allInstruments[i].getName().equals(testData[i][2])) {
-                message="Instrument #"+i+" error";
+                log.addMessage("Instrument #"+i+" error");
                 return false;
             }
 
             allMembers[i] = new Member(allPersons[i],allInstruments[i],DateFormatter.toDate(testData[i][3],DateType.Date));
 
             if(!group.addMember(allMembers[i])) {
-                message="Failed to add member";
+                log.addMessage("Failed to add member");
                 return false;
             }
         }
 
         if(group.addMember(null)) {
-            message="added null member";
+            log.addMessage("added null member");
             return false;
         }
 
-
+        log.pushLevel("All members");
         if(verifyResult(group.getMembers(), new int[]{0,1,2,3})) {
-            message="All members: "+message;
-            return false;
+          success=false;
         }
+        log.popLevel();
         
+        log.pushLevel("Timestamp 1");
         m_result=GroupMgmt.getMembersTimestamp(group,DateFormatter.toDate("17.11.2011",DateType.Date));
         if(verifyResult(m_result,new int[]{0,1})) {
-            message="Timestamp members: "+message;
-            return false;
+            success=false;
         }
+        log.popLevel();
         
+        log.pushLevel("Active members");
         leftDates[0]=DateFormatter.toString(new Date(),DateType.Date);
         leftDates[3]="1.2.2012";
         group.removeMember(allPersons[0]);
@@ -120,17 +126,18 @@ class Membertest implements ModuleTest {
         
         m_result=GroupMgmt.getMembersActive(group);
         if(verifyResult(m_result,new int[]{1,2})) {
-            message="Active members: "+message;
-            return false;
+            success=false;
         }
+        log.popLevel();
         
+        log.pushLevel("Timestamp 2");
         m_result=GroupMgmt.getMembersTimestamp(group,DateFormatter.toDate("4.2.2012",DateType.Date));
         if(verifyResult(m_result,new int[]{0,1,2}))  {
-            message="Timestamp members 2: "+message;
-            return false;
+          success=false;
         }
+        log.popLevel();
 
-        return true;
+        return success;
     }
 
     private boolean verifyResult(Member result[], int validEntries[]) {
@@ -138,8 +145,8 @@ class Membertest implements ModuleTest {
         Date leftDate;
 
         if(result.length != validEntries.length) {
-            message="group.getSongs length different than expected"
-                    +" (is: "+ result.length+ ", expected: " +validEntries.length +").";
+            log.addMessage("result length different than expected"
+                    +" (is: "+ result.length+ ", expected: " +validEntries.length +").");
             return true;
         }
 
@@ -148,7 +155,7 @@ class Membertest implements ModuleTest {
 
             for(int j=0; j<result.length; j++) {
                 if(result[j] == null) {
-                    message="null result element";
+                    log.addMessage("null result element");
                     return true;
                 }
                 
@@ -156,23 +163,23 @@ class Membertest implements ModuleTest {
                 if(result[j].getInstrument() != allInstruments[validEntries[i]]) continue;
                 
                 if(!DateFormatter.compare(result[j].getJoinDate(),testData[validEntries[i]][3],DateType.Date)) {
-                    message="Join date mismatch for member #"+j;
+                    log.addMessage("Join date mismatch for member #"+j);
                     return true;
                 }
 
                 leftDate=result[j].getLeftDate();
                 if(leftDates[validEntries[i]]==null) {
                     if(leftDate != null) {
-                        message="unexpected leftDate on member #"+j;
+                        log.addMessage("unexpected leftDate on member #"+j);
                         return true;
                     }
                 } else {
                     if(leftDate == null) {
-                        message="expected leftDate but not found on member #"+j;
+                        log.addMessage("expected leftDate but not found on member #"+j);
                         return true;
                     }
                     if(!DateFormatter.compare(leftDate,leftDates[validEntries[i]],DateType.Date)) {
-                        message="leftDate mismatch on member #"+j;
+                        log.addMessage("leftDate mismatch on member #"+j);
                         return true;
                     }
                 }
@@ -182,7 +189,7 @@ class Membertest implements ModuleTest {
             
             if(successful) continue;
             
-            message="Member #"+i+" not found";
+            log.addMessage("Member #"+i+" not found");
             return true;
         }
         

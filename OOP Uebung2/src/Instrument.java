@@ -1,9 +1,12 @@
+import java.io.Serializable;
+
 /**
  * Represents an Instrument
  *
  * @author Srdjan Markovic
  */
-public class Instrument {
+public class Instrument implements Serializable {
+	private static final long serialVersionUID = 1L;
     private String _name;
     /**
      * Constructor
@@ -12,6 +15,7 @@ public class Instrument {
      */
     public Instrument(String name) {
         _name=name;
+        Serializer.get().serialize();
     }
 
     /**

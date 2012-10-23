@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -6,6 +7,9 @@ import java.util.Date;
  * @author Alexander Huber
  */
 public class Practice extends Event {
+public class Practice extends Event implements Serializable {
+	private static final long serialVersionUID = 1L;
+    private double rent;
     /**
      * Constructor
      *
@@ -15,5 +19,17 @@ public class Practice extends Event {
      */
     public Practice(String place, Date date, Date duration) {
         super(place,date,duration);
+        Serializer.get().serialize();
+    }
+
+    /**
+     * Change rent for the practice and save old one in history
+     *
+     * @param double new rent for the event 
+     */
+    public void changeValue(double newValue) {
+    	this.history.add(new EventChangeValue(null,null,null,this.rent));
+    	this.rent = newValue;
+    	Serializer.get().serialize();
     }
 }
