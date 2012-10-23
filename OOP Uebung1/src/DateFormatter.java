@@ -50,11 +50,11 @@ public class DateFormatter {
     public static SimpleDateFormat createSDF (DateType format) {
         switch (format) {
         case DateTime:
-            return new SimpleDateFormat ("dd.MM.yyyy hh:mm");
+            return new SimpleDateFormat ("dd.MM.yyyy HH:mm");
         case Date:
             return new SimpleDateFormat ("dd.MM.yyyy");
         case Time:
-            return new SimpleDateFormat ("hh:mm");
+            return new SimpleDateFormat ("HH:mm");
         case Song:
             return new SimpleDateFormat ("mm:ss");
         default:

@@ -25,7 +25,6 @@ final class GroupMgmt {
 
         /* error cases */
         if(events == null) return null;
-        if(retEvent == null) return null;
 
         for(Event event : events) {
             tmpDate = event.getDate();
@@ -119,7 +118,6 @@ final class GroupMgmt {
         Date tmpDate;
 
         if(members == null) return null;
-        if(retMem == null) return null;
 
         for(Member mem : members) {
             tmpDate = mem.getJoinDate();
@@ -167,7 +165,6 @@ final class GroupMgmt {
         Date tmpDate;
 
         if(songs == null) return null;
-        if(retSong == null) return null;
 
         for(Song song: songs) {
             tmpDate = song.getReleaseDate();
