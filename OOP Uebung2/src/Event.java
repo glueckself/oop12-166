@@ -77,7 +77,7 @@ public abstract class Event implements Serializable {
 	}
 
 	return true;
-    abstract double getValue();
+     }
     
     /**
      * Mark event as deleted
