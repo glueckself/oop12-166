@@ -6,7 +6,6 @@ import java.util.Date;
  *
  * @author Alexander Huber
  */
-public class Practice extends Event {
 public class Practice extends Event implements Serializable {
 	private static final long serialVersionUID = 1L;
     /**
