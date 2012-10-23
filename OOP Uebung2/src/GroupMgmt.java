@@ -1,5 +1,6 @@
 import java.util.Date;
 import java.util.ArrayList;
+import java.math.BigDecimal;
 
 /**
  * Group Managment.
