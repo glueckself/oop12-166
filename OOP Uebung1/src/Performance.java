@@ -1,11 +1,13 @@
 import java.util.Date;
+import java.math.BigDecimal;
+
 /**
  * Represents an Event as Performance
  *
  * @author Alexander Huber
  */
 public class Performance extends Event {
-    private double salary;
+    private BigDecimal salary;
     /**
      * Constructor
      *
@@ -14,7 +16,7 @@ public class Performance extends Event {
      * @param duration Duration of the performance
      * @param salary Salary of the performance
      */
-    public Performance(String place, Date date, Date duration, double salary) {
+    public Performance(String place, Date date, Date duration, BigDecimal salary) {
         super(place,date,duration);
         this.salary = salary;
     }
@@ -22,9 +24,9 @@ public class Performance extends Event {
     /**
      * Get method for salary
      *
-     * @return double Salary of the performance
+     * @return BigDecimal Salary of the performance
      */
-    public double getValue() {
+    public BigDecimal getValue() {
         return this.salary;
     }
 }

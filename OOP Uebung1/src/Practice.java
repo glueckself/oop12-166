@@ -1,11 +1,13 @@
 import java.util.Date;
+import java.math.BigDecimal;
+
 /**
  * Represents an Event as Practice
  *
  * @author Alexander Huber
  */
 public class Practice extends Event {
-    private double rent;
+    private BigDecimal rent;
     /**
      * Constructor
      *
@@ -14,7 +16,7 @@ public class Practice extends Event {
      * @param duration Duration of the practice
      * @param rent Rent of the room for practice
      */
-    public Practice(String place, Date date, Date duration, double rent) {
+    public Practice(String place, Date date, Date duration, BigDecimal rent) {
         super(place,date,duration);
         this.rent = rent;
     }
@@ -22,9 +24,9 @@ public class Practice extends Event {
     /**
      * Get method for rent
      *
-     * @return double Rent of the room for practice
+     * @return BigDecimal Rent of the room for practice
      */
-    public double getValue() {
+    public BigDecimal getValue() {
         return this.rent;
     }
 }
