@@ -14,7 +14,9 @@ interface ModuleTest {
   public String getName();
 
   /**
-   * Returns a info message for a failed test.
+   * [DEPRICATED] Returns a info message for a failed test.
+   * Please note that this method should not be used anymore.
+   * Instead, use a Logger object.
    *
    * @return Message
    */

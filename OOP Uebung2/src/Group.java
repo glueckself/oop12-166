@@ -39,10 +39,11 @@ public class Group implements Serializable {
      * @param name Name of the Group
      */
     public void setName(String name) {
-        if(!name.equals("")) {
-            this.name = name;
-            Serializer.get().serialize();
-        }
+        if(name.equals(""))
+          return;
+
+        this.name = name;
+        Serializer.get().serialize();
     }
 
     /**
@@ -51,10 +52,11 @@ public class Group implements Serializable {
      * @param genre Genre of the Group
      */
     public void setGenre(String genre) {
-        if(!genre.equals("")) {
-            this.genre = genre;
-            Serializer.get().serialize();
-        }
+        if(genre.equals(""))
+          return;
+
+        this.genre = genre;
+        Serializer.get().serialize();
     }
 
     /**

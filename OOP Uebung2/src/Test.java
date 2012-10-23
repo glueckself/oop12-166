@@ -5,6 +5,7 @@
  */
 public class Test {
     public static void main(String[] args) {
+        Logger output = new ConsoleLogger("main");
         Group group = new Group("Hansi Hinterseer","Death Metal");
         ModuleTest tests[] = new ModuleTest[4];
 
@@ -16,21 +17,25 @@ public class Test {
 
         for(int i=0; i<tests.length; i++) {
           if(tests[i] == null) {
-            System.out.println("Missing test object for test #"+i+", skipping.");
+            output.addMessage("Missing test object for test #"+i+", skipping.");
             continue;
           }
 
-          System.out.print("Running test: " + tests[i].getName()+"...");
+          output.pushLevel(tests[i].getName());
           try {
             if(tests[i].runTest()) {
-              System.out.println("passed.");
+              output.addMessage("successful");
             } else {
-              System.out.println("FAILED.");
-              System.out.println(">> Error message: "+tests[i].getMessage());
+              output.addMessage("FAILED");
             }
           } catch (Exception e) {
-            System.out.println("CRITICAL ERROR: " +e.getMessage());
+            System.err.println("CRITICAL ERROR: " +e.getMessage());
           }
+          output.popLevel();
         }
+    }
+
+    public static Logger getLogger(String sender) {
+      return new ConsoleLogger(sender);
     }
 }
