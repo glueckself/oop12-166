@@ -25,9 +25,11 @@ public class Performance extends Event implements Serializable {
      *
      * @param double new salary for the event 
      */
+    /*
     public void changeValue(double newValue) {
     	this.history.add(new EventChangeValue(null,null,null,this.salary));
     	this.salary = newValue;
     	Serializer.get().serialize();
     }
+    */
 }

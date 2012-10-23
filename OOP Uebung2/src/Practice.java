@@ -25,9 +25,11 @@ public class Practice extends Event implements Serializable {
      *
      * @param double new rent for the event 
      */
+    /*
     public void changeValue(double newValue) {
     	this.history.add(new EventChangeValue(null,null,null,this.rent));
     	this.rent = newValue;
     	Serializer.get().serialize();
     }
+    */
 }

@@ -134,7 +134,9 @@ public abstract class Event implements Serializable {
      *
      * @param double new value for the event 
      */
+    /*
     abstract void changeValue(double newValue);
+    */
     
     /**
      * get change history
@@ -157,9 +159,11 @@ public abstract class Event implements Serializable {
     	else if(change.getDuration() !=  null) {
     		this.changeDuration(change.getDuration());
     	}
+	/*
     	else {
     		this.changeValue(change.getValue());
     	}
+	*/
     	this.history.remove(index);
     }
 }
