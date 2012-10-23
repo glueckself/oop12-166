@@ -1,9 +1,11 @@
+import java.io.Serializable;
 /**
  * Represents a Person
  *
  * @author Alexander Huber
  */
-public class Person {
+public class Person implements Serializable {
+	private static final long serialVersionUID = 1L;
     private String name;
     private String phone;
 
@@ -16,6 +18,7 @@ public class Person {
     public Person(String name, String phone) {
         this.name = name;
         this.phone = phone;
+        Serializer.get().serialize();
     }
 
     /**

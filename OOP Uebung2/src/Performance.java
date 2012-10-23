@@ -1,10 +1,12 @@
+import java.io.Serializable;
 import java.util.Date;
 /**
  * Represents an Event as Performance
  *
  * @author Alexander Huber
  */
-public class Performance extends Event {
+public class Performance extends Event implements Serializable {
+	private static final long serialVersionUID = 1L;
     private double salary;
     /**
      * Constructor
@@ -17,6 +19,7 @@ public class Performance extends Event {
     public Performance(String place, Date date, Date duration, double salary) {
         super(place,date,duration);
         this.salary = salary;
+        Serializer.get().serialize();
     }
 
     /**
@@ -26,5 +29,16 @@ public class Performance extends Event {
      */
     public double getValue() {
         return this.salary;
+    }
+    
+    /**
+     * Change salary for the performance and save old one in history
+     *
+     * @param double new salary for the event 
+     */
+    public void changeValue(double newValue) {
+    	this.history.add(new EventChangeValue(null,null,null,this.salary));
+    	this.salary = newValue;
+    	Serializer.get().serialize();
     }
 }
