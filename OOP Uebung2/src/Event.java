@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.math.BigDecimal;
 /**
  * Abstract class for storing an Event
  *
@@ -49,9 +50,25 @@ public abstract class Event {
     }
 
     /**
-     * abstract Get method for Value (in our case rent/salary)
+     * Compare two Event objects.
      *
-     * @return double Value of the event
+     * @param event Event object to compare to.
+     * @return boolean True if objects are equal, or false if objects are not
+     * equal.
      */
-    abstract double getValue();
+     public boolean equals(Event event) {
+	if(this.place != event.getPlace()) {
+	    return false;
+	}
+
+	if(this.date.compareTo(event.getDate()) != 0) {
+	    return false;
+	}
+
+	if(this.duration.compareTo(event.getDuration()) != 0) {
+	    return false;
+	}
+
+	return true;
+    }
 }
