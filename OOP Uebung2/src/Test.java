@@ -9,7 +9,7 @@ public class Test {
 
         Group group = new Group("Hansi Hinterseer","Death Metal");
         String errorMsg;
-        ModuleTest tests[] = new ModuleTest[4];
+        ModuleTest tests[] = new ModuleTest[5];
 
         /* Initialize tests here (and give them the right objects)
          * WARNING: because EventTest needs Members to add notify about added
