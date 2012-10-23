@@ -10,7 +10,7 @@ public class Test {
 
         /* Initialize tests here (and give them the right objects) */
         tests[0]=new EventTest(group); //event add/remove tests
-        tests[1]=null; //event list/sum tests
+        tests[1]=new EventListTest(group); //event list/sum tests
         tests[2]=new Membertest(group); //member tests;
         tests[3]=new Songtest(group); //song tests;
 
