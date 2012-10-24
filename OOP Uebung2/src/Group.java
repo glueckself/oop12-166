@@ -106,7 +106,6 @@ public class Group implements Serializable {
 
     /**
      * Adding an Event
-     * Also notifies Members about the new event.
      *
      * @param event Event to be added
      * @return boolean true on success
@@ -126,13 +125,12 @@ public class Group implements Serializable {
         Serializer.get().serialize();
         return true;
     }
-
+    
     /**
-     * Remove an event
-     * 
-     * @param event Event object to remove (must have the same reference)
-     * @return true if found and removed, otherwise false
-     * @author Srdjan Markovic
+     * deleting an Event
+     *
+     * @param event Event to be deleted
+     * @return boolean true on success
      */
     public boolean removeEvent(Event event) {
       int index;
@@ -140,21 +138,17 @@ public class Group implements Serializable {
 
       if(index == -1) return false;
 
-      events.remove(index);
-
+      event.delete(true);
       return true;  
     }
-
+    
     /**
-     * Remove an event
-     * If the actual event object is unknown, search the event by location,
-     * date and type. If found, remove it.
-     * 
-     * @param location Location of the event
-     * @param date Start date of the event
-     * @param type Type of the event
-     * 
-     * @return true if found and removed, otherwise false
+     * deleting an Event
+     *
+     * @param location location of the event
+     * @param date date of the event
+     * @param type type of the event
+     * @return boolean true on success
      */
     public boolean removeEvent(String location, Date date, EventType type) {
       for(int i=0;i<events.size();i++) {
@@ -164,14 +158,14 @@ public class Group implements Serializable {
         switch(type) {
           case PRACTICE:
             if(events.get(i) instanceof Practice)
-              events.remove(i);
+              events.get(i).delete(true);
             else
               continue;
             break;
 
           case PERFORMANCE:
             if(events.get(i) instanceof Performance)
-              events.remove(i);
+              events.get(i).delete(true);
             else 
               continue;
             break;
@@ -186,7 +180,17 @@ public class Group implements Serializable {
     return false;
 
     }
-
+    
+    /**
+     * restoring an Event
+     *
+     * @param event Event to be restored
+     * @return boolean true on success
+     */
+    public boolean restoreEvent(Event event) {
+      event.delete(false);
+      return true;  
+    }
 
     /**
      * Adding a Member
@@ -278,6 +282,8 @@ public class Group implements Serializable {
 	}
 
 	this.finances.add(finance);
+	Serializer.get().serialize();
 	return true;
     }
 }
+>>>>>>> d1093fddafb76dc2eadab2d913bd460f3f6e4e15

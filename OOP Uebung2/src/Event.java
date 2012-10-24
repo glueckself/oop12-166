@@ -1,6 +1,5 @@
 import java.io.Serializable;
 import java.util.Date;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 /**
  * Abstract class for storing an Event
@@ -64,23 +63,25 @@ public abstract class Event implements Serializable {
      * equal.
      */
      public boolean equals(Event event) {
-	if(this.place != event.getPlace()) {
-	    return false;
-	}
+    	 if(this.place != event.getPlace()) {
+    		 return false;
+    	 }
 
-	if(this.date.compareTo(event.getDate()) != 0) {
-	    return false;
-	}
+    	 if(this.date.compareTo(event.getDate()) != 0) {
+    		 return false;
+    	 }
 
-	if(this.duration.compareTo(event.getDuration()) != 0) {
-	    return false;
-	}
+    	 if(this.duration.compareTo(event.getDuration()) != 0) {
+    		 return false;
+    	 }
 
-	return true;
+    	 return true;
      }
     
     /**
-     * Mark event as deleted
+     * Mark event as deleted 
+     * 
+     *@param boolean deleted (true -> deleted, false -> not deleted)
      */
     public void delete(boolean del) {
     	this.deleted = del;
@@ -102,7 +103,7 @@ public abstract class Event implements Serializable {
      * @param String new Place for the event 
      */
     public void changePlace(String newPlace) {
-    	this.history.add(new EventChangePlace(this.place,null,null,0));
+    	this.history.add(new EventChangePlace(this.place,null,null));
     	this.place = newPlace;
     	Serializer.get().serialize();
     }
@@ -113,7 +114,7 @@ public abstract class Event implements Serializable {
      * @param Date new Date for the event 
      */
     public void changeDate(Date newDate) {
-    	this.history.add(new EventChangeDate(null,this.date,null,0));
+    	this.history.add(new EventChangeDate(null,this.date,null));
     	this.date = newDate;
     	Serializer.get().serialize();
     }
@@ -124,7 +125,7 @@ public abstract class Event implements Serializable {
      * @param Date new Duration for the event 
      */
     public void changeDuration(Date newDuration) {
-    	this.history.add(new EventChangeDuration(null,null,this.duration,0));
+    	this.history.add(new EventChangeDuration(null,null,this.duration));
     	this.duration = newDuration;
     	Serializer.get().serialize();
     }

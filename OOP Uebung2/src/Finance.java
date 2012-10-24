@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -11,7 +12,8 @@ import java.util.Date;
  * @author Julian Grosshauser
  */
 
-public abstract class Finance {
+public abstract class Finance implements Serializable {
+	private static final long serialVersionUID = 1L;
     private String identifier;
     private BigDecimal value;
     private Date date;

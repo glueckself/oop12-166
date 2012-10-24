@@ -4,15 +4,17 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
 /**
+ * Serializes/Deserializes the group to provide/get backup information
+ *
  * @author Alexander Huber
  */
 public class Serializer {
 	private Group group = null;
 	private static volatile Serializer serializer = null;
-	/*private Serializer() {
-		
-	}*/
 	
+	/**
+	 * Single instance get method
+	 */
 	public static Serializer get() {
 		if(serializer == null){
             synchronized (Serializer.class){
@@ -24,9 +26,18 @@ public class Serializer {
 		return serializer;
 	}
 	
+	/**
+	 * Set group to be serialized
+	 *
+	 * @param group to be serialized
+	 */
 	public void setGroup(Group group) {
 		this.group = group;
 	}
+	
+	/**
+	 * Serialize the group to backup
+	 */
 	public boolean serialize() {
 		try	{
     		FileOutputStream fOut = new FileOutputStream("backup");
@@ -39,6 +50,9 @@ public class Serializer {
 		return true;
 	}
 	
+	/**
+	 * Serialize the group from backup
+	 */
 	public Group deSerialize() {
 		this.group = null;
 		try	{
@@ -53,3 +67,4 @@ public class Serializer {
 	}
 }
 
+>>>>>>> d1093fddafb76dc2eadab2d913bd460f3f6e4e15
