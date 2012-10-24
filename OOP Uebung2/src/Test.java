@@ -22,31 +22,31 @@ public class Test {
         tests[5]=new EventPlanerTest(group); // Event Planer Test
 
         for(int i=0; i<tests.length; i++) {
-          if(tests[i] == null) {
-            output.addMessage("Missing test object for test #"+i+", skipping.");
-            continue;
-          }
-
-          output.pushLevel(tests[i].getName());
-          try {
-            if(tests[i].runTest()) {
-              output.addMessage("successful");
-            } else {
-              output.addMessage("FAILED");
-
-              //message handling in old style
-              errorMsg=tests[i].getMessage();
-              if(errorMsg == null) continue;
-              if(errorMsg.equals("")) continue;
-
-              output.pushLevel("Message");
-              output.addMessage(errorMsg);
-              output.popLevel();
+            if(tests[i] == null) {
+                output.addMessage("Missing test object for test #"+i+", skipping.");
+                continue;
             }
-          } catch (Exception e) {
-            System.err.println("CRITICAL ERROR: " +e.getMessage());
-          }
-          output.popLevel();
+
+            output.pushLevel(tests[i].getName());
+            try {
+                if(tests[i].runTest()) {
+                    output.addMessage("successful");
+                } else {
+                    output.addMessage("FAILED");
+
+                    //message handling in old style
+                    errorMsg=tests[i].getMessage();
+                    if(errorMsg == null) continue;
+                    if(errorMsg.equals("")) continue;
+
+                    output.pushLevel("Message");
+                    output.addMessage(errorMsg);
+                    output.popLevel();
+                }
+            } catch (Exception e) {
+                System.err.println("CRITICAL ERROR: " +e.getMessage());
+            }
+            output.popLevel();
         }
     }
 
@@ -58,17 +58,17 @@ public class Test {
      * @return Object of type Logger
      */
     public static Logger getLogger(String sender) {
-      return new ConsoleLogger(sender);
+        return new ConsoleLogger(sender);
     }
-    
+
     /**
      * Factory method for Loggers used by Test objects.
-     * 
+     *
      * @param sender Name of the sender
      * @return Object of type Logger
      */
     public static Logger getTestLogger(String sender) {
         return new ConsoleLogger(sender);
     }
-        
+
 }

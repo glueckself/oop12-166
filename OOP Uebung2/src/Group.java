@@ -8,7 +8,7 @@ import java.util.Date;
  * @author Srdjan Markovic
  */
 public class Group implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     private String name;
     private String genre;
     private ArrayList<Event> events;
@@ -28,7 +28,7 @@ public class Group implements Serializable {
         this.events = new ArrayList<Event>();
         this.members = new ArrayList<Member>();
         this.songs = new ArrayList<Song>();
-	this.finances = new ArrayList<Finance>();
+        this.finances = new ArrayList<Finance>();
         Serializer.get().setGroup(this);
         Serializer.get().serialize();
     }
@@ -40,7 +40,7 @@ public class Group implements Serializable {
      */
     public void setName(String name) {
         if(name.equals(""))
-          return;
+            return;
 
         this.name = name;
         Serializer.get().serialize();
@@ -53,7 +53,7 @@ public class Group implements Serializable {
      */
     public void setGenre(String genre) {
         if(genre.equals(""))
-          return;
+            return;
 
         this.genre = genre;
         Serializer.get().serialize();
@@ -116,16 +116,16 @@ public class Group implements Serializable {
         if(members.size() == 0) return false;
 
         for(Member mem: members) {
-          if(mem.getPerson().notifyEvent(event)) continue;
+            if(mem.getPerson().notifyEvent(event)) continue;
 
-          return false;
+            return false;
         }
 
         this.events.add(event);
         Serializer.get().serialize();
         return true;
     }
-    
+
     /**
      * deleting an Event
      *
@@ -133,15 +133,15 @@ public class Group implements Serializable {
      * @return boolean true on success
      */
     public boolean removeEvent(Event event) {
-      int index;
-      index=events.indexOf(event);
+        int index;
+        index=events.indexOf(event);
 
-      if(index == -1) return false;
+        if(index == -1) return false;
 
-      event.delete(true);
-      return true;  
+        event.delete(true);
+        return true;
     }
-    
+
     /**
      * deleting an Event
      *
@@ -151,36 +151,36 @@ public class Group implements Serializable {
      * @return boolean true on success
      */
     public boolean removeEvent(String location, Date date, EventType type) {
-      for(int i=0;i<events.size();i++) {
-        if(!events.get(i).getPlace().equals(location)) continue;
-        if(events.get(i).getDate().compareTo(date) != 0) continue;
+        for(int i=0; i<events.size(); i++) {
+            if(!events.get(i).getPlace().equals(location)) continue;
+            if(events.get(i).getDate().compareTo(date) != 0) continue;
 
-        switch(type) {
-          case PRACTICE:
-            if(events.get(i) instanceof Practice)
-              events.get(i).delete(true);
-            else
-              continue;
-            break;
+            switch(type) {
+            case PRACTICE:
+                if(events.get(i) instanceof Practice)
+                    events.get(i).delete(true);
+                else
+                    continue;
+                break;
 
-          case PERFORMANCE:
-            if(events.get(i) instanceof Performance)
-              events.get(i).delete(true);
-            else 
-              continue;
-            break;
+            case PERFORMANCE:
+                if(events.get(i) instanceof Performance)
+                    events.get(i).delete(true);
+                else
+                    continue;
+                break;
 
-          default:
-            return false;
+            default:
+                return false;
+            }
+
+            return true;
         }
 
-        return true;
-    }
-
-    return false;
+        return false;
 
     }
-    
+
     /**
      * restoring an Event
      *
@@ -188,8 +188,8 @@ public class Group implements Serializable {
      * @return boolean true on success
      */
     public boolean restoreEvent(Event event) {
-      event.delete(false);
-      return true;  
+        event.delete(false);
+        return true;
     }
 
     /**
@@ -260,14 +260,14 @@ public class Group implements Serializable {
         }
         return false;
     }
-    
+
     /**
      * Returns all finances.
      *
      * @return Finance[] Array containing all finances.
      */
     public Finance[] getFinances() {
-	return finances.toArray(new Finance[finances.size()]);
+        return finances.toArray(new Finance[finances.size()]);
     }
 
     /**
@@ -277,13 +277,13 @@ public class Group implements Serializable {
      * @return boolean True on success or false on failure.
      */
     public boolean addFinance(Finance finance) {
-	if(finance == null) {
-	    return false;
-	}
+        if(finance == null) {
+            return false;
+        }
 
-	this.finances.add(finance);
-	Serializer.get().serialize();
-	return true;
+        this.finances.add(finance);
+        Serializer.get().serialize();
+        return true;
     }
 }
 >>>>>>> d1093fddafb76dc2eadab2d913bd460f3f6e4e15

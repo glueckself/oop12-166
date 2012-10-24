@@ -8,23 +8,23 @@
  * @author Srdjan Markovic
  */
 interface Logger {
-  /**
-   * Can be used to increase depth of messages
-   * (e.g. method1:method2:method3:place1:message)
-   *
-   * @param name Name of the level.
-   */
-  public void pushLevel(String name);
-  
-  /**
-   * Decreases depth by one (=pops the last level)
-   */
-  public void popLevel();
+    /**
+     * Can be used to increase depth of messages
+     * (e.g. method1:method2:method3:place1:message)
+     *
+     * @param name Name of the level.
+     */
+    public void pushLevel(String name);
 
-  /**
-   * Displays/logs/sends/... the message.
-   *
-   * @param message Message to process.
-   */
-  public void addMessage(String message);
+    /**
+     * Decreases depth by one (=pops the last level)
+     */
+    public void popLevel();
+
+    /**
+     * Displays/logs/sends/... the message.
+     *
+     * @param message Message to process.
+     */
+    public void addMessage(String message);
 }

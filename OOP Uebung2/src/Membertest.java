@@ -60,12 +60,12 @@ class Membertest implements ModuleTest {
     public boolean runTest() {
         Member[] m_result;
         boolean success=true;
-        
+
         if(group == null) {
             log.addMessage("Group is null");
             return false;
         }
-        
+
         for(int i=0; i<allPersons.length; i++) {
             allPersons[i] = new Person(testData[i][0],testData[i][1]);
         }
@@ -106,34 +106,34 @@ class Membertest implements ModuleTest {
         }
 
         log.pushLevel("All members");
-        if(verifyResult(group.getMembers(), new int[]{0,1,2,3})) {
-          success=false;
-        }
-        log.popLevel();
-        
-        log.pushLevel("Timestamp 1");
-        m_result=GroupMgmt.getMembersTimestamp(group,DateFormatter.toDate("17.11.2011",DateType.Date));
-        if(verifyResult(m_result,new int[]{0,1})) {
+        if(verifyResult(group.getMembers(), new int[] {0,1,2,3})) {
             success=false;
         }
         log.popLevel();
-        
+
+        log.pushLevel("Timestamp 1");
+        m_result=GroupMgmt.getMembersTimestamp(group,DateFormatter.toDate("17.11.2011",DateType.Date));
+        if(verifyResult(m_result,new int[] {0,1})) {
+            success=false;
+        }
+        log.popLevel();
+
         log.pushLevel("Active members");
         leftDates[0]=DateFormatter.toString(new Date(),DateType.Date);
         leftDates[3]="1.2.2012";
         group.removeMember(allPersons[0]);
         group.removeMember(allPersons[3],DateFormatter.toDate(leftDates[3],DateType.Date));
-        
+
         m_result=GroupMgmt.getMembersActive(group);
-        if(verifyResult(m_result,new int[]{1,2})) {
+        if(verifyResult(m_result,new int[] {1,2})) {
             success=false;
         }
         log.popLevel();
-        
+
         log.pushLevel("Timestamp 2");
         m_result=GroupMgmt.getMembersTimestamp(group,DateFormatter.toDate("4.2.2012",DateType.Date));
-        if(verifyResult(m_result,new int[]{0,1,2}))  {
-          success=false;
+        if(verifyResult(m_result,new int[] {0,1,2}))  {
+            success=false;
         }
         log.popLevel();
 
@@ -146,7 +146,7 @@ class Membertest implements ModuleTest {
 
         if(result.length != validEntries.length) {
             log.addMessage("result length different than expected"
-                    +" (is: "+ result.length+ ", expected: " +validEntries.length +").");
+                           +" (is: "+ result.length+ ", expected: " +validEntries.length +").");
             return true;
         }
 
@@ -158,10 +158,10 @@ class Membertest implements ModuleTest {
                     log.addMessage("null result element");
                     return true;
                 }
-                
+
                 if(result[j].getPerson() != allPersons[validEntries[i]]) continue;
                 if(result[j].getInstrument() != allInstruments[validEntries[i]]) continue;
-                
+
                 if(!DateFormatter.compare(result[j].getJoinDate(),testData[validEntries[i]][3],DateType.Date)) {
                     log.addMessage("Join date mismatch for member #"+j);
                     return true;
@@ -183,16 +183,16 @@ class Membertest implements ModuleTest {
                         return true;
                     }
                 }
-                
+
                 successful=true;
             }
-            
+
             if(successful) continue;
-            
+
             log.addMessage("Member #"+i+" not found");
             return true;
         }
-        
+
         return false;
     }
 }

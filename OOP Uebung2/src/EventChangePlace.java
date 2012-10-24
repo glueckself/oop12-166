@@ -7,26 +7,26 @@ import java.util.Date;
  * @author Alexander Huber
  */
 public class EventChangePlace extends EventChange implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * Constructor
-	 *
-	 * @param place if place has changed
-	 * @param date if date has changed (ignored)
-	 * @param duration if duration has changed (ignored)
-	 * @param value if value has changed (ignored)
-	 */
-	public EventChangePlace(String place, Date date, Date duration) {
-		super(place, null, null);
-	}
-	
-	/**
-	 * Format output for showing in change history
-	 *
-	 * @return String output
-	 */
-	public String toString() {
-		return ("Place " + this.place);
-	}
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * Constructor
+     *
+     * @param place if place has changed
+     * @param date if date has changed (ignored)
+     * @param duration if duration has changed (ignored)
+     * @param value if value has changed (ignored)
+     */
+    public EventChangePlace(String place, Date date, Date duration) {
+        super(place, null, null);
+    }
+
+    /**
+     * Format output for showing in change history
+     *
+     * @return String output
+     */
+    public String toString() {
+        return ("Place " + this.place);
+    }
 }

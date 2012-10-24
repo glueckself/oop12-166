@@ -62,36 +62,36 @@ public class DateFormatter {
         }
     }
 
-	/**
-	 * Compares two dates based on custom date type
-	 * String comparison is used because it's simple and should be sufficient for now.
-	 * 
-	 * @param date1 Date to be compared
-	 * @param date2 Date to be compared with
-	 * @param type Type of Date comparison
-	 * 
-	 * @return true if dates match, false if not
-	 */
+    /**
+     * Compares two dates based on custom date type
+     * String comparison is used because it's simple and should be sufficient for now.
+     *
+     * @param date1 Date to be compared
+     * @param date2 Date to be compared with
+     * @param type Type of Date comparison
+     *
+     * @return true if dates match, false if not
+     */
     public static boolean compare(Date date1, Date date2, DateType type) {
-      String string2 = DateFormatter.toString(date2,type);
-      if(string2 == null) return false;
-      
-      return compare(date1,string2,type); 
-  }
-  
-  /**
-   * Compares a custom Date object with a string
-   * 
-   * @param date1 Date to be compared
-   * @param date2 String to be compared with
-   * @param type Type of date1
-   * 
-   * @return true if dates match, false if not
-   */
-  public static boolean compare(Date date1, String date2, DateType type) {
-	  String string1 = DateFormatter.toString(date1,type);
-	  if(string1 == null) return false;
-	  
-	  return string1.equals(date2);
-  }
+        String string2 = DateFormatter.toString(date2,type);
+        if(string2 == null) return false;
+
+        return compare(date1,string2,type);
+    }
+
+    /**
+     * Compares a custom Date object with a string
+     *
+     * @param date1 Date to be compared
+     * @param date2 String to be compared with
+     * @param type Type of date1
+     *
+     * @return true if dates match, false if not
+     */
+    public static boolean compare(Date date1, String date2, DateType type) {
+        String string1 = DateFormatter.toString(date1,type);
+        if(string1 == null) return false;
+
+        return string1.equals(date2);
+    }
 }

@@ -6,7 +6,7 @@ import java.util.Date;
  * @author Alexander Huber
  */
 public class Member implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     private Person person;
     private Instrument instrument;
     private Date joinDate;
@@ -44,23 +44,23 @@ public class Member implements Serializable {
      * @param person Person that becomes a Member
      * @param instrument Instrument played
      * @param joinDate Date of joining a Group
-     * 
+     *
      * @throws IllegalArgumentException
      */
     private void stdConstructor(Person person, Instrument instrument, Date joinDate)
     throws IllegalArgumentException {
-		if(person == null) 
-			throw new IllegalArgumentException("Missing argument: person");
+        if(person == null)
+            throw new IllegalArgumentException("Missing argument: person");
         this.person = person;
-        
-        if(instrument == null) 
-			throw new IllegalArgumentException("Missing argument: instrument");
+
+        if(instrument == null)
+            throw new IllegalArgumentException("Missing argument: instrument");
         this.instrument = instrument;
-        
+
         if(joinDate == null)
-			this.joinDate = new Date();
-		else
-			this.joinDate = joinDate;
+            this.joinDate = new Date();
+        else
+            this.joinDate = joinDate;
     }
 
     /**
@@ -108,11 +108,11 @@ public class Member implements Serializable {
      * @param leftDate Date of leaving the Group
      */
     public void setLeftDate(Date leftDate) {
-		if(leftDate == null) return;
-		if(this.leftDate != null) return;
-		
-		if(leftDate.before(this.joinDate)) return;
-		
+        if(leftDate == null) return;
+        if(this.leftDate != null) return;
+
+        if(leftDate.before(this.joinDate)) return;
+
         this.leftDate = leftDate;
         Serializer.get().serialize();
     }

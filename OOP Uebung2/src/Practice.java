@@ -7,7 +7,7 @@ import java.util.Date;
  * @author Alexander Huber
  */
 public class Practice extends Event implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     /**
      * Constructor
      *
@@ -23,7 +23,7 @@ public class Practice extends Event implements Serializable {
     /**
      * Change rent for the practice and save old one in history
      *
-     * @param double new rent for the event 
+     * @param double new rent for the event
      */
     /*
     public void changeValue(double newValue) {

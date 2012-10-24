@@ -8,7 +8,7 @@ import java.util.Date;
  */
 
 public class Song implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     private String name;
     private Date duration;
     /* releaseDate and discardedDate are used to enable listing only songs that are
@@ -25,17 +25,17 @@ public class Song implements Serializable {
      */
     public Song(String name, Date duration, Date releaseDate)
     throws IllegalArgumentException {
-		if(name == null) throw new IllegalArgumentException("name is null");
-		if(name.equals("")) throw new IllegalArgumentException("name is a empty string");
+        if(name == null) throw new IllegalArgumentException("name is null");
+        if(name.equals("")) throw new IllegalArgumentException("name is a empty string");
         this.name = name;
-        
+
         if(duration == null) throw new IllegalArgumentException("duration is null");
         this.duration = duration;
-        
+
         if(releaseDate == null)
-			this.releaseDate=new Date();
-		else
-			this.releaseDate = releaseDate;
+            this.releaseDate=new Date();
+        else
+            this.releaseDate = releaseDate;
     }
 
     /**
@@ -76,7 +76,7 @@ public class Song implements Serializable {
      *
      */
     public void delete() {
-      this.discardedDate = new Date();
+        this.discardedDate = new Date();
     }
 
     /**

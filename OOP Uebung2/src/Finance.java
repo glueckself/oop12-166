@@ -13,7 +13,7 @@ import java.util.Date;
  */
 
 public abstract class Finance implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     private String identifier;
     private BigDecimal value;
     private Date date;
@@ -22,33 +22,33 @@ public abstract class Finance implements Serializable {
     /**
      * Default constructor.
      * You have to set an identifier, a value and a date.
-     * 
+     *
      * @param identifier Identifies this income/spending.
      * @param value Value of this income/spending.
      * @param date Date of this income/spending.
      */
     public Finance(String identifier, BigDecimal value, Date date) {
-	this.identifier = identifier;
-	this.value = value;
-	this.date = date;
+        this.identifier = identifier;
+        this.value = value;
+        this.date = date;
     }
 
     /**
      * With this constructor you can specify a certain event to which this
      * income/outcome belongs.
-     * 
+     *
      * @param identifier Identifies this income/spending.
      * @param value Value of this income/spending.
      * @param date Date of this income/spending.
      * @param event Income/Spending belongs to this event.
      */
     public Finance(String identifier, BigDecimal value, Date date,
-	    Event event) {
+                   Event event) {
 
-	this.identifier = identifier;
-	this.value = value;
-	this.date = date;
-	this.event = event;
+        this.identifier = identifier;
+        this.value = value;
+        this.date = date;
+        this.event = event;
     }
 
     /**
@@ -57,16 +57,16 @@ public abstract class Finance implements Serializable {
      * @return String identifier of this income/spending.
      */
     public String getIdentifier() {
-	return this.identifier;
+        return this.identifier;
     }
 
     /**
      * value getter.
-     * 
+     *
      * @return BigDecimal value of this income/spending.
      */
     public BigDecimal getValue() {
-	return this.value;
+        return this.value;
     }
 
     /**
@@ -75,7 +75,7 @@ public abstract class Finance implements Serializable {
      * @return Event event to which this income/spending belongs.
      */
     public Event getEvent() {
-	return this.event;
+        return this.event;
     }
 
     /**
@@ -84,7 +84,7 @@ public abstract class Finance implements Serializable {
      * @return Date date of this income/spending.
      */
     public Date getDate() {
-	return this.date;
+        return this.date;
     }
 
     /**
@@ -95,30 +95,30 @@ public abstract class Finance implements Serializable {
      * equal.
      */
     public boolean equals(Finance finance) {
-	if(this.identifier != finance.getIdentifier()) {
-	    return false;
-	}
+        if(this.identifier != finance.getIdentifier()) {
+            return false;
+        }
 
-	if(this.value != finance.getValue()) {
-	    return false;
-	}
+        if(this.value != finance.getValue()) {
+            return false;
+        }
 
-	if(this.date.compareTo(finance.getDate()) != 0) {
-	    return false;
-	}
+        if(this.date.compareTo(finance.getDate()) != 0) {
+            return false;
+        }
 
-	/*
-	 * To avoid a NullPointerException. If both events are null, then they
-	 * are equal.
-	 */
-	if(this.event == null && finance.getEvent() == null) {
-	    return true;
-	}
+        /*
+         * To avoid a NullPointerException. If both events are null, then they
+         * are equal.
+         */
+        if(this.event == null && finance.getEvent() == null) {
+            return true;
+        }
 
-	if(!this.event.equals(finance.getEvent())) {
-	    return false;
-	}
+        if(!this.event.equals(finance.getEvent())) {
+            return false;
+        }
 
-	return true;
+        return true;
     }
 }

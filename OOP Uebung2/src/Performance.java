@@ -7,7 +7,7 @@ import java.util.Date;
  * @author Alexander Huber
  */
 public class Performance extends Event implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     /**
      * Constructor
      *
@@ -19,11 +19,11 @@ public class Performance extends Event implements Serializable {
         super(place,date,duration);
         Serializer.get().serialize();
     }
-    
+
     /**
      * Change salary for the performance and save old one in history
      *
-     * @param double new salary for the event 
+     * @param double new salary for the event
      */
     /*
     public void changeValue(double newValue) {
