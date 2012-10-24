@@ -112,10 +112,62 @@ public class Group implements Serializable {
      */
     public boolean addEvent(Event event) {
         if(event == null) return false;
+
+        if(members.size() == 0) return false;
+
+        for(Member mem: members) {
+          if(mem.getPerson().notifyEvent(event)) continue;
+
+          return false;
+        }
+
         this.events.add(event);
         Serializer.get().serialize();
         return true;
     }
+
+    public boolean removeEvent(Event event) {
+      int index;
+      index=events.indexOf(event);
+
+      if(index == -1) return false;
+
+      events.remove(index);
+
+      return true;  
+    }
+
+    public boolean removeEvent(String location, Date date, EventType type) {
+      for(int i=0;i<events.size();i++) {
+        if(!events.get(i).getPlace().equals(location)) continue;
+        if(events.get(i).getDate().compareTo(date) != 0) continue;
+
+        switch(type) {
+          case PRACTICE:
+            if(events.get(i) instanceof Practice)
+              events.remove(i);
+            else
+              continue;
+            break;
+
+          case PERFORMANCE:
+            if(events.get(i) instanceof Performance)
+              events.remove(i);
+            else 
+              continue;
+            break;
+
+          default:
+            return false;
+        }
+
+        return true;
+    }
+
+    return false;
+
+    }
+
 
     /**
      * Adding a Member

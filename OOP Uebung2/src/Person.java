@@ -8,6 +8,8 @@ public class Person implements Serializable {
 	private static final long serialVersionUID = 1L;
     private String name;
     private String phone;
+    private String message;
+    Logger log;
 
     /**
      * Constructor
@@ -19,6 +21,7 @@ public class Person implements Serializable {
         this.name = name;
         this.phone = phone;
         Serializer.get().serialize();
+        log = Test.getLogger(name);
     }
 
     /**
@@ -28,6 +31,15 @@ public class Person implements Serializable {
      */
     public String getName() {
         return this.name;
+    }
+
+    public boolean notifyEvent(Event event) {
+      log.addMessage("notified for Event: " +event.getPlace());
+      return true;
+    }
+
+    public final String getMessage() {
+      return message;
     }
 
     /**
