@@ -125,18 +125,26 @@ public class Group implements Serializable {
         Serializer.get().serialize();
         return true;
     }
-
+    
+    /**
+     * deleting an Event
+     *
+     * @param event Event to be deleted
+     * @return boolean true on success
+     */
     public boolean removeEvent(Event event) {
-      int index;
-      index=events.indexOf(event);
-
-      if(index == -1) return false;
-
-      events.remove(index);
-
+      event.delete(true);
       return true;  
     }
-
+    
+    /**
+     * deleting an Event
+     *
+     * @param location location of the event
+     * @param date date of the event
+     * @param type type of the event
+     * @return boolean true on success
+     */
     public boolean removeEvent(String location, Date date, EventType type) {
       for(int i=0;i<events.size();i++) {
         if(!events.get(i).getPlace().equals(location)) continue;
@@ -145,14 +153,14 @@ public class Group implements Serializable {
         switch(type) {
           case PRACTICE:
             if(events.get(i) instanceof Practice)
-              events.remove(i);
+              events.get(i).delete(true);
             else
               continue;
             break;
 
           case PERFORMANCE:
             if(events.get(i) instanceof Performance)
-              events.remove(i);
+              events.get(i).delete(true);
             else 
               continue;
             break;
@@ -167,7 +175,17 @@ public class Group implements Serializable {
     return false;
 
     }
-
+    
+    /**
+     * restoring an Event
+     *
+     * @param event Event to be restored
+     * @return boolean true on success
+     */
+    public boolean restoreEvent(Event event) {
+      event.delete(false);
+      return true;  
+    }
 
     /**
      * Adding a Member
