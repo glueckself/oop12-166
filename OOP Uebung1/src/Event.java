@@ -64,19 +64,19 @@ public abstract class Event {
      * @return boolean True if objects are equal, or false if objects are not
      * equal.
      */
-     public boolean equals(Event event) {
-	if(this.place != event.getPlace()) {
-	    return false;
-	}
+    public boolean equals(Event event) {
+        if(this.place != event.getPlace()) {
+            return false;
+        }
 
-	if(this.date.compareTo(event.getDate()) != 0) {
-	    return false;
-	}
+        if(this.date.compareTo(event.getDate()) != 0) {
+            return false;
+        }
 
-	if(this.duration.compareTo(event.getDuration()) != 0) {
-	    return false;
-	}
+        if(this.duration.compareTo(event.getDuration()) != 0) {
+            return false;
+        }
 
-	return true;
-     }
+        return true;
+    }
 }

@@ -6,24 +6,24 @@
  * @author Srdjan Markovic
  */
 interface ModuleTest {
-  /**
-   * Returns the name of the test (for logs/UI/...)
-   *
-   * @return Name of the test
-   */
-  public String getName();
+    /**
+     * Returns the name of the test (for logs/UI/...)
+     *
+     * @return Name of the test
+     */
+    public String getName();
 
-  /**
-   * Returns a info message for a failed test.
-   *
-   * @return Message
-   */
-  public String getMessage();
+    /**
+     * Returns a info message for a failed test.
+     *
+     * @return Message
+     */
+    public String getMessage();
 
-  /**
-   * Executes the test.
-   *
-   * @return true if test was successful, false if test failed.
-   */
-  public boolean runTest();
+    /**
+     * Executes the test.
+     *
+     * @return true if test was successful, false if test failed.
+     */
+    public boolean runTest();
 }

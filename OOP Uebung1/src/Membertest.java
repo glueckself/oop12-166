@@ -58,12 +58,12 @@ class Membertest implements ModuleTest {
      */
     public boolean runTest() {
         Member[] m_result;
-        
+
         if(group == null) {
             message="group is null";
             return false;
         }
-        
+
         for(int i=0; i<allPersons.length; i++) {
             allPersons[i] = new Person(testData[i][0],testData[i][1]);
         }
@@ -102,30 +102,30 @@ class Membertest implements ModuleTest {
         }
 
 
-        if(verifyResult(group.getMembers(), new int[]{0,1,2,3})) {
+        if(verifyResult(group.getMembers(), new int[] {0,1,2,3})) {
             message="All members: "+message;
             return false;
         }
-        
+
         m_result=GroupMgmt.getMembersTimestamp(group,DateFormatter.toDate("17.11.2011",DateType.Date));
-        if(verifyResult(m_result,new int[]{0,1})) {
+        if(verifyResult(m_result,new int[] {0,1})) {
             message="Timestamp members: "+message;
             return false;
         }
-        
+
         leftDates[0]=DateFormatter.toString(new Date(),DateType.Date);
         leftDates[3]="1.2.2012";
         group.removeMember(allPersons[0]);
         group.removeMember(allPersons[3],DateFormatter.toDate(leftDates[3],DateType.Date));
-        
+
         m_result=GroupMgmt.getMembersActive(group);
-        if(verifyResult(m_result,new int[]{1,2})) {
+        if(verifyResult(m_result,new int[] {1,2})) {
             message="Active members: "+message;
             return false;
         }
-        
+
         m_result=GroupMgmt.getMembersTimestamp(group,DateFormatter.toDate("4.2.2012",DateType.Date));
-        if(verifyResult(m_result,new int[]{0,1,2}))  {
+        if(verifyResult(m_result,new int[] {0,1,2}))  {
             message="Timestamp members 2: "+message;
             return false;
         }
@@ -151,10 +151,10 @@ class Membertest implements ModuleTest {
                     message="null result element";
                     return true;
                 }
-                
+
                 if(result[j].getPerson() != allPersons[validEntries[i]]) continue;
                 if(result[j].getInstrument() != allInstruments[validEntries[i]]) continue;
-                
+
                 if(!DateFormatter.compare(result[j].getJoinDate(),testData[validEntries[i]][3],DateType.Date)) {
                     message="Join date mismatch for member #"+j;
                     return true;
@@ -176,16 +176,16 @@ class Membertest implements ModuleTest {
                         return true;
                     }
                 }
-                
+
                 successful=true;
             }
-            
+
             if(successful) continue;
-            
+
             message="Member #"+i+" not found";
             return true;
         }
-        
+
         return false;
     }
 }

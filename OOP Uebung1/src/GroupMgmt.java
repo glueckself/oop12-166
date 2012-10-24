@@ -81,8 +81,8 @@ final class GroupMgmt {
 
         /* if there are no events, we can return 0 */
         if(events == null) {
-	    return retValue;
-	}
+            return retValue;
+        }
 
         for(Event event : events) {
             /* if the event is a practice, we subtract the rent */

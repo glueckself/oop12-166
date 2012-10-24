@@ -1,7 +1,7 @@
 import java.math.BigDecimal;
 
-public class EventTest implements ModuleTest{
-	private final String name = "Eventtest";
+public class EventTest implements ModuleTest {
+    private final String name = "Eventtest";
     private String message;
     private Group group;
 
@@ -47,51 +47,51 @@ public class EventTest implements ModuleTest{
      */
     public boolean runTest() {
         Event[] e_result;
-    	
+
         if(group == null) {
             message="group is null";
             return false;
         }
-    	
+
         for(int i=0; i<allEvents.length-2; i++) {
             allEvents[i] = new Practice(testData[i][0],DateFormatter.toDate(testData[i][1],DateType.DateTime),DateFormatter.toDate(testData[i][2],DateType.Time),new BigDecimal(testData[i][3]));
         }
         for(int i=allEvents.length-2; i<allEvents.length; i++) {
             allEvents[i] = new Performance(testData[i][0],DateFormatter.toDate(testData[i][1],DateType.DateTime),DateFormatter.toDate(testData[i][2],DateType.Time),new BigDecimal(testData[i][3]));
         }
-    	for(int i=0; i<allEvents.length; i++) {
-    		if(!group.addEvent(allEvents[i])) {
+        for(int i=0; i<allEvents.length; i++) {
+            if(!group.addEvent(allEvents[i])) {
                 message="Failed to add event";
                 return false;
             }
-    	}
-    	
-    	e_result = group.getEvents();
-    	for(int i=0; i<e_result.length; i++)
-    	{
-    		if(e_result[i].getClass() != allEvents[i].getClass()) {
-    			message = "Class not matching";
-    			return false;
-    		}
-    		
-    		if((e_result[i].getPlace()).compareTo(testData[i][0]) != 0) {
-    			message = "Place not matching";
-    			return false;
-    		}
-    		else if(DateFormatter.toString(e_result[i].getDate(), DateType.DateTime).compareTo(testData[i][1]) != 0) {
-    			message = "Date not matching";
-    			return false;
-    		}
-    		else if(DateFormatter.toString(e_result[i].getDuration(), DateType.Time).compareTo(testData[i][2]) != 0) {
-    			message = "Duration not matching";
-    			return false;
-    		}
-    		else if(e_result[i].getValue().compareTo(new BigDecimal(testData[i][3])) != 0) {
-    			message = "Value not matching";
-    			return false;
-    		}
-    	}
-    	
-    	return true;
+        }
+
+        e_result = group.getEvents();
+        for(int i=0; i<e_result.length; i++)
+        {
+            if(e_result[i].getClass() != allEvents[i].getClass()) {
+                message = "Class not matching";
+                return false;
+            }
+
+            if((e_result[i].getPlace()).compareTo(testData[i][0]) != 0) {
+                message = "Place not matching";
+                return false;
+            }
+            else if(DateFormatter.toString(e_result[i].getDate(), DateType.DateTime).compareTo(testData[i][1]) != 0) {
+                message = "Date not matching";
+                return false;
+            }
+            else if(DateFormatter.toString(e_result[i].getDuration(), DateType.Time).compareTo(testData[i][2]) != 0) {
+                message = "Duration not matching";
+                return false;
+            }
+            else if(e_result[i].getValue().compareTo(new BigDecimal(testData[i][3])) != 0) {
+                message = "Value not matching";
+                return false;
+            }
+        }
+
+        return true;
     }
 }

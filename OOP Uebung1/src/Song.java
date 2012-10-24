@@ -23,17 +23,17 @@ public class Song {
      */
     public Song(String name, Date duration, Date releaseDate)
     throws IllegalArgumentException {
-		if(name == null) throw new IllegalArgumentException("name is null");
-		if(name.equals("")) throw new IllegalArgumentException("name is a empty string");
+        if(name == null) throw new IllegalArgumentException("name is null");
+        if(name.equals("")) throw new IllegalArgumentException("name is a empty string");
         this.name = name;
-        
+
         if(duration == null) throw new IllegalArgumentException("duration is null");
         this.duration = duration;
-        
+
         if(releaseDate == null)
-			this.releaseDate=new Date();
-		else
-			this.releaseDate = releaseDate;
+            this.releaseDate=new Date();
+        else
+            this.releaseDate = releaseDate;
     }
 
     /**
@@ -74,7 +74,7 @@ public class Song {
      *
      */
     public void delete() {
-      this.discardedDate = new Date();
+        this.discardedDate = new Date();
     }
 
     /**
