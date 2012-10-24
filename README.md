@@ -1,25 +1,25 @@
-#3. Übungsaufgabe
+# 3. Übungsaufgabe
 
-##Themen:
+### Themen:
 Zusicherungen, Analyse des eigenen Programmcodes
 
-##Termine:
+### Termine:
 Ausgabe: 	24.10.2012
 reguläre Abgabe: 	31.10.2012, 12:00 Uhr
 nachträgliche Abgabe: 	07.11.2012, 12:00 Uhr
 
-##Abgabeverzeichnis:
+### Abgabeverzeichnis:
 Gruppe/Aufgabe3
 
-##Programmaufruf:
+### Programmaufruf:
 java Test
 
-##Grundlage:
+### Grundlage:
 Skriptum, Schwerpunkt auf Abschnitt 2.2
 
-###Aufgabe
+## Aufgabe
 
-##Welche Aufgabe zu lösen ist:
+### Welche Aufgabe zu lösen ist:
 Versehen Sie eine Kopie des Programmcodes Ihrer Lösung der zweiten Aufgabe (inklusive Testprogramm) mit Kommentaren, die Zusicherungen in natürlicher Sprache (Deutsch oder Englisch) darstellen. Entfernen Sie alle Kommentare, die keine Zusicherungen ausdrücken. Nur die weiter unten beschriebenen speziellen Kommentare sowie organisatorische Kommentare (wie z.B. die Namen der Autoren) dürfen danach neben Zusicherungen vorkommen. Lassen Sie organisatorische Kommentare, die nicht sowieso ganz klar als solche zu erkennen sind, mit ANMERKUNG: oder NOTE: beginnen. Alle notwendigen Zusicherungen sollen explizit im Programmcode stehen. Die Abhängigkeiten zwischen den Programmteilen sollen durch Zusicherungen aber nicht unnötig verstärkt werden.
 
 Vergewissern Sie sich, dass Clients nur das voraussetzen, was Server durch Zusicherungen versprechen, und Server nur das, was Clients versprechen, also alle Verträge in Ihrer Software eingehalten werden. Prüfen Sie nach, ob Zusicherungen überall dort, wo Sie eine Vererbungsbeziehung haben (durch extends oder implements), die Bedingungen für die Ersetzbarkeit erfüllen. Falls Sie Inkonsistenzen bemerken, die sich durch andere Formulierungen der Zusicherungen nicht einfach beheben lassen – das heißt, Sie haben inhaltliche Fehler entdeckt –, beschreiben Sie die Inkonsistenzen durch spezielle Kommentare, die mit FEHLER: oder ERROR: beginnen. Versuchen Sie, in wenigen Worten mögliche Ursachen sowie nötige Programmänderungen zur Fehlerkorrektur zu beschreiben. Lassen Sie den Programmcode selbst (abgesehen von Kommentaren) unverändert.
