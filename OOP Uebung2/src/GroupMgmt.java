@@ -19,7 +19,7 @@ final class GroupMgmt {
      * @param eventType Which type of events
      * @return Event[] that contains all requested events
      *
-     * @author Julian Großhauser
+     * @author Julian Grosshauser
      */
     public static Event[] getEvents(Group group, Date startDate, Date endDate, EventType eventType) {
         Event[] events = group.getEvents();
@@ -78,7 +78,7 @@ final class GroupMgmt {
      * @param eventType Which type of events
      * @return The calculated sum as a double
      *
-     * @author Julian Großhauser
+     * @author Julian Grosshauser
      */
     public static BigDecimal getSum(Group group, Date startDate, Date endDate) {
 
@@ -118,7 +118,7 @@ final class GroupMgmt {
      * @param Filter This filter will be used to filter the result.
      * @return The calculated sum as a double
      *
-     * @author Julian Großhauser
+     * @author Julian Grosshauser
      */
     public static BigDecimal getSum(Group group, Date startDate, Date endDate,
                                     Filter filter) {
