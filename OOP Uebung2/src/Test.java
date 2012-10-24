@@ -9,7 +9,7 @@ public class Test {
 
         Group group = new Group("Hansi Hinterseer","Death Metal");
         String errorMsg;
-        ModuleTest tests[] = new ModuleTest[4];
+        ModuleTest tests[] = new ModuleTest[5];
 
         /* Initialize tests here (and give them the right objects)
          * WARNING: because EventTest needs Members to add notify about added
@@ -17,7 +17,8 @@ public class Test {
         tests[0]=new Membertest(group); //member tests;
         tests[1]=new Songtest(group); //song tests;
         tests[2]=new EventTest(group); //event add/remove tests
-        tests[3]=null; //event list/sum tests
+        tests[3]=new EventListTest(group); //event list tests
+	tests[4]=new FinanceTest(group); //finance tests
 
         for(int i=0; i<tests.length; i++) {
           if(tests[i] == null) {

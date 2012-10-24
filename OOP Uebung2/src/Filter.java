@@ -6,12 +6,13 @@ import java.math.BigDecimal;
  * @author Julian Grosshauser
  */
 
-interface SumFilter {
+interface Filter {
     /**
      * This filter method will be used different by all the different filter
      * classes.
      *
-     * @return BigDecimal Filtered sum
+     * @param finances Contains all finances to filter.
+     * @return BigDecimal Filtered sum.
      */
-    BigDecimal filter();
+    BigDecimal filter(Finance[] finances);
 }

@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.Date;
+
 /**
  * Represents an Event as Performance
  *
@@ -7,28 +8,16 @@ import java.util.Date;
  */
 public class Performance extends Event implements Serializable {
 	private static final long serialVersionUID = 1L;
-    private double salary;
     /**
      * Constructor
      *
      * @param place Place of the performance
      * @param date Date of the performance
      * @param duration Duration of the performance
-     * @param salary Salary of the performance
      */
-    public Performance(String place, Date date, Date duration, double salary) {
+    public Performance(String place, Date date, Date duration) {
         super(place,date,duration);
-        this.salary = salary;
         Serializer.get().serialize();
-    }
-
-    /**
-     * Get method for salary
-     *
-     * @return double Salary of the performance
-     */
-    public double getValue() {
-        return this.salary;
     }
     
     /**
@@ -36,9 +25,11 @@ public class Performance extends Event implements Serializable {
      *
      * @param double new salary for the event 
      */
+    /*
     public void changeValue(double newValue) {
     	this.history.add(new EventChangeValue(null,null,null,this.salary));
     	this.salary = newValue;
     	Serializer.get().serialize();
     }
+    */
 }

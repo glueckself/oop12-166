@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.Date;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 /**
  * Abstract class for storing an Event
@@ -56,11 +57,27 @@ public abstract class Event implements Serializable {
     }
 
     /**
-     * abstract Get method for Value (in our case rent/salary)
+     * Compare two Event objects.
      *
-     * @return double Value of the event
+     * @param event Event object to compare to.
+     * @return boolean True if objects are equal, or false if objects are not
+     * equal.
      */
-    abstract double getValue();
+     public boolean equals(Event event) {
+	if(this.place != event.getPlace()) {
+	    return false;
+	}
+
+	if(this.date.compareTo(event.getDate()) != 0) {
+	    return false;
+	}
+
+	if(this.duration.compareTo(event.getDuration()) != 0) {
+	    return false;
+	}
+
+	return true;
+     }
     
     /**
      * Mark event as deleted
@@ -117,7 +134,9 @@ public abstract class Event implements Serializable {
      *
      * @param double new value for the event 
      */
+    /*
     abstract void changeValue(double newValue);
+    */
     
     /**
      * get change history
@@ -140,9 +159,11 @@ public abstract class Event implements Serializable {
     	else if(change.getDuration() !=  null) {
     		this.changeDuration(change.getDuration());
     	}
+	/*
     	else {
     		this.changeValue(change.getValue());
     	}
+	*/
     	this.history.remove(index);
     }
 }

@@ -1,4 +1,3 @@
-
 public class EventTest implements ModuleTest{
 	private final String name = "Eventtest";
     private String message;
@@ -6,10 +5,10 @@ public class EventTest implements ModuleTest{
 
     //format: Place, Date, Duration, Value
     private final String testData[][] = {
-        {"Keller","19.02.2013 14:00","04:30","200"},
-        {"Dachboden","23.02.2013 15:00","04:00","270"},
-        {"Moskau","04.07.2013 20:30","03:00","3500"},
-        {"Paris","30.01.2014 18:00","01:45","2200"}
+        {"Keller","19.02.2013 14:00","04:30"},
+        {"Dachboden","23.02.2013 15:00","04:00"},
+        {"Moskau","04.07.2013 20:30","03:00"},
+        {"Paris","30.01.2014 18:00","01:45"}
     };
 
     private Event allEvents[];
@@ -53,10 +52,10 @@ public class EventTest implements ModuleTest{
         }
     	
         for(int i=0; i<allEvents.length-2; i++) {
-            allEvents[i] = new Practice(testData[i][0],DateFormatter.toDate(testData[i][1],DateType.DateTime),DateFormatter.toDate(testData[i][2],DateType.Time),Double.parseDouble(testData[i][3]));
+            allEvents[i] = new Practice(testData[i][0],DateFormatter.toDate(testData[i][1],DateType.DateTime),DateFormatter.toDate(testData[i][2],DateType.Time));
         }
         for(int i=allEvents.length-2; i<allEvents.length; i++) {
-            allEvents[i] = new Performance(testData[i][0],DateFormatter.toDate(testData[i][1],DateType.DateTime),DateFormatter.toDate(testData[i][2],DateType.Time),Double.parseDouble(testData[i][3]));
+            allEvents[i] = new Performance(testData[i][0],DateFormatter.toDate(testData[i][1],DateType.DateTime),DateFormatter.toDate(testData[i][2],DateType.Time));
         }
     	for(int i=0; i<allEvents.length; i++) {
     		if(!group.addEvent(allEvents[i])) {
@@ -83,10 +82,6 @@ public class EventTest implements ModuleTest{
     		}
     		else if(DateFormatter.toString(e_result[i].getDuration(), DateType.Time).compareTo(testData[i][2]) != 0) {
     			message = "Duration not matching";
-    			return false;
-    		}
-    		else if(e_result[i].getValue() != Double.parseDouble(testData[i][3])) {
-    			message = "Value not matching";
     			return false;
     		}
     	}

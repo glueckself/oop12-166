@@ -1,13 +1,15 @@
 import java.math.BigDecimal;
 
 /**
- * This filter returns the sum of only the incomes.
+ * This filter returns the sum of only the spendings.
  *
  * @author Julian Grosshauser
  */
-public class IncomeFilter implements Filter {
+
+
+public class SpendingFilter implements Filter {
     /**
-     * Returns the sum of all income values.
+     * Returns the sum of all spending values.
      *
      * @param events Contains all finances to filter.
      * @return BigDecimal Sum.
@@ -17,7 +19,7 @@ public class IncomeFilter implements Filter {
 
 	for(Finance finance : finances) {
 	    /* Incomes are Income objects */
-	    if(finance instanceof Income) {
+	    if(finance instanceof Spending) {
 		sum = sum.add(finance.getValue());
 	    }
 	}
