@@ -3,7 +3,9 @@ import java.io.ObjectOutputStream;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
-
+/**
+ * @author Alexander Huber
+ */
 public class Serializer {
 	private Group group = null;
 	private static volatile Serializer serializer = null;

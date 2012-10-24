@@ -2,6 +2,8 @@ import java.util.Stack;
 
 /**
  * Uses System.out as destination for output.
+ * 
+ * @author Srdjan Markovic
  */
 class ConsoleLogger implements Logger{
   private String sender="";

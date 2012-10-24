@@ -106,6 +106,7 @@ public class Group implements Serializable {
 
     /**
      * Adding an Event
+     * Also notifies Members about the new event.
      *
      * @param event Event to be added
      * @return boolean true on success
@@ -126,6 +127,13 @@ public class Group implements Serializable {
         return true;
     }
 
+    /**
+     * Remove an event
+     * 
+     * @param event Event object to remove (must have the same reference)
+     * @return true if found and removed, otherwise false
+     * @author Srdjan Markovic
+     */
     public boolean removeEvent(Event event) {
       int index;
       index=events.indexOf(event);
@@ -137,6 +145,17 @@ public class Group implements Serializable {
       return true;  
     }
 
+    /**
+     * Remove an event
+     * If the actual event object is unknown, search the event by location,
+     * date and type. If found, remove it.
+     * 
+     * @param location Location of the event
+     * @param date Start date of the event
+     * @param type Type of the event
+     * 
+     * @return true if found and removed, otherwise false
+     */
     public boolean removeEvent(String location, Date date, EventType type) {
       for(int i=0;i<events.size();i++) {
         if(!events.get(i).getPlace().equals(location)) continue;

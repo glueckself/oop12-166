@@ -1,7 +1,11 @@
 import java.io.Serializable;
 import java.util.Date;
 
-
+/**
+ * EventChangeValue
+ * 
+ * @author Alexander Huber
+ */
 public class EventChangeValue extends EventChange implements Serializable {
 	private static final long serialVersionUID = 1L;
 	public EventChangeValue(String place, Date date, Date duration, double value) {

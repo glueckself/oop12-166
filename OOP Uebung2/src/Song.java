@@ -72,7 +72,7 @@ public class Song implements Serializable {
     }
 
     /**
-     * Delete a song and save the date when this was done
+     * Mark a song as deleted (and when it was deleted).
      *
      */
     public void delete() {

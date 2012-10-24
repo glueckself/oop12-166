@@ -18,6 +18,8 @@ final class GroupMgmt {
      * @param endDate End of time interval
      * @param eventType Which type of events
      * @return Event[] that contains all requested events
+     * 
+     * @author Julian Großhauser
      */
     public static Event[] getEvents(Group group, Date startDate, Date endDate, EventType eventType) {
         Event[] events = group.getEvents();
@@ -75,6 +77,8 @@ final class GroupMgmt {
      * @param endDate End of time interval
      * @param eventType Which type of events
      * @return The calculated sum as a double
+     * 
+     * @author Julian Großhauser
      */
     public static BigDecimal getSum(Group group, Date startDate, Date endDate) {
 
@@ -113,6 +117,8 @@ final class GroupMgmt {
      * @param eventType Which type of events
      * @param Filter This filter will be used to filter the result.
      * @return The calculated sum as a double
+     * 
+     * @author Julian Großhauser
      */
     public static BigDecimal getSum(Group group, Date startDate, Date endDate,
 	    Filter filter) {
@@ -143,6 +149,8 @@ final class GroupMgmt {
      *
      * @param group Group to get member of
      * @return Member[] of active members
+     * 
+     * @author Srdjan Markovic
      */
     public static Member[] getMembersActive(Group group) {
         return getMembersTimestamp(group, new Date());
@@ -155,6 +163,8 @@ final class GroupMgmt {
      * @param timestamp Date object to use as reference
      *
      * @return Member[] of active members at {@see timestamp}
+     * 
+     * @author Srdjan Markovic
      */
     public static Member[] getMembersTimestamp(Group group, Date timestamp) {
         Member[] members = group.getMembers();
@@ -191,6 +201,8 @@ final class GroupMgmt {
      *
      * @param group Group to search for songs
      * @return Song[] array of currently playable songs
+     * 
+     * @author Srdjan Markovic
      */
     public static Song[] getSongsActive(Group group) {
         return getSongsTimestamp(group, new Date());
@@ -202,6 +214,8 @@ final class GroupMgmt {
      * @param group Group to search for songs
      * @param timestamp Date object of desired moment to use as reference
      * @return Song[] array of playable songs at {@see timestamp}
+     * 
+     * @author Srdjan Markovic
      */
     public static Song[] getSongsTimestamp(Group group, Date timestamp) {
         Song[] songs = group.getSongs();

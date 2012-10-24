@@ -31,7 +31,7 @@ class Membertest implements ModuleTest {
         allInstruments=new Instrument[testData.length];
         allMembers=new Member[testData.length];
         leftDates=new String[testData.length];
-        log = Test.getLogger("Membertest");
+        log = Test.getTestLogger("Membertest");
     }
 
     /**

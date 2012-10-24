@@ -1,3 +1,8 @@
+/**
+ * Eventtest
+ * 
+ * @author Alexander Huber
+ */
 public class EventTest implements ModuleTest{
 	private final String name = "Eventtest";
     private String message;

@@ -9,7 +9,7 @@ public class Test {
 
         Group group = new Group("Hansi Hinterseer","Death Metal");
         String errorMsg;
-        ModuleTest tests[] = new ModuleTest[5];
+        ModuleTest tests[] = new ModuleTest[6];
 
         /* Initialize tests here (and give them the right objects)
          * WARNING: because EventTest needs Members to add notify about added
@@ -18,7 +18,8 @@ public class Test {
         tests[1]=new Songtest(group); //song tests;
         tests[2]=new EventTest(group); //event add/remove tests
         tests[3]=new EventListTest(group); //event list tests
-	tests[4]=new FinanceTest(group); //finance tests
+        tests[4]=new FinanceTest(group); //finance tests
+        tests[5]=new EventPlanerTest(group); // Event Planer Test
 
         for(int i=0; i<tests.length; i++) {
           if(tests[i] == null) {
@@ -53,10 +54,21 @@ public class Test {
      * Factory-method for Logger objects.
      * This method is used to choose/configure logger before it's returned.
      *
-     * @param sender Name of the sender.
+     * @param sender Name of the sender
      * @return Object of type Logger
      */
     public static Logger getLogger(String sender) {
       return new ConsoleLogger(sender);
     }
+    
+    /**
+     * Factory method for Loggers used by Test objects.
+     * 
+     * @param sender Name of the sender
+     * @return Object of type Logger
+     */
+    public static Logger getTestLogger(String sender) {
+        return new ConsoleLogger(sender);
+    }
+        
 }
