@@ -10,7 +10,6 @@ public abstract class EventChange implements Serializable {
 	protected String place = null;
 	protected Date date = null;
 	protected Date duration = null;
-	protected double value = 0;
 	
 	
 	/**
@@ -21,11 +20,10 @@ public abstract class EventChange implements Serializable {
 	 * @param duration if duration has changed (null if not changed)
 	 * @param value if value has changed
 	 */
-    protected EventChange(String place, Date date, Date duration, double value) {
+    protected EventChange(String place, Date date, Date duration) {
     	this.place = place;
     	this.date = date;
     	this.duration = duration;
-    	this.value = value;
     }
     
 
@@ -54,15 +52,6 @@ public abstract class EventChange implements Serializable {
 	 */
     public Date getDuration() {
     	return this.duration;
-    }
-    
-    /**
-	 * Get method for value
-	 *
-	 * @return double change of the value
-	 */
-    public double getValue() {
-    	return this.value;
     }
     
     /**

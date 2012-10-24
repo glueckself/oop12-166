@@ -1,5 +1,3 @@
-import java.math.BigDecimal;
-
 /**
  * Tests the getEvents method of GroupMgmt.
  *

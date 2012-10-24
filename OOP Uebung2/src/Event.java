@@ -103,7 +103,7 @@ public abstract class Event implements Serializable {
      * @param String new Place for the event 
      */
     public void changePlace(String newPlace) {
-    	this.history.add(new EventChangePlace(this.place,null,null,0));
+    	this.history.add(new EventChangePlace(this.place,null,null));
     	this.place = newPlace;
     	Serializer.get().serialize();
     }
@@ -114,7 +114,7 @@ public abstract class Event implements Serializable {
      * @param Date new Date for the event 
      */
     public void changeDate(Date newDate) {
-    	this.history.add(new EventChangeDate(null,this.date,null,0));
+    	this.history.add(new EventChangeDate(null,this.date,null));
     	this.date = newDate;
     	Serializer.get().serialize();
     }
@@ -125,7 +125,7 @@ public abstract class Event implements Serializable {
      * @param Date new Duration for the event 
      */
     public void changeDuration(Date newDuration) {
-    	this.history.add(new EventChangeDuration(null,null,this.duration,0));
+    	this.history.add(new EventChangeDuration(null,null,this.duration));
     	this.duration = newDuration;
     	Serializer.get().serialize();
     }
