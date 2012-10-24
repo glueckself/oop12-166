@@ -259,6 +259,7 @@ public class Group implements Serializable {
 	}
 
 	this.finances.add(finance);
+	Serializer.get().serialize();
 	return true;
     }
 }

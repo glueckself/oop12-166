@@ -1,6 +1,5 @@
 import java.io.Serializable;
 import java.util.Date;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 /**
  * Abstract class for storing an Event
@@ -64,23 +63,25 @@ public abstract class Event implements Serializable {
      * equal.
      */
      public boolean equals(Event event) {
-	if(this.place != event.getPlace()) {
-	    return false;
-	}
+    	 if(this.place != event.getPlace()) {
+    		 return false;
+    	 }
 
-	if(this.date.compareTo(event.getDate()) != 0) {
-	    return false;
-	}
+    	 if(this.date.compareTo(event.getDate()) != 0) {
+    		 return false;
+    	 }
 
-	if(this.duration.compareTo(event.getDuration()) != 0) {
-	    return false;
-	}
+    	 if(this.duration.compareTo(event.getDuration()) != 0) {
+    		 return false;
+    	 }
 
-	return true;
+    	 return true;
      }
     
     /**
-     * Mark event as deleted
+     * Mark event as deleted 
+     * 
+     *@param boolean deleted (true -> deleted, false -> not deleted)
      */
     public void delete(boolean del) {
     	this.deleted = del;

@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -7,7 +8,8 @@ import java.math.BigDecimal;
  * @author Julian Grosshauser
  */
 
-public class Spending extends Finance {
+public class Spending extends Finance implements Serializable {
+	private static final long serialVersionUID = 1L;
     /**
      * Default constructor.
      * You have to set an identifier, a value and a date.

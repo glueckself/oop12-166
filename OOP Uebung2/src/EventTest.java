@@ -1,3 +1,8 @@
+/**
+ * Testing Events: add
+ *
+ * @author Alexander Huber
+ */
 public class EventTest implements ModuleTest{
 	private final String name = "Eventtest";
     private String message;
@@ -13,7 +18,12 @@ public class EventTest implements ModuleTest{
 
     private Event allEvents[];
 
-
+    
+    /**
+     * Constructor
+     *
+     * @param group
+     */
     public EventTest(Group group) {
         this.group=group;
 
