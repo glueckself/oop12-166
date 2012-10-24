@@ -4,7 +4,7 @@
 Zusicherungen, Analyse des eigenen Programmcodes
 
 ### Termine:
-Ausgabe: 	24.10.2012
+Ausgabe:		24.10.2012
 reguläre Abgabe: 	31.10.2012, 12:00 Uhr
 nachträgliche Abgabe: 	07.11.2012, 12:00 Uhr
 
