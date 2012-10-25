@@ -19,17 +19,4 @@ public class Performance extends Event implements Serializable {
         super(place,date,duration);
         Serializer.get().serialize();
     }
-
-    /**
-     * Change salary for the performance and save old one in history
-     *
-     * @param double new salary for the event
-     */
-    /*
-    public void changeValue(double newValue) {
-    	this.history.add(new EventChangeValue(null,null,null,this.salary));
-    	this.salary = newValue;
-    	Serializer.get().serialize();
-    }
-    */
 }

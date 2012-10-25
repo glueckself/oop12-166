@@ -66,5 +66,3 @@ public class Serializer {
         return this.group;
     }
 }
-
->>>>>>> d1093fddafb76dc2eadab2d913bd460f3f6e4e15

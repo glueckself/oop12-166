@@ -19,7 +19,6 @@ public abstract class EventChange implements Serializable {
      * @param place if place has changed (null if not changed)
      * @param date if date has changed (null if not changed)
      * @param duration if duration has changed (null if not changed)
-     * @param value if value has changed
      */
     protected EventChange(String place, Date date, Date duration) {
         this.place = place;

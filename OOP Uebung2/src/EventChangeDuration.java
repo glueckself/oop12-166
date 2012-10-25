@@ -15,7 +15,6 @@ public class EventChangeDuration extends EventChange implements Serializable {
      * @param place if place has changed (ignored)
      * @param date if date has changed (ignored)
      * @param duration if duration has changed
-     * @param value if value has changed (ignored)
      */
     public EventChangeDuration(String place, Date date, Date duration) {
         super(null, null, duration);

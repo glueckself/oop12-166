@@ -286,4 +286,3 @@ public class Group implements Serializable {
         return true;
     }
 }
->>>>>>> d1093fddafb76dc2eadab2d913bd460f3f6e4e15
