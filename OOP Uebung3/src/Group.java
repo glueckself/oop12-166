@@ -267,6 +267,7 @@ public class Group implements Serializable {
      * @return Finance[] Array containing all finances.
      */
     public Finance[] getFinances() {
+	//return finances [postcondition]
         return finances.toArray(new Finance[finances.size()]);
     }
 
@@ -277,6 +278,8 @@ public class Group implements Serializable {
      * @return boolean True on success or false on failure.
      */
     public boolean addFinance(Finance finance) {
+	//returns false is finance is null, otherwise true [postcondition]
+	//adds finance to finances, if finance is not null [postcondition]
         if(finance == null) {
             return false;
         }

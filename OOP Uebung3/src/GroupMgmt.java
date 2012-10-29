@@ -22,23 +22,22 @@ final class GroupMgmt {
      * @author Julian Grosshauser
      */
     public static Event[] getEvents(Group group, Date startDate, Date endDate, EventType eventType) {
+	//returns all events of type eventType belonging to group, between startDate and
+	//endDate [postcondditon]
+	//returns null if there are no events [postcondition]
+	//group != null [precondition]
         Event[] events = group.getEvents();
         ArrayList<Event> retEvent = new ArrayList<Event>();
         Date tmpDate;
 
-        /* error cases */
         if(events == null) return null;
 
         for(Event event : events) {
             tmpDate = event.getDate();
             if(tmpDate == null) continue;
 
-            /* if the date of event is between startDate and endDate, add it */
+            /* NOTE: if the date of event is between startDate and endDate, add it */
             if(tmpDate.after(startDate) && tmpDate.before(endDate)) {
-                /*
-                 * you can choose which type of events should be returned
-                 * to differentiate between the events, we use instanceof
-                 */
                 switch(eventType) {
                 case ALL:
                     retEvent.add(event);
@@ -81,12 +80,14 @@ final class GroupMgmt {
      * @author Julian Grosshauser
      */
     public static BigDecimal getSum(Group group, Date startDate, Date endDate) {
+	//returns the sum of all finances belonging to group, between startDate
+	//and endDate [postcondition]
+	//group != null [precondition]
 
         BigDecimal returnValue = new BigDecimal("0");
 
         Finance[] finances = group.getFinances();
 
-        /* if there are no finances, we can return 0 */
         if(finances == null) {
             return returnValue;
         }
@@ -122,13 +123,16 @@ final class GroupMgmt {
      */
     public static BigDecimal getSum(Group group, Date startDate, Date endDate,
                                     Filter filter) {
+	//returns the sum of all finances belonging to group, between startDate
+	//and endDate. finances will be filtered by filter [postcondition]
+	//group != null [precondition]
+	//filter != null [precondition]
 
         BigDecimal returnValue = new BigDecimal("0");
         ArrayList<Finance> selectedFinances = new ArrayList<Finance>();
 
         Finance[] finances = group.getFinances();
 
-        /* if there are no finances, we can return 0 */
         if(finances == null) {
             return returnValue;
         }
