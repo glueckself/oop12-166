@@ -4,10 +4,10 @@ import java.util.Date;
 
 /**
  * Represents income or spending.
- * I'm using two seperate objects for income and spending, instead of defining
- * income as a Finance object with a positive value and defining a spending as
- * a Finace object with a negative value, because that's a somewhat ugly
- * method.
+ * GOOD: I'm using two seperate objects for income and spending, instead of
+ * defining income as a Finance object with a positive value and defining a
+ * spending as a Finace object with a negative value, because that's better for
+ * reusability.
  *
  * @author Julian Grosshauser
  */
@@ -28,6 +28,7 @@ public abstract class Finance implements Serializable {
      * @param date Date of this income/spending.
      */
     public Finance(String identifier, BigDecimal value, Date date) {
+	// value > 0
         this.identifier = identifier;
         this.value = value;
         this.date = date;
@@ -45,6 +46,7 @@ public abstract class Finance implements Serializable {
     public Finance(String identifier, BigDecimal value, Date date,
                    Event event) {
 
+	// value > 0
         this.identifier = identifier;
         this.value = value;
         this.date = date;
@@ -95,6 +97,10 @@ public abstract class Finance implements Serializable {
      * equal.
      */
     public boolean equals(Finance finance) {
+	// returns true if every attribute of the finance objects are equal,
+	// otherwise false
+	// if both event attributes are null, then they are equal (this avoids
+	// NullPointerExceptions)
         if(this.identifier != finance.getIdentifier()) {
             return false;
         }
@@ -107,10 +113,6 @@ public abstract class Finance implements Serializable {
             return false;
         }
 
-        /*
-         * To avoid a NullPointerException. If both events are null, then they
-         * are equal.
-         */
         if(this.event == null && finance.getEvent() == null) {
             return true;
         }
