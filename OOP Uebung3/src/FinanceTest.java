@@ -8,6 +8,9 @@ import java.math.BigDecimal;
  */
 
 public class FinanceTest implements ModuleTest {
+    //BAD: This object tests both the finance and filter objects. It would be
+    //better to to divide these two tests into seperate objects, this would
+    //improve the class coherence.
     private final String name = "FinanceTest";
     private String message;
     private Group group;
@@ -27,6 +30,7 @@ public class FinanceTest implements ModuleTest {
     * @return Name of the test
     */
     public String getName() {
+	//returns name [postcondition]
         return this.name;
     }
 
@@ -36,6 +40,7 @@ public class FinanceTest implements ModuleTest {
     * @return Message
     */
     public String getMessage() {
+	//returns message [postcondition]
         return this.message;
     }
 
@@ -45,6 +50,10 @@ public class FinanceTest implements ModuleTest {
     * @return True if test was successful, false if test failed.
     */
     public boolean runTest() {
+	//returns true if all tests were successfull,
+	//otherwise false [postcondition]
+	//if an error occurred,
+	//message will be set according to the error [postcondition]
         Finance[] returnedFinances;
         BigDecimal returnValue;
 
@@ -68,8 +77,8 @@ public class FinanceTest implements ModuleTest {
             return false;
         }
 
-        /**
-         * First test:
+        /*
+         * NOTE: First test:
          *
          * Testing addFinance and getFinances functionality.
          */
@@ -105,8 +114,8 @@ public class FinanceTest implements ModuleTest {
             return false;
         }
 
-        /**
-         * Second test:
+        /*
+         * NOTE: Second test:
          *
          * Return the sum of all finances.
          * The returned value should be -900.
@@ -120,8 +129,8 @@ public class FinanceTest implements ModuleTest {
             return false;
         }
 
-        /**
-         * Third test:
+        /*
+         * NOTE: Third test:
          *
          * Return the IncomeFilter filtered sum.
          * The returned value should be 1100.
@@ -136,8 +145,8 @@ public class FinanceTest implements ModuleTest {
             return false;
         }
 
-        /**
-         * Forth test:
+        /*
+         * NOTE: Forth test:
          *
          * Return the SpendingFilter filtered sum.
          * The returned value should be 2000.
@@ -152,8 +161,8 @@ public class FinanceTest implements ModuleTest {
             return false;
         }
 
-        /**
-         * Fifth test:
+        /*
+         * NOTE: Fifth test:
          *
          * Return the EventFilter filtered sum.
          * The returned value should be -1400.
@@ -168,8 +177,8 @@ public class FinanceTest implements ModuleTest {
             return false;
         }
 
-        /**
-         * Fifth test:
+        /*
+         * NOTE: Fifth test:
          *
          * Return the EventFilter filtered sum.
          * Like the forth test, but the period of time is different.
@@ -185,8 +194,8 @@ public class FinanceTest implements ModuleTest {
             return false;
         }
 
-        /**
-         * Sixth test:
+        /*
+         * NOTE: Sixth test:
          *
          * Return the IncomeFilter filtered sum.
          * Like the third test, but the period of time is different.

@@ -24,6 +24,7 @@ public class EventListTest implements ModuleTest {
     * @return Name of the test
     */
     public String getName() {
+	//returns name [postcondition]
         return this.name;
     }
 
@@ -33,6 +34,7 @@ public class EventListTest implements ModuleTest {
     * @return Message
     */
     public String getMessage() {
+	//returns message [postcondition]
         return this.message;
     }
 
@@ -42,6 +44,10 @@ public class EventListTest implements ModuleTest {
     * @return True if test was successful, false if test failed.
     */
     public boolean runTest() {
+	//returns true if all tests were successfull,
+	//otherwise false [postcondition]
+	//if an error occurred,
+	//message will be set according to the error [postcondition]
         Event[] returnedEvents;
 
         if(this.group == null) {
@@ -49,7 +55,7 @@ public class EventListTest implements ModuleTest {
             return false;
         }
 
-        /* Add some events to group*/
+        /* NOTE: Add some events to group */
         Event[] events = new Event[3];
 
         events[0] = new Performance("02 Arena",
@@ -66,10 +72,10 @@ public class EventListTest implements ModuleTest {
             this.group.addEvent(event);
         }
 
-        /* Start actual tests */
+        /* NOTE: Start actual tests */
 
-        /**
-         * First test:
+        /*
+         * NOTE: First test:
          *
          * This test should return an array of length 1 containing events[0].
          */
@@ -88,8 +94,8 @@ public class EventListTest implements ModuleTest {
             return false;
         }
 
-        /**
-         * Second test:
+        /*
+         * NOTE: Second test:
          *
          * Same as first test, but it should only return Practices, so the
          * array will be empty.
@@ -104,8 +110,8 @@ public class EventListTest implements ModuleTest {
             return false;
         }
 
-        /**
-         * Third test:
+        /*
+         * NOTE: Third test:
          *
          * This test should return an array of length 2 containing events[0]
          * and events[1].
@@ -130,8 +136,8 @@ public class EventListTest implements ModuleTest {
             return false;
         }
 
-        /**
-         * Forth test:
+        /*
+         * NOTE: Forth test:
          *
          * This test should return an array of length 3 containing all events.
          */
@@ -160,8 +166,8 @@ public class EventListTest implements ModuleTest {
             return false;
         }
 
-        /**
-         * Fifth test:
+        /*
+         * NOTE: Fifth test:
          *
          * Same as forth test, but showing only Practices, so it should return
          * an array of length 1, only containing event[2].
@@ -181,8 +187,8 @@ public class EventListTest implements ModuleTest {
             return false;
         }
 
-        /**
-         * Sixth test:
+        /*
+         * NOTE: Sixth test:
          *
          * This test should return an array of length 0.
          */
