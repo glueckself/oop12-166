@@ -13,10 +13,10 @@ public class IncomeFilter implements Filter {
      * @return BigDecimal Sum.
      */
     @Override public BigDecimal filter(Finance[] finances) {
+	//returns the sum of all income object values in finances
         BigDecimal sum = new BigDecimal("0");
 
         for(Finance finance : finances) {
-            /* Incomes are Income objects */
             if(finance instanceof Income) {
                 sum = sum.add(finance.getValue());
             }
