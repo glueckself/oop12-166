@@ -16,8 +16,9 @@ public class EventFilter implements Filter {
      */
     @Override public BigDecimal filter(Finance[] finances) {
 	//returns the sum of all finance object values in finances, if their
-	//event attribute isn't null
+	//event attribute isn't null [postcondition]
 	//if it's a spending object, it's value will be subtracted from sum
+	//[postcondition]
         BigDecimal sum = new BigDecimal("0");
 
         for(Finance finance : finances) {

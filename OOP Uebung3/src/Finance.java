@@ -28,7 +28,7 @@ public abstract class Finance implements Serializable {
      * @param date Date of this income/spending.
      */
     public Finance(String identifier, BigDecimal value, Date date) {
-	// value > 0
+	// value > 0 [precondition]
         this.identifier = identifier;
         this.value = value;
         this.date = date;
@@ -46,7 +46,7 @@ public abstract class Finance implements Serializable {
     public Finance(String identifier, BigDecimal value, Date date,
                    Event event) {
 
-	// value > 0
+	// value > 0 [precondition]
         this.identifier = identifier;
         this.value = value;
         this.date = date;
@@ -68,6 +68,7 @@ public abstract class Finance implements Serializable {
      * @return BigDecimal value of this income/spending.
      */
     public BigDecimal getValue() {
+	//returns value [postcondition]
         return this.value;
     }
 
@@ -77,6 +78,7 @@ public abstract class Finance implements Serializable {
      * @return Event event to which this income/spending belongs.
      */
     public Event getEvent() {
+	//returns event [postcondition]
         return this.event;
     }
 
@@ -86,6 +88,7 @@ public abstract class Finance implements Serializable {
      * @return Date date of this income/spending.
      */
     public Date getDate() {
+	//return date [postcondition]
         return this.date;
     }
 
@@ -98,9 +101,9 @@ public abstract class Finance implements Serializable {
      */
     public boolean equals(Finance finance) {
 	// returns true if every attribute of the finance objects are equal,
-	// otherwise false
+	// otherwise false [postcondition]
 	// if both event attributes are null, then they are equal (this avoids
-	// NullPointerExceptions)
+	// NullPointerExceptions) [postcondition]
         if(this.identifier != finance.getIdentifier()) {
             return false;
         }
