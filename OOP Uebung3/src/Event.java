@@ -21,6 +21,7 @@ public abstract class Event implements Serializable {
      * @param duration Duration of the event
      */
     protected Event(String place, Date date, Date duration) {
+    	//creates a new, non-deleted, Event with an empty history [postcondition]
         this.place = place;
         this.date = date;
         this.duration = duration;
@@ -34,6 +35,7 @@ public abstract class Event implements Serializable {
      * @return String Place of the event
      */
     public String getPlace() {
+    	//returns place [postcondition]
         return this.place;
     }
 
@@ -43,6 +45,7 @@ public abstract class Event implements Serializable {
      * @return Date Date of the event
      */
     public Date getDate() {
+    	//returns a copy of the date [postcondition]
         return (Date)this.date.clone();
     }
 
@@ -52,6 +55,7 @@ public abstract class Event implements Serializable {
      * @return Date Duration of the event
      */
     public Date getDuration() {
+    	//returns a copy of the duration [postcondition]
         return (Date)this.duration.clone();
     }
 
@@ -63,6 +67,9 @@ public abstract class Event implements Serializable {
      * equal.
      */
     public boolean equals(Event event) {
+    	//event must not be null [precondition]
+    	//returns true if place, date and duration are equal, else false.
+    	//deleted flag and history are ignored [postcondition]
         if(this.place != event.getPlace()) {
             return false;
         }
@@ -84,6 +91,7 @@ public abstract class Event implements Serializable {
      *@param boolean deleted (true -> deleted, false -> not deleted)
      */
     public void delete(boolean del) {
+    	//marks this event as deleted if parameter is true, else as non-deleted [postcondition]
         this.deleted = del;
         Serializer.get().serialize();
     }
@@ -94,6 +102,7 @@ public abstract class Event implements Serializable {
      * @return boolean status of the event
      */
     public boolean isDeleted() {
+    	//returns true if this event is marked as deleted, else false [postcondition]
         return this.deleted;
     }
 
@@ -103,6 +112,8 @@ public abstract class Event implements Serializable {
      * @param String new Place for the event
      */
     public void changePlace(String newPlace) {
+    	//newPlace should not be null [precondition]
+    	//stores old place in history and changes the actual place of this event [postcondition]
         this.history.add(new EventChangePlace(this.place,null,null));
         this.place = newPlace;
         Serializer.get().serialize();
@@ -114,6 +125,8 @@ public abstract class Event implements Serializable {
      * @param Date new Date for the event
      */
     public void changeDate(Date newDate) {
+    	//newDate should not be null [precondition]
+    	//stores old date in history and changes the actual date of this event [postcondition]
         this.history.add(new EventChangeDate(null,this.date,null));
         this.date = newDate;
         Serializer.get().serialize();
@@ -125,6 +138,8 @@ public abstract class Event implements Serializable {
      * @param Date new Duration for the event
      */
     public void changeDuration(Date newDuration) {
+    	//newDuration should not be null [precondition]
+    	//stores old duration in history and changes the actual duration of this event [postcondition]
         this.history.add(new EventChangeDuration(null,null,this.duration));
         this.duration = newDuration;
         Serializer.get().serialize();
@@ -136,10 +151,13 @@ public abstract class Event implements Serializable {
      * @return ArrayList<EventChange> change history
      */
     public ArrayList<EventChange> getHistory() {
+    	//returns the history of this event [postcondition]
         return this.history;
     }
 
     public void revert(int index) {
+    	//index should be in bounds of the history size [precondition]
+    	//restores the desired entry from the history and removes it [postcondition]
         if(index >= this.history.size()) return;
         EventChange change = this.history.get(index);
         if(change.getPlace() !=  null) {

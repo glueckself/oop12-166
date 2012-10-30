@@ -21,6 +21,7 @@ public abstract class EventChange implements Serializable {
      * @param duration if duration has changed (null if not changed)
      */
     protected EventChange(String place, Date date, Date duration) {
+    	//creates a new EventChange [postcondition]
         this.place = place;
         this.date = date;
         this.duration = duration;
@@ -33,6 +34,7 @@ public abstract class EventChange implements Serializable {
      * @return String change of the place
      */
     public String getPlace() {
+    	//returns the place, will be null if this is no EventChangePlace [postcondition]
         return this.place;
     }
 
@@ -42,6 +44,7 @@ public abstract class EventChange implements Serializable {
      * @return Date change of the date
      */
     public Date getDate() {
+    	//returns the date, will be null if this is no EventChangeDate [postcondition]
         return this.date;
     }
 
@@ -51,6 +54,7 @@ public abstract class EventChange implements Serializable {
      * @return Date change of the duration
      */
     public Date getDuration() {
+    	//returns the duration, will be null if this is no EventChangeDuration [postcondition]
         return this.duration;
     }
 
@@ -59,6 +63,6 @@ public abstract class EventChange implements Serializable {
      *
      * @return String output
      */
-    public abstract String toString();
+    public abstract String toString(); //returns the EventChange as String to be shown in a history
 
 }

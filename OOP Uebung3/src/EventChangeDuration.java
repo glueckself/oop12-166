@@ -17,6 +17,8 @@ public class EventChangeDuration extends EventChange implements Serializable {
      * @param duration if duration has changed
      */
     public EventChangeDuration(String place, Date date, Date duration) {
+    	//duration should not be null, place and date are ignored [precondition]
+    	//creates a new EventChangeDuration [postcondition]
         super(null, null, duration);
     }
 
@@ -26,6 +28,7 @@ public class EventChangeDuration extends EventChange implements Serializable {
      * @return String output
      */
     public String toString() {
+    	//returns the EventChangeDuration as String to be shown in a history
         return ("Duration " + DateFormatter.toString(this.duration,DateType.Time));
     }
 }

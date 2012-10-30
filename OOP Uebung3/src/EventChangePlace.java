@@ -17,6 +17,8 @@ public class EventChangePlace extends EventChange implements Serializable {
      * @param duration if duration has changed (ignored)
      */
     public EventChangePlace(String place, Date date, Date duration) {
+    	//place should not be null, date and duration are ignored [precondition]
+    	//creates a new EventChangePlace [postcondition]
         super(place, null, null);
     }
 
@@ -26,6 +28,7 @@ public class EventChangePlace extends EventChange implements Serializable {
      * @return String output
      */
     public String toString() {
+    	//returns the EventChangePlace as String to be shown in a history
         return ("Place " + this.place);
     }
 }
