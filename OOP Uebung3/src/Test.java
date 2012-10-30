@@ -21,6 +21,7 @@ public class Test {
         tests[4]=new FinanceTest(group); //finance tests
         tests[5]=new EventPlanerTest(group); // Event Planer Test
 
+        //GOOD: Tests are processed with the same code, whatever test it is.
         for(int i=0; i<tests.length; i++) {
             if(tests[i] == null) {
                 output.addMessage("Missing test object for test #"+i+", skipping.");

@@ -7,15 +7,23 @@ class EventPlanerTest implements ModuleTest {
     private Group group;
     private Logger log;
 
+    /**
+     * creates a new EventPlanerTest with group [postcondition]
+     * expects test to return a logger-object [precondition]
+     *
+     * @param group Group object to run test on. group != null [precondition]
+     */
     public EventPlanerTest(Group group) {
+      //ERROR: does not check if group != null
         this.group=group;
+        //ERROR: does not check if log != null
         log=Test.getTestLogger("EventPlaner");
     }
 
     /**
      * Returns the name of the test (for logs/UI/...)
      *
-     * @return Name of the test
+     * @return Name of the test. name != null, name != "" [postcondition]
      */
     public String getName() {
         return "EventPlaner";
@@ -23,8 +31,9 @@ class EventPlanerTest implements ModuleTest {
 
     /**
      * Returns a info message for a failed test.
+     * NOTE: This test uses a Logger, so no message is required.
      *
-     * @return Message
+     * @return Empty message
      */
     public String getMessage() {
         return "";
@@ -35,7 +44,12 @@ class EventPlanerTest implements ModuleTest {
      * Because adding/filtering events is tested elsewhere, this test only
      * tests removing an event.
      *
-     * @return true if test was successful, false if test failed.
+     * requires a valid group object [precondition]
+     * requires a valid logger object [precondition]
+     *
+     * adds and/or removes events from group [postcondition]
+     *
+     * @return true if test was successful, false if test failed. [postcondition]
      */
     public boolean runTest() {
         boolean success=true;
@@ -68,11 +82,14 @@ class EventPlanerTest implements ModuleTest {
                                        DateFormatter.toDate("01:00",DateType.Time)));
 
 
+        //ERROR: This test tests only if the requested method returns true,
+        //not if the expected postconditions are met.
         if(!group.removeEvent(events[0])) {
             log.addMessage("Could not remove event 0");
             success=false;
         }
 
+        //ERROR: Same problem here.
         if(!group.removeEvent("Testplace 2",DateFormatter.toDate("1.2.2012",DateType.Date),EventType.PERFORMANCE)) {
             log.addMessage("Could not remove event 1");
             success=false;

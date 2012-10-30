@@ -4,6 +4,8 @@ import java.util.Date;
 /**
  * Represents a Group
  *
+ * is an empty group object [postcondition]
+ *
  * @author Alexander Huber
  * @author Srdjan Markovic
  */
@@ -18,6 +20,8 @@ public class Group implements Serializable {
 
     /**
      * Constructor
+     * creates a empty group object [postcondition]
+     * requires a name and a genre for the group [precondition]
      *
      * @param name Name of the Group
      * @param genre Genre of the Group
@@ -34,11 +38,13 @@ public class Group implements Serializable {
     }
 
     /**
-     * Set method for name
+     * Set method for name.
+     * updates name of its group object iif name != "" [postcondition]
      *
-     * @param name Name of the Group
+     * @param name Name of the group. name != null [precondition]
      */
     public void setName(String name) {
+      //ERROR: does not check if precondition is met
         if(name.equals(""))
             return;
 
@@ -47,9 +53,10 @@ public class Group implements Serializable {
     }
 
     /**
-     * Set method for genre
+     * Set method for genre.
+     * updates genre of its group object iif genre != "" [postcondition]
      *
-     * @param genre Genre of the Group
+     * @param genre Genre of the group. genre != null [precondition]
      */
     public void setGenre(String genre) {
         if(genre.equals(""))
@@ -60,16 +67,16 @@ public class Group implements Serializable {
     }
 
     /**
-     * Get method for name
+     * Get method for name.
      *
-     * @return String Name of the Group
+     * @return Name of the Group
      */
     public String getName() {
         return this.name;
     }
 
     /**
-     * Get method for name
+     * Get method for name.
      *
      * @return String Genre of the Group
      */
@@ -78,16 +85,16 @@ public class Group implements Serializable {
     }
 
     /**
-     * Get method for events
+     * Get method for events.
      *
-     * @return Event[] Array containing all Events
+     * @return Event[] Array containing all Events. 
      */
     public final Event[] getEvents() {
         return events.toArray(new Event[events.size()]);
     }
 
     /**
-     * Get method for members
+     * Get method for members.
      *
      * @return Member[] Array containing all Members
      */
@@ -96,7 +103,7 @@ public class Group implements Serializable {
     }
 
     /**
-     * Get method for songs
+     * Get method for songs.
      *
      * @return Song[] Array containing all Songs
      */
@@ -105,9 +112,11 @@ public class Group implements Serializable {
     }
 
     /**
-     * Adding an Event
+     * Adding an Event.
+     * event is added iff the group has members and all members accept this event [postcondition]
+     * client is notified about success [postcondition]
      *
-     * @param event Event to be added
+     * @param event Event to be added, event != null [precondition]
      * @return boolean true on success
      */
     public boolean addEvent(Event event) {
@@ -127,9 +136,14 @@ public class Group implements Serializable {
     }
 
     /**
-     * deleting an Event
+     * Remove an Event.
+     * event is marked as deleted from list iff its found [postcondition]
+     * client is notified about success [postcondition]
      *
-     * @param event Event to be deleted
+     * NOTE: initial idea was to remove event from the list and has been
+     * changed by Alexander to be only marked as deleted. This may have broken
+     * compatibility
+     * @param event Event to be deleted, event != null [precondition]
      * @return boolean true on success
      */
     public boolean removeEvent(Event event) {
@@ -137,14 +151,17 @@ public class Group implements Serializable {
         index=events.indexOf(event);
 
         if(index == -1) return false;
-
+        // ERROR: Not sure if indexOf uses the compare-Method to find the index or compares the reference.
+        // If the reference is compared, then the following line will work. If not, then this only marks
+        // another object with the same values as deleted, not the actual object in the list. 
         event.delete(true);
         return true;
     }
 
     /**
-     * deleting an Event
-     *
+     * Remove an Event.
+     * event is marked as deleted iff it matches the requested criteria. [postcondition]
+     * 
      * @param location location of the event
      * @param date date of the event
      * @param type type of the event
@@ -193,7 +210,7 @@ public class Group implements Serializable {
     }
 
     /**
-     * Adding a Member
+     * Adding a Member.
      *
      * @param member Member to be added
      * @return boolean true on success
@@ -219,7 +236,12 @@ public class Group implements Serializable {
     }
 
     /**
-     * Removing a Member (current Date used as time of leaving the Group)
+     * Removing a Member (current Date used as time of leaving the Group).
+     *
+     * person != null [precondition]
+     * person is member of this group [precondition]
+     *
+     * person is marked as "left" with the current timestamp as leftDate [postcondition]
      *
      * @param person Person to be removed
      * @return boolean true on success
@@ -229,7 +251,14 @@ public class Group implements Serializable {
     }
 
     /**
-     * Removing a Member (custom Date used as time of leaving the Group)
+     * Removing a Member (custom Date used as time of leaving the Group).
+     * leftDate != null [precondition]
+     * person != null [precondition]
+     * person is member of this group [precondition]
+     * 
+     * person is marked as "left" with date leftDate [postcondition]
+     *
+     * ERROR: this method can alter leftDate of a person.
      *
      * @param person Person to be removed
      * @param leftDate Custom Date for removed Member
@@ -246,13 +275,16 @@ public class Group implements Serializable {
     }
 
     /**
-     * Removing a Song
+     * Removing a Song.
+     * name must be name of a song of this group [precondition]
+     * song of a group is marked as deleted with the current timestamp [postcondition]
      *
      * @param name Name of the Song to be removed
      * @return boolean true on success
      */
     public boolean removeSong(String name) {
         for(Song song: songs) {
+          //ERROR: String comparing: equals()
             if(song.getName() != name) continue;
             song.delete();
             Serializer.get().serialize();
