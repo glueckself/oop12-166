@@ -1,6 +1,4 @@
 /**
- * Tests the getEvents method of GroupMgmt.
- *
  * @author Julian Grosshauser
  */
 
@@ -10,44 +8,33 @@ public class EventListTest implements ModuleTest {
     private Group group;
 
     /**
-     * Constructor.
-     *
-     * @param group Group to test.
+     * @return New EventListTest object [postcondition]
      */
     public EventListTest(Group group) {
         this.group = group;
     }
 
     /**
-    * Returns the name of the test (for logs/UI/...)
-    *
-    * @return Name of the test
+    * @return name [postcondition]
     */
     public String getName() {
-	//returns name [postcondition]
         return this.name;
     }
 
     /**
-    * Returns a info message for a failed test.
-    *
-    * @return Message
+    * @return message [postcondition]
     */
     public String getMessage() {
-	//returns message [postcondition]
         return this.message;
     }
 
     /**
-    * Executes the test.
-    *
-    * @return True if test was successful, false if test failed.
+     * @return true if all tests were successfull
+     * otherwise false [postcondition]
+     * If an error occurred,
+     * message will be set according to the error. [postcondition]
     */
     public boolean runTest() {
-	//returns true if all tests were successfull,
-	//otherwise false [postcondition]
-	//if an error occurred,
-	//message will be set according to the error [postcondition]
         Event[] returnedEvents;
 
         if(this.group == null) {
@@ -55,7 +42,6 @@ public class EventListTest implements ModuleTest {
             return false;
         }
 
-        /* NOTE: Add some events to group */
         Event[] events = new Event[3];
 
         events[0] = new Performance("02 Arena",
@@ -72,13 +58,6 @@ public class EventListTest implements ModuleTest {
             this.group.addEvent(event);
         }
 
-        /* NOTE: Start actual tests */
-
-        /*
-         * NOTE: First test:
-         *
-         * This test should return an array of length 1 containing events[0].
-         */
         returnedEvents = GroupMgmt.getEvents(group,
 		 DateFormatter.toDate("23.10.2012 18:00", DateType.DateTime),
 		 DateFormatter.toDate("24.10.2012 00:00", DateType.DateTime),
@@ -94,12 +73,6 @@ public class EventListTest implements ModuleTest {
             return false;
         }
 
-        /*
-         * NOTE: Second test:
-         *
-         * Same as first test, but it should only return Practices, so the
-         * array will be empty.
-         */
         returnedEvents = GroupMgmt.getEvents(group,
 		 DateFormatter.toDate("23.10.2012 18:00", DateType.DateTime),
 		 DateFormatter.toDate("24.10.2012 00:00", DateType.DateTime),
@@ -110,12 +83,6 @@ public class EventListTest implements ModuleTest {
             return false;
         }
 
-        /*
-         * NOTE: Third test:
-         *
-         * This test should return an array of length 2 containing events[0]
-         * and events[1].
-         */
         returnedEvents = GroupMgmt.getEvents(group,
 		 DateFormatter.toDate("23.10.2012 18:00", DateType.DateTime),
 		 DateFormatter.toDate("30.10.2012 23:00", DateType.DateTime),
@@ -136,11 +103,6 @@ public class EventListTest implements ModuleTest {
             return false;
         }
 
-        /*
-         * NOTE: Forth test:
-         *
-         * This test should return an array of length 3 containing all events.
-         */
         returnedEvents = GroupMgmt.getEvents(group,
 		 DateFormatter.toDate("23.10.2012 18:00", DateType.DateTime),
 		 DateFormatter.toDate("02.11.2012 23:00", DateType.DateTime),
@@ -166,12 +128,6 @@ public class EventListTest implements ModuleTest {
             return false;
         }
 
-        /*
-         * NOTE: Fifth test:
-         *
-         * Same as forth test, but showing only Practices, so it should return
-         * an array of length 1, only containing event[2].
-         */
         returnedEvents = GroupMgmt.getEvents(group,
 		 DateFormatter.toDate("23.10.2012 18:00", DateType.DateTime),
 		 DateFormatter.toDate("02.11.2012 23:00", DateType.DateTime),
@@ -187,11 +143,6 @@ public class EventListTest implements ModuleTest {
             return false;
         }
 
-        /*
-         * NOTE: Sixth test:
-         *
-         * This test should return an array of length 0.
-         */
         returnedEvents = GroupMgmt.getEvents(group,
 		 DateFormatter.toDate("23.10.2013 18:00", DateType.DateTime),
 		 DateFormatter.toDate("02.11.2013 23:00", DateType.DateTime),

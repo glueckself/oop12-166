@@ -295,24 +295,17 @@ public class Group implements Serializable {
     }
 
     /**
-     * Returns all finances.
-     *
-     * @return Finance[] Array containing all finances.
+     * @return finances [postcondition]
      */
     public Finance[] getFinances() {
-	//return finances [postcondition]
         return finances.toArray(new Finance[finances.size()]);
     }
 
     /**
-     * Add an income or spending.
-     *
-     * @param finance Income or spending to be added.
-     * @return boolean True on success or false on failure.
+     * @return false is finance is null, otherwise true [postcondition]
+     * Adds finance to finances, if finance is not null [postcondition]
      */
     public boolean addFinance(Finance finance) {
-	//returns false is finance is null, otherwise true [postcondition]
-	//adds finance to finances, if finance is not null [postcondition]
         if(finance == null) {
             return false;
         }
