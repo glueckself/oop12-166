@@ -1,21 +1,16 @@
 import java.math.BigDecimal;
 
 /**
- * This filter returns the sum of only the spendings.
- *
  * @author Julian Grosshauser
  */
 
 
 public class SpendingFilter implements Filter {
     /**
-     * Returns the sum of all spending values.
-     *
-     * @param events Contains all finances to filter.
-     * @return BigDecimal Sum.
+     * @return The sum of all spending object values in finances.
+     * [postcondition]
      */
     @Override public BigDecimal filter(Finance[] finances) {
-	//returns the sum of all spending object values in finances [postcondition]
         BigDecimal sum = new BigDecimal("0");
 
         for(Finance finance : finances) {

@@ -3,7 +3,9 @@ import java.util.ArrayList;
 import java.math.BigDecimal;
 
 /**
- * Group Managment.
+ * BAD: This class is a mix of discontiguous methods. It would be better to
+ * divide different parts of it in seperate classes, that would improve the
+ * class coherence.
  *
  * @author Julian Grosshauser
  * @author Srdjan Markovic
@@ -11,21 +13,13 @@ import java.math.BigDecimal;
 
 final class GroupMgmt {
     /**
-     * Get all events or a certain type of event of a group that happen/ed between a period of time.
-     *
-     * @param group The group that played the events
-     * @param startDate Start of time interval
-     * @param endDate End of time interval
-     * @param eventType Which type of events
-     * @return Event[] that contains all requested events
-     *
-     * @author Julian Grosshauser
+     * @param group != null [precondition]
+     * @return All events of type eventType belonging to group, between
+     * startDate and endDate, or null if there are no events [postcondditon]
+
      */
-    public static Event[] getEvents(Group group, Date startDate, Date endDate, EventType eventType) {
-	//returns all events of type eventType belonging to group, between startDate and
-	//endDate [postcondditon]
-	//returns null if there are no events [postcondition]
-	//group != null [precondition]
+    public static Event[] getEvents(Group group, Date startDate, Date endDate,
+	    EventType eventType) {
         Event[] events = group.getEvents();
         ArrayList<Event> retEvent = new ArrayList<Event>();
         Date tmpDate;
@@ -36,7 +30,6 @@ final class GroupMgmt {
             tmpDate = event.getDate();
             if(tmpDate == null) continue;
 
-            /* NOTE: if the date of event is between startDate and endDate, add it */
             if(tmpDate.after(startDate) && tmpDate.before(endDate)) {
                 switch(eventType) {
                 case ALL:
@@ -67,23 +60,12 @@ final class GroupMgmt {
     }
 
     /**
-     * Calculate sum of income/spendings that happen/ed in a period of
-     * time.
-     * If its a spending, it will be subtracted.
-     *
-     * @param group The group that played the events
-     * @param startDate Start of time interval
-     * @param endDate End of time interval
-     * @param eventType Which type of events
-     * @return The calculated sum as a double
-     *
-     * @author Julian Grosshauser
+     * @param group != null [precondition]
+     * @return The calculated sum of all finances belonging to group, between 
+     * startDate and endDate. If it's a spending, it's value will be
+     * subtracted. [postcondition]
      */
     public static BigDecimal getSum(Group group, Date startDate, Date endDate) {
-	//returns the sum of all finances belonging to group, between startDate
-	//and endDate [postcondition]
-	//group != null [precondition]
-
         BigDecimal returnValue = new BigDecimal("0");
 
         Finance[] finances = group.getFinances();
@@ -108,25 +90,14 @@ final class GroupMgmt {
     }
 
     /**
-     * Calculate sum of income/spendings that happen/ed in a period of
-     * time.
-     * You can use filters to filter the result.
-     *
-     * @param group The group that played the events
-     * @param startDate Start of time interval
-     * @param endDate End of time interval
-     * @param eventType Which type of events
-     * @param Filter This filter will be used to filter the result.
-     * @return The calculated sum as a double
-     *
-     * @author Julian Grosshauser
+     * @param group != null [precondition]
+     * @param filter != null [precondition]
+     * @return The calculated sum of all finances belonging to group, between 
+     * startDate and endDate. finances will be filtered by filter.
+     * [postcondition]
      */
     public static BigDecimal getSum(Group group, Date startDate, Date endDate,
                                     Filter filter) {
-	//returns the sum of all finances belonging to group, between startDate
-	//and endDate. finances will be filtered by filter [postcondition]
-	//group != null [precondition]
-	//filter != null [precondition]
 
         BigDecimal returnValue = new BigDecimal("0");
         ArrayList<Finance> selectedFinances = new ArrayList<Finance>();

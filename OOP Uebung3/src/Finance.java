@@ -3,7 +3,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * Represents income or spending.
  * GOOD: I'm using two seperate objects for income and spending, instead of
  * defining income as a Finance object with a positive value and defining a
  * spending as a Finace object with a negative value, because that's better for
@@ -20,33 +19,23 @@ public abstract class Finance implements Serializable {
     private Event event;
 
     /**
-     * Default constructor.
-     * You have to set an identifier, a value and a date.
-     *
-     * @param identifier Identifies this income/spending.
-     * @param value Value of this income/spending.
-     * @param date Date of this income/spending.
+     * @param value > 0 [preconditon]
+     * @return A new Finance object. [postcondition]
      */
     public Finance(String identifier, BigDecimal value, Date date) {
-	// value > 0 [precondition]
         this.identifier = identifier;
         this.value = value;
         this.date = date;
     }
 
     /**
-     * With this constructor you can specify a certain event to which this
-     * income/outcome belongs.
-     *
-     * @param identifier Identifies this income/spending.
-     * @param value Value of this income/spending.
-     * @param date Date of this income/spending.
-     * @param event Income/Spending belongs to this event.
+     * @param value > 0 [precondition]
+     * @return A new Finance object, with a event attribute != null.
+     * [postconditon]
      */
     public Finance(String identifier, BigDecimal value, Date date,
                    Event event) {
 
-	// value > 0 [precondition]
         this.identifier = identifier;
         this.value = value;
         this.date = date;
@@ -54,56 +43,40 @@ public abstract class Finance implements Serializable {
     }
 
     /**
-     * identifier getter.
-     *
-     * @return String identifier of this income/spending.
+     * @return identifier [postcondition]
      */
     public String getIdentifier() {
         return this.identifier;
     }
 
     /**
-     * value getter.
-     *
-     * @return BigDecimal value of this income/spending.
+     * @return value [postcondition]
      */
     public BigDecimal getValue() {
-	//returns value [postcondition]
         return this.value;
     }
 
     /**
-     * event getter.
-     *
-     * @return Event event to which this income/spending belongs.
+     * @return event [postcondition]
      */
     public Event getEvent() {
-	//returns event [postcondition]
         return this.event;
     }
 
     /**
-     * date getter.
-     *
-     * @return Date date of this income/spending.
+     * @return date [postcondition]
      */
     public Date getDate() {
-	//return date [postcondition]
         return this.date;
     }
 
     /**
-     * Compare to Finance objects.
-     *
-     * @param finance Finance object to compare to.
-     * @return boolean True if objects are equal, or false if objects are not
-     * equal.
+     * @return true if every attribute of the finance objects are equal,
+     * otherwise false [postcondition]
+     * If both event attributes are null, then they are equal (this avoids
+     * NullPointerExceptions) [postcondition]
      */
     public boolean equals(Finance finance) {
-	// returns true if every attribute of the finance objects are equal,
-	// otherwise false [postcondition]
-	// if both event attributes are null, then they are equal (this avoids
-	// NullPointerExceptions) [postcondition]
         if(this.identifier != finance.getIdentifier()) {
             return false;
         }

@@ -3,33 +3,23 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * Represents spending.
- *
  * @author Julian Grosshauser
  */
 
 public class Spending extends Finance implements Serializable {
     private static final long serialVersionUID = 1L;
     /**
-     * Default constructor.
-     * You have to set an identifier, a value and a date.
-     *
-     * @param identifier Identifies this income/spending.
-     * @param value Value of this income/spending.
-     * @param date Date of this income/spending.
+     * @param value > 0 [precondition]
+     * @return A new Finance object. [postconditon]
      */
     public Spending(String identifier, BigDecimal value, Date date) {
         super(identifier, value, date);
     }
 
     /**
-     * With this constructor you can specify a certain event to which this
-     * income/outcome belongs.
-     *
-     * @param identifier Identifies this income/spending.
-     * @param value Value of this income/spending.
-     * @param date Date of this income/spending.
-     * @param event Income/Spending belongs to this event.
+     * @param value > 0 [precondition]
+     * @return A new Finance object, with a defined event attribute.
+     * [postconditon]
      */
     public Spending(String identifier, BigDecimal value, Date date,
                     Event event) {

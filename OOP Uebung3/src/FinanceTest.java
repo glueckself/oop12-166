@@ -1,59 +1,46 @@
 import java.math.BigDecimal;
 
 /**
- * Tests the getFinances and addFinance methods of Group and the getSum method
- * of GroupMgmt, plus all the filters.
+ * BAD: This object tests both the finance and filter objects. It would be
+ * better to to divide these two tests into seperate objects, this would
+ * improve the class coherence.
  *
  * @author Julian Grosshauser
  */
 
 public class FinanceTest implements ModuleTest {
-    //BAD: This object tests both the finance and filter objects. It would be
-    //better to to divide these two tests into seperate objects, this would
-    //improve the class coherence.
     private final String name = "FinanceTest";
     private String message;
     private Group group;
 
     /**
-     * Constructor.
-     *
-     * @param group Group to test.
+     * @return New FinanceTest object [postcondition]
      */
     public FinanceTest(Group group) {
         this.group = group;
     }
 
     /**
-    * Returns the name of the test (for logs/UI/...)
-    *
-    * @return Name of the test
+    * @return name [postcondition]
     */
     public String getName() {
-	//returns name [postcondition]
         return this.name;
     }
 
     /**
-    * Returns a info message for a failed test.
-    *
-    * @return Message
+    * @return message [postcondition]
     */
     public String getMessage() {
-	//returns message [postcondition]
         return this.message;
     }
 
     /**
-    * Executes the test.
-    *
-    * @return True if test was successful, false if test failed.
+     * @return true if all tests were successfull,
+     * otherwise false. [postcondition]
+     * If an error occurred,
+     * message will be set according to the error. [postcondition]
     */
     public boolean runTest() {
-	//returns true if all tests were successfull,
-	//otherwise false [postcondition]
-	//if an error occurred,
-	//message will be set according to the error [postcondition]
         Finance[] returnedFinances;
         BigDecimal returnValue;
 
@@ -77,11 +64,6 @@ public class FinanceTest implements ModuleTest {
             return false;
         }
 
-        /*
-         * NOTE: First test:
-         *
-         * Testing addFinance and getFinances functionality.
-         */
         group.addFinance(income1);
         group.addFinance(income2);
         group.addFinance(spending1);
@@ -114,12 +96,6 @@ public class FinanceTest implements ModuleTest {
             return false;
         }
 
-        /*
-         * NOTE: Second test:
-         *
-         * Return the sum of all finances.
-         * The returned value should be -900.
-         */
         returnValue = GroupMgmt.getSum(group,
                                        DateFormatter.toDate("25.10.2012 10:00", DateType.DateTime),
                                        DateFormatter.toDate("12.11.2012 00:00", DateType.DateTime));
@@ -129,12 +105,6 @@ public class FinanceTest implements ModuleTest {
             return false;
         }
 
-        /*
-         * NOTE: Third test:
-         *
-         * Return the IncomeFilter filtered sum.
-         * The returned value should be 1100.
-         */
         returnValue = GroupMgmt.getSum(group,
                                        DateFormatter.toDate("25.10.2012 10:00", DateType.DateTime),
                                        DateFormatter.toDate("12.11.2012 00:00", DateType.DateTime),
@@ -145,12 +115,6 @@ public class FinanceTest implements ModuleTest {
             return false;
         }
 
-        /*
-         * NOTE: Forth test:
-         *
-         * Return the SpendingFilter filtered sum.
-         * The returned value should be 2000.
-         */
         returnValue = GroupMgmt.getSum(group,
                                        DateFormatter.toDate("25.10.2012 10:00", DateType.DateTime),
                                        DateFormatter.toDate("12.11.2012 00:00", DateType.DateTime),
@@ -161,12 +125,6 @@ public class FinanceTest implements ModuleTest {
             return false;
         }
 
-        /*
-         * NOTE: Fifth test:
-         *
-         * Return the EventFilter filtered sum.
-         * The returned value should be -1400.
-         */
         returnValue = GroupMgmt.getSum(group,
                                        DateFormatter.toDate("25.10.2012 10:00", DateType.DateTime),
                                        DateFormatter.toDate("12.11.2012 00:00", DateType.DateTime),
@@ -177,13 +135,6 @@ public class FinanceTest implements ModuleTest {
             return false;
         }
 
-        /*
-         * NOTE: Fifth test:
-         *
-         * Return the EventFilter filtered sum.
-         * Like the forth test, but the period of time is different.
-         * The returned value should be 100.
-         */
         returnValue = GroupMgmt.getSum(group,
                                        DateFormatter.toDate("10.11.2012 10:00", DateType.DateTime),
                                        DateFormatter.toDate("11.11.2012 00:00", DateType.DateTime),
@@ -194,14 +145,6 @@ public class FinanceTest implements ModuleTest {
             return false;
         }
 
-        /*
-         * NOTE: Sixth test:
-         *
-         * Return the IncomeFilter filtered sum.
-         * Like the third test, but the period of time is different.
-         * The returned value should be 0, because there are no finances in
-         * this period of time.
-         */
         returnValue = GroupMgmt.getSum(group,
                                        DateFormatter.toDate("10.11.2013 10:00", DateType.DateTime),
                                        DateFormatter.toDate("11.11.2013 00:00", DateType.DateTime),
