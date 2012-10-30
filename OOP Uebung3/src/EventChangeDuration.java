@@ -17,7 +17,7 @@ public class EventChangeDuration extends EventChange implements Serializable {
      * @param duration if duration has changed
      */
     public EventChangeDuration(String place, Date date, Date duration) {
-    	//duration should not be null, place and date are ignored [precondition]
+    	//duration != null, place and date are ignored [precondition]
     	//creates a new EventChangeDuration [postcondition]
         super(null, null, duration);
     }

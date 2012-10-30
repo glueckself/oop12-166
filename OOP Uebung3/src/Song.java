@@ -11,11 +11,10 @@ public class Song implements Serializable {
     private static final long serialVersionUID = 1L;
     private String name;
     private Date duration;
-    /* releaseDate and discardedDate are used to enable listing only songs that are
-     * "available" on a specific date
-     */
     private Date releaseDate;
     private Date discardedDate;
+    //releaseDate before discardedDate [invariant]
+    
     /**
      * Constructor
      *
@@ -25,6 +24,7 @@ public class Song implements Serializable {
      */
     public Song(String name, Date duration, Date releaseDate)
     throws IllegalArgumentException {
+    	//creates a new Song with custom releaseDate or current date if releaseDate==null [postcondition]
         if(name == null) throw new IllegalArgumentException("name is null");
         if(name.equals("")) throw new IllegalArgumentException("name is a empty string");
         this.name = name;
@@ -44,6 +44,7 @@ public class Song implements Serializable {
      * @return String Name of the song
      */
     public String getName() {
+    	//returns name [postcondition]
         return this.name;
     }
 
@@ -53,6 +54,7 @@ public class Song implements Serializable {
      * @return Date Duration of the song
      */
     public Date getDuration() {
+    	//returns copy of duration [postcondition]
         if(duration == null)
             return null;
 
@@ -65,6 +67,7 @@ public class Song implements Serializable {
      * @return Date Date of releasing the song
      */
     public Date getReleaseDate() {
+    	//returns copy of releaseDate [postcondition]
         if(releaseDate == null)
             return null;
 
@@ -76,6 +79,7 @@ public class Song implements Serializable {
      *
      */
     public void delete() {
+    	//deletes a song by setting its discardedDate to current date [postcondition]
         this.discardedDate = new Date();
     }
 
@@ -85,6 +89,7 @@ public class Song implements Serializable {
      * @return Date Date of deleting the song
      */
     public Date getDiscardedDate() {
+    	//returns copy of discardedDate [postcondition]
         if(discardedDate == null)
             return null;
 

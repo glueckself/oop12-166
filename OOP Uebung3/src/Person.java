@@ -18,6 +18,8 @@ public class Person implements Serializable {
      * @param phone Phone number of the person
      */
     public Person(String name, String phone) {
+    	//name != null, phone != null [precondition]
+    	//creates a new Person [postcondition]
         this.name = name;
         this.phone = phone;
         Serializer.get().serialize();
@@ -30,6 +32,7 @@ public class Person implements Serializable {
      * @return String Name of the person
      */
     public String getName() {
+    	//returns name [postcondition]
         return this.name;
     }
 
@@ -62,6 +65,7 @@ public class Person implements Serializable {
      * @return String Phone number of the person
      */
     public String getPhone() {
+    	//returns phone number [postcondition]
         return this.phone;
     }
 }

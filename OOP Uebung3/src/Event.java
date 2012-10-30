@@ -67,7 +67,7 @@ public abstract class Event implements Serializable {
      * equal.
      */
     public boolean equals(Event event) {
-    	//event must not be null [precondition]
+    	//event != null [precondition]
     	//returns true if place, date and duration are equal, else false.
     	//deleted flag and history are ignored [postcondition]
         if(this.place != event.getPlace()) {
@@ -112,7 +112,7 @@ public abstract class Event implements Serializable {
      * @param String new Place for the event
      */
     public void changePlace(String newPlace) {
-    	//newPlace should not be null [precondition]
+    	//newPlace != null [precondition]
     	//stores old place in history and changes the actual place of this event [postcondition]
         this.history.add(new EventChangePlace(this.place,null,null));
         this.place = newPlace;
@@ -125,7 +125,7 @@ public abstract class Event implements Serializable {
      * @param Date new Date for the event
      */
     public void changeDate(Date newDate) {
-    	//newDate should not be null [precondition]
+    	//newDate != null [precondition]
     	//stores old date in history and changes the actual date of this event [postcondition]
         this.history.add(new EventChangeDate(null,this.date,null));
         this.date = newDate;
@@ -138,7 +138,7 @@ public abstract class Event implements Serializable {
      * @param Date new Duration for the event
      */
     public void changeDuration(Date newDuration) {
-    	//newDuration should not be null [precondition]
+    	//newDuration != null [precondition]
     	//stores old duration in history and changes the actual duration of this event [postcondition]
         this.history.add(new EventChangeDuration(null,null,this.duration));
         this.duration = newDuration;
@@ -156,7 +156,7 @@ public abstract class Event implements Serializable {
     }
 
     public void revert(int index) {
-    	//index should be in bounds of the history size [precondition]
+    	//index in bounds of the history size, else no action performed [precondition]
     	//restores the desired entry from the history and removes it [postcondition]
         if(index >= this.history.size()) return;
         EventChange change = this.history.get(index);
