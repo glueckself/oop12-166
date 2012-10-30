@@ -16,6 +16,8 @@ public class Practice extends Event implements Serializable {
      * @param duration Duration of the practice
      */
     public Practice(String place, Date date, Date duration) {
+    	//place != null, date != null, duration != null [precondition]
+    	//creates an event as Practice [postcondition]
         super(place,date,duration);
         Serializer.get().serialize();
     }

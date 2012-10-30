@@ -16,6 +16,7 @@ public class Serializer {
      * Single instance get method
      */
     public static Serializer get() {
+    	//returns single instance Serializer object [postcondition]S
         if(serializer == null) {
             synchronized (Serializer.class) {
                 if (serializer == null) {
@@ -32,6 +33,9 @@ public class Serializer {
      * @param group to be serialized
      */
     public void setGroup(Group group) {
+    	//group != null [precondition]
+    	//sets the group to be serialized [postcondition]
+    	//must be called before serialize() [client-controlled history-constraint]
         this.group = group;
     }
 
@@ -39,6 +43,8 @@ public class Serializer {
      * Serialize the group to backup
      */
     public boolean serialize() {
+    	//serializes a group to a backup-file [postcondition]
+    	//setGroup(..) must be called before [client-controlled history-constraint]
         try	{
             FileOutputStream fOut = new FileOutputStream("backup");
             ObjectOutputStream oOut = new ObjectOutputStream(fOut);
@@ -54,6 +60,8 @@ public class Serializer {
      * Serialize the group from backup
      */
     public Group deSerialize() {
+    	//deserializes a group from a backup-file and returns it [postcondition]
+    	//returns null if no backup-file exists or it's broken [postcondition]
         this.group = null;
         try	{
 

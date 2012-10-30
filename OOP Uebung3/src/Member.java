@@ -11,6 +11,7 @@ public class Member implements Serializable {
     private Instrument instrument;
     private Date joinDate;
     private Date leftDate = null;
+    //joinDate before leftDate [invariant]
 
     /**
      * Constructor
@@ -20,6 +21,8 @@ public class Member implements Serializable {
      * @param joinDate Date of joining a Group
      */
     public Member(Person person, Instrument instrument, Date joinDate) {
+    	//person != null, instrument != null, joinDate != null [precondition]
+    	//creates a member [postcondition]
         stdConstructor(person,instrument,joinDate);
         Serializer.get().serialize();
     }
@@ -33,6 +36,9 @@ public class Member implements Serializable {
      * @param leftDate Date of leaving a Group
      */
     public Member(Person person, Instrument instrument, Date joinDate, Date leftDate) {
+    	//BAD: doesn't check joinDate-leftDate invariant
+    	//person != null, instrument != null, joinDate != null, leftDate != null [precondition]
+    	//creates a member that has already left the group [postcondition]
         stdConstructor(person,instrument,joinDate);
         this.leftDate = leftDate;
         Serializer.get().serialize();
@@ -69,6 +75,7 @@ public class Member implements Serializable {
      * @return Person Person that is the Member
      */
     public Person getPerson() {
+    	//returns person [postcondition]
         return this.person;
     }
 
@@ -78,6 +85,7 @@ public class Member implements Serializable {
      * @return Instrument Instrument played
      */
     public Instrument getInstrument() {
+    	//returns instrument [postcondition]
         return this.instrument;
     }
 
@@ -87,6 +95,7 @@ public class Member implements Serializable {
      * @return Date Date of joining the Group
      */
     public Date getJoinDate() {
+    	//returns a copy of joinDate [postcondition]
         if(this.joinDate == null) return null;
         return (Date)this.joinDate.clone();
     }
@@ -97,6 +106,7 @@ public class Member implements Serializable {
      * @return Date Date of leaving the Group
      */
     public Date getLeftDate() {
+    	//returns a copy of leftDate [postcondition]
         if(this.leftDate == null) return null;
 
         return (Date)this.leftDate.clone();
@@ -108,6 +118,9 @@ public class Member implements Serializable {
      * @param leftDate Date of leaving the Group
      */
     public void setLeftDate(Date leftDate) {
+    	//BAD: should return boolean
+    	//leftDate before joinDate, else no action performed [precondition]
+    	//sets leftDate of member [postcondition]
         if(leftDate == null) return;
         if(this.leftDate != null) return;
 

@@ -20,13 +20,14 @@ public class Group implements Serializable {
 
     /**
      * Constructor
-     * creates a empty group object [postcondition]
+     * creates a group object with name and genre [postcondition]
      * requires a name and a genre for the group [precondition]
      *
      * @param name Name of the Group
      * @param genre Genre of the Group
      */
     public Group(String name, String genre) {
+    	//name != null, genre != null [precondition]
         this.name = name;
         this.genre = genre;
         this.events = new ArrayList<Event>();
@@ -69,9 +70,10 @@ public class Group implements Serializable {
     /**
      * Get method for name.
      *
-     * @return Name of the Group
+     * @return String Name of the Group
      */
     public String getName() {
+    	//returns the name of the group [postcondition]
         return this.name;
     }
 
@@ -81,6 +83,7 @@ public class Group implements Serializable {
      * @return String Genre of the Group
      */
     public String getGenre() {
+    	//returns the genre of the group [postcondition]
         return this.genre;
     }
 
@@ -90,6 +93,7 @@ public class Group implements Serializable {
      * @return Event[] Array containing all Events. 
      */
     public final Event[] getEvents() {
+    	//returns the events as array of the group [postcondition]
         return events.toArray(new Event[events.size()]);
     }
 
@@ -99,6 +103,7 @@ public class Group implements Serializable {
      * @return Member[] Array containing all Members
      */
     public final Member[] getMembers() {
+    	//returns the members as array of the group [postcondition]
         return members.toArray(new Member[members.size()]);
     }
 
@@ -108,12 +113,14 @@ public class Group implements Serializable {
      * @return Song[] Array containing all Songs
      */
     public final Song[] getSongs() {
+    	//returns the songs as array of the group [postcondition]
         return songs.toArray(new Song[songs.size()]);
     }
 
     /**
      * Adding an Event.
      * event is added iff the group has members and all members accept this event [postcondition]
+     * all members are notified about the new event [postcondition]
      * client is notified about success [postcondition]
      *
      * @param event Event to be added, event != null [precondition]
@@ -154,6 +161,7 @@ public class Group implements Serializable {
         // ERROR: Not sure if indexOf uses the compare-Method to find the index or compares the reference.
         // If the reference is compared, then the following line will work. If not, then this only marks
         // another object with the same values as deleted, not the actual object in the list. 
+
         event.delete(true);
         return true;
     }
@@ -162,8 +170,8 @@ public class Group implements Serializable {
      * Remove an Event.
      * event is marked as deleted iff it matches the requested criteria. [postcondition]
      * 
-     * @param location location of the event
-     * @param date date of the event
+     * @param location location of the event, location != null [postcondition]
+     * @param date date of the event, event != null [postcondition]
      * @param type type of the event
      * @return boolean true on success
      */
@@ -205,6 +213,9 @@ public class Group implements Serializable {
      * @return boolean true on success
      */
     public boolean restoreEvent(Event event) {
+    	//BAD: does not care if the event is part of this group
+    	//event != null [precondition]
+    	//marks the event as not-deleted [postcondition]
         event.delete(false);
         return true;
     }
@@ -216,6 +227,7 @@ public class Group implements Serializable {
      * @return boolean true on success
      */
     public boolean addMember(Member member) {
+    	//adds member and returns true, or false if member is null [postcondition]
         if(member == null) return false;
         this.members.add(member);
         Serializer.get().serialize();
@@ -223,7 +235,7 @@ public class Group implements Serializable {
     }
 
     /**
-     * Adding a Song
+     * Adding a Song.
      *
      * @param song Song to be added
      * @return boolean true on success
@@ -244,7 +256,7 @@ public class Group implements Serializable {
      * person is marked as "left" with the current timestamp as leftDate [postcondition]
      *
      * @param person Person to be removed
-     * @return boolean true on success
+     * @return boolean true on success [postcondition]
      */
     public boolean removeMember(Person person) {
         return this.removeMember(person,new Date());
@@ -262,7 +274,7 @@ public class Group implements Serializable {
      *
      * @param person Person to be removed
      * @param leftDate Custom Date for removed Member
-     * @return boolean true on success
+     * @return boolean true on success [postcondition]
      */
     public boolean removeMember(Person person, Date leftDate) {
         for(Member mem: members) {
@@ -283,8 +295,8 @@ public class Group implements Serializable {
      * @return boolean true on success
      */
     public boolean removeSong(String name) {
-        for(Song song: songs) {
           //ERROR: String comparing: equals()
+        for(Song song: songs) {
             if(song.getName() != name) continue;
             song.delete();
             Serializer.get().serialize();
@@ -311,7 +323,7 @@ public class Group implements Serializable {
      */
     public boolean addFinance(Finance finance) {
 	//returns false is finance is null, otherwise true [postcondition]
-	//adds finance to finances, if finance is not null [postcondition]
+	//adds finance to finances [postcondition]
         if(finance == null) {
             return false;
         }
