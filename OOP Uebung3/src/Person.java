@@ -1,6 +1,6 @@
 import java.io.Serializable;
 /**
- * Represents a Person
+ * Represents a Person.
  *
  * @author Alexander Huber
  */
@@ -12,7 +12,7 @@ public class Person implements Serializable {
     Logger log;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param name Name of the person
      * @param phone Phone number of the person
@@ -27,7 +27,7 @@ public class Person implements Serializable {
     }
 
     /**
-     * Get method for name
+     * Get method for name.
      *
      * @return String Name of the person
      */
@@ -37,10 +37,13 @@ public class Person implements Serializable {
     }
 
     /**
-     * Notifies about new events
+     * Notifies about new events.
      *
+     * NOTE: As this is only a simple implementation of a person, there are no invariants nor preconditions.
+     * Advanced implementations could check for conflicts etc.
+     * 
      * @param event Event that the Person should attend.
-     * @return true if person can attend the event, false if not.
+     * @return true if person can attend the event, false if not. [postcondition]
      * @author Srdjan Markovic
      */
     public boolean notifyEvent(Event event) {
@@ -52,7 +55,9 @@ public class Person implements Serializable {
     /**
      * Returns a message explaining why a Person can't attend a event.
      *
-     * @return if notifyEvent was false, the messange, otherwise an empty string
+     * notifyEvent failed [precondition]
+     *
+     * @return if notifyEvent was false, the messange, otherwise an empty string [postcondition]
      * @author Srdjan Markovic
      */
     public final String getMessage() {
@@ -60,7 +65,7 @@ public class Person implements Serializable {
     }
 
     /**
-     * Get method for name
+     * Get method for name.
      *
      * @return String Phone number of the person
      */

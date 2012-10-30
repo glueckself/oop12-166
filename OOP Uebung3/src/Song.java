@@ -16,15 +16,14 @@ public class Song implements Serializable {
     //releaseDate before discardedDate [invariant]
     
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param name Name of the song
-     * @param duration Duration of the song
+     * @param name Name of the song, name != null [precondition]
+     * @param duration Duration of the song, duration != null [precondition]
      * @param releaseDate Date of releasing the song
      */
     public Song(String name, Date duration, Date releaseDate)
     throws IllegalArgumentException {
-    	//creates a new Song with custom releaseDate or current date if releaseDate==null [postcondition]
         if(name == null) throw new IllegalArgumentException("name is null");
         if(name.equals("")) throw new IllegalArgumentException("name is a empty string");
         this.name = name;
@@ -39,19 +38,19 @@ public class Song implements Serializable {
     }
 
     /**
-     * Get method for name
+     * Get method for name.
      *
-     * @return String Name of the song
+     * @return String Name of the song [postcondition]
      */
     public String getName() {
-    	//returns name [postcondition]
         return this.name;
     }
 
     /**
-     * Get method for duration
+     * Get method for duration.
+     * duration != null [invariant]
      *
-     * @return Date Duration of the song
+     * @return Date Duration of the song [postcondition]
      */
     public Date getDuration() {
     	//returns copy of duration [postcondition]
@@ -62,12 +61,13 @@ public class Song implements Serializable {
     }
 
     /**
-     * Get method for releaseDate
+     * Get method for releaseDate.
      *
-     * @return Date Date of releasing the song
+     * releaseDate != null [invariant]
+     *
+     * @return Date of releasing the song [postcondition]
      */
     public Date getReleaseDate() {
-    	//returns copy of releaseDate [postcondition]
         if(releaseDate == null)
             return null;
 
@@ -77,19 +77,20 @@ public class Song implements Serializable {
     /**
      * Mark a song as deleted (and when it was deleted).
      *
+     * sets discardedDate for a song to current timestamp [postcondition]
+     *
+     * ERROR: this should not replace a existing discardedDate
      */
     public void delete() {
-    	//deletes a song by setting its discardedDate to current date [postcondition]
         this.discardedDate = new Date();
     }
 
     /**
-     * Get method for discardedDate
+     * Get method for discardedDate.
      *
-     * @return Date Date of deleting the song
+     * @return Date of deleting the song or null if song is not deleted [postcondition]
      */
     public Date getDiscardedDate() {
-    	//returns copy of discardedDate [postcondition]
         if(discardedDate == null)
             return null;
 
