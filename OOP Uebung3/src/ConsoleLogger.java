@@ -1,7 +1,7 @@
 import java.util.Stack;
 
 /**
- * Uses System.out as destination for output.
+ * Relays output to System.out
  *
  * @author Srdjan Markovic
  */
@@ -10,17 +10,18 @@ class ConsoleLogger implements Logger {
     private Stack<String> levels;
 
     /**
-     * Constructor for ConsoleLogger.
-     * Creates an unnamed logger.
+     * creates stack [postcondition]
+     * sender has default value "" [postcondition]
      */
     public ConsoleLogger() {
         this.levels = new Stack<String>();
     }
 
     /**
-     * Proper constuctor for ConsoleLogger
+     * creates stack [postcondition]
+     * sender is saved to this.sender [postcondition]
      *
-     * @param sender name of the sender
+     * @param sender Name of the sender. sender != null [precondition]
      */
     public ConsoleLogger(String sender) {
         this();
@@ -28,28 +29,32 @@ class ConsoleLogger implements Logger {
     }
 
     /**
-     * Adds {@see name} to stack.
+     * name added to stack [postcondition]
      *
-     * @param name Name of the level.
+     * @param name Name of the level. name != null [precondition]. name != "" [precondition]
      */
     public void pushLevel(String name) {
+      // ERROR: does not check if name is valid
         levels.push(name);
     }
 
     /**
-     * Pops the last item from stack and discards it.
+     * removed last element from stack [postcondition]
+     * throws EmptyStackException if stack was empty [postcondition]
      */
     public void popLevel() {
         levels.pop();
     }
 
     /**
-     * Displays the sender's name, all items of the level stack and the message.
-     * Format: sender: Level1->Level2->...->Leveln: Message
+     * sender, levels and message (in this order) printed to System.out [postcondition]
      *
-     * @param message Message to be shown.
+     * NOTE: Format: sender: Level1->Level2->...->Leveln: Message
+     *
+     * @param message Message to be shown. message != "" [precondition]
      */
     public void addMessage(String message) {
+      //ERROR: does not check if message is valid.
         System.out.print(sender+": ");
         for(int i=0; i<levels.size(); i++) {
             System.out.print(levels.elementAt(i));

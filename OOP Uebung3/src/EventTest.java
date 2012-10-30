@@ -58,8 +58,7 @@ public class EventTest implements ModuleTest{
     public boolean runTest() {
     	//returns true if all tests were successful,
     	//otherwise false [postcondition]
-    	//if an error occurred,
-    	//message will be set according to the error [postcondition]
+    	//if an error occurred, message will be set according to the error [postcondition]
         Event[] e_result;
     	
         if(group == null) {

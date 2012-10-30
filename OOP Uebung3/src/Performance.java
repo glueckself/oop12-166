@@ -16,6 +16,8 @@ public class Performance extends Event implements Serializable {
      * @param duration Duration of the performance
      */
     public Performance(String place, Date date, Date duration) {
+    	//place != null, date != null, duration != null [precondition]
+    	//creates an event as Performance [postcondition]
         super(place,date,duration);
         Serializer.get().serialize();
     }
