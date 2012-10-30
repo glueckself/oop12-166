@@ -8,7 +8,6 @@ public class EventTest implements ModuleTest{
     private String message;
     private Group group;
 
-    //format: Place, Date, Duration, Value
     private final String testData[][] = {
         {"Keller","19.02.2013 14:00","04:30"},
         {"Dachboden","23.02.2013 15:00","04:00"},
@@ -25,6 +24,7 @@ public class EventTest implements ModuleTest{
      * @param group
      */
     public EventTest(Group group) {
+    	//creates a new EventTest object [postcondition]
         this.group=group;
 
         this.allEvents=new Event[testData.length];
@@ -36,6 +36,7 @@ public class EventTest implements ModuleTest{
      * @return Name of the test
      */
     public String getName() {
+    	//returns the name [postcondition]
         return this.name;
     }
 
@@ -45,6 +46,7 @@ public class EventTest implements ModuleTest{
      * @return Message
      */
     public String getMessage() {
+    	//returns the message [postcondition]
         return this.message;
     }
 
@@ -54,6 +56,10 @@ public class EventTest implements ModuleTest{
      * @return true if test was successful, false if test failed.
      */
     public boolean runTest() {
+    	//returns true if all tests were successful,
+    	//otherwise false [postcondition]
+    	//if an error occurred,
+    	//message will be set according to the error [postcondition]
         Event[] e_result;
     	
         if(group == null) {
