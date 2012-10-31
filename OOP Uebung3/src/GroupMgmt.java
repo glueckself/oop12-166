@@ -61,6 +61,7 @@ final class GroupMgmt {
 
     /**
      * @param group != null [precondition]
+     * ERROR: group != null isn't checked.
      * @return The calculated sum of all finances belonging to group, between 
      * startDate and endDate. If it's a spending, it's value will be
      * subtracted. [postcondition]
@@ -91,7 +92,9 @@ final class GroupMgmt {
 
     /**
      * @param group != null [precondition]
+     * ERROR: group != null isn't checked.
      * @param filter != null [precondition]
+     * ERROR: filter != null isn't checked.
      * @return The calculated sum of all finances belonging to group, between 
      * startDate and endDate. finances will be filtered by filter.
      * [postcondition]
