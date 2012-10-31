@@ -13,10 +13,9 @@ public class Serializer {
     private static volatile Serializer serializer = null;
 
     /**
-     * Single instance get method
+     * @return single instance Serializer object [postcondition]
      */
     public static Serializer get() {
-    	//returns single instance Serializer object [postcondition]S
         if(serializer == null) {
             synchronized (Serializer.class) {
                 if (serializer == null) {
@@ -28,23 +27,20 @@ public class Serializer {
     }
 
     /**
-     * Set group to be serialized
-     *
-     * @param group to be serialized
+     * sets the group to be serialized [postcondition]
+     * must be called before serialize() [client-controlled history-constraint]
+     * @param group != null [precondition]
      */
     public void setGroup(Group group) {
-    	//group != null [precondition]
-    	//sets the group to be serialized [postcondition]
-    	//must be called before serialize() [client-controlled history-constraint]
         this.group = group;
     }
 
     /**
-     * Serialize the group to backup
+     * serializes a group to a backup-file [postcondition]
+     * setGroup(..) must be called before [client-controlled history-constraint]
      */
     public boolean serialize() {
-    	//serializes a group to a backup-file [postcondition]
-    	//setGroup(..) must be called before [client-controlled history-constraint]
+    	//BAD: should check if group is still null
         try	{
             FileOutputStream fOut = new FileOutputStream("backup");
             ObjectOutputStream oOut = new ObjectOutputStream(fOut);
@@ -57,11 +53,10 @@ public class Serializer {
     }
 
     /**
-     * Serialize the group from backup
+     * deserializes a group from a backup-file and returns it [postcondition]
+     * returns null if no backup-file exists or it's broken [postcondition]
      */
     public Group deSerialize() {
-    	//deserializes a group from a backup-file and returns it [postcondition]
-    	//returns null if no backup-file exists or it's broken [postcondition]
         this.group = null;
         try	{
 

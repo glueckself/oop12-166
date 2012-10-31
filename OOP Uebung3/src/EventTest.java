@@ -19,46 +19,34 @@ public class EventTest implements ModuleTest{
 
     
     /**
-     * Constructor
-     *
-     * @param group
+     * creates a new EventTest object [postcondition]
+     * @param group != null [precondition]
      */
     public EventTest(Group group) {
-    	//creates a new EventTest object [postcondition]
         this.group=group;
 
         this.allEvents=new Event[testData.length];
     }
 
     /**
-     * Returns the name of the test (for logs/UI/...)
-     *
-     * @return Name of the test
+     * @return the name of the test (for logs/UI/...) [postcondition]
      */
     public String getName() {
-    	//returns the name [postcondition]
         return this.name;
     }
 
     /**
-     * Returns a info message for a failed test.
-     *
-     * @return Message
+     * @return a info message for a failed test [postcondition]
      */
     public String getMessage() {
-    	//returns the message [postcondition]
         return this.message;
     }
 
     /**
-     * Executes the test.
-     *
-     * @return true if test was successful, false if test failed.
+     * @return true if test was successful, false if test failed [postcondition]
+     * if an error occurred, message will be set according to the error [postcondition]
      */
     public boolean runTest() {
-    	//returns true if all tests were successful,
-    	//otherwise false [postcondition]
-    	//if an error occurred, message will be set according to the error [postcondition]
         Event[] e_result;
     	
         if(group == null) {
@@ -68,21 +56,21 @@ public class EventTest implements ModuleTest{
     	
         
         /**
-    	 * creating 2 practices
+    	 * NOTE: creating 2 practices
     	 */
         for(int i=0; i<allEvents.length-2; i++) {
             allEvents[i] = new Practice(testData[i][0],DateFormatter.toDate(testData[i][1],DateType.DateTime),DateFormatter.toDate(testData[i][2],DateType.Time));
         }
         
         /**
-    	 * creating 2 performances
+    	 * NOTE: creating 2 performances
     	 */
         for(int i=allEvents.length-2; i<allEvents.length; i++) {
             allEvents[i] = new Performance(testData[i][0],DateFormatter.toDate(testData[i][1],DateType.DateTime),DateFormatter.toDate(testData[i][2],DateType.Time));
         }
         
         /**
-    	 * adding the events
+    	 * NOTE: adding the events
     	 */
     	for(int i=0; i<allEvents.length; i++) {
     		if(!group.addEvent(allEvents[i])) {
@@ -92,7 +80,7 @@ public class EventTest implements ModuleTest{
     	}
     	
     	/**
-    	 * 1. test, check if returned events match testdata
+    	 * NOTE: 1. test, check if returned events match testdata
     	 */
     	e_result = group.getEvents();
     	for(int i=0; i<e_result.length; i++)
@@ -117,7 +105,7 @@ public class EventTest implements ModuleTest{
     	}
     	
     	/**
-    	 * 2. test, delete an event and check if it is marked deleted
+    	 * NOTE: 2. test, delete an event and check if it is marked deleted
     	 */
     	group.removeEvent(group.getEvents()[1]);
     	if(group.getEvents()[1].isDeleted() != true) {
@@ -126,7 +114,7 @@ public class EventTest implements ModuleTest{
     	}
     	
     	/**
-    	 * 3. test, change place of an event
+    	 * NOTE: 3. test, change place of an event
     	 */
     	group.getEvents()[2].changePlace("London");
     	if(group.getEvents()[2].getPlace().compareTo("London") != 0) {
@@ -143,7 +131,7 @@ public class EventTest implements ModuleTest{
     	}
     	
     	/**
-    	 * 3. test, change place of an event again and restore to 2nd item in change history,
+    	 * NOTE: 3. test, change place of an event again and restore to 2nd item in change history,
     	 * which would be "London"
     	 */
     	group.getEvents()[2].changePlace("Kabul");

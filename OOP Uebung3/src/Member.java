@@ -14,44 +14,32 @@ public class Member implements Serializable {
     //joinDate before leftDate [invariant]
 
     /**
-     * Constructor
-     *
-     * @param person Person that becomes a Member
-     * @param instrument Instrument played
-     * @param joinDate Date of joining a Group
+     * creates a member [postcondition]
+     * @param person != null [precondition]
+     * @param instrument != null [precondition]
+     * @param joinDate != null [precondition]
      */
     public Member(Person person, Instrument instrument, Date joinDate) {
-    	//person != null, instrument != null, joinDate != null [precondition]
-    	//creates a member [postcondition]
         stdConstructor(person,instrument,joinDate);
         Serializer.get().serialize();
     }
 
     /**
-     * overloaded Constructor in case you want to add previous Members
-     *
-     * @param person Person that becomes a Member
-     * @param instrument Instrument played
-     * @param joinDate Date of joining a Group
-     * @param leftDate Date of leaving a Group
+     * creates a member that has already left the group [postcondition]
+     * @param person != null [precondition]
+     * @param instrument != null [precondition]
+     * @param joinDate != null [precondition]
+     * @param leftDate != null [precondition]
      */
     public Member(Person person, Instrument instrument, Date joinDate, Date leftDate) {
     	//BAD: doesn't check joinDate-leftDate invariant
-    	//person != null, instrument != null, joinDate != null, leftDate != null [precondition]
-    	//creates a member that has already left the group [postcondition]
         stdConstructor(person,instrument,joinDate);
         this.leftDate = leftDate;
         Serializer.get().serialize();
     }
 
     /**
-     * Helper method for Constructor
-     *
-     * @param person Person that becomes a Member
-     * @param instrument Instrument played
-     * @param joinDate Date of joining a Group
-     *
-     * @throws IllegalArgumentException
+     * NOTE: Helper method for Constructor
      */
     private void stdConstructor(Person person, Instrument instrument, Date joinDate)
     throws IllegalArgumentException {
@@ -70,57 +58,43 @@ public class Member implements Serializable {
     }
 
     /**
-     * Get method for Person
-     *
-     * @return Person Person that is the Member
+     * @return person [postcondition]
      */
     public Person getPerson() {
-    	//returns person [postcondition]
         return this.person;
     }
 
     /**
-     * Get method for Instrument
-     *
-     * @return Instrument Instrument played
+     * @return instrument [postcondition]
      */
     public Instrument getInstrument() {
-    	//returns instrument [postcondition]
         return this.instrument;
     }
 
     /**
-     * Get method for joinDate
-     *
-     * @return Date Date of joining the Group
+     * @return a copy of joinDate [postcondition]
      */
     public Date getJoinDate() {
-    	//returns a copy of joinDate [postcondition]
         if(this.joinDate == null) return null;
         return (Date)this.joinDate.clone();
     }
 
     /**
-     * Get method for leftDate
-     *
-     * @return Date Date of leaving the Group
+     * @return a copy of leftDate [postcondition]
      */
     public Date getLeftDate() {
-    	//returns a copy of leftDate [postcondition]
         if(this.leftDate == null) return null;
 
         return (Date)this.leftDate.clone();
     }
 
     /**
-     * Set method for leftDate
-     *
-     * @param leftDate Date of leaving the Group
+     * sets leftDate of member [postcondition]
+     * leftDate before joinDate, else no action performed [precondition]
+     * @param leftDate != null [precondition]
      */
     public void setLeftDate(Date leftDate) {
     	//BAD: should return boolean
-    	//leftDate before joinDate, else no action performed [precondition]
-    	//sets leftDate of member [postcondition]
         if(leftDate == null) return;
         if(this.leftDate != null) return;
 

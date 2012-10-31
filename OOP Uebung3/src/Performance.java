@@ -9,15 +9,12 @@ import java.util.Date;
 public class Performance extends Event implements Serializable {
     private static final long serialVersionUID = 1L;
     /**
-     * Constructor
-     *
-     * @param place Place of the performance
-     * @param date Date of the performance
-     * @param duration Duration of the performance
+     * creates an event as Performance [postcondition]
+     * @param place != null [precondition]
+     * @param date != null [precondition]
+     * @param duration != null [precondition]
      */
     public Performance(String place, Date date, Date duration) {
-    	//place != null, date != null, duration != null [precondition]
-    	//creates an event as Performance [postcondition]
         super(place,date,duration);
         Serializer.get().serialize();
     }

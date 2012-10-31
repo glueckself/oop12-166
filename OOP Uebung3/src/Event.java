@@ -3,6 +3,7 @@ import java.util.Date;
 import java.util.ArrayList;
 /**
  * Abstract class for storing an Event
+ * GOOD: We can add new forms of events with only small effort
  *
  * @author Alexander Huber
  */
@@ -14,14 +15,12 @@ public abstract class Event implements Serializable {
     private boolean deleted;
     protected ArrayList<EventChange> history = null;
     /**
-     * Constructor
-     *
-     * @param place Place of the event
-     * @param date Date of the event
-     * @param duration Duration of the event
+     * creates a new, non-deleted, Event with an empty history [postcondition]
+     * @param place != null [precondition]
+     * @param date != null [precondition]
+     * @param duration != null [precondition]
      */
     protected Event(String place, Date date, Date duration) {
-    	//creates a new, non-deleted, Event with an empty history [postcondition]
         this.place = place;
         this.date = date;
         this.duration = duration;
@@ -30,46 +29,31 @@ public abstract class Event implements Serializable {
     }
 
     /**
-     * Get method for place
-     *
-     * @return String Place of the event
+     * @return String Place of the event [postcondition]
      */
     public String getPlace() {
-    	//returns place [postcondition]
         return this.place;
     }
 
     /**
-     * Get method for date
-     *
-     * @return Date Date of the event
+     * @return Date Date of the event [postcondition]
      */
     public Date getDate() {
-    	//returns a copy of the date [postcondition]
         return (Date)this.date.clone();
     }
 
     /**
-     * Get method for duration
-     *
-     * @return Date Duration of the event
+     * @return Date Duration of the event[postcondition]
      */
     public Date getDuration() {
-    	//returns a copy of the duration [postcondition]
         return (Date)this.duration.clone();
     }
 
     /**
-     * Compare two Event objects.
-     *
-     * @param event Event object to compare to.
-     * @return boolean True if objects are equal, or false if objects are not
-     * equal.
+     * @param event != null [precondition]
+     * @return boolean true if place, date and duration are equal, else false [postcondition]
      */
     public boolean equals(Event event) {
-    	//event != null [precondition]
-    	//returns true if place, date and duration are equal, else false.
-    	//deleted flag and history are ignored [postcondition]
         if(this.place != event.getPlace()) {
             return false;
         }
@@ -86,78 +70,63 @@ public abstract class Event implements Serializable {
     }
 
     /**
-     * Mark event as deleted
-     *
-     *@param boolean deleted (true -> deleted, false -> not deleted)
+     * marks this event as deleted if parameter is true, else as non-deleted [postcondition]
      */
     public void delete(boolean del) {
-    	//marks this event as deleted if parameter is true, else as non-deleted [postcondition]
         this.deleted = del;
         Serializer.get().serialize();
     }
 
     /**
-     * check if event is deleted
-     *
-     * @return boolean status of the event
+     * @return true if this event is marked as deleted, else false [postcondition]
      */
     public boolean isDeleted() {
-    	//returns true if this event is marked as deleted, else false [postcondition]
         return this.deleted;
     }
 
     /**
-     * Change Place for the event and save old one in history
-     *
-     * @param String new Place for the event
+     * stores old place in history and changes the actual place of this event [postcondition]
+     * @param newPlace != null [precondition]
      */
     public void changePlace(String newPlace) {
-    	//newPlace != null [precondition]
-    	//stores old place in history and changes the actual place of this event [postcondition]
         this.history.add(new EventChangePlace(this.place,null,null));
         this.place = newPlace;
         Serializer.get().serialize();
     }
 
     /**
-     * Change Date for the event and save old one in history
-     *
-     * @param Date new Date for the event
+     * stores old date in history and changes the actual date of this event [postcondition]
+     * @param newDate != null [precondition]
      */
     public void changeDate(Date newDate) {
-    	//newDate != null [precondition]
-    	//stores old date in history and changes the actual date of this event [postcondition]
         this.history.add(new EventChangeDate(null,this.date,null));
         this.date = newDate;
         Serializer.get().serialize();
     }
 
     /**
-     * Change Duration for the event and save old one in history
-     *
-     * @param Date new Duration for the event
+     * stores old duration in history and changes the actual duration of this event [postcondition]
+     * @param newDuration != null [precondition]
      */
     public void changeDuration(Date newDuration) {
-    	//newDuration != null [precondition]
-    	//stores old duration in history and changes the actual duration of this event [postcondition]
         this.history.add(new EventChangeDuration(null,null,this.duration));
         this.duration = newDuration;
         Serializer.get().serialize();
     }
 
     /**
-     * get change history
-     *
-     * @return ArrayList<EventChange> change history
+     * @return the history of this event [postcondition]
      */
     public ArrayList<EventChange> getHistory() {
-    	//returns the history of this event [postcondition]
         return this.history;
     }
 
+    /**
+     * index in bounds of the history size, else no action performed [precondition]
+     * restores the desired entry from the history and removes it [postcondition]
+     * BAD: should return boolean to indicate success or failure
+     */
     public void revert(int index) {
-    	//index in bounds of the history size, else no action performed [precondition]
-    	//restores the desired entry from the history and removes it [postcondition]
         if(index >= this.history.size()) return;
         EventChange change = this.history.get(index);
         if(change.getPlace() !=  null) {

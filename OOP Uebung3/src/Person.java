@@ -12,14 +12,11 @@ public class Person implements Serializable {
     Logger log;
 
     /**
-     * Constructor.
-     *
-     * @param name Name of the person
-     * @param phone Phone number of the person
+     * creates a new Person [postcondition]
+     * @param name != null [precondition]
+     * @param phone != null [precondition]
      */
     public Person(String name, String phone) {
-    	//name != null, phone != null [precondition]
-    	//creates a new Person [postcondition]
         this.name = name;
         this.phone = phone;
         Serializer.get().serialize();
@@ -27,22 +24,17 @@ public class Person implements Serializable {
     }
 
     /**
-     * Get method for name.
-     *
-     * @return String Name of the person
+     * @return name [postcondition]
      */
     public String getName() {
-    	//returns name [postcondition]
         return this.name;
     }
 
     /**
-     * Notifies about new events.
-     *
      * NOTE: As this is only a simple implementation of a person, there are no invariants nor preconditions.
      * Advanced implementations could check for conflicts etc.
      * 
-     * @param event Event that the Person should attend.
+     * @param event != null [precondition]
      * @return true if person can attend the event, false if not. [postcondition]
      * @author Srdjan Markovic
      */
@@ -53,8 +45,6 @@ public class Person implements Serializable {
     }
 
     /**
-     * Returns a message explaining why a Person can't attend a event.
-     *
      * notifyEvent failed [precondition]
      *
      * @return if notifyEvent was false, the messange, otherwise an empty string [postcondition]
@@ -65,12 +55,9 @@ public class Person implements Serializable {
     }
 
     /**
-     * Get method for name.
-     *
-     * @return String Phone number of the person
+     * @return phone number [postcondition]
      */
     public String getPhone() {
-    	//returns phone number [postcondition]
         return this.phone;
     }
 }

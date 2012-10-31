@@ -9,15 +9,12 @@ import java.util.Date;
 public class Practice extends Event implements Serializable {
     private static final long serialVersionUID = 1L;
     /**
-     * Constructor
-     *
-     * @param place Place of the practice
-     * @param date Date of the practice
-     * @param duration Duration of the practice
+     * creates an event as Practice [postcondition]
+     * @param place != null [precondition]
+     * @param date != null [precondition]
+     * @param duration != null [precondition]
      */
     public Practice(String place, Date date, Date duration) {
-    	//place != null, date != null, duration != null [precondition]
-    	//creates an event as Practice [postcondition]
         super(place,date,duration);
         Serializer.get().serialize();
     }

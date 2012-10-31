@@ -3,6 +3,10 @@ import java.io.Serializable;
 import java.util.Date;
 /**
  * Abstract class for the type of the Change of an Event
+ * GOOD: the string shown to the user in the history is defined by each type of
+ * EventChange itself, no need for a big if/else or switch distinction to
+ * show the history of all the different changes properly.
+ * GOOD: New types of EventChanges can be added with only small effort.
  *
  * @author Alexander Huber
  */
@@ -14,14 +18,9 @@ public abstract class EventChange implements Serializable {
 
 
     /**
-     * Constructor
-     *
-     * @param place if place has changed (null if not changed)
-     * @param date if date has changed (null if not changed)
-     * @param duration if duration has changed (null if not changed)
+     * creates a new EventChange [postcondition]
      */
     protected EventChange(String place, Date date, Date duration) {
-    	//creates a new EventChange [postcondition]
         this.place = place;
         this.date = date;
         this.duration = duration;
@@ -29,40 +28,29 @@ public abstract class EventChange implements Serializable {
 
 
     /**
-     * Get method for place
-     *
-     * @return String change of the place
+     * @return the place, will be null if this is no EventChangePlace [postcondition]
      */
     public String getPlace() {
-    	//returns the place, will be null if this is no EventChangePlace [postcondition]
         return this.place;
     }
 
     /**
-     * Get method for date
-     *
-     * @return Date change of the date
+     * @return the date, will be null if this is no EventChangeDate [postcondition]
      */
     public Date getDate() {
-    	//returns the date, will be null if this is no EventChangeDate [postcondition]
         return this.date;
     }
 
     /**
-     * Get method for duration
-     *
-     * @return Date change of the duration
+     * @return the duration, will be null if this is no EventChangeDuration [postcondition]
      */
     public Date getDuration() {
-    	//returns the duration, will be null if this is no EventChangeDuration [postcondition]
         return this.duration;
     }
 
     /**
-     * Format output for showing in change history
-     *
-     * @return String output
+     * @return the EventChange as String to be shown in a history
      */
-    public abstract String toString(); //returns the EventChange as String to be shown in a history
+    public abstract String toString();
 
 }

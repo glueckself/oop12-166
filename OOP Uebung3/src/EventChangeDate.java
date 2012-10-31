@@ -10,25 +10,17 @@ public class EventChangeDate extends EventChange implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * Constructor
-     *
-     * @param place if place has changed (ignored)
-     * @param date if date has changed
-     * @param duration if duration has changed (ignored)
+     * creates a new EventChangeDate [postcondition]
+     * @param date != null, place and duration are ignored [precondition]
      */
     public EventChangeDate(String place, Date date, Date duration) {
-    	//date != null, place and duration are ignored [precondition]
-    	//creates a new EventChangeDate [postcondition]
         super(null, date, null);
     }
 
     /**
-     * Format output for showing in change history
-     *
-     * @return String output
+     * @return the EventChangeDate as String to be shown in a history
      */
     public String toString() {
-    	//returns the EventChangeDate as String to be shown in a history
         return ("Date " + DateFormatter.toString(this.date,DateType.Date));
     }
 }

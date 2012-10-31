@@ -10,25 +10,17 @@ public class EventChangePlace extends EventChange implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * Constructor
-     *
-     * @param place if place has changed
-     * @param date if date has changed (ignored)
-     * @param duration if duration has changed (ignored)
+     * creates a new EventChangePlace [postcondition]
+     * @param place != null, date and duration are ignored [precondition]
      */
     public EventChangePlace(String place, Date date, Date duration) {
-    	//place != null, date and duration are ignored [precondition]
-    	//creates a new EventChangePlace [postcondition]
         super(place, null, null);
     }
 
     /**
-     * Format output for showing in change history
-     *
-     * @return String output
+     * @return the EventChangePlace as String to be shown in a history
      */
     public String toString() {
-    	//returns the EventChangePlace as String to be shown in a history
         return ("Place " + this.place);
     }
 }
