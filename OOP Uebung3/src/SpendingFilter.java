@@ -4,7 +4,6 @@ import java.math.BigDecimal;
  * @author Julian Grosshauser
  */
 
-
 public class SpendingFilter implements Filter {
     /**
      * @return The sum of all spending object values in finances.
