@@ -3,6 +3,7 @@ import java.util.Date;
 /**
  * Tests all song-specific functions of a group object
  *
+ *
  * @author Srdjan Markovic
  */
 class Songtest implements ModuleTest {
@@ -20,15 +21,22 @@ class Songtest implements ModuleTest {
 
     private String deletedSongs[];
 
+    /**
+     * Creates a new Songtest object.
+     * 
+     * @param group Group object to run test on, group != null [precondition]
+     */
     public Songtest(Group group) {
         _group=group;
         deletedSongs = new String[testData.length];
     }
 
     /**
-     * Returns name of this module test
+     * Returns name of this module test.
      *
-     * @return Module name
+     * moduleName != "", moduleName != null [invariant]
+     *
+     * @return Module name, getName() != null, getName() != "" [postcondition]
      */
     public String getName() {
         return moduleName;
@@ -36,9 +44,10 @@ class Songtest implements ModuleTest {
 
     /**
      * Returns a string explaining why the test failed.
-     * This string will probably sound cryptic if you don't know how this test works.
      *
-     * @return Error message
+     * Test has failed [precondition].
+     *
+     * @return Error message. [postcondition]
      */
     public String getMessage() {
         return errorMessage;
@@ -46,10 +55,15 @@ class Songtest implements ModuleTest {
 
     /**
      * Executes the test.
-     * Tests are:
+     * NOTE: Tests are:
      * * Check if all songs are registered.
-     * * Check if GroupMgmt hides removed songs
+     * * Check if GroupMgmt hides removed songs.
      * * Check if GroupMgmt hides songs not matching a timestamp.
+     *
+     * group != null [invariant]
+     * Modified group object by test process [postcondition]
+     *
+     * @return true if successful, false if not [postcondition]
      */
     public boolean runTest() {
         Song testSongs[] = new Song[testData.length];
@@ -104,14 +118,15 @@ class Songtest implements ModuleTest {
 
     /**
      * Compares two Song arrays to verify result.
+     * NOTE:
      * The arrays doesn't need to be sorted.
      * The function uses false as "successful"-value to simplify usage, e.g.
      * "if(verifyResult(...)) ..." instead of "if(!verifyResult(...)) ..."
      *
-     * @param result Returned value (e.g. from _group.*)
-     * @param expectedValue Integer array of indicies of testData/deletedSongs to compare to.
+     * @param result Returned value (e.g. from _group.*), result != null [precondition]
+     * @param expectedValue Integer array of indicies of testData/deletedSongs to compare to, expectedValue != null [precondition]
      *
-     * @return false if arrays have the same elements, true if not.
+     * @return false if arrays have the same elements, true if not. [postcondition]
      */
     private boolean verifyResult(Song[] result, int[] expectedValue) {
         boolean success;
@@ -127,12 +142,11 @@ class Songtest implements ModuleTest {
             success=false;
 
             for(int j=0; j<result.length; j++) {
-                //find song...
                 if(!result[j].getName().equals(testData[expectedValue[i]][0])) continue;
                 if(!DateFormatter.compare(result[j].getDuration(),testData[expectedValue[i]][1],DateType.Song)) continue;
                 if(!DateFormatter.compare(result[j].getReleaseDate(),testData[expectedValue[i]][2],DateType.Date)) continue;
 
-                //if we're here, we found the song we're looking for.
+                //NOTE: if we're here, we found the song we're looking for.
 
                 discardedDate = result[j].getDiscardedDate();
 

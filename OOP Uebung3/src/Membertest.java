@@ -1,7 +1,7 @@
 import java.util.Date;
 
 /**
- * ModuleTest for Members
+ * ModuleTest for Members class.
  *
  * @author Srdjan Markovic
  */
@@ -23,7 +23,15 @@ class Membertest implements ModuleTest {
     private Instrument allInstruments[];
     private Member allMembers[];
 
-
+    /**
+     * Creates a new member object.
+     *
+     * group != null [precondition]
+     * Membertest object ready for run [postcondition]
+     * Modified group object, according to tests [postcondition]
+     *
+     * @param group A object of group.
+     */
     public Membertest(Group group) {
         this.group=group;
 
@@ -35,9 +43,11 @@ class Membertest implements ModuleTest {
     }
 
     /**
-     * Returns the name of the test (for logs/UI/...)
+     * Returns the name of the test (for logs/UI/...).
      *
-     * @return Name of the test
+     * name != null, name != "" [invariant]
+     *
+     * @return Name of the test [postcondition]
      */
     public String getName() {
         return name;
@@ -46,7 +56,11 @@ class Membertest implements ModuleTest {
     /**
      * Returns a info message for a failed test.
      *
-     * @return Message
+     * A empty message (="") [invariant]
+     *
+     * NOTE: This is only kept as legacy code and is superseded by Loggers
+     *
+     * @return Message [postcondition]
      */
     public String getMessage() {
         return "";
@@ -55,7 +69,10 @@ class Membertest implements ModuleTest {
     /**
      * Executes the test.
      *
-     * @return true if test was successful, false if test failed.
+     * group != null [invariant]
+     * Modifies group object with testdata [postcondition]
+     *
+     * @return true if test was successful, false if test failed. [postcondition]
      */
     public boolean runTest() {
         Member[] m_result;
@@ -74,7 +91,7 @@ class Membertest implements ModuleTest {
             allInstruments[i] = new Instrument(testData[i][2]);
         }
 
-        //we use here "return false" because we need to be sure that Person and
+        //NOTE: we use here "return false" because we need to be sure that Person and
         //Instrument are working correctly, otherwise Member won't work anyway.
         for(int i=0; i<allMembers.length; i++) {
             if(!allPersons[i].getName().equals(testData[i][0])) {
@@ -140,6 +157,14 @@ class Membertest implements ModuleTest {
         return success;
     }
 
+    /**
+     * Compares a Member array with known entries marked by validEntries
+     *
+     * @param result Result of a group method call, result != null [precondition]
+     * @param validEntries Int-array selecting valid results from allPersons,allInstruments and testData, validEntries != null [precondition]
+     *
+     * @return true if match, false if not [postcondition]
+     */
     private boolean verifyResult(Member result[], int validEntries[]) {
         boolean successful;
         Date leftDate;
