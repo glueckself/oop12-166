@@ -3,7 +3,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * GOOD: I'm using two seperate objects for income and spending, instead of
+ * GOOD: We're using two seperate objects for income and spending, instead of
  * defining income as a Finance object with a positive value and defining a
  * spending as a Finace object with a negative value, because that's better for
  * reusability.
@@ -20,6 +20,7 @@ public abstract class Finance implements Serializable {
 
     /**
      * @param value > 0 [preconditon]
+     * ERROR: value > 0 isn't checked.
      * @return A new Finance object. [postcondition]
      */
     public Finance(String identifier, BigDecimal value, Date date) {
@@ -30,6 +31,7 @@ public abstract class Finance implements Serializable {
 
     /**
      * @param value > 0 [precondition]
+     * ERROR: value > 0 isn't checked.
      * @return A new Finance object, with a event attribute != null.
      * [postconditon]
      */

@@ -10,6 +10,7 @@ public class Income extends Finance implements Serializable {
     private static final long serialVersionUID = 1L;
     /**
      * @param value > 0 [precondition]
+     * ERROR: value > 0 isn't checked.
      * @return A new Finance object. [postconditon]
      */
     public Income(String identifier, BigDecimal value, Date date) {
@@ -18,6 +19,7 @@ public class Income extends Finance implements Serializable {
 
     /**
      * @param value > 0 [precondition]
+     * ERROR: value > 0 isn't checked.
      * @return A new Finance object, with a defined event attribute.
      */
     public Income(String identifier, BigDecimal value, Date date,
