@@ -11,8 +11,8 @@ public class Test {
         String errorMsg;
         ModuleTest tests[] = new ModuleTest[6];
 
-        /* Initialize tests here (and give them the right objects)
-         * WARNING: because EventTest needs Members to add notify about added
+        /* NOTE: Initialize tests here (and give them the right objects)
+         * BAD: because EventTest needs Members to add notify about added
          * events, Membertest must run and succed before EventTest. */
         tests[0]=new Membertest(group); //member tests;
         tests[1]=new Songtest(group); //song tests;
@@ -54,9 +54,10 @@ public class Test {
     /**
      * Factory-method for Logger objects.
      * This method is used to choose/configure logger before it's returned.
+     * GOOD: This class decides what output is used throughout the program.
      *
-     * @param sender Name of the sender
-     * @return Object of type Logger
+     * @param sender Name of the sender, sender != null [precondition]
+     * @return Initialized object of type Logger [postcondition]
      */
     public static Logger getLogger(String sender) {
         return new ConsoleLogger(sender);
@@ -65,8 +66,8 @@ public class Test {
     /**
      * Factory method for Loggers used by Test objects.
      *
-     * @param sender Name of the sender
-     * @return Object of type Logger
+     * @param sender Name of the sender, sender != null [precondition]
+     * @return Initialized object of type Logger [postcondition]
      */
     public static Logger getTestLogger(String sender) {
         return new ConsoleLogger(sender);
