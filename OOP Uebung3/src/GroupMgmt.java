@@ -122,8 +122,8 @@ final class GroupMgmt {
     /**
      * Returns all active member of a group.
      *
-     * @param group Group to get member of
-     * @return Member[] of active members
+     * @param group Group to get member of, group != null [precondition]
+     * @return Member[] of active members [postcondition]
      *
      * @author Srdjan Markovic
      */
@@ -134,10 +134,10 @@ final class GroupMgmt {
     /**
      * Returns a array of Member with the members of a group at a specific date/time
      *
-     * @param group Group to get member of
-     * @param timestamp Date object to use as reference
+     * @param group Group to get member of, group != null [precondition]
+     * @param timestamp Date object to use as reference, timestamp != null [precondition]
      *
-     * @return Member[] of active members at {@see timestamp}
+     * @return Member[] of active members at {@see timestamp} [postcondition]
      *
      * @author Srdjan Markovic
      */
@@ -174,8 +174,8 @@ final class GroupMgmt {
     /**
      * Returns all songs a group currently can play
      *
-     * @param group Group to search for songs
-     * @return Song[] array of currently playable songs
+     * @param group Group to search for songs, group != null [precondition]
+     * @return Song[] array of currently playable songs [postcondition]
      *
      * @author Srdjan Markovic
      */
@@ -186,9 +186,9 @@ final class GroupMgmt {
     /**
      * Returns all songs a group can play at a specific moment
      *
-     * @param group Group to search for songs
-     * @param timestamp Date object of desired moment to use as reference
-     * @return Song[] array of playable songs at {@see timestamp}
+     * @param group Group to search for songs, group != null [precondition]
+     * @param timestamp Date object of desired moment to use as reference, timestamp != null [precondition]
+     * @return Song[] array of playable songs at {@see timestamp} [postcondition]
      *
      * @author Srdjan Markovic
      */

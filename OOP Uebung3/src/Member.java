@@ -1,7 +1,7 @@
 import java.io.Serializable;
 import java.util.Date;
 /**
- * Represents a Member (of a Group)
+ * Represents a member (of a group)
  *
  * @author Alexander Huber
  */

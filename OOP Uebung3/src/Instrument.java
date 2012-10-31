@@ -1,7 +1,9 @@
 import java.io.Serializable;
 
 /**
- * Represents an Instrument
+ * Represents an Instrument.
+ *
+ * A object representing an instrument [postcondition]
  *
  * @author Srdjan Markovic
  */
@@ -11,7 +13,7 @@ public class Instrument implements Serializable {
     /**
      * Constructor
      *
-     * @param name Name of the Instrument
+     * @param name Name of the Instrument, name != null, name != "" [precondition]
      */
     public Instrument(String name) {
         _name=name;
@@ -21,7 +23,7 @@ public class Instrument implements Serializable {
     /**
      * Get method for name
      *
-     * @return String Name of the Instrument
+     * @return String Name of the Instrument [postcondition]
      */
     public String getName() {
         return _name;
