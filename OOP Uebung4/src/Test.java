@@ -25,4 +25,15 @@ class Test {
 
     /* DarkBox can not be child of FreeBox, because the invariants of DarkBox
      * are weaker than the invariants of FreeBox */
+
+    public static void main(String[] args) {
+	Box box = new Box(0.6, 0.6, 'x', 'o');
+	System.out.println(box.toString());
+	box.scale(2.0);
+	System.out.println("----------");
+	System.out.println(box.toString());
+	box.scale(5.0);
+	System.out.println("----------");
+	System.out.println(box.toString());
+    }
 }
