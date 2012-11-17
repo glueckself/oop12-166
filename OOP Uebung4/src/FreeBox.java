@@ -39,7 +39,7 @@ class FreeBox implements Pict {
 	    this.text.add(text.substring(j, j + firstLineBreak));
 	}
 
-	//set height, width, ..
+	//set height & width
 	this.height = this.text.size();
 	this.width = this.textWidth = firstLineBreak;
     }
