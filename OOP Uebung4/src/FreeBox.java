@@ -7,8 +7,7 @@ import java.util.ArrayList;
 class FreeBox implements Pict {
     protected double height;
     protected double width;
-    private int stringHeight;
-    private int stringWidth;
+    private int textWidth;
     private ArrayList<String> text;
 
     public FreeBox() {
@@ -39,13 +38,16 @@ class FreeBox implements Pict {
 	for(int j = 0; j < text.length(); j = j + firstLineBreak + 1) {
 	    this.text.add(text.substring(j, j + firstLineBreak));
 	}
+
+	//set height, width, ..
+	this.height = this.text.size();
+	this.width = this.textWidth = firstLineBreak;
     }
     
     /**
-     * height = height * factor and width = width * factor [postcondition]
+     * width = width * factor [postcondition]
      */
     public void scale(double factor) {
-	this.height = this.height * factor;
 	this.width = this.width * factor;
     }
 
@@ -57,10 +59,10 @@ class FreeBox implements Pict {
 	String picture = "";
 
 	//add this.text row per row to picture
-	for(int i = 0; i < text.size(); i++) {
+	for(int i = 0; i < this.height; i++) {
 	    picture += text.get(i);    
 
-	    if(i != (text.size() - 1)) {
+	    if(i != (this.height - 1)) {
 		picture += "\n";
 	    }
 	}
