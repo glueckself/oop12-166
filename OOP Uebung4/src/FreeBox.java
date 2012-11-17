@@ -20,23 +20,24 @@ class FreeBox implements Pict {
      */
     public FreeBox(String text) {
 	this.text = new ArrayList<String>();
-	int index = text.indexOf('\n');
-	int i;
+	int firstLineBreak = text.indexOf('\n');
+	int lastLineBreak;
 
 	//check if rectangular
-	for(i = 0; i < text.length(); i += index + 1) {
-	    if(text.charAt(index) != '\n') {
+	for(lastLineBreak = firstLineBreak; lastLineBreak < text.length(); lastLineBreak += firstLineBreak + 1) {
+	    if(text.charAt(lastLineBreak) != '\n') {
 		throw new IllegalArgumentException("text not rectangular");
 	    }
 	}
 
-	if(text.charAt(text.length() - 1 - index) != '\n') {
+	//check if last row of text is as long as the other rows
+	if(text.charAt(text.length() - 1 - firstLineBreak) != '\n') {
 	    throw new IllegalArgumentException("text not rectangular");
 	}
 
 	//copy row per row into this.text
-	for(int j = 0; j < text.length(); j = j + index + 1) {
-	    this.text.add(text.substring(j, j + index));
+	for(int j = 0; j < text.length(); j = j + firstLineBreak + 1) {
+	    this.text.add(text.substring(j, j + firstLineBreak));
 	}
     }
     
