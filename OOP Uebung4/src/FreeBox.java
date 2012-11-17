@@ -63,13 +63,15 @@ class FreeBox implements Pict {
 
 	//add this.text row per row to picture
 	for(int i = 0; i < this.height; i++) {
-	    //picture += text.get(i);
+	    //as long as roundedWith is greater than textWidth, add the same text row multiple times to picture
 	    for(rest = roundedWidth; rest >= this.textWidth; rest -= this.textWidth) {
 		picture += this.text.get(i);
 	    }
 
+	    //add a part of the current text row to picture. the length of the part is corresponding to rest
 	    picture += this.text.get(i).substring(0, rest);
 
+	    //don't add linebreak on last row
 	    if(i != (this.height - 1)) {
 		picture += "\n";
 	    }
