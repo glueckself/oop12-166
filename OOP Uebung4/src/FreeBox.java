@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.lang.Math;
 
 /**
  * fixed ratio [invariant]
@@ -48,7 +49,7 @@ class FreeBox implements Pict {
      * width = width * factor [postcondition]
      */
     public void scale(double factor) {
-	this.width = this.width * factor;
+	this.width *= factor;
     }
 
     /**
@@ -57,10 +58,17 @@ class FreeBox implements Pict {
      */
     public String toString() {
 	String picture = "";
+	int roundedWidth = (int)Math.ceil(this.width);
+	int rest;
 
 	//add this.text row per row to picture
 	for(int i = 0; i < this.height; i++) {
-	    picture += text.get(i);    
+	    //picture += text.get(i);
+	    for(rest = roundedWidth; rest >= this.textWidth; rest -= this.textWidth) {
+		picture += this.text.get(i);
+	    }
+
+	    picture += this.text.get(i).substring(0, rest);
 
 	    if(i != (this.height - 1)) {
 		picture += "\n";

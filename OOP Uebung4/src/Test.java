@@ -79,5 +79,19 @@ class Test {
 	System.out.println("----------");
 	FreeBox freeBox = new FreeBox("123\n123\nabc\nooo\n123");
 	System.out.println(freeBox.toString());
+	System.out.println("----------");
+	freeBox.scale(1.5);
+	System.out.println(freeBox.toString());
+	System.out.println("----------");
+	//scale back
+	freeBox.scale(0.5);
+	System.out.println(freeBox.toString());
+	System.out.println("----------");
+	freeBox.scale(0.5);
+	System.out.println(freeBox.toString());
+	System.out.println("----------");
+	//scale back
+	freeBox.scale(2.0);
+	System.out.println(freeBox.toString());
     }
 }
