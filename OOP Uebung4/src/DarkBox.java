@@ -38,6 +38,21 @@ class DarkBox implements Pict {
      * @return drawn height = ceiling height & drawn width = ceiling width [postcondition]
      */
     public String toString() {
-	return null;	
+	int heightRounded = (int)Math.ceil(this.height);
+	int widthRounded = (int)Math.ceil(this.width);
+	String picture = "";
+
+	for(int i = 0; i < heightRounded; i++) {
+	    for(int j = 0; j < widthRounded; j++) {
+		picture += this.content;
+	    }
+
+	    //don't linebreak on last row
+	    if(i != (heightRounded - 1)) {
+		picture += "\n";
+	    }
+	}
+
+	return picture;
     }
 }
