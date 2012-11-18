@@ -36,8 +36,8 @@ class FreeBox implements Pict {
 	}
 
 	//copy row per row into this.text
-	for(int j = 0; j < text.length(); j = j + firstLineBreak + 1) {
-	    this.text.add(text.substring(j, j + firstLineBreak));
+	for(int i = 0; i < text.length(); i += firstLineBreak + 1) {
+	    this.text.add(text.substring(i, i + firstLineBreak));
 	}
 
 	//set height & width
