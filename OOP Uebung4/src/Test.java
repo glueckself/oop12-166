@@ -122,5 +122,8 @@ class Test {
 	System.out.println("----------");
 	repeatedClearBox.scale(2.0);
 	System.out.println(repeatedClearBox.toString());
+	System.out.println("----------");
+	repeatedClearBox.scale(0.1);
+	System.out.println(repeatedClearBox.toString());
     }
 }
