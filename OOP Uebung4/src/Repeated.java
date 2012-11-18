@@ -14,9 +14,7 @@ class Repeated<P> implements Pict {
 
     public String toString() {
 	int height = Array.getLength(this.matrix);
-	System.out.println("height: " + height);
 	int width = Array.getLength(this.matrix[0]);
-	System.out.println("width: " + width);
 	ArrayList<ArrayList<ArrayList<String>>> text = new ArrayList<ArrayList<ArrayList<String>>>();
 	String picture = "";
 	String returnedString;
