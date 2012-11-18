@@ -66,12 +66,12 @@ class Repeated<P> implements Pict {
 	    for(int j = 0; j < maxHeight; j++) {
 		for(int k = 0; k < width; k++) {
 		    //fill with empty rows until maxHeight is reached
-		    if(text.get(i).get(k).size() < maxHeight) {
+		    if(j >= text.get(i).get(k).size() && text.get(i).get(k).size() < maxHeight) {
 			for(int l = 0; l < maxWidth; l++) {
 			    picture += " ";
 			}
 
-			break;
+			continue;
 		    }
 
 		    picture += text.get(i).get(k).get(j);
@@ -82,7 +82,10 @@ class Repeated<P> implements Pict {
 		    }
 		}
 
-		picture += "\n";
+		//don't linebreak on last row
+		if(i != (height - 1) || j != (maxHeight - 1)) {
+		    picture += "\n";
+		}
 	    }
 	}
 
