@@ -125,5 +125,18 @@ class Test {
 	System.out.println("----------");
 	repeatedClearBox.scale(0.1);
 	System.out.println(repeatedClearBox.toString());
+	System.out.println();
+	
+	//Scaled
+	System.out.println("Scaled");
+	System.out.println("----------");
+	ClearBox[][] clearBoxScale = { {clearBox}, {clearBox} };
+	Scaled<ClearBox> scaledClearBox = new Scaled<ClearBox>(clearBoxScale);
+	System.out.println(scaledClearBox.toString());
+	System.out.println("----------");
+	//clearBoxScale is filled multiple times with the same object
+	//remember that the same object is scaled multiple times
+	scaledClearBox.scale(2.0);
+	System.out.println(scaledClearBox.toString());
     }
 }
