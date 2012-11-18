@@ -1,30 +1,40 @@
 import java.util.ArrayList;
 import java.lang.reflect.Array;
+import java.lang.Math;
 
 class Repeated<P> implements Pict {
     private P[][] matrix;
+    private int matrixHeight;
+    private int matrixWidth;
+    private double height;
+    private double width;
 
     public Repeated(P[][] matrix) {
 	this.matrix = matrix;
+	this.matrixHeight = Array.getLength(this.matrix);
+	this.matrixWidth = Array.getLength(this.matrix[0]);
+	this.height = this.matrixHeight;
+	this.width = this.matrixWidth;
     }
 
     public void scale(double factor) {
-	return;
+	this.height *= factor;
+	this.width *= factor;
     }
 
     public String toString() {
-	int height = Array.getLength(this.matrix);
-	int width = Array.getLength(this.matrix[0]);
+	int roundedHeight = (int)Math.ceil(this.height);
+	int roundedWidth = (int)Math.ceil(this.width);
 	int maxHeight = 0;
 	int maxWidth = 0;
 	ArrayList<ArrayList<ArrayList<String>>> text = new ArrayList<ArrayList<ArrayList<String>>>();
 	String picture = "";
 	String returnedString;
 
-	for(int i = 0; i < height; i++) {
+	for(int i = 0; i < this.matrixHeight; i++) {
 	    text.add(new ArrayList<ArrayList<String>>());
 
-	    for(int j = 0; j < width; j++) {
+	    for(int j = 0; j < this.matrixWidth; j++) {
 		text.get(i).add(new ArrayList<String>());
 		returnedString = matrix[i][j].toString();
 
@@ -48,8 +58,8 @@ class Repeated<P> implements Pict {
 	}
 
 	//find max height and width
-	for(int i = 0; i < height; i++) {
-	    for(int j = 0; j < width; j++) {
+	for(int i = 0; i < this.matrixHeight; i++) {
+	    for(int j = 0; j < this.matrixWidth; j++) {
 		if(maxHeight < text.get(i).get(j).size()) {
 		    maxHeight = text.get(i).get(j).size();
 		}
@@ -62,9 +72,13 @@ class Repeated<P> implements Pict {
 	    }
 	}
 
-	for(int i = 0; i < height; i++) {
+	for(int i = 0, ix = 0; ix < roundedHeight; ix++) {
+	    i = ix % this.matrixHeight;
+
 	    for(int j = 0; j < maxHeight; j++) {
-		for(int k = 0; k < width; k++) {
+		for(int k = 0, kx = 0; kx < roundedWidth; kx++) {
+		    k = kx % this.matrixWidth;
+
 		    //fill with empty rows until maxHeight is reached
 		    if(j >= text.get(i).get(k).size() && text.get(i).get(k).size() < maxHeight) {
 			for(int l = 0; l < maxWidth; l++) {
@@ -83,7 +97,7 @@ class Repeated<P> implements Pict {
 		}
 
 		//don't linebreak on last row
-		if(i != (height - 1) || j != (maxHeight - 1)) {
+		if(ix != (roundedHeight - 1) || j != (maxHeight - 1)) {
 		    picture += "\n";
 		}
 	    }
