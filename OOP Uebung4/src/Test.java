@@ -102,6 +102,9 @@ class Test {
 	Repeated<String> repeatedString = new Repeated<String>(test);
 	System.out.println(repeatedString.toString());
 	System.out.println("----------");
+	repeatedString.scale(3.5);
+	System.out.println(repeatedString.toString());
+	System.out.println("----------");
 	DarkBox[][] darkBoxTest1 = { {darkBox} };
 	Repeated<DarkBox> repeatedDarkBox1 = new Repeated<DarkBox>(darkBoxTest1);
 	System.out.println(repeatedDarkBox1.toString());
@@ -115,6 +118,9 @@ class Test {
 	System.out.println("----------");
 	ClearBox[][] clearBoxTest = { {clearBox, clearBox}, {clearBox, clearBox} };
 	Repeated<ClearBox> repeatedClearBox = new Repeated<ClearBox>(clearBoxTest);
+	System.out.println(repeatedClearBox.toString());
+	System.out.println("----------");
+	repeatedClearBox.scale(2.0);
 	System.out.println(repeatedClearBox.toString());
     }
 }
