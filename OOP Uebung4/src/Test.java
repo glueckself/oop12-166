@@ -93,5 +93,25 @@ class Test {
 	//scale back
 	freeBox.scale(2.0);
 	System.out.println(freeBox.toString());
+	System.out.println();
+
+	//Repeated
+	System.out.println("Repeated");
+	System.out.println("----------");
+	String[][] test = { {"hello","test", "xyz"}, {"hello2", "test2", "..."}, {"123", "abc", "'''"} };
+	Repeated<String> repeatedString = new Repeated<String>(test);
+	System.out.println(repeatedString.toString());
+	System.out.println("----------");
+	DarkBox[][] darkBoxTest1 = { {darkBox} };
+	Repeated<DarkBox> repeatedDarkBox1 = new Repeated<DarkBox>(darkBoxTest1);
+	System.out.println(repeatedDarkBox1.toString());
+	System.out.println("----------");
+	DarkBox[][] darkBoxTest = { {darkBox, darkBox}, {darkBox, darkBox} };
+	Repeated<DarkBox> repeatedDarkBox = new Repeated<DarkBox>(darkBoxTest);
+	System.out.println(repeatedDarkBox.toString());
+	System.out.println("----------");
+	ClearBox[][] clearBoxTest = { {clearBox, clearBox}, {clearBox, clearBox} };
+	Repeated<ClearBox> repeatedClearBox = new Repeated<ClearBox>(clearBoxTest);
+	System.out.println(repeatedClearBox.toString());
     }
 }
