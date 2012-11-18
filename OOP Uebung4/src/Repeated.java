@@ -15,6 +15,8 @@ class Repeated<P> implements Pict {
     public String toString() {
 	int height = Array.getLength(this.matrix);
 	int width = Array.getLength(this.matrix[0]);
+	int maxHeight = 0;
+	int maxWidth = 0;
 	ArrayList<ArrayList<ArrayList<String>>> text = new ArrayList<ArrayList<ArrayList<String>>>();
 	String picture = "";
 	String returnedString;
@@ -45,17 +47,43 @@ class Repeated<P> implements Pict {
 	    }
 	}
 
+	//find max height and width
 	for(int i = 0; i < height; i++) {
-	    //.get(0) is just for now, finding the max height will replace it
-	    for(int j = 0; j < text.get(i).get(0).size(); j++) {
+	    for(int j = 0; j < width; j++) {
+		if(maxHeight < text.get(i).get(j).size()) {
+		    maxHeight = text.get(i).get(j).size();
+		}
+
+		for(int k = 0; k < text.get(i).get(j).size(); k++) {
+		    if(maxWidth < text.get(i).get(j).get(k).length()) {
+			maxWidth = text.get(i).get(j).get(k).length();
+		    }
+		}
+	    }
+	}
+
+	for(int i = 0; i < height; i++) {
+	    for(int j = 0; j < maxHeight; j++) {
 		for(int k = 0; k < width; k++) {
+		    //fill with empty rows until maxHeight is reached
+		    if(text.get(i).get(k).size() < maxHeight) {
+			for(int l = 0; l < maxWidth; l++) {
+			    picture += " ";
+			}
+
+			break;
+		    }
+
 		    picture += text.get(i).get(k).get(j);
+		    
+		    //fill with spaces, until maxWidth is reached
+		    for(int l = 0; l < (maxWidth - text.get(i).get(k).get(j).length()); l++) {
+			picture += " ";
+		    }
 		}
 
 		picture += "\n";
 	    }
-	    
-	    //picture += "\n";
 	}
 
 	return picture;
