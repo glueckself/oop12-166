@@ -31,8 +31,10 @@ class Repeated<P> implements Pict {
 		    text.get(i).get(j).add(returnedString);
 		} else {
 		    //copy row per row into text
+		    //find linebreaks and separate the rows
 		    for(int k = 0; k < returnedString.length(); k = returnedString.indexOf('\n', k + 1) + 1) {
 			if(returnedString.indexOf('\n', k + 1) == -1) {
+			    //last linebreak found, save the rest of the String as the last row
 			    text.get(i).get(j).add(returnedString.substring(k, returnedString.length()));
 			    break;
 			}
@@ -44,6 +46,7 @@ class Repeated<P> implements Pict {
 	}
 
 	for(int i = 0; i < height; i++) {
+	    //.get(0) is just for now, finding the max height will replace it
 	    for(int j = 0; j < text.get(i).get(0).size(); j++) {
 		for(int k = 0; k < width; k++) {
 		    picture += text.get(i).get(k).get(j);
