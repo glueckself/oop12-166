@@ -106,7 +106,10 @@ class Test {
 	Repeated<DarkBox> repeatedDarkBox1 = new Repeated<DarkBox>(darkBoxTest1);
 	System.out.println(repeatedDarkBox1.toString());
 	System.out.println("----------");
-	DarkBox[][] darkBoxTest = { {darkBox, darkBox}, {darkBox, darkBox} };
+	DarkBox darkBox1 = new DarkBox(2.0, 2.0, 'O');
+	DarkBox darkBox2 = new DarkBox(1.0, 3.0, 'X');
+	DarkBox darkBox3 = new DarkBox(3.0, 5.0, 'I');
+	DarkBox[][] darkBoxTest = { {darkBox1, darkBox2}, {darkBox2, darkBox3} };
 	Repeated<DarkBox> repeatedDarkBox = new Repeated<DarkBox>(darkBoxTest);
 	System.out.println(repeatedDarkBox.toString());
 	System.out.println("----------");
