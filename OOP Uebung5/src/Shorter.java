@@ -4,6 +4,6 @@
  * @author Julian Grosshauser
  */
 
-interface Shorter {
-   boolean shorter();
+interface Shorter<T> {
+   boolean shorter(T compareTo);
 }
