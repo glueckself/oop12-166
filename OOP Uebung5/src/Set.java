@@ -1,53 +1,76 @@
 import java.util.Iterator;
 
 /**
- * A simple set.
+ * Simple set.
  *
  * @author Julian Grosshauser
  */
-
 class Set<T> implements Iterable {
-    private List<T> list;
+    private class Node {
+	private T elem;
+	private Node next;
+	private Node prev;
 
-    /**
-     * Constructor.
-     * Create new List.
-     */
-    public Set() {
-	this.list = new List<T>();	
+	private Node(T elem) {
+	    this.elem = elem;
+	}
     }
+
+    private Node head;
+    private Node tail;
 
     /**
      * Insert element into list.
-     * Insert only if there is not already a similar element in the list.
+     * Insert only if there is not already the same element in the list.
+     * (Same element: test with == (identity check), instead of equals)
      *
      * @param elem Element to insert.
      */
     public void insert(T elem) {
-		
-    }
+	Iterator<T> iterator = this.iterator();
+
+	//check if element is already in set
+	while(iterator.hasNext()) {
+	    if(iterator.next() == elem) {
+		return;
+	    }
+	}
+
+	if(head == null) {
+	    this.tail = this.head = new Node(elem);
+	} else {
+	    tail.next = new Node(elem);
+	    tail.next.prev = tail;
+	    tail = tail.next;
+	}
+    } 
 
     /**
-     * Iterates over linked list.
+     * Iterates over set.
      */
-    private class SetIterator<E extends List<T>> implements Iterator {
-	private E currentElem;
+    private class SetIterator implements Iterator<T> {
+	//current element
+	private Node p = head;
 
-	public SetIterator() {
-	    this.currentElem = list;
-	}
-
+	/**
+	 * Check if there is a next Element.
+	 *
+	 * @return boolean True if there is a next element, false otherwise.
+	 */
 	public boolean hasNext() {
-	    if(this.currentElem.getNextElem() != null) {
-		return true;
-	    }
-
-	    return false;
+	    return p != null;
 	}
 
+	/**
+	 * Get next Element.
+	 * Sets current Element accordingly.
+	 *
+	 * @return T Next Element.
+	 */
 	public T next() {
-	    this.currentElem = this.currentElem.getNextElem();
-	    return this.currentElem;
+	    T elem = this.p.elem;
+	    this.p = this.p.next;
+	    return elem;
 	}
 
 	public void remove() {
@@ -60,7 +83,7 @@ class Set<T> implements Iterable {
      *
      * @return Iterator<T> Iterator.
      */
-    public SetIterator<List<T>> iterator() {
-	return this.new SetIterator<List<T>>();
+    public Iterator<T> iterator() {
+	return new SetIterator();
     }
 }
