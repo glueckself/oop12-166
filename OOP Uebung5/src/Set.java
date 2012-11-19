@@ -51,7 +51,7 @@ class Set<T> implements Iterable {
      */
     private class SetIterator implements Iterator<T> {
 	//current element
-	private Node p = head;
+	private Node p = Set.this.head;
 
 	/**
 	 * Check if there is a next Element.
@@ -69,13 +69,16 @@ class Set<T> implements Iterable {
 	 * @return T Next Element.
 	 */
 	public T next() {
+	    if(this.p == null) {
+		return null;
+	    }
+
 	    T elem = this.p.elem;
 	    this.p = this.p.next;
 	    return elem;
 	}
 
 	public void remove() {
-	    //this.currentElem.getNext
 	}
     }
 
