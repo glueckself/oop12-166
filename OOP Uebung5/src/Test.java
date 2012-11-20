@@ -25,7 +25,21 @@ class Test {
       }
       System.out.println(countRows);
 
+      OrderedSet<ElapsedTime> oSet2 = new OrderedSet<ElapsedTime>();
+      MeanElapsedTime mean = new MeanElapsedTime();
+      mean.insert(0.1);
+      oSet2.insert(mean);
+      Double[] data = {0.1,0.2};
+      CompositeTime comp = new CompositeTime(data);
+      oSet2.insert(comp);
 
+      Iterator<ElapsedTime> oSet2Iterator = oSet2.iterator();
+
+      while(oSet2Iterator.hasNext()) {
+	  System.out.println(oSet2Iterator.next().count());
+      }
+
+      /*
       OrderedMap<MeanElapsedTime,CompositeTime> oMap = new OrderedMap<MeanElapsedTime,CompositeTime>();
       MeanElapsedTime[] et = new MeanElapsedTime[4];
       
@@ -66,6 +80,7 @@ class Test {
           System.out.println(oMapInnerI1.next().min());
         }
       }
+      */
       
     }
 }
