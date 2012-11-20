@@ -1,9 +1,11 @@
+import java.util.Iterator;
+
 /**
  * CompositeTime
  *
  * @author Julian Grosshauser
  */
-class CompositeTime implements ElapsedTime {
+class CompositeTime implements ElapsedTime<CompositeTime> {
     private Double[] data;
 
     /**
@@ -16,7 +18,22 @@ class CompositeTime implements ElapsedTime {
     }
 
     public boolean shorter(CompositeTime compareTo) {
-	//TODO: Sama as MeanElapsedTime
+	double sum = 0;
+	double sumCompareTo = 0;
+
+	for(int i = 0; i < this.data.length; i++) {
+	    sum += this.data[i];
+	}
+
+	for(int i = 0; i < compareTo.data.length; i++) {
+	    sumCompareTo += compareTo.data[i];
+	}
+	
+	if(sum < sumCompareTo) {
+	    return true;
+	}
+
+	return false;
     }
 
     /**
@@ -25,7 +42,7 @@ class CompositeTime implements ElapsedTime {
      * @return int Length of data array
      */
     public int count() {
-	return this.data.length();
+	return this.data.length;
     }
 
     /**
@@ -36,7 +53,7 @@ class CompositeTime implements ElapsedTime {
     public double min() {
 	double min = 0;
 
-	for(int i = 0; i < this.data.length(); i++) {
+	for(int i = 0; i < this.data.length; i++) {
 	    if(this.data[i] < min) {
 		min = this.data[i];
 	    }
