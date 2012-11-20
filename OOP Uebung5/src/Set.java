@@ -29,8 +29,6 @@ class Set<T> implements Iterable {
     public void insert(T elem) {
 	Iterator<T> iterator = this.iterator();
 
-	//TODO: implement identity check correctly
-	//check if element is already in set
 	while(iterator.hasNext()) {
 	    if(iterator.next() == elem) {
 		return;
