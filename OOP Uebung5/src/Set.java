@@ -6,14 +6,14 @@ import java.util.Iterator;
  * @author Julian Grosshauser
  */
 class Set<T> implements Iterable {
-    private class Node {
-	private T elem;
-	private Node next;
-	private Node prev;
-
-	private Node(T elem) {
-	    this.elem = elem;
-	}
+    protected class Node {
+		protected T elem;
+		protected Node next;
+		protected Node prev;
+	
+		protected Node(T elem) {
+		    this.elem = elem;
+		}
     }
 
     private Node head;
@@ -47,7 +47,7 @@ class Set<T> implements Iterable {
     /**
      * Iterates over set.
      */
-    private class SetIterator implements Iterator<T> {
+    protected class SetIterator implements Iterator<T> {
 	//current element
 	private Node p = Set.this.head;
 
