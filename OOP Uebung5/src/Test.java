@@ -24,5 +24,28 @@ class Test {
 	while(iterator.hasNext()) {
 	    System.out.println(iterator.next());
 	}
+	
+	OrderedSet<Description> oSet1 = new OrderedSet<Description>();
+    Description[] desc= {new Description("5blablablablabla"),
+    				new Description("4blablablablabla"),
+    				new Description("2blabla"),
+    				new Description("6blablablablablabla"),
+    				new Description("5blablablablabla")};
+    
+    for(Description i : desc) {
+    	oSet1.insert(i);
+    }
+    int countRows = 0;
+    Iterator<Description> oSet1Iterator = oSet1.iterator();
+    while(oSet1Iterator.hasNext()) {
+	    System.out.println(iterator.next()); //nicht für test notwendig
+	    countRows++;
+	}
+    System.out.println(countRows);
+    
+    
+    
+    
+    
     }
 }

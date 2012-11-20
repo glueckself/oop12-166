@@ -16,8 +16,8 @@ class Set<T> implements Iterable {
 		}
     }
 
-    private Node head;
-    private Node tail;
+    protected Node head;
+    protected Node tail;
 
     /**
      * Insert element into list.
