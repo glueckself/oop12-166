@@ -3,6 +3,7 @@
  *
  * @author Julian Grosshauser
  */
-interface ElapsedTime<T> extends Shorter<T> {
+interface ElapsedTime extends Shorter<ElapsedTime> {
     int count();    
+    double shorterValue();
 }
