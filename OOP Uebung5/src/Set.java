@@ -79,7 +79,30 @@ class Set<T> implements Iterable {
 	}
 
 	public void remove() {
-	    //TODO: implement remove
+        Node elem;
+        if(this.p == null) {
+          return;
+        }
+
+        if(this.p.prev == null) {
+          //remove first element
+          Set.this.head=this.p.next;
+          if(Set.this.head != null) {
+            Set.this.head.prev = null;
+          }
+          this.p = Set.this.head;
+        } else {
+          //remove element somewhere in the list
+          elem = this.p.prev;
+          elem.next = this.p.next;
+          if(elem.next != null) {
+            this.p.next.prev=elem;
+          } else {
+            Set.this.tail = elem;
+          }
+
+          this.p=elem.next;
+        }
 	}
     }
 
