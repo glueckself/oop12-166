@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.lang.reflect.Array;
 import java.lang.Math;
 
 class Repeated<P> implements Pict {
@@ -11,8 +10,8 @@ class Repeated<P> implements Pict {
 
     public Repeated(P[][] matrix) {
 	this.matrix = matrix;
-	this.matrixHeight = Array.getLength(this.matrix);
-	this.matrixWidth = Array.getLength(this.matrix[0]);
+	this.matrixHeight = this.matrix.length;
+	this.matrixWidth = this.matrix[0].length;
 	this.height = this.matrixHeight;
 	this.width = this.matrixWidth;
     }
