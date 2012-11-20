@@ -31,7 +31,7 @@ class OrderedMap <T extends Shorter<T>, E>
 
             if(this.p == null) return;
 
-            InnerSet<E>.Node newNode = new InnerSet<E>.Node(elem);
+            InnerSet<E>.Node newNode = new Node(elem);
 
             if(this.p.prev == null) {
               newNode.next = InnerSet.this.head;
