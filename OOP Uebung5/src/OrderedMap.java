@@ -1,15 +1,18 @@
 import java.util.Iterator;
 
-class OrderedMap<T extends Shorter<T>,E>
+class OrderedMap <T extends Shorter<T>, E>
     extends OrderedSet<T>
-    implements Iterable{
+    implements Iterable {
+
+    protected MapNode head;
+    protected MapNode tail;
 
     private class MapNode extends Node {
-      private Set<E> myelem;
+      private Set<E> innerSet;
 
       private MapNode(T elem) {
         super(elem);
-        this.myelem = new Set<E>();
+        this.innerSet = new InnerSet<E>();
       }
     }
 
@@ -17,34 +20,45 @@ class OrderedMap<T extends Shorter<T>,E>
         return new MapIterator();
     }
 
-    private class MapIterator extends SetIterator {
-        public void add(E elem) {
-          if(this.p == null) return;
+    private class InnerSet<B> extends Set<B> {
 
-          Node newNode = new Node(elem);
+      public Iterator<B> iterator() {
+        return new InnerSetIterator();
+      }
 
-          if(this.p.prev == null) {
-            newNode.next = Set.this.head;
-            Set.this.head = newNode;
-            newNode.next.prev=newNode;
-          } else if (this.p.next == null) {
-            newNode.prev = Set.this.tail;
-            newNode.prev.next=newNode;
-            Set.this.tail = newNode;
-          } else {
-            newNode.next=this.p.next;
-            this.p.next.prev=newNode;
-            this.p.next=newNode;
-            newNode.prev=this.p;
-            this.p=newNode;
+      private class InnerSetIterator extends SetIterator {
+          public void add(E elem) {
+
+            if(this.p == null) return;
+
+            Node newNode = new Node<E>(elem);
+
+            if(this.p.prev == null) {
+              newNode.next = InnerSet.this.head;
+              InnerSet.this.head = newNode;
+              newNode.next.prev=newNode;
+            } else if (this.p.next == null) {
+              newNode.prev = InnerSet.this.tail;
+              newNode.prev.next=newNode;
+              InnerSet.this.tail = newNode;
+            } else {
+              newNode.next=this.p.next;
+              this.p.next.prev=newNode;
+              this.p.next=newNode;
+              newNode.prev=this.p;
+              this.p=newNode;
+            }
           }
+      }
 
-        }
-
-        public Iterator<E> iterator() {
-          return new SetIterator();
-        }
     }
 
 
+    private class MapIterator extends SetIterator {
+        protected MapNode p = OrderedMap.this.head;
+
+        public Iterator<E> iterator() {
+          return p.innerSet.iterator();
+        }
+    }
 }
