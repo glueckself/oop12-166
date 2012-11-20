@@ -26,8 +26,6 @@ class OrderedSet<T extends Shorter<T>> extends Set<T> implements Iterable {
 		    this.tail = this.head = new Node(elem);
 		} else {
 
-				}
-			}
 		}
 
 	}
