@@ -26,7 +26,6 @@ class OrderedSet<T extends Shorter<T>> extends Set<T> implements Iterable {
 		current = current.next;
 		
 
-=======
 		//reached end of list
 		if(current == null) {
 		    break;
