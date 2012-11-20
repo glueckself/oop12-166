@@ -49,7 +49,7 @@ class Set<T> implements Iterable {
      */
     protected class SetIterator implements Iterator<T> {
 	//current element
-	private Node p = Set.this.head;
+	protected Node p = Set.this.head;
 
 	/**
 	 * Check if there is a next Element.
