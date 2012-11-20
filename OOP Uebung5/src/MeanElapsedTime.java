@@ -5,7 +5,7 @@ import java.util.Iterator;
  *
  * @author Julian Grosshauser
  */
-class MeanElapsedTime implements ElapsedTime {
+class MeanElapsedTime implements ElapsedTime<MeanElapsedTime> {
     private Set<Double> data;
 
     /**
@@ -15,8 +15,38 @@ class MeanElapsedTime implements ElapsedTime {
 	this.data = new Set<Double>();
     }
 
+    /**
+     * Compare average of data set to average of data set of compareTo
+     *
+     * @param compareTo Contains data set to compare to.
+     * @return boolean True if average of this object is shorter than the
+     * average of compareTo. Otherwise false.
+     */
     public boolean shorter(MeanElapsedTime compareTo) {
-	//TODO: can't access data in compareTo directly => ?
+	double content = 0;
+	double average, averageCompareTo;
+	Iterator<Double> iterator = this.data.iterator();
+
+	while(iterator.hasNext()) {
+	    content += iterator.next();
+	}
+
+	average = content / this.count();
+
+	content = 0;
+	iterator = compareTo.data.iterator();
+
+	while(iterator.hasNext()) {
+	    content += iterator.next();
+	}
+	
+	averageCompareTo = content / compareTo.count();
+
+	if(average < averageCompareTo) {
+	    return true;
+	}
+
+	return false;
     }
 
     /**
