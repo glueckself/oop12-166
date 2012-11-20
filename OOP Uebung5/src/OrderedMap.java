@@ -8,7 +8,7 @@ class OrderedMap <T extends Shorter<T>, E>
     protected MapNode tail;
 
     private class MapNode extends Node {
-      private Set<E> innerSet;
+      private InnerSet<E> innerSet;
 
       private MapNode(T elem) {
         super(elem);
@@ -20,9 +20,9 @@ class OrderedMap <T extends Shorter<T>, E>
         return new MapIterator();
     }
 
-    private class InnerSet<B> extends Set<B> {
+    private class InnerSet<E> extends Set<E> {
 
-      public Iterator<B> iterator() {
+      public Iterator<E> iterator() {
         return new InnerSetIterator();
       }
 
@@ -31,7 +31,7 @@ class OrderedMap <T extends Shorter<T>, E>
 
             if(this.p == null) return;
 
-            Node newNode = new Node<E>(elem);
+            InnerSet<E>.Node newNode = new InnerSet<E>.Node(elem);
 
             if(this.p.prev == null) {
               newNode.next = InnerSet.this.head;
