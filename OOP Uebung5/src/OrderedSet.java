@@ -1,6 +1,6 @@
 import java.util.Iterator;
 
-class OrderedSet<T extends Shorter<? super T>> extends Set<T> implements Iterable {
+class OrderedSet<T extends Shorter<? super T>> extends Set<T> implements Iterable<T> {
     /**
      * Sorted insert element into list.
      * Insert only if there is not already the same element in the list.

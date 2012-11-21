@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.lang.reflect.Array;
 import java.lang.Math;
 
 class Scaled<P extends Pict> implements Pict {
@@ -9,8 +8,8 @@ class Scaled<P extends Pict> implements Pict {
 
     public Scaled(P[][] matrix) {
 	this.matrix = matrix;
-	this.height = Array.getLength(this.matrix);
-	this.width = Array.getLength(this.matrix[0]);
+	this.height = this.matrix.length;
+	this.width = this.matrix[0].length;
     }
 
     public void scale(double factor) {
