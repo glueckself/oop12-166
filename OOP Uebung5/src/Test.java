@@ -69,7 +69,7 @@ class Test {
 	  System.out.println(oSet2Iterator.next().count());
       }
 
-      /*
+      
       OrderedMap<MeanElapsedTime,CompositeTime> oMap = new OrderedMap<MeanElapsedTime,CompositeTime>();
       MeanElapsedTime[] et = new MeanElapsedTime[4];
       
@@ -97,11 +97,11 @@ class Test {
       while(oMapI1.hasNext()) {
         InnerIterator<CompositeTime> oMapInnerI1 = oMapI1.iterator();
         for(int j=10; j>5;j--) {
-          Double data[] = new Double[3];
+          Double dataOD[] = new Double[3];
           for(int k=1; k<4;k++) {
             data[k-1] = new Double(k*j);
           }
-          oMapInnerI1.add(new CompositeTime(data));
+          oMapInnerI1.add(new CompositeTime(dataOD));
         }
 
       }
@@ -116,7 +116,7 @@ class Test {
           System.out.println(oMapInnerI1.next().min());
         }
       }
-      */
+      
       
     }
 }
