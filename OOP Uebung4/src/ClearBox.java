@@ -1,7 +1,8 @@
 /**
  * fixed ratio [invariant]
- * border and content can not be changed [invariant]
+ * once set, drawing values (border,content) can't be changed [invariant]
  * '*' used as border, and ' ' used as content [invariant]
+ * border and content are therefore different characters [invariant]
  */
 class ClearBox extends Box implements Pict {
     /**
@@ -20,11 +21,9 @@ class ClearBox extends Box implements Pict {
     }
 
     /**
-     * if height or width <= 2.0 the returned box is consists only of border [postcondition]
-     * picture uses only characters provided in constructor [postcondition]
-     * border of picture is drawn with this.border and content with this.border [postcondition]
-     * border and content have to use different characters [postcondition]
-     * @return drawn height = ceiling height & drawn width = ceiling width [postcondition]
+     * if height or width <= 2.0 the returned box consists only of border [postcondition]
+     * border of picture is drawn with this.border and content with this.content [postcondition]
+     * drawn height = rounded height & drawn width = rounded width [postcondition]
      */
     public String toString() {
 	return super.toString();

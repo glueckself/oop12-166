@@ -1,6 +1,8 @@
 import java.util.ArrayList;
-import java.lang.Math;
-
+/**
+ * fixed ratio [invariant]
+ * once set, drawing values (array) can't be changed [invariant]
+ */
 class Scaled<P extends Pict> implements Pict {
     private P[][] matrix;
     private int height;
@@ -11,7 +13,10 @@ class Scaled<P extends Pict> implements Pict {
 	this.height = this.matrix.length;
 	this.width = this.matrix[0].length;
     }
-
+    
+    /**
+     * scales every element of the array [postcondition] 
+     */
     public void scale(double factor) {
 	for(int i = 0; i < this.height; i++) {
 	    for(int j = 0; j < this.width; j++) {
@@ -19,7 +24,10 @@ class Scaled<P extends Pict> implements Pict {
 	    }
 	}
     }
-
+    
+    /**
+     * drawn height = rounded height & drawn width = rounded width [postcondition]
+     */
     public String toString() {
 	int maxHeight = 0;
 	int maxWidth = 0;

@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 import java.lang.Math;
 
-class Repeated<P> implements Pict {
+/**
+ * fixed ratio [invariant]
+ * once set, drawing values (array) can't be changed [invariant]
+ */
+class Repeated<P> extends FreeBox implements Pict {
     private P[][] matrix;
     private int matrixHeight;
     private int matrixWidth;
@@ -15,12 +19,18 @@ class Repeated<P> implements Pict {
 	this.height = this.matrixHeight;
 	this.width = this.matrixWidth;
     }
-
+    
+    /**
+     * height = height * factor and width = width * factor [postcondition]
+     */
     public void scale(double factor) {
 	this.height *= factor;
 	this.width *= factor;
     }
-
+    
+    /**
+     * drawn height = rounded height & drawn width = rounded width [postcondition]
+     */
     public String toString() {
 	int roundedHeight = (int)Math.ceil(this.height);
 	int roundedWidth = (int)Math.ceil(this.width);

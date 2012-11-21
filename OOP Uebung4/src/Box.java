@@ -2,7 +2,8 @@ import java.lang.Math;
 
 /**
  * fixed ratio [invariant]
- * border and content can not be changed [invariant]
+ * once set, drawing values (border,content) can't be changed [invariant]
+ * border and content can be different characters [invariant]
  */
 class Box extends FreeBox implements Pict {
     private char border;
@@ -29,11 +30,9 @@ class Box extends FreeBox implements Pict {
     }
 
     /**
-     * if height or width <= 2.0 the returned box is consists only of border [postcondition]
-     * picture uses only characters provided in constructor [postcondition]
-     * border of picture is drawn with this.border and content with this.border [postcondition]
-     * border and content can use different characters [postcondition]
-     * @return drawn height = ceiling height & drawn width = ceiling width [postcondition]
+     * if height or width <= 2.0 the returned box consists only of border [postcondition]
+     * border of picture is drawn with this.border and content with this.content [postcondition]
+     * drawn height = rounded height & drawn width = rounded width [postcondition]
      */
     public String toString() {
 	int heightRounded = (int)Math.ceil(this.height);

@@ -3,7 +3,7 @@ import java.lang.Math;
 
 /**
  * fixed ratio [invariant]
- * text can not be changed [invariant]
+ * once set, drawing values (text) can't be changed [invariant]
  */
 class FreeBox implements Pict {
     protected double height;
@@ -53,8 +53,7 @@ class FreeBox implements Pict {
     }
 
     /**
-     * picture uses only characters provided in constructor [postcondition]
-     * @return drawn height = ceiling height & drawn width = ceiling width [postcondition]
+     * drawn height = rounded height & drawn width = rounded width [postcondition]
      */
     public String toString() {
 	String picture = "";

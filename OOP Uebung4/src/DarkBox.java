@@ -1,10 +1,11 @@
 /**
  * fixed ratio [invariant]
+ * border and content are the same characters [invariant]
  */
 class DarkBox implements Pict {
     private double height;
     private double width;
-    private char content;
+    private char border;
 
     /**
      * @param height > 0 [precondition]
@@ -14,15 +15,15 @@ class DarkBox implements Pict {
     public DarkBox(double height, double width, char content) {
 	this.height = height;
 	this.width = width;
-	this.content = content;
+	this.border = content;
     }
 
     /**
      * this.content is set to content [postcondition]
      * @param content != space [precondition]
      */
-    public void setContent(char content) {
-	this.content = content;
+    public void setBorder(char border) {
+	this.border = border;
     }
 
     /**
@@ -34,8 +35,8 @@ class DarkBox implements Pict {
     }
 
     /**
-     * picture uses only characters provided in constructor [postcondition]
-     * @return drawn height = ceiling height & drawn width = ceiling width [postcondition]
+     * border and content of the picture are drawn with this.border [postcondition]
+     * drawn height = rounded height & drawn width = rounded width [postcondition]
      */
     public String toString() {
 	int heightRounded = (int)Math.ceil(this.height);
@@ -44,7 +45,7 @@ class DarkBox implements Pict {
 
 	for(int i = 0; i < heightRounded; i++) {
 	    for(int j = 0; j < widthRounded; j++) {
-		picture += this.content;
+		picture += this.border;
 	    }
 
 	    //don't linebreak on last row
