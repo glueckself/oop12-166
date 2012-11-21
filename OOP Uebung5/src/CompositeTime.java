@@ -5,7 +5,7 @@ import java.util.Iterator;
  *
  * @author Julian Grosshauser
  */
-class CompositeTime implements ElapsedTime<CompositeTime> {
+class CompositeTime implements ElapsedTime {
     private Double[] data;
 
     /**
@@ -17,19 +17,33 @@ class CompositeTime implements ElapsedTime<CompositeTime> {
 	this.data = data;
     }
 
-    public boolean shorter(CompositeTime compareTo) {
+    /**
+     * Use this value in shorter.
+     * 
+     * @return double Value to use in shorter.
+     */
+    public double shorterValue() {
 	double sum = 0;
-	double sumCompareTo = 0;
+
+	if(this.data[0] == null) {
+	    return sum;
+	}
 
 	for(int i = 0; i < this.data.length; i++) {
 	    sum += this.data[i];
 	}
 
-	for(int i = 0; i < compareTo.data.length; i++) {
-	    sumCompareTo += compareTo.data[i];
-	}
-	
-	if(sum < sumCompareTo) {
+	return sum;
+    }
+
+    /**
+     * Compare this object to the argument.
+     *
+     * @param compareTo Compare to this object.
+     * @return boolean True if this object is shorter than compareTo. Otherwise false.
+     */
+    public boolean shorter(ElapsedTime compareTo) {
+	if(this.shorterValue() < compareTo.shorterValue()) {
 	    return true;
 	}
 
