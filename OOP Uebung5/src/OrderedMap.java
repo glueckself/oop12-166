@@ -1,11 +1,11 @@
-import java.util.Iterator;
+
 
 class OrderedMap <T extends Shorter<T>, E>
     extends OrderedSet<T>
     implements Iterable {
 
-    protected MapNode head;
-    protected MapNode tail;
+  /*  protected MapNode head;
+    protected MapNode tail;*/
 
     private class MapNode extends Node {
       private InnerSet<E> innerSet;
@@ -16,17 +16,23 @@ class OrderedMap <T extends Shorter<T>, E>
       }
     }
 
-    public Iterator<T> iterator() {
+    @Override
+    public OuterIterator<T,E> iterator() {
         return new MapIterator();
     }
 
     private class InnerSet<E> extends Set<E> {
 
-      public Iterator<E> iterator() {
+        @Override
+      public InnerIterator<E> iterator() {
         return new InnerSetIterator();
       }
 
-      private class InnerSetIterator extends SetIterator {
+      private class InnerSetIterator
+          extends SetIterator
+          implements InnerIterator<E> {
+
+          @Override
           public void add(E elem) {
 
             if(this.p == null) return;
@@ -54,10 +60,14 @@ class OrderedMap <T extends Shorter<T>, E>
     }
 
 
-    private class MapIterator extends SetIterator {
+    private class MapIterator
+        extends SetIterator
+        implements OuterIterator<T,E> {
         protected MapNode p = OrderedMap.this.head;
 
-        public Iterator<E> iterator() {
+        @Override
+        public InnerIterator<E> iterator() {
+          if(p == null) return null;
           return p.innerSet.iterator();
         }
     }

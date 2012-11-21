@@ -42,15 +42,20 @@ class Test {
       }
 
       
-      Iterator <MeanElapsedTime> oMapI1 = oMap.iterator();
+      OuterIterator<MeanElapsedTime,CompositeTime> oMapI1 = oMap.iterator();
 
       while(oMapI1.hasNext()) {
-        MeanElapsedTime testE = oMapI1.next();
-        Iterator<CompositeTime> oMapInnerI1 = oMapI1.iterator();
+        System.out.println(oMapI1.next().max());
+      }
+
+      oMapI1 = oMap.iterator();
+
+      while(oMapI1.hasNext()) {
+        InnerIterator<CompositeTime> oMapInnerI1 = oMapI1.iterator();
         for(int j=10; j>5;j--) {
           Double data[] = new Double[3];
           for(int k=1; k<4;k++) {
-            data[k] = new Double(k*j);
+            data[k-1] = new Double(k*j);
           }
           oMapInnerI1.add(new CompositeTime(data));
         }
@@ -58,10 +63,11 @@ class Test {
       }
 
 
+      oMapI1 = oMap.iterator();
       while(oMapI1.hasNext()) {
         MeanElapsedTime testE = oMapI1.next();
         System.out.println(testE.max());
-        Iterator<CompositeTime> oMapInnerI1 = testE.iterator();
+        InnerIterator<CompositeTime> oMapInnerI1 = oMapI1.iterator();
         while(oMapInnerI1.hasNext()) {
           System.out.println(oMapInnerI1.next().min());
         }
