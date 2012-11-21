@@ -5,7 +5,7 @@ import java.util.Iterator;
  *
  * @author Julian Grosshauser
  */
-class Set<T> implements Iterable {
+class Set<T> implements Iterable<T> {
     protected class Node {
 		protected T elem;
 		protected Node next;

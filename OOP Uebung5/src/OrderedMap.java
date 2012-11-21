@@ -2,7 +2,7 @@ import java.util.Iterator;
 
 class OrderedMap <T extends Shorter<T>, E>
     extends OrderedSet<T>
-    implements Iterable {
+    implements Iterable<T> {
 
     protected MapNode head;
     protected MapNode tail;
