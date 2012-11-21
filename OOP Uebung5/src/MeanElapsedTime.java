@@ -45,8 +45,6 @@ class MeanElapsedTime implements ElapsedTime {
 	return false;
     }
 
-    */
-
     /**
      * Count entries in data Set.
      *
