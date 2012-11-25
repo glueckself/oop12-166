@@ -1,13 +1,13 @@
 import java.util.Iterator;
 
-class List implements Iterable {
+class List<T extends Android> implements Iterable<T> {
     private class Node {
-		private Android android;
-		private Node next;
-	
-		private Node(Android android) {
-		    this.android = android;
-		}
+	private T android;
+	private Node next;
+
+	private Node(T android) {
+	    this.android = android;
+	}
     }
 
     private Node head;
@@ -19,8 +19,8 @@ class List implements Iterable {
      * @param android Android to insert.
      * @return String null if insert was successfull, otherwise error code
      */
-    public String insert(Android android) {
-	Iterator iterator = this.iterator();
+    public String insert(T android) {
+	Iterator<T> iterator = this.iterator();
 
 	//TODO: check if serialnumber is already in list
 	/*
@@ -35,11 +35,11 @@ class List implements Iterable {
 	    return "Skin not allowed";
 	}
 
-	/* not there yet
 	if(android.software == null) {
 	    return "Software not allowed";
 	}
 
+	/*
 	if(android.actors == null) {
 	    return "Actors not allowed";
 	}
@@ -56,9 +56,32 @@ class List implements Iterable {
     } 
 
     /**
+     * Get information about the android with the specified serialnumber.
+     *
+     * @param serialnumber Search for android with this serialnumber.
+     * @return String A String containing information about the found android,
+     * null otherwise.
+     */
+    public String find(int serialnumber) {
+	String information = null;
+	Iterator<T> iterator = this.iterator();
+
+	if(iterator.hasNext()) {
+	    T android = iterator.next();
+
+	    //TODO: is this comparison allowed?
+	    if(android.serialnumber == serialnumber) {
+		//information = 
+	    }
+	}
+
+	return information;
+    }
+
+    /**
      * Iterates over list.
      */
-    private class ListIterator implements Iterator {
+    private class ListIterator implements Iterator<T> {
 	//current Android
 	private Node current = List.this.head;
 
@@ -68,7 +91,7 @@ class List implements Iterable {
 	 * @return boolean True if there is a next Android, false otherwise.
 	 */
 	public boolean hasNext() {
-	    return current != null;
+	    return this.current != null;
 	}
 
 	/**
@@ -77,12 +100,12 @@ class List implements Iterable {
 	 *
 	 * @return Android Next Android.
 	 */
-	public Android next() {
+	public T next() {
 	    if(this.current == null) {
 		return null;
 	    }
 
-	    Android android = this.current.android;
+	    T android = this.current.android;
 	    this.current = this.current.next;
 	    return android;
 	}
@@ -98,7 +121,7 @@ class List implements Iterable {
      *
      * @return Iterator Iterator.
      */
-    public Iterator iterator() {
+    public Iterator<T> iterator() {
 	return new ListIterator();
     }
 }
