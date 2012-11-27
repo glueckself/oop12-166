@@ -18,11 +18,7 @@ class ServiceTechnikerSoftware extends Software {
     }
 
     public void allowed(ServiceTechniker serviceTechniker) {
-	if(this.zertifikat != null) {
 	    serviceTechniker.software = this;
-	} else {
-	    serviceTechniker.software = null;
-	}
     }
 
     public void allowed(Transportarbeiter transportarbeiter) {

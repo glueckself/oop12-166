@@ -14,11 +14,7 @@ class BauarbeiterSoftware extends Software {
     }
 
     public void allowed(Bauarbeiter bauarbeiter) {
-	if(this.zertifikat != null) {
 	    bauarbeiter.software = this;
-	} else {
-	    bauarbeiter.software = null;
-	}
     }
 
     public void allowed(ServiceTechniker serviceTechniker) {

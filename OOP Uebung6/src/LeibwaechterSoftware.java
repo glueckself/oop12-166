@@ -30,11 +30,7 @@ class LeibwaechterSoftware extends Software {
     }
 
     public void allowed(Leibwaechter leibwaechter) {
-	if(this.zertifikat != null) {
 	    leibwaechter.software = this;
-	} else {
-	    leibwaechter.software = null;
-	}
     }
 
     public void allowed(Kaempfer kaempfer) {

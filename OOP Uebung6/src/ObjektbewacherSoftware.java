@@ -26,11 +26,7 @@ class ObjektbewacherSoftware extends Software {
     }
 
     public void allowed(Objektbewacher objektbewacher) {
-	if(this.zertifikat != null) {
 	    objektbewacher.software = this;
-	} else {
-	    objektbewacher.software = null;
-	}
     }
 
     public void allowed(Leibwaechter leibwaechter) {

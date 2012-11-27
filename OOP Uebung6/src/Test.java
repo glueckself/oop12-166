@@ -11,12 +11,15 @@ class Test {
 
 	Zertifikat zertifikatStufe1 = new ZertifikatStufe1();
 	Zertifikat zertifikatStufe2 = new ZertifikatStufe2();
+	Zertifikat zertifikatStufe4 = new ZertifikatStufe4();
 
-	Software hilfskraftSoftware = new HilfskraftSoftware(zertifikatStufe1);
+	Software hilfskraftSoftware = new HilfskraftSoftware(zertifikatStufe2);
 	Software gesellschafterSoftware = new GesellschafterSoftware(zertifikatStufe1);
+	Software gesellschafterSoftware2 = new GesellschafterSoftware(zertifikatStufe4);
 
 	Android hilfskraft = new Hilfskraft(beruehrungssensitiveSkin, hilfskraftSoftware);
 	Android gesellschafter = new Gesellschafter(beruehrungssensitiveSkin, gesellschafterSoftware);
+	Android gesellschafter2 = new Gesellschafter(beruehrungssensitiveSkin, gesellschafterSoftware2);
 
 	if((error = list.insert(hilfskraft,123)) != null) {
 	    System.out.println(error);
@@ -25,6 +28,10 @@ class Test {
 	if((error = list.insert(gesellschafter,145)) != null) {
 	    System.out.println(error);
 	}
+	
+	if((error = list.insert(gesellschafter2,156)) != null) {
+        System.out.println(error);
+    }
 
 	Iterator<Map.Entry<Integer,Android>> iterator = list.iterator();
 	System.out.println("All androids");

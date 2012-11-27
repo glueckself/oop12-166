@@ -22,11 +22,7 @@ class TransportarbeiterSoftware extends Software {
     }
 
     public void allowed(Transportarbeiter transportarbeiter) {
-	if(this.zertifikat != null) {
 	    transportarbeiter.software = this;
-	} else {
-	    transportarbeiter.software = null;
-	}
     }
 
     public void allowed(Objektbewacher objektbewacher) {

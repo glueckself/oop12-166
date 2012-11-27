@@ -6,11 +6,7 @@ class HilfskraftSoftware extends Software {
     }
 
     public void allowed(Hilfskraft hilfskraft) {
-	if(this.zertifikat != null) {
 	    hilfskraft.software = this;	
-	} else {
-	    hilfskraft.software = null;
-	}
     }
 
     public void allowed(Gesellschafter gesellschafter) {

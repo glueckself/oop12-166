@@ -34,10 +34,6 @@ class KaempferSoftware extends Software {
     }
 
     public void allowed(Kaempfer kaempfer) {
-	if(this.zertifikat != null) {
 	    kaempfer.software = this;
-	} else {
-	    kaempfer.software = null;
-	}
     }
 }

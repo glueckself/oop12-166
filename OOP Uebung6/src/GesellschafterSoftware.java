@@ -10,11 +10,7 @@ class GesellschafterSoftware extends Software {
     }
 
     public void allowed(Gesellschafter gesellschafter) {
-	if(this.zertifikat != null) {
 	    gesellschafter.software = this;
-	} else {
-	    gesellschafter.software = null;
-	}
     }
 
     public void allowed(Bauarbeiter bauarbeiter) {

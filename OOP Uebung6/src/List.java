@@ -9,13 +9,17 @@ class List<T extends Android> {
     	
     	T current;
     	if(android.skin == null) {
-    	    return "Skin not allowed";
+    	    return Integer.toString(serialnumber)+" Skin not allowed";
     	}
 
     	if(android.software == null) {
-    	    return "Software not allowed";
+    	    return Integer.toString(serialnumber)+" Software not allowed";
     	}
-
+    	
+    	if(android.software.zertifikat == null) {
+    	    return Integer.toString(serialnumber)+" Software not certified";
+    	}
+    	
     	/*
     	if(android.kit == null) {
     	    return "Actors not allowed";
