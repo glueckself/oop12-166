@@ -1,127 +1,56 @@
 import java.util.Iterator;
+import java.util.Map;
+import java.util.HashMap;
 
-class List<T extends Android> implements Iterable<T> {
-    private class Node {
-	private T android;
-	private Node next;
+class List<T extends Android> {
+    Map<Integer,T> androids = new HashMap<Integer,T>();
+	
+    public String insert(T android, int serialnumber) {
+    	
+    	T current;
+    	if(android.skin == null) {
+    	    return "Skin not allowed";
+    	}
 
-	private Node(T android) {
-	    this.android = android;
-	}
-    }
+    	if(android.software == null) {
+    	    return "Software not allowed";
+    	}
 
-    private Node head;
-    private Node tail;
+    	/*
+    	if(android.actors == null) {
+    	    return "Actors not allowed";
+    	}
+    	*/
+    	current = androids.get(serialnumber);
+    	if(current != null) {
+    		//android already in list
+    		//TODO modify current android
+    		return null;
+    	}
+    	else {
+    		//add new android
+    		//TODO apply serial to android when creating in test or when adding to list?
+    		android.serialnumber = serialnumber;
+    		androids.put(serialnumber, android);
+    	}
 
-    /**
-     * Insert android into list.
-     *
-     * @param android Android to insert.
-     * @return String null if insert was successfull, otherwise error code
-     */
-    public String insert(T android) {
-	Iterator<T> iterator = this.iterator();
-
-	//TODO: check if serialnumber is already in list
-	/*
-	while(iterator.hasNext()) {
-	    if(iterator.next() == elem) {
-		return;
-	    }
-	}
-	*/
-
-	if(android.skin == null) {
-	    return "Skin not allowed";
-	}
-
-	if(android.software == null) {
-	    return "Software not allowed";
-	}
-
-	/*
-	if(android.actors == null) {
-	    return "Actors not allowed";
-	}
-	*/
-
-	if(head == null) {
-	    this.tail = this.head = new Node(android);
-	} else {
-	    tail.next = new Node(android);
-	    tail = tail.next;
-	}
-
-	return null;
+    	return null;
     } 
-
-    /**
-     * Get information about the android with the specified serialnumber.
-     *
-     * @param serialnumber Search for android with this serialnumber.
-     * @return String A String containing information about the found android,
-     * null otherwise.
-     */
+	
     public String find(int serialnumber) {
-	String information = null;
-	Iterator<T> iterator = this.iterator();
-
-	if(iterator.hasNext()) {
-	    T android = iterator.next();
-
-	    //TODO: is this comparison allowed?
-	    if(android.serialnumber == serialnumber) {
-		//information = 
-	    }
-	}
-
-	return information;
+    	String information = null;
+    	T current;
+    	current = androids.get(serialnumber);
+    	if(current == null) return information;
+    	else {
+    		// TODO more information, or implement toString method in Androids
+    		information = current.toString();
+    		return information;
+    	}
     }
-
-    /**
-     * Iterates over list.
-     */
-    private class ListIterator implements Iterator<T> {
-	//current Android
-	private Node current = List.this.head;
-
-	/**
-	 * Check if there is a next Android.
-	 *
-	 * @return boolean True if there is a next Android, false otherwise.
-	 */
-	public boolean hasNext() {
-	    return this.current != null;
+	
+	public Iterator<Map.Entry<Integer,T>> iterator() {
+		Iterator<Map.Entry<Integer,T>> entries = androids.entrySet().iterator();
+		return entries;
 	}
-
-	/**
-	 * Get next Android.
-	 * Sets current Android accordingly.
-	 *
-	 * @return Android Next Android.
-	 */
-	public T next() {
-	    if(this.current == null) {
-		return null;
-	    }
-
-	    T android = this.current.android;
-	    this.current = this.current.next;
-	    return android;
-	}
-
-	//not implemented
-	public void remove() {
-	    return;
-	}
-    }
-
-    /**
-     * Get iterator.
-     *
-     * @return Iterator Iterator.
-     */
-    public Iterator<T> iterator() {
-	return new ListIterator();
-    }
 }
