@@ -3,7 +3,6 @@ import java.util.Map;
 
 class Test {
     public static void main(String[] args) {
-	String error;
 	List<Android> list = new List<Android>();
 
 	Skin beruehrungssensitiveSkin = new BeruehrungssensitiveSkin();
@@ -21,17 +20,9 @@ class Test {
 	Android gesellschafter = new Gesellschafter(beruehrungssensitiveSkin, gesellschafterSoftware);
 	Android gesellschafter2 = new Gesellschafter(beruehrungssensitiveSkin, gesellschafterSoftware2);
 
-	if((error = list.insert(hilfskraft,123)) != null) {
-	    System.out.println(error);
-	}
-
-	if((error = list.insert(gesellschafter,145)) != null) {
-	    System.out.println(error);
-	}
-	
-	if((error = list.insert(gesellschafter2,156)) != null) {
-        System.out.println(error);
-    }
+	System.out.println(list.insert(hilfskraft,123));
+	System.out.println(list.insert(gesellschafter,145));
+    System.out.println(list.insert(gesellschafter2,156));
 
 	Iterator<Map.Entry<Integer,Android>> iterator = list.iterator();
 	System.out.println("All androids");
