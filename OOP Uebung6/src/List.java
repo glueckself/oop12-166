@@ -17,7 +17,7 @@ class List<T extends Android> {
     	}
 
     	/*
-    	if(android.actors == null) {
+    	if(android.kit == null) {
     	    return "Actors not allowed";
     	}
     	*/
@@ -43,7 +43,6 @@ class List<T extends Android> {
     	current = androids.get(serialnumber);
     	if(current == null) return information;
     	else {
-    		// TODO more information, or implement toString method in Androids
     		information = current.toString();
     		return information;
     	}

@@ -1,5 +1,7 @@
 class TransportarbeiterSoftware extends Software {
+	
     public TransportarbeiterSoftware(Zertifikat zertifikat) {
+    name = "TransportarbeiterSoftware";
 	zertifikat.allowed(this);
     }
 

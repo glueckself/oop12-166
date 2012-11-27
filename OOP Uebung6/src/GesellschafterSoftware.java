@@ -1,5 +1,7 @@
 class GesellschafterSoftware extends Software {
+	
     public GesellschafterSoftware(Zertifikat zertifikat) {
+    name = "GesellschafterSoftware";
 	zertifikat.allowed(this);
     }
 

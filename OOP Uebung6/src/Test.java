@@ -1,4 +1,5 @@
 import java.util.Iterator;
+import java.util.Map;
 
 class Test {
     public static void main(String[] args) {
@@ -17,18 +18,21 @@ class Test {
 	Android hilfskraft = new Hilfskraft(beruehrungssensitiveSkin, hilfskraftSoftware);
 	Android gesellschafter = new Gesellschafter(beruehrungssensitiveSkin, gesellschafterSoftware);
 
-	if((error = list.insert(hilfskraft)) != null) {
+	if((error = list.insert(hilfskraft,123)) != null) {
 	    System.out.println(error);
 	}
 
-	if((error = list.insert(gesellschafter)) != null) {
+	if((error = list.insert(gesellschafter,145)) != null) {
 	    System.out.println(error);
 	}
 
-	Iterator<Android> iterator = list.iterator();
-
+	Iterator<Map.Entry<Integer,Android>> iterator = list.iterator();
+	System.out.println("All androids");
 	while(iterator.hasNext()) {
-	    System.out.println(iterator.next());
+	    System.out.println(iterator.next().getValue());
 	}
+	System.out.println("Find serialnumber 145");
+    System.out.println(list.find(145));
     }
+    
 }

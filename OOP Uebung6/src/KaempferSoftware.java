@@ -1,5 +1,7 @@
 class KaempferSoftware extends Software {
+	
     public KaempferSoftware(Zertifikat zertifikat) {
+    name = "KaempferSoftware";
 	zertifikat.allowed(this);
     }
 

@@ -1,5 +1,6 @@
 abstract class Software {
     protected Zertifikat zertifikat;
+    protected String name;
 
     public abstract void allowed(Hilfskraft hilfskraft);
     public abstract void allowed(Gesellschafter gesellschafter);
@@ -9,4 +10,8 @@ abstract class Software {
     public abstract void allowed(Objektbewacher objektbewacher);
     public abstract void allowed(Leibwaechter leibwaechter);
     public abstract void allowed(Kaempfer kaempfer);
+    
+    public String toString() {
+    	return name;
+    }
 }

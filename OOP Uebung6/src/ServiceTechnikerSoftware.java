@@ -1,5 +1,7 @@
 class ServiceTechnikerSoftware extends Software {
+	
     public ServiceTechnikerSoftware(Zertifikat zertifikat) {
+    name = "ServiceTechnikerSoftware";
 	zertifikat.allowed(this);
     }
 
