@@ -18,6 +18,8 @@ abstract class Android {
         software.serialnumber = serialnumber;
     }
     
+    public abstract Android modify(Android android);
+    
     public Android modify(Bauarbeiter bauarbeiter) {
         return null;
     }

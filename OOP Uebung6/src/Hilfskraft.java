@@ -7,6 +7,9 @@ class Hilfskraft extends Bediener {
 	this.kit = kit.allowed(this);
     }
     
+    public Android modify(Android android) {
+        return android.modify(this);
+    }
     public Android modify(Hilfskraft hilfskraft) {
         return hilfskraft;
     }

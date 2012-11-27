@@ -6,4 +6,11 @@ class Kaempfer extends Beschuetzer {
 	zertifikat.allowed(this);
 	this.kit = kit.allowed(this);
     }
+    
+    public Android modify(Android android) {
+        return android.modify(this);
+    }
+    public Android modify(Kaempfer kaempfer) {
+        return null;
+    }
 }

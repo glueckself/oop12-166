@@ -3,11 +3,11 @@ import java.util.Map;
 import java.util.LinkedHashMap;
 
 class List<T extends Android> {
-    Map<Integer,T> androids = new LinkedHashMap<Integer,T>();
+    Map<Integer,Android> androids = new LinkedHashMap<Integer,Android>();
 	
     public String insert(T android, int serialnumber) {
     	String serial = Integer.toString(serialnumber);
-    	T current;
+    	Android current;
     	if(android.skin == null) {
     	    return serial+" Skin not allowed";
     	}
@@ -21,14 +21,19 @@ class List<T extends Android> {
     	}
     	
     	if(android.kit == null) {
-    	    return "Actors not allowed";
+    	    return serial+"Actors not allowed";
     	}
 
     	current = androids.get(serialnumber);
     	if(current != null) {
     		//android already in list
     		//TODO modify current android
-    	    current.modify(android);
+    	    Android modified = android.modify(current);
+    	    if(modified == null) return serial+" Couldn't modify android";
+    	    else {
+    	        modified.encode(serialnumber);
+    	        androids.put(modified.serialnumber, modified);
+    	    }
     	    return serial+" Successfully updated android";
     	}
     	else {
@@ -41,7 +46,7 @@ class List<T extends Android> {
 	
     public String find(int serialnumber) {
     	String information = Integer.toString(serialnumber)+" not found";
-    	T current;
+    	Android current;
     	current = androids.get(serialnumber);
     	if(current == null) return information;
     	else {
@@ -50,8 +55,8 @@ class List<T extends Android> {
     	}
     }
 	
-	public Iterator<Map.Entry<Integer,T>> iterator() {
-		Iterator<Map.Entry<Integer,T>> entries = androids.entrySet().iterator();
+	public Iterator<Map.Entry<Integer,Android>> iterator() {
+		Iterator<Map.Entry<Integer,Android>> entries = androids.entrySet().iterator();
 		return entries;
 	}
 }
