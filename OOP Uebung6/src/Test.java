@@ -31,6 +31,8 @@ class Test {
 	}
 	System.out.println("Find serialnumber 145");
     System.out.println(list.find(145));
+    System.out.println("Find serialnumber 155");
+    System.out.println(list.find(155));
     }
     
 }

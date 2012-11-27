@@ -41,7 +41,7 @@ class List<T extends Android> {
     } 
 	
     public String find(int serialnumber) {
-    	String information = null;
+    	String information = Integer.toString(serialnumber)+" not found";
     	T current;
     	current = androids.get(serialnumber);
     	if(current == null) return information;
