@@ -6,4 +6,11 @@ class Leibwaechter extends Beschuetzer {
 	zertifikat.allowed(this);
 	this.kit = kit.allowed(this);
     }
+    
+    public Android modify(Leibwaechter leibwaechter) {
+        return leibwaechter;
+    }
+    public Android modify(Objektbewacher objektbewacher) {
+        return objektbewacher;
+    }
 }

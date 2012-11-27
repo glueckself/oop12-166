@@ -6,4 +6,11 @@ class Hilfskraft extends Bediener {
 	zertifikat.allowed(this);
 	this.kit = kit.allowed(this);
     }
+    
+    public Android modify(Hilfskraft hilfskraft) {
+        return hilfskraft;
+    }
+    public Android modify(Gesellschafter gesellschafter) {
+        return gesellschafter;
+    }
 }

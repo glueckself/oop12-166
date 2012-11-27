@@ -18,9 +18,11 @@ class Test {
 	Software hilfskraftSoftware = new HilfskraftSoftware();
 	Software gesellschafterSoftware = new GesellschafterSoftware();
 	Software gesellschafterSoftware2 = new GesellschafterSoftware();
+	Software gesellschafterSoftware3 = new GesellschafterSoftware();
 	Software bauarbeiterSoftware = new BauarbeiterSoftware();
 	Software leibwaechterSoftware = new LeibwaechterSoftware();
 	Software kaempferSoftware = new KaempferSoftware();
+	Software objektbewacherSoftware = new ObjektbewacherSoftware();
 
 	AktorKit aktorKit1kW = new AktorKit1kW();
 	AktorKit aktorKit4kW = new AktorKit4kW();
@@ -32,7 +34,11 @@ class Test {
 	Android bauarbeiter = new Bauarbeiter(hochfesteSkin, bauarbeiterSoftware, zertifikatStufe3, aktorKit4kW);
 	Android leibwaechter = new Leibwaechter(gepanzerteSkin, leibwaechterSoftware, zertifikatStufe4, aktorKit4kW);
 	Android kaempfer = new Kaempfer(gepanzerteSkin, kaempferSoftware, zertifikatStufe5, aktorKit12kW);
-
+	Android objektbewacher = new Objektbewacher(gepanzerteSkin, objektbewacherSoftware, zertifikatStufe4, aktorKit4kW);
+	Android gesellschafter3 = new Gesellschafter(beruehrungssensitiveSkin, gesellschafterSoftware3, zertifikatStufe1, aktorKit1kW);
+	
+	
+	//ADD NEW
 	System.out.println(list.insert(hilfskraft,123));
 	System.out.println(list.insert(gesellschafter,145));
 	System.out.println(list.insert(gesellschafter2,156));
@@ -49,6 +55,17 @@ class Test {
 	System.out.println(list.find(145));
 	System.out.println("Find serialnumber 155");
 	System.out.println(list.find(155));
+    
+    
+	//UPDATE
+    System.out.println(list.insert(objektbewacher, 125));
+    System.out.println(list.insert(gesellschafter3, 123));
+    
+    iterator = list.iterator();
+    System.out.println("All androids");
+    while(iterator.hasNext()) {
+        System.out.println(iterator.next().getValue());
+    }
     }
     
 }

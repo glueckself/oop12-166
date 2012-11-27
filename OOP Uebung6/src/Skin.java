@@ -1,5 +1,6 @@
 abstract class Skin {
 	protected String name;
+	protected int serialnumber;
 	
     public abstract void allowed(Bediener bediener);
     public abstract void allowed(Schwerarbeiter schwerarbeiter);

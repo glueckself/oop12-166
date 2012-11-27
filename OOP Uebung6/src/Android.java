@@ -11,4 +11,35 @@ abstract class Android {
     			software.toString()+" "+
     			kit.toString());
     }
+    
+    public void encode(int serial) {
+        serialnumber = serial;
+        skin.serialnumber = serialnumber;
+        software.serialnumber = serialnumber;
+    }
+    
+    public Android modify(Bauarbeiter bauarbeiter) {
+        return null;
+    }
+    public Android modify(Gesellschafter gesellschafter) {
+        return null;
+    }
+    public Android modify(Hilfskraft hilfskraft) {
+        return null;
+    }
+    public Android modify(Kaempfer kaempfer) {
+        return null;
+    }
+    public Android modify(Leibwaechter leibwaechter) {
+        return null;
+    }
+    public Android modify(Objektbewacher objektbewacher) {
+        return null;
+    }
+    public Android modify(ServiceTechniker servicetechniker) {
+        return null;
+    }
+    public Android modify(Transportarbeiter transportarbeiter) {
+        return null;
+    }
 }

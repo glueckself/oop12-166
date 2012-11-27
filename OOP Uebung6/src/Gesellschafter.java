@@ -6,4 +6,11 @@ class Gesellschafter extends Bediener {
 	zertifikat.allowed(this);
 	this.kit = kit.allowed(this);
     }
+    
+    public Android modify(Gesellschafter gesellschafter) {
+        return gesellschafter;
+    }
+    public Android modify(Hilfskraft hilfskraft) {
+        return hilfskraft;
+    }
 }

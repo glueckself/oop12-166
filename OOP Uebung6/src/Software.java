@@ -1,6 +1,7 @@
 abstract class Software {
     protected Zertifikat zertifikat;
     protected String name;
+    protected int serialnumber;
 
     public abstract void allowed(Hilfskraft hilfskraft);
     public abstract void allowed(Gesellschafter gesellschafter);
