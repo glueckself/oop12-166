@@ -15,16 +15,15 @@ class List<T extends Android> {
     	if(android.software == null) {
     	    return serial+" Software not allowed";
     	}
-    	
+
     	if(android.software.zertifikat == null) {
     	    return serial+" Software not certified";
     	}
     	
-    	/*
     	if(android.kit == null) {
     	    return "Actors not allowed";
     	}
-    	*/
+
     	current = androids.get(serialnumber);
     	if(current != null) {
     		//android already in list

@@ -1,8 +1,7 @@
 class BauarbeiterSoftware extends Software {
 	
-    public BauarbeiterSoftware(Zertifikat zertifikat) {
-    name = "BauarbeiterSoftware";
-	zertifikat.allowed(this);
+    public BauarbeiterSoftware() {
+	name = "BauarbeiterSoftware";
     }
 
     public void allowed(Hilfskraft hilfskraft) {

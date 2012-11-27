@@ -1,8 +1,7 @@
 class ObjektbewacherSoftware extends Software {
 	
-    public ObjektbewacherSoftware(Zertifikat zertifikat) {
-    name = "ObjektbewacherSoftware";
-	zertifikat.allowed(this);
+    public ObjektbewacherSoftware() {
+	name = "ObjektbewacherSoftware";
     }
 
     public void allowed(Hilfskraft hilfskraft) {

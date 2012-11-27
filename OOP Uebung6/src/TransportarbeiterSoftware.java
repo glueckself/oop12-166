@@ -1,8 +1,7 @@
 class TransportarbeiterSoftware extends Software {
 	
-    public TransportarbeiterSoftware(Zertifikat zertifikat) {
-    name = "TransportarbeiterSoftware";
-	zertifikat.allowed(this);
+    public TransportarbeiterSoftware() {
+	name = "TransportarbeiterSoftware";
     }
 
     public void allowed(Hilfskraft hilfskraft) {

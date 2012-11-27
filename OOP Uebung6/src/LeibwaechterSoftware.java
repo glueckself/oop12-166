@@ -1,8 +1,7 @@
 class LeibwaechterSoftware extends Software {
 	
-    public LeibwaechterSoftware(Zertifikat zertifikat) {
-    name = "LeibwaechterSoftware";
-	zertifikat.allowed(this);
+    public LeibwaechterSoftware() {
+	name = "LeibwaechterSoftware";
     }
 
     public void allowed(Hilfskraft hilfskraft) {

@@ -1,8 +1,7 @@
 class HilfskraftSoftware extends Software {
 	
-    public HilfskraftSoftware(Zertifikat zertifikat) {
-    name = "HilfskraftSoftware";
-	zertifikat.allowed(this);
+    public HilfskraftSoftware() {
+	name = "HilfskraftSoftware";
     }
 
     public void allowed(Hilfskraft hilfskraft) {
