@@ -45,9 +45,9 @@ class Test {
 	
     System.out.println();
     System.out.println("All androids");
-	Iterator<Map.Entry<Integer,Android>> iterator = list.iterator();
+	Iterator<Android> iterator = list.iterator();
 	while(iterator.hasNext()) {
-	    System.out.println(iterator.next().getValue());
+	    System.out.println(iterator.next());
 	}
 	
 	System.out.println();
@@ -81,7 +81,7 @@ class Test {
     System.out.println("All androids");
     iterator = list.iterator();
     while(iterator.hasNext()) {
-        System.out.println(iterator.next().getValue());
+        System.out.println(iterator.next());
     }
     }
     

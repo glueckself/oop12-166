@@ -2,7 +2,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.LinkedHashMap;
 
-class List {
+class List implements Iterable<Android> {
     Map<Integer,Android> androids = new LinkedHashMap<Integer,Android>();
 	
     public String insert(Android android, int serialnumber) {
@@ -55,8 +55,23 @@ class List {
     	}
     }
 	
-	public Iterator<Map.Entry<Integer,Android>> iterator() {
-		Iterator<Map.Entry<Integer,Android>> entries = androids.entrySet().iterator();
-		return entries;
+	protected class ListIterator implements Iterator<Android> {
+	    Iterator<Map.Entry<Integer,Android>> entries = androids.entrySet().iterator();
+
+	    public boolean hasNext() {
+	        return entries.hasNext();
+	    }
+
+	    public Android next() {
+	        return entries.next().getValue();
+	    }
+	    
+	    public void remove() {
+	        
+	    }
 	}
+
+    public Iterator<Android> iterator() {
+    return new ListIterator();
+    }
 }
