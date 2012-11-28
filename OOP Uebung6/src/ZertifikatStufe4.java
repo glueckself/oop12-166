@@ -40,7 +40,7 @@ class ZertifikatStufe4 extends Zertifikat {
     }
 
     public AktorKit allowedKit(AktorKit12kW aktorKit12kW) {
-	return aktorKit12kW;
+	return null;
     }
     
     public Zertifikat modify(Zertifikat zertifikat) {
