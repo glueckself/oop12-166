@@ -1,6 +1,0 @@
-/**
- * Aktor
- */
-
-abstract class Aktor {
-}
