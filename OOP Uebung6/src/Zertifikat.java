@@ -10,4 +10,10 @@ abstract class Zertifikat {
     public abstract AktorKit allowedKit(AktorKit1kW aktorKit1kW);
     public abstract AktorKit allowedKit(AktorKit4kW aktorKit4kW);
     public abstract AktorKit allowedKit(AktorKit12kW aktorKit12kW);
+    public abstract Zertifikat modify(Zertifikat zertifikat);
+    public abstract Zertifikat modify(ZertifikatStufe1 zertifikat);
+    public abstract Zertifikat modify(ZertifikatStufe2 zertifikat);
+    public abstract Zertifikat modify(ZertifikatStufe3 zertifikat);
+    public abstract Zertifikat modify(ZertifikatStufe4 zertifikat);
+    public abstract Zertifikat modify(ZertifikatStufe5 zertifikat);
 }
