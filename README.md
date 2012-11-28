@@ -23,7 +23,9 @@ Skriptum, Schwerpunkt auf den Abschnitten 4.1 und 4.2
 Nachdem Sebastian Vettel wieder Weltmeister ist, in der Winterpause keine Rennen stattfinden und er daher auf Autodrom umsteigt, der Wiener Prater aber zu teuer ist, soll eine Simulation für ein Autodrom entwickelt werden. Dazu wird die rechteckige Fahrbahn schachbrettartig in viele einzelne Felder unterteilt. Ein Auto befindet sich auf einem Feld und ist nach einer der vier Himmelsrichtungen (Norden, Osten, Süden und Westen) ausgerichtet. Das Fahren wird in viele unterschiedlich lange dauernde Teilschritte unterteilt. In jedem Schritt kann sich ein Auto vom aktuellen Feld auf ein benachbartes Feld bewegen. Es gibt zwei Arten von Autos, ein schnelleres und ein beweglicheres. Von den acht benachbarten Feldern kann sich das schnellere Auto auf das nächste in Fahrtrichtung liegende Feld (3, siehe das 3x3-Feld unten) nach vorne bewegen, auf das Feld schräg links nach vorne (2) bei gleichzeitiger Änderung der Fahrtrichtung um 90° nach links oder auf das Feld schräg rechts nach vorne (4) bei gleichzeitiger Änderung der Fahrtrichtung um 90° nach rechts. Das beweglichere Auto kann sich zusätzlich noch auf das Feld links (1) bei gleichzeitiger Änderung der Fahrtrichtung um 90° nach links und auf das Feld rechts (5) bei gleichzeitiger Änderung der Fahrtrichtung um 90° nach rechts bewegen. Rückwärtsfahren (Felder (6), (7) und (8)) ist nicht möglich.
 
 8 1 2
+
 7 > 3
+
 6 5 4
 
 Befinden sich bereits Autos auf dem Feld, so gibt es einen Zusammenstoß. Für jedes Auto, das man von vorne trifft, gibt es einen Bonuspunkt, wird man von einem anderen Auto hinten, links oder rechts getroffen, so gibt es einen Minuspunkt. Ziel ist es möglichst viele Punkte zu sammeln. Die Autos bewegen sich mit unterschiedlichen möglichst einfachen Strategien weiter, z.B. zufällig, oder im Kreis oder in Schlangenlinien im Kreis, aber nie über die Fahrbahn hinaus.
