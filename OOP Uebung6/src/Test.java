@@ -3,7 +3,7 @@ import java.util.Map;
 
 class Test {
     public static void main(String[] args) {
-	List<Android> list = new List<Android>();
+	List list = new List();
 	
 	System.out.println();
 	System.out.println("Successful new androids");

@@ -2,10 +2,10 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.LinkedHashMap;
 
-class List<T extends Android> {
+class List {
     Map<Integer,Android> androids = new LinkedHashMap<Integer,Android>();
 	
-    public String insert(T android, int serialnumber) {
+    public String insert(Android android, int serialnumber) {
     	String serial = Integer.toString(serialnumber);
     	Android current;
     	if(android.skin == null) {
