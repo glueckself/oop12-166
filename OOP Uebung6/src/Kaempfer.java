@@ -1,4 +1,16 @@
+/**
+ * Kaempfer Android
+ */
+
 class Kaempfer extends Beschuetzer {
+    /*
+     * Assemble Android
+     *
+     * @param skin Skin to use
+     * @param software Software to use
+     * @param zertifikat Zertifikat to use
+     * @param kit AktorKit to use
+     */
     public Kaempfer(Skin skin, Software software, Zertifikat zertifikat, AktorKit kit) {
 	name = "Kaempfer";
 	skin.allowed(this);

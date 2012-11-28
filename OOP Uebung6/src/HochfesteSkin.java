@@ -1,8 +1,11 @@
+/**
+ * HochfesteSkin
+ */
+
 class HochfesteSkin extends Skin {
-	
-	public HochfesteSkin() {
-		name = "HochfesteSkin";
-	}
+    public HochfesteSkin() {
+	name = "HochfesteSkin";
+    }
 	
     public void allowed(Bediener bediener) {
 	bediener.skin = null;

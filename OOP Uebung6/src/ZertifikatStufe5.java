@@ -1,3 +1,7 @@
+/**
+ * ZertifikatStufe5
+ */
+
 class ZertifikatStufe5 extends Zertifikat {
     public void allowed(Kaempfer kaempfer) {
 	kaempfer.software.zertifikat = this;

@@ -1,2 +1,6 @@
+/**
+ * Aktor
+ */
+
 abstract class Aktor {
 }

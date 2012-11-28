@@ -1,8 +1,11 @@
+/**
+ * BeruehrungssensitiveSkin
+ */
+
 class BeruehrungssensitiveSkin extends Skin {
-	
-	public BeruehrungssensitiveSkin() {
-		name = "BeruehrungssensitiveSkin";
-	}
+    public BeruehrungssensitiveSkin() {
+	name = "BeruehrungssensitiveSkin";
+    }
 	
     public void allowed(Bediener bediener) {
 	bediener.skin = this;

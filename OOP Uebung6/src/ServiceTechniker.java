@@ -1,4 +1,16 @@
+/**
+ * ServiceTechniker Android
+ */
+
 class ServiceTechniker extends Schwerarbeiter {
+    /**
+     * Assemble Android
+     *
+     * @param skin Skin to use
+     * @param software Software to use
+     * @param zertifikat Zertifikat to use
+     * @param kit AktorKit to use
+     */
     public ServiceTechniker(Skin skin, Software software, Zertifikat zertifikat, AktorKit kit) {
 	name = "Servicetechniker";
 	skin.allowed(this);

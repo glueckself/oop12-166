@@ -1,4 +1,16 @@
+/**
+ * Gesellschafter Android
+ */
+
 class Gesellschafter extends Bediener {
+    /**
+     * Assemble Android
+     *
+     * @param skin Skin to use
+     * @param software Software to use
+     * @param zertifikat Zertifikat to use
+     * @param kit AktorKit to use
+     */
     public Gesellschafter(Skin skin, Software software, Zertifikat zertifikat, AktorKit kit) {
     name = "Gesellschafter";
 	skin.allowed(this);

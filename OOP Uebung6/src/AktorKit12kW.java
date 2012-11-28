@@ -1,7 +1,8 @@
+/**
+ * AktorKit12kW
+ */
 
 class AktorKit12kW extends AktorKit {
-    
-
     public AktorKit12kW() {
 	name = "Aktor Kit 12kW";
 	aktoren = new Aktor[10];

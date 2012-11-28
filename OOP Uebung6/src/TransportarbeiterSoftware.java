@@ -1,5 +1,8 @@
+/**
+ * TransportarbeiterSoftware
+ */
+
 class TransportarbeiterSoftware extends Software {
-	
     public TransportarbeiterSoftware() {
 	name = "TransportarbeiterSoftware";
     }
@@ -21,7 +24,7 @@ class TransportarbeiterSoftware extends Software {
     }
 
     public void allowed(Transportarbeiter transportarbeiter) {
-	    transportarbeiter.software = this;
+	transportarbeiter.software = this;
     }
 
     public void allowed(Objektbewacher objektbewacher) {

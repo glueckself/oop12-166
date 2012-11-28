@@ -1,8 +1,11 @@
+/**
+ * GepanzerteSkin
+ */
+
 class GepanzerteSkin extends Skin {
-	
-	public GepanzerteSkin() {
-		name = "GepanzerteSkin";
-	}
+    public GepanzerteSkin() {
+	name = "GepanzerteSkin";
+    }
 	
     public void allowed(Bediener bediener) {
 	bediener.skin = null;

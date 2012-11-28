@@ -1,5 +1,8 @@
+/**
+ * ObjektbewacherSoftware
+ */
+
 class ObjektbewacherSoftware extends Software {
-	
     public ObjektbewacherSoftware() {
 	name = "ObjektbewacherSoftware";
     }

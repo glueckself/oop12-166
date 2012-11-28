@@ -1,4 +1,16 @@
+/**
+ * Transportarbeiter Android
+ */
+
 class Transportarbeiter extends Schwerarbeiter {
+    /**
+     * Assemble Android
+     *
+     * @param skin Skin to use
+     * @param software Software to use
+     * @param zertifikat Zertifikat to use
+     * @param kit AktorKit to use
+     */
     public Transportarbeiter(Skin skin, Software software, Zertifikat zertifikat, AktorKit kit) {
 	name = "Transportarbeiter";
 	skin.allowed(this);

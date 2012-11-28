@@ -1,3 +1,7 @@
+/**
+ * ZertifikatStufe2
+ */
+
 class ZertifikatStufe2 extends Zertifikat {
     public void allowed(Hilfskraft hilfskraft) {
 	hilfskraft.software.zertifikat = this;

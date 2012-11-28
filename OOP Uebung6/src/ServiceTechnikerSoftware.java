@@ -1,5 +1,8 @@
+/**
+ * ServiceTechnikerSoftware
+ */
+
 class ServiceTechnikerSoftware extends Software {
-	
     public ServiceTechnikerSoftware() {
 	name = "ServiceTechnikerSoftware";
     }

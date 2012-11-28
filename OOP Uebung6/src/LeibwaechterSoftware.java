@@ -1,5 +1,8 @@
+/**
+ * LeibwaechterSoftware
+ */
+
 class LeibwaechterSoftware extends Software {
-	
     public LeibwaechterSoftware() {
 	name = "LeibwaechterSoftware";
     }

@@ -1,3 +1,7 @@
+/**
+ * ZertifikatStufe3
+ */
+
 class ZertifikatStufe3 extends Zertifikat {
     public void allowed(Bauarbeiter bauarbeiter) {
 	bauarbeiter.software.zertifikat = this;

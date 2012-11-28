@@ -1,4 +1,16 @@
+/**
+ * Objektbewacher Android
+ */
+
 class Objektbewacher extends Beschuetzer {
+    /**
+     * Assemble Android
+     *
+     * @param skin Skin to use
+     * @param software Software to use
+     * @param zertifikat Zertifikat to use
+     * @param kit AktorKit to use
+     */
     public Objektbewacher(Skin skin, Software software, Zertifikat zertifikat, AktorKit kit) {
 	name = "Objektbewacher";
 	skin.allowed(this);

@@ -1,5 +1,8 @@
+/**
+ * BauarbeiterSoftware
+ */
+
 class BauarbeiterSoftware extends Software {
-	
     public BauarbeiterSoftware() {
 	name = "BauarbeiterSoftware";
     }

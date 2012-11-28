@@ -1,5 +1,8 @@
+/**
+ * KaempferSoftware
+ */
+
 class KaempferSoftware extends Software {
-	
     public KaempferSoftware() {
 	name = "KaempferSoftware";
     }

@@ -1,5 +1,8 @@
+/**
+ * GesellschafterSoftware
+ */
+
 class GesellschafterSoftware extends Software {
-	
     public GesellschafterSoftware() {
 	name = "GesellschafterSoftware";
     }

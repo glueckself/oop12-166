@@ -1,3 +1,6 @@
-abstract class Schwerarbeiter extends Android {
+/**
+ * Schwerarbeiter Android
+ */
 
+abstract class Schwerarbeiter extends Android {
 }

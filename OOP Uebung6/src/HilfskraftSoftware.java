@@ -1,5 +1,8 @@
+/**
+ * HilfskraftSoftware
+ */
+
 class HilfskraftSoftware extends Software {
-	
     public HilfskraftSoftware() {
 	name = "HilfskraftSoftware";
     }
