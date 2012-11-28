@@ -1,9 +1,10 @@
+
 class AktorKit1kW extends AktorKit {
-    private Aktor aktor1kW;
 
     public AktorKit1kW() {
 	name = "Aktor Kit 1kW";
-	this.aktor1kW = new Aktor1kW();
+	aktoren = new Aktor[10];
+    aktoren[0] = new Aktor1kW();
     }
 
     public AktorKit allowed(Android android) {
