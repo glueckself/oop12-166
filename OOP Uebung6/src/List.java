@@ -27,7 +27,6 @@ class List<T extends Android> {
     	current = androids.get(serialnumber);
     	if(current != null) {
     		//android already in list
-    		//TODO modify current android
     	    Android modified = android.modify(current);
     	    Zertifikat zertifikat = android.software.zertifikat.modify(current.software.zertifikat);
     	    if(modified == null || zertifikat == null) return serial+" Couldn't modify android";

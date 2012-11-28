@@ -63,12 +63,18 @@ class Test {
     Android kaempfer3 = new Kaempfer(new HochfesteSkin(), new KaempferSoftware(), new ZertifikatStufe5(), new AktorKit12kW());
     Android bauarbeiter3 = new Bauarbeiter(new HochfesteSkin(), new BauarbeiterSoftware(), new ZertifikatStufe4(), new AktorKit1kW());
     Android objektbewacher4 = new Objektbewacher(new GepanzerteSkin(), new ObjektbewacherSoftware(), new ZertifikatStufe4(), new AktorKit4kW());
+    Android bauarbeiter4 = new Bauarbeiter(new HochfesteSkin(), new BauarbeiterSoftware(), new ZertifikatStufe3(), new AktorKit1kW());
+    Android leibwaechter3 = new Leibwaechter(new GepanzerteSkin(), new LeibwaechterSoftware(), new ZertifikatStufe4(), new AktorKit4kW());
+    Android transportarbeiter3 = new Transportarbeiter(new BeruehrungssensitiveSkin(), new TransportarbeiterSoftware(), new ZertifikatStufe3(), new AktorKit4kW());
     System.out.println(list.insert(objektbewacher3, 6));
     System.out.println(list.insert(gesellschafter3, 1));
     System.out.println(list.insert(kaempfer3, 6));
     System.out.println(list.insert(bauarbeiter3, 9));
     System.out.println(list.insert(bauarbeiter3, 8));
     System.out.println(list.insert(objektbewacher4, 2));
+    System.out.println(list.insert(bauarbeiter4, 4));
+    System.out.println(list.insert(leibwaechter3, 2));
+    System.out.println(list.insert(transportarbeiter3, 5));
     
     
     System.out.println();
