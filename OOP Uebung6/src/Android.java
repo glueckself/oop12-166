@@ -16,6 +16,7 @@ abstract class Android {
         serialnumber = serial;
         skin.serialnumber = serialnumber;
         software.serialnumber = serialnumber;
+        kit.serialnumber = serialnumber;
     }
     
     public abstract Android modify(Android android);

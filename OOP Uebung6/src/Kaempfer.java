@@ -11,6 +11,6 @@ class Kaempfer extends Beschuetzer {
         return android.modify(this);
     }
     public Android modify(Kaempfer kaempfer) {
-        return null;
+        return kaempfer;
     }
 }

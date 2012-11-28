@@ -21,7 +21,7 @@ class List<T extends Android> {
     	}
     	
     	if(android.kit == null) {
-    	    return serial+"Actors not allowed";
+    	    return serial+" Actors not allowed";
     	}
 
     	current = androids.get(serialnumber);
@@ -29,7 +29,7 @@ class List<T extends Android> {
     		//android already in list
     		//TODO modify current android
     	    Android modified = android.modify(current);
-	    Zertifikat zertifikat = android.software.zertifikat.modify(current.software.zertifikat);
+    	    Zertifikat zertifikat = android.software.zertifikat.modify(current.software.zertifikat);
     	    if(modified == null || zertifikat == null) return serial+" Couldn't modify android";
     	    else {
     	        modified.encode(serialnumber);
