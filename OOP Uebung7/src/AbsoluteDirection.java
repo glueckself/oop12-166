@@ -23,10 +23,9 @@ public enum AbsoluteDirection {
         this.value=value;
     }
     
-    public AbsoluteDirection rotate(RelativeDirection direction) {
-        int newValue = (direction.getValue()+value)%8;
+    public static AbsoluteDirection getDirectionFromInt(int index) {
         AbsoluteDirection retval;
-        switch(newValue) {
+        switch(index) {
             case 0: retval=TOP; break;
             case 1: retval=TOP_RIGHT; break;
             case 2: retval=RIGHT; break;
@@ -41,7 +40,12 @@ public enum AbsoluteDirection {
                 break;
         }
         return retval;
-        }
+        
+    }
+    
+    public AbsoluteDirection rotate(RelativeDirection direction) {
+        return getDirectionFromInt((direction.getValue()+value)%8);
+    }
 
     public int getValue() {
         return value;
