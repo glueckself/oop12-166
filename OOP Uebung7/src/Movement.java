@@ -1,3 +1,3 @@
 public interface Movement {
-  public Direction getDirection();
+  public RelativeDirection getDirection();
 }

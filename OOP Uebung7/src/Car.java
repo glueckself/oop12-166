@@ -1,6 +1,5 @@
 public class Car
   extends Player {
-
   private Movement moveGen;
   private Engine engine;
 
@@ -8,13 +7,13 @@ public class Car
     super(name,engine.getDelay());
     this.moveGen=movementGenerator;
     this.engine=engine;
+    engine.useInCar(this);
   }
 
+    @Override
   protected void step() {
-    return;
-  }
-
-  protected int getPoints() {
-    return 0;
+    RelativeDirection steeringDirection=moveGen.getDirection();
+    direction=engine.steer(steeringDirection);
+    movePlayer(direction);
   }
 }
