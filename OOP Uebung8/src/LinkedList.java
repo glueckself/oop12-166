@@ -23,6 +23,7 @@ class LinkedList {
      * @param elem Element to insert.
      */
     public void insert(Object elem) {
+	/*
 	LinkedListIterator iterator = this.iterator();
 
 	while(iterator.hasNext()) {
@@ -30,6 +31,7 @@ class LinkedList {
 		return;
 	    }
 	}
+	*/
 
 	if(head == null) {
 	    this.tail = this.head = new Node(elem);
@@ -45,7 +47,7 @@ class LinkedList {
      */
     public class LinkedListIterator {
 	//current element
-	private Node p = LinkedList.this.head;;
+	private Node p = LinkedList.this.head;
 
 	/**
 	 * Check if there is a next Element.
