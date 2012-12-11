@@ -1,8 +1,9 @@
 class Test {
     public static void main(String[] args) {
 	LinkedList list = new LinkedList();
-
-	Traktor traktor = new DrillmaschineBiogasTraktor(1);
+	
+	Drillmaschine drill1 = new Drillmaschine(4);
+	Traktor traktor = new BiogasTraktor(1,drill1);
 	Traktor output = null;
 
 	list.insert(traktor);

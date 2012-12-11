@@ -1,8 +1,8 @@
-abstract class BiogasTraktor extends Traktor {
+class BiogasTraktor extends Traktor {
     protected double gas;
 
-    public BiogasTraktor(int nummer) {
-	super(nummer);
+    public BiogasTraktor(int nummer, Role role) {
+	super(nummer, role);
     }
 
     public void increaseBiogas(double value) {

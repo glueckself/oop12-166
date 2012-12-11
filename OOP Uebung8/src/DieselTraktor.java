@@ -1,8 +1,8 @@
-abstract class DieselTraktor extends Traktor {
+class DieselTraktor extends Traktor {
     protected int diesel;
 
-    public DieselTraktor(int nummer) {
-	super(nummer);
+    public DieselTraktor(int nummer, Role role) {
+        super(nummer,role);
     }
 
     public void increaseDiesel(int value) {
