@@ -1,9 +1,15 @@
 abstract class Traktor {
     protected final int nummer;
     protected int betriebsstunden;
+    protected Role role;
 
-    public Traktor(int nummer) {
-	this.nummer = nummer;
+    public Traktor(int nummer, Role role) {
+        this.nummer = nummer;
+        this.role = role;
+    }
+    
+    public int getSeriennummer() {
+        return this.nummer;
     }
 
     public void increaseBetriebsstunden(int value) {
