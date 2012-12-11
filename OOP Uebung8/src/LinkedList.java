@@ -23,16 +23,6 @@ class LinkedList {
      * @param elem Element to insert.
      */
     public void insert(Object elem) {
-	/*
-	LinkedListIterator iterator = this.iterator();
-
-	while(iterator.hasNext()) {
-	    if(iterator.next() == elem) {
-		return;
-	    }
-	}
-	*/
-
 	if(head == null) {
 	    this.tail = this.head = new Node(elem);
 	} else {
