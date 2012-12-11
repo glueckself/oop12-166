@@ -36,4 +36,17 @@ class Bauernhof {
 	    }
 	}
     }
+
+    public void changeRole(int nummer, Role role) {
+	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
+	Traktor next = null;
+
+	while(iterator.hasNext()) {
+	    next = (Traktor)iterator.next();
+	    
+	    if(next.getSeriennummer() == traktor.getSeriennummer()) {
+		return;
+	    }
+	}
+    }
 }
