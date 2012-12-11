@@ -29,6 +29,7 @@ public abstract class Player implements Runnable {
   protected void movePlayer(AbsoluteDirection direction) {
       int newpoints;
       int xpos, ypos;
+      int orientation;
       int nextX, nextY;
       Field nextField;
       newpoints=currentField.removePlayer(this);
@@ -39,9 +40,10 @@ public abstract class Player implements Runnable {
         xpos=currentField.getXPos();
         ypos=currentField.getYPos();
         nextX=nextField.getXPos();
+        orientation=direction.getValue();
         nextY=nextField.getYPos();
       synchronized(System.out) {
-          System.out.println("Player \"" + name +"\": ("+xpos+","+ypos+") -> ("+nextX+","+nextY+").");
+          System.out.println("Player \"" + name +"\": O:"+orientation+", ("+xpos+","+ypos+") -> ("+nextX+","+nextY+").");
       }
       nextField.addPlayer(this,currentField);
       currentField=nextField;

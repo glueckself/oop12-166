@@ -1,11 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
- * @author srdj
+ * Absolute directions: up, down, left, right, etc.
+ * 
+ * @detail Every direction has also an integer representation.
+ * @author Srdjan Markovic
  */
 public enum AbsoluteDirection {
     TOP(0),
@@ -19,10 +16,19 @@ public enum AbsoluteDirection {
     
     private int value;
     
+    /**
+     * Assigns a integer value to a AbsoluteDirection-Object.
+     * @param value Integer represntation to be assigned.
+     */
     private AbsoluteDirection(int value) {
         this.value=value;
     }
     
+    /**
+     * Converts a integer to AbsoluteDirection.
+     * @param index Index of direction.
+     * @return AbsoluteDirection-Object corresponding to index.
+     */
     public static AbsoluteDirection getDirectionFromInt(int index) {
         AbsoluteDirection retval;
         switch(index) {
@@ -43,10 +49,19 @@ public enum AbsoluteDirection {
         
     }
     
+    /**
+     * Returns a new AbsoluteDirection rotated from the current one.
+     * @param direction Direction to rotate to.
+     * @return Rotated direction.
+     */
     public AbsoluteDirection rotate(RelativeDirection direction) {
         return getDirectionFromInt((direction.getValue()+value)%8);
     }
 
+    /**
+     * Integer representation of a direction.
+     * @return Integer of direction.
+     */
     public int getValue() {
         return value;
     }

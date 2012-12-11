@@ -1,11 +1,23 @@
-
 import java.util.ArrayList;
 
+/**
+ * Carriageways are playgrounds for the simulation.
+ * 
+ * A Carriageway is a two-dimensional grid of fields, which have 8 neighbours
+ * (top, top-right, right, bottom-right, bottom, bottom-left, left, top-left).
+ * 
+ * @author srdj
+ */
 public class Carriageway {
 
     private Field[][] fields;
     private ArrayList<Thread> players;
 
+    /**
+     * Creates a new carriageway.
+     * @param x Horizontal size of the carriageway.
+     * @param y Vertical size of the carriageway.
+     */
     public Carriageway(int x, int y) {
         if (x < 1) {
             throw new IllegalArgumentException("X must be > 0");
@@ -46,6 +58,14 @@ public class Carriageway {
         }
     }
 
+    /**
+     * Adds a player to a field.
+     * 
+     * @detail If the requested field is invalid, the player is added to (0,0).
+     * @param x Horizontal position of the player.
+     * @param y Vertical position of the player.
+     * @param player Player to be added.
+     */
     public void addPlayer(int x, int y, Player player) {
         Thread playerThread;
         try {
@@ -61,6 +81,11 @@ public class Carriageway {
         players.add(playerThread);
     }
 
+    /**
+     * Aborts a game at any given time.
+     * 
+     * @detail Sends a interrupt to all players, so that they can show stats.
+     */
     public void endGame() {
         for (Thread player : players) {
             player.interrupt();

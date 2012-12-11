@@ -22,8 +22,6 @@ public class FastEngine
                 // no break here, as we just need to set lastDirection and
                 // rotate as normal
                 case FORWARD:
-                case BEAR_LEFT:
-                case BEAR_RIGHT:
                     retval = car.getDirection().rotate(direction);
                     break;
                 default:
