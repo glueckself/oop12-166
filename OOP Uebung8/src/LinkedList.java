@@ -81,4 +81,3 @@ class LinkedList {
 	return new LinkedListIterator();
     }
 }
->>>>>>> a038c047197cfc3a69c99f8129ec402bb81adf6a
