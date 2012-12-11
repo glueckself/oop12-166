@@ -14,5 +14,10 @@ class Test {
 	    output = (Traktor)iterator.next();
 	    System.out.println(output.getBetriebsstunden());
 	}
+	
+	MetaPrinter printer = new MetaPrinter();
+	printer.print(printer);
+	printer.print(traktor);
+	
     }
 }

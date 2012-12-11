@@ -15,7 +15,7 @@ class Bauernhof {
 	    next = (Traktor)iterator.next();
 
 	    //nicht einfuegen wenn seriennummer bereits vorhanden
-	    if(next.getSeriennummer() == traktor.getSeriennummer()) {
+	    if(next.getNummer() == traktor.getNummer()) {
 		return;
 	    }
 	}
@@ -30,21 +30,8 @@ class Bauernhof {
 	while(iterator.hasNext()) {
 	    next = (Traktor)iterator.next();
 	    
-	    if(next.getSeriennummer() == traktor.getSeriennummer()) {
+	    if(next.getNummer() == nummer) {
 		iterator.remove();
-		return;
-	    }
-	}
-    }
-
-    public void changeRole(int nummer, Role role) {
-	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
-	Traktor next = null;
-
-	while(iterator.hasNext()) {
-	    next = (Traktor)iterator.next();
-	    
-	    if(next.getSeriennummer() == traktor.getSeriennummer()) {
 		return;
 	    }
 	}
