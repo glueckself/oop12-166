@@ -8,7 +8,7 @@ abstract class Traktor {
         this.role = role;
     }
     
-    public int getSeriennummer() {
+    public int getNummer() {
         return this.nummer;
     }
 
@@ -21,5 +21,13 @@ abstract class Traktor {
 
     public int getBetriebsstunden() {
 	return this.betriebsstunden;
+    }
+    
+    Role getRole() {
+        return this.role;
+    }
+    
+    void changeRole(Role role) {
+        this.role = role;
     }
 }
