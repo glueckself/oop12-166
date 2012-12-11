@@ -24,5 +24,9 @@ class Test {
 	    next.increaseBetriebsstunden(1, 10);
 	    next.getBetriebsstunden();
 	}
+
+	MetaPrinter printer = new MetaPrinter();
+	printer.print(printer);
+	printer.print(traktor);
     }
 }

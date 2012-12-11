@@ -1,27 +1,20 @@
-/**
- * Simple set.
- *
- * @author Julian Grosshauser
- */
+@Member("Julian Großhauser")
 class LinkedList {
     private class Node {
 	private Object elem;
 	private Node next;
 	private Node prev;
-
+	
+	@Member("Julian Großhauser")
 	private Node(Object elem) {
 	    this.elem = elem;
 	}
     }
-
+    
     private Node head;
     private Node tail;
 
-    /**
-     * Insert element into list.
-     *
-     * @param elem Element to insert.
-     */
+    @Member("Julian Großhauser")
     public void insert(Object elem) {
 	if(head == null) {
 	    this.tail = this.head = new Node(elem);
@@ -32,28 +25,17 @@ class LinkedList {
 	}
     }
 
-    /**
-     * Iterates over linked list.
-     */
+    @Member("Julian Großhauser")
     public class LinkedListIterator {
 	//current element
 	private Node p = LinkedList.this.head;
 
-	/**
-	 * Check if there is a next Element.
-	 *
-	 * @return boolean True if there is a next element, false otherwise.
-	 */
+	@Member("Julian Großhauser")
 	public boolean hasNext() {
 	    return p != null;
 	}
 
-	/**
-	 * Get next Element.
-	 * Sets current Element accordingly.
-	 *
-	 * @return Object Next Element.
-	 */
+	@Member("Julian Großhauser")
 	public Object next() {
 	    if(this.p == null) {
 		return null;
@@ -63,7 +45,8 @@ class LinkedList {
 	    this.p = this.p.next;
 	    return elem;
 	}
-
+	
+	@Member("Julian Großhauser")
 	public void remove() {
 	    Node elem;
 
@@ -93,12 +76,9 @@ class LinkedList {
 	}
     }
 
-    /**
-     * Get iterator.
-     *
-     * @return LinkedListIterator Iterator.
-     */
+    @Member("Julian Großhauser")
     public LinkedListIterator iterator() {
 	return new LinkedListIterator();
     }
 }
+>>>>>>> a038c047197cfc3a69c99f8129ec402bb81adf6a
