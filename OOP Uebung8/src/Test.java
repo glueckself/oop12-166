@@ -1,18 +1,28 @@
 class Test {
     public static void main(String[] args) {
-	LinkedList list = new LinkedList();
-	
+	LinkedList bauernhoefe = new LinkedList();
+
+	Bauernhof bauernhof1 = new Bauernhof("Bauernhof1");
+	Bauernhof next = null;
+
 	Drillmaschine drill1 = new Drillmaschine(4);
-	Traktor traktor = new BiogasTraktor(1,drill1);
-	Traktor output = null;
+	Traktor biogas1 = new BiogasTraktor(1,drill1);
 
-	list.insert(traktor);
+	bauernhoefe.insert(bauernhof1);
 
-	LinkedList.LinkedListIterator iterator = list.iterator();
+	LinkedList.LinkedListIterator iterator = bauernhoefe.iterator();
 
 	while(iterator.hasNext()) {
-	    output = (Traktor)iterator.next();
-	    System.out.println(output.getBetriebsstunden());
+	    next = (Bauernhof)iterator.next();
+	    next.insert(biogas1);
+	}
+
+	iterator = bauernhoefe.iterator();
+
+	while(iterator.hasNext()) {
+	    next = (Bauernhof)iterator.next();
+	    next.increaseBetriebsstunden(1, 10);
+	    next.getBetriebsstunden();
 	}
     }
 }
