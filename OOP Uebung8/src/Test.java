@@ -27,6 +27,6 @@ class Test {
 
 	MetaPrinter printer = new MetaPrinter();
 	printer.print(printer);
-	printer.print(traktor);
+	printer.print(biogas1);
     }
 }
