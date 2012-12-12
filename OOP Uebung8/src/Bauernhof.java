@@ -43,6 +43,7 @@ class Bauernhof {
 	}
     }
 
+    /*
     public void change(Traktor traktor) {
 	Traktor oldTraktor = this.getTraktor(traktor.getNummer());
 
@@ -51,13 +52,14 @@ class Bauernhof {
 	    this.insert(traktor);
 	}
     }
+    */
 
     public void changeRole(int nummer, Role role) {
 	Traktor traktor = this.getTraktor(nummer);
 	
 	if(traktor != null) {
 	    traktor.changeRole(role);
-	    this.change(traktor);
+	    //this.change(traktor);
 	}
     }
 
@@ -66,7 +68,7 @@ class Bauernhof {
 
 	if(traktor != null) {
 	    traktor.increaseBetriebsstunden(betriebsstunden);
-	    this.change(traktor);
+	    //this.change(traktor);
 	}
     }
 
@@ -74,7 +76,7 @@ class Bauernhof {
 	if(this.getTraktor(nummer) instanceof DieselTraktor) {
 	    DieselTraktor traktor = (DieselTraktor)this.getTraktor(nummer);
 	    traktor.increaseDiesel(diesel);
-	    this.change(traktor);
+	    //this.change(traktor);
 	}
     }
 
@@ -82,7 +84,7 @@ class Bauernhof {
 	if(this.getTraktor(nummer) instanceof BiogasTraktor) {
 	    BiogasTraktor traktor = (BiogasTraktor)this.getTraktor(nummer);
 	    traktor.increaseBiogas(biogas);
-	    this.change(traktor);
+	    //this.change(traktor);
 	}
     }
 
@@ -128,6 +130,41 @@ class Bauernhof {
 	System.out.print("Durchschnittliche Betriebsstunden aller Duengerstreuer: ");
 	if(duengerstreuerCount != 0) {
 	    System.out.println((double)duengerstreuerBetriebsstunden / duengerstreuerCount);
+	} else {
+	    System.out.println("0");
+	}
+    }
+
+    public void getBetriebsstundenArt() {
+	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
+	Traktor next = null;
+	int betriebsstundenDiesel = 0;
+	int betriebsstundenBiogas = 0;
+	int countDiesel = 0;
+	int countBiogas = 0;
+
+	while(iterator.hasNext()) {
+	    next = (Traktor)iterator.next();
+
+	    if(next instanceof DieselTraktor) {
+		betriebsstundenDiesel += next.getBetriebsstunden();
+		countDiesel++;
+	    } else {
+		betriebsstundenBiogas += next.getBetriebsstunden();
+		countBiogas++;
+	    }
+	}
+
+	System.out.print("Durchschnittliche Betriebsstunden aller Diesel Traktoren: ");
+	if(countDiesel != 0) {
+	    System.out.println((double)betriebsstundenDiesel / countDiesel);
+	} else {
+	    System.out.println("0");
+	}
+
+	System.out.print("Durchschnittliche Betriebsstunden aller Biogas Traktoren: ");
+	if(countBiogas != 0) {
+	    System.out.println((double)betriebsstundenBiogas / countBiogas);
 	} else {
 	    System.out.println("0");
 	}
