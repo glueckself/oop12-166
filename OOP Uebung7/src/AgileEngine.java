@@ -1,6 +1,6 @@
 /**
  * The AgileEngine is the more agile, but slower engine.
- * @author Julian Großhauser
+ * @author Julian Grosshauser
  */
 public class AgileEngine
     extends Engine {
