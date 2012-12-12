@@ -1,16 +1,20 @@
+@Member("Julian Großhauser")
 class Bauernhof {
     private final String name;
     private LinkedList traktoren;
 
+    @Member("Srdjan Markovic")
     public Bauernhof(String name) {
 	this.name = name;
 	this.traktoren = new LinkedList();
     }
 
+    @Member("Srdjan Markovic")
     public String getName() {
 	return this.name;
     }
 
+    @Member("Srdjan Markovic")
     public Traktor getTraktor(int nummer) {
 	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
 	Traktor next = null;
@@ -26,12 +30,14 @@ class Bauernhof {
 	return null;
     }
 
+    @Member("Srdjan Markovic")
     public void insert(Traktor traktor) {
 	if(this.getTraktor(traktor.getNummer()) == null) {
 	    this.traktoren.insert(traktor);
 	}
     }
 
+    @Member("Srdjan Markovic")
     public void remove(int nummer) {
 	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
 	Traktor next = null;
@@ -46,6 +52,7 @@ class Bauernhof {
 	}
     }
 
+    @Member("Srdjan Markovic")
     public void changeRole(int nummer, Role role) {
 	Traktor traktor = this.getTraktor(nummer);
 	
@@ -54,6 +61,7 @@ class Bauernhof {
 	}
     }
 
+    @Member("Julian Großhauser")
     public void increaseBetriebsstunden(int nummer, int betriebsstunden) {
 	Traktor traktor = this.getTraktor(nummer);
 
@@ -62,6 +70,7 @@ class Bauernhof {
 	}
     }
 
+    @Member("Julian Großhauser")
     public void increaseDiesel(int nummer, int diesel) {
 	if(this.getTraktor(nummer) instanceof DieselTraktor) {
 	    DieselTraktor traktor = (DieselTraktor)this.getTraktor(nummer);
@@ -69,6 +78,7 @@ class Bauernhof {
 	}
     }
 
+    @Member("Julian Großhauser")
     public void increaseBiogas(int nummer, double biogas) {
 	if(this.getTraktor(nummer) instanceof BiogasTraktor) {
 	    BiogasTraktor traktor = (BiogasTraktor)this.getTraktor(nummer);
@@ -76,6 +86,7 @@ class Bauernhof {
 	}
     }
 
+    @Member("Julian Großhauser")
     public void getBetriebsstunden() {
 	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
 	Traktor next = null;
@@ -123,6 +134,7 @@ class Bauernhof {
 	}
     }
 
+    @Member("Julian Großhauser")
     public void getBetriebsstundenArt() {
 	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
 	Traktor next = null;
@@ -158,6 +170,7 @@ class Bauernhof {
 	}
     }
 
+    @Member("Julian Großhauser")
     public void getDiesel() {
 	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
 	Object next = null;
@@ -209,6 +222,7 @@ class Bauernhof {
 	}
     }
 
+    @Member("Julian Großhauser")
     public void getBiogas() {
 	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
 	Object next = null;
@@ -260,6 +274,7 @@ class Bauernhof {
 	}
     }
 
+    @Member("Alex Huber")
     public void getMinMaxSaescharen() {
 	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
 	Traktor next = null;
@@ -317,6 +332,7 @@ class Bauernhof {
 	System.out.println("Max. Saeschare der Biogas Traktoren: " + maxSaeschareBiogas);
     }
 
+    @Member("Julian Großhauser")
     public void getKapazitaet() {
 	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
 	Traktor next = null;

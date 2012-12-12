@@ -1,11 +1,11 @@
-@Member("Julian Großhauser")
+@Member("Srdjan Markovic")
 class LinkedList {
     private class Node {
 	private Object elem;
 	private Node next;
 	private Node prev;
 	
-	@Member("Julian Großhauser")
+	@Member("Srdjan Markovic")
 	private Node(Object elem) {
 	    this.elem = elem;
 	}
@@ -14,7 +14,7 @@ class LinkedList {
     private Node head;
     private Node tail;
 
-    @Member("Julian Großhauser")
+    @Member("Srdjan Markovic")
     public void insert(Object elem) {
 	if(head == null) {
 	    this.tail = this.head = new Node(elem);
@@ -25,17 +25,17 @@ class LinkedList {
 	}
     }
 
-    @Member("Julian Großhauser")
+    @Member("Srdjan Markovic")
     public class LinkedListIterator {
 	//current element
 	private Node p = LinkedList.this.head;
 	
-	@Member("Julian Großhauser")
+	@Member("Srdjan Markovic")
 	public boolean hasNext() {
 	    return p != null;
 	}
 
-	@Member("Julian Großhauser")
+	@Member("Srdjan Markovic")
 	public Object next() {
 	    if(this.p == null) {
 		return null;
@@ -46,7 +46,7 @@ class LinkedList {
 	    return elem;
 	}
 	
-	@Member("Julian Großhauser")
+	@Member("Srdjan Markovic")
 	public void remove() {
         //removes prev element
         Node elem;
@@ -73,7 +73,7 @@ class LinkedList {
     }
     }
 
-    @Member("Julian Großhauser")
+    @Member("Srdjan Markovic")
     public LinkedListIterator iterator() {
 	return new LinkedListIterator();
     }
