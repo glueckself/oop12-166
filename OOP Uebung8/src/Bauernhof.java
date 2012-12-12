@@ -23,8 +23,7 @@ class Bauernhof {
 	    }
 	}
 
-	//null
-	return next;
+	return null;
     }
 
     public void insert(Traktor traktor) {
@@ -275,4 +274,67 @@ class Bauernhof {
 	    System.out.println("0");
 	}
     }
+
+    /*
+    public void getMinMaxSaescharen() {
+	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
+	Traktor next = null;
+	Drillmaschine drillmaschine = null;
+	int minSaeschare = 0;
+	int maxSaeschare = 0;
+	int minSaeschareDiesel = 0;
+	int minSaeschareDiesel = 0;
+	int maxSaeschareBiogas = 0;
+	int maxSaeschareBiogas = 0;
+
+	while(iterator.hasNext()) {
+	    next = (Traktor)iterator.next();
+
+	    if(next.getRole() instanceof Drillmaschine) {
+		//drillmaschine = (Drillmaschine)next.getRole();
+		minSaeschare = next.getRole().getSaeschare();
+		maxSaeschare = minSaeschare;
+		break;
+	    }
+	}
+
+	while(iterator.hasNext()) {
+	    next = (Traktor)iterator.next();
+
+	    if(next.getRole() instanceof Drillmaschine) {
+		biogas += traktor.getBiogas();
+		count++;
+
+		if(traktor.getRole() instanceof Drillmaschine) {
+		    biogasDrillmaschine += traktor.getBiogas();
+		    countDrillmaschine++;
+		} else {
+		   biogasDuengerstreuer += traktor.getBiogas(); 
+		   countDuengerstreuer++;
+		}
+	    }
+	}
+
+	System.out.print("Durchschnittlicher Biogasverbrauch aller Biogas Traktoren: ");
+	if(count != 0) {
+	    System.out.println(biogas / count);
+	} else {
+	    System.out.println("0");
+	}
+
+	System.out.print("Durchschnittlicher Biogasverbrauch aller Biogas Drillmaschinen: ");
+	if(countDrillmaschine != 0) {
+	    System.out.println(biogasDrillmaschine / countDrillmaschine);
+	} else {
+	    System.out.println("0");
+	}
+
+	System.out.print("Durchschnittlicher Biogasverbrauch aller Biogas Duengerstreuer: ");
+	if(countDuengerstreuer != 0) {
+	    System.out.println(biogasDuengerstreuer / countDuengerstreuer);
+	} else {
+	    System.out.println("0");
+	}
+    }
+    */
 }
