@@ -96,21 +96,21 @@ class Bauernhof {
 	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
 	Traktor next = null;
 	int betriebsstunden = 0;
-	int drillmaschineBetriebsstunden = 0;
-	int duengerstreuerBetriebsstunden = 0;
+	int betriebsstundenDrillmaschine = 0;
+	int betriebsstundenDuengerstreuer = 0;
 	int count = 0;
-	int drillmaschineCount = 0;
-	int duengerstreuerCount = 0;
+	int countDrillmaschine = 0;
+	int countDuengerstreuer = 0;
 
 	while(iterator.hasNext()) {
 	    next = (Traktor)iterator.next();
 
 	    if(next.getRole() instanceof Drillmaschine) {
-		drillmaschineBetriebsstunden += next.getBetriebsstunden();
-		drillmaschineCount++;
+		betriebsstundenDrillmaschine += next.getBetriebsstunden();
+		countDrillmaschine++;
 	    } else {
-		duengerstreuerBetriebsstunden += next.getBetriebsstunden();
-		duengerstreuerCount++;
+		betriebsstundenDuengerstreuer += next.getBetriebsstunden();
+		countDuengerstreuer++;
 	    }
 	    
 	    betriebsstunden += next.getBetriebsstunden();
@@ -125,15 +125,15 @@ class Bauernhof {
 	}
 
 	System.out.print("Durchschnittliche Betriebsstunden aller Drillmaschinen: ");
-	if(drillmaschineCount != 0) {
-	    System.out.println((double)drillmaschineBetriebsstunden / drillmaschineCount);
+	if(countDrillmaschine != 0) {
+	    System.out.println((double)betriebsstundenDrillmaschine / countDrillmaschine);
 	} else {
 	    System.out.println("0");
 	}
 
 	System.out.print("Durchschnittliche Betriebsstunden aller Duengerstreuer: ");
-	if(duengerstreuerCount != 0) {
-	    System.out.println((double)duengerstreuerBetriebsstunden / duengerstreuerCount);
+	if(countDuengerstreuer != 0) {
+	    System.out.println((double)betriebsstundenDuengerstreuer / countDuengerstreuer);
 	} else {
 	    System.out.println("0");
 	}
@@ -169,6 +169,57 @@ class Bauernhof {
 	System.out.print("Durchschnittliche Betriebsstunden aller Biogas Traktoren: ");
 	if(countBiogas != 0) {
 	    System.out.println((double)betriebsstundenBiogas / countBiogas);
+	} else {
+	    System.out.println("0");
+	}
+    }
+
+    public void getDiesel() {
+	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
+	Object next = null;
+	DieselTraktor traktor = null;
+	int diesel = 0;
+	int dieselDrillmaschine = 0;
+	int dieselDuengerstreuer = 0;
+	int count = 0;
+	int countDrillmaschine = 0;
+	int countDuengerstreuer = 0;
+
+	while(iterator.hasNext()) {
+	    next = iterator.next();
+
+	    if(next instanceof DieselTraktor) {
+		traktor = (DieselTraktor)next;
+		diesel += traktor.getDiesel();
+		count++;
+
+		if(traktor.getRole() instanceof Drillmaschine) {
+		    dieselDrillmaschine += traktor.getDiesel();
+		    countDrillmaschine++;
+		} else {
+		   dieselDuengerstreuer += traktor.getDiesel(); 
+		   countDuengerstreuer++;
+		}
+	    }
+	}
+
+	System.out.print("Durchschnittlicher Dieselverbrauch aller Diesel Traktoren: ");
+	if(count != 0) {
+	    System.out.println((double)diesel / count);
+	} else {
+	    System.out.println("0");
+	}
+
+	System.out.print("Durchschnittlicher Dieselverbrauch aller Diesel Drillmaschinen: ");
+	if(countDrillmaschine != 0) {
+	    System.out.println((double)dieselDrillmaschine / countDrillmaschine);
+	} else {
+	    System.out.println("0");
+	}
+
+	System.out.print("Durchschnittlicher Dieselverbrauch aller Diesel Duengerstreuer: ");
+	if(countDuengerstreuer != 0) {
+	    System.out.println((double)dieselDuengerstreuer / countDuengerstreuer);
 	} else {
 	    System.out.println("0");
 	}
