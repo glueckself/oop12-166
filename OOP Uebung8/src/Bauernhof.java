@@ -275,7 +275,6 @@ class Bauernhof {
 	}
     }
 
-    /*
     public void getMinMaxSaescharen() {
 	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
 	Traktor next = null;
@@ -283,58 +282,142 @@ class Bauernhof {
 	int minSaeschare = 0;
 	int maxSaeschare = 0;
 	int minSaeschareDiesel = 0;
-	int minSaeschareDiesel = 0;
-	int maxSaeschareBiogas = 0;
+	int maxSaeschareDiesel = 0;
+	int minSaeschareBiogas = 0;
 	int maxSaeschareBiogas = 0;
 
+	// erste werte fuer min und max finden
 	while(iterator.hasNext()) {
 	    next = (Traktor)iterator.next();
 
 	    if(next.getRole() instanceof Drillmaschine) {
-		//drillmaschine = (Drillmaschine)next.getRole();
-		minSaeschare = next.getRole().getSaeschare();
+		drillmaschine = (Drillmaschine)next.getRole();
+		minSaeschare = drillmaschine.getSaeschare();
 		maxSaeschare = minSaeschare;
 		break;
 	    }
 	}
 
+	iterator = this.traktoren.iterator();
+
+	while(iterator.hasNext()) {
+	    next = (Traktor)iterator.next();
+
+	    if(next instanceof DieselTraktor && next.getRole() instanceof Drillmaschine) {
+		drillmaschine = (Drillmaschine)next.getRole();
+		minSaeschareDiesel = drillmaschine.getSaeschare();
+		maxSaeschareDiesel = minSaeschareDiesel;
+		break;
+	    }
+	}
+
+	iterator = this.traktoren.iterator();
+
+	while(iterator.hasNext()) {
+	    next = (Traktor)iterator.next();
+
+	    if(next instanceof DieselTraktor && next.getRole() instanceof Drillmaschine) {
+		drillmaschine = (Drillmaschine)next.getRole();
+		minSaeschareBiogas = drillmaschine.getSaeschare();
+		maxSaeschareBiogas = minSaeschareBiogas;
+		break;
+	    }
+	}
+
+	iterator = this.traktoren.iterator();
+
 	while(iterator.hasNext()) {
 	    next = (Traktor)iterator.next();
 
 	    if(next.getRole() instanceof Drillmaschine) {
-		biogas += traktor.getBiogas();
-		count++;
+		drillmaschine = (Drillmaschine)next.getRole();
 
-		if(traktor.getRole() instanceof Drillmaschine) {
-		    biogasDrillmaschine += traktor.getBiogas();
-		    countDrillmaschine++;
+		if(drillmaschine.getSaeschare() < minSaeschare) {
+		    minSaeschare = drillmaschine.getSaeschare();
+		}
+
+		if(drillmaschine.getSaeschare() > maxSaeschare) {
+		    maxSaeschare = drillmaschine.getSaeschare();
+		}
+
+		if(next instanceof DieselTraktor) {
+		    if(drillmaschine.getSaeschare() < minSaeschareDiesel) {
+			minSaeschareDiesel = drillmaschine.getSaeschare();
+		    }
+
+		    if(drillmaschine.getSaeschare() > maxSaeschareDiesel) {
+			maxSaeschareDiesel = drillmaschine.getSaeschare();
+		    }
 		} else {
-		   biogasDuengerstreuer += traktor.getBiogas(); 
-		   countDuengerstreuer++;
+		    if(drillmaschine.getSaeschare() < minSaeschareBiogas) {
+			minSaeschareBiogas = drillmaschine.getSaeschare();
+		    }
+
+		    if(drillmaschine.getSaeschare() > maxSaeschareBiogas) {
+			maxSaeschareBiogas = drillmaschine.getSaeschare();
+		    }
 		}
 	    }
 	}
 
-	System.out.print("Durchschnittlicher Biogasverbrauch aller Biogas Traktoren: ");
+	System.out.print("Min. Saeschare insgesamt: " + minSaeschare);
+	System.out.print("Max. Saeschare insgesamt: " + maxSaeschare);
+
+	System.out.print("Min. Saeschare der Diesel Traktoren: " + minSaeschareDiesel);
+	System.out.print("Max. Saeschare der Diesel Traktoren: " + maxSaeschareDiesel);
+
+	System.out.print("Min. Saeschare der Biogas Traktoren: " + minSaeschareBiogas);
+	System.out.print("Max. Saeschare der Biogas Traktoren: " + maxSaeschareBiogas);
+    }
+
+    public void getKapazitaet() {
+	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
+	Traktor next = null;
+	Duengerstreuer duengerstreuer = null;
+	double kapazitaet = 0;
+	double kapazitaetDiesel = 0;
+	double kapazitaetBiogas = 0;
+	int count = 0;
+	int countDiesel = 0;
+	int countBiogas = 0;
+
+	while(iterator.hasNext()) {
+	    next = (Traktor)iterator.next();
+
+	    if(next.getRole() instanceof Duengerstreuer) {
+		duengerstreuer = (Duengerstreuer)next.getRole();
+		kapazitaet += duengerstreuer.getKapazitaet();
+		count++;
+
+		if(next instanceof DieselTraktor) {
+		    kapazitaetDiesel += duengerstreuer.getKapazitaet();
+		    countDiesel++;
+		} else {
+		    kapazitaetBiogas += duengerstreuer.getKapazitaet();
+		    countBiogas++;
+		}
+	    }
+	}
+
+	System.out.print("Durchschnittliche Fassungskapazitaet des Duengerbehaelters insgesamt: ");
 	if(count != 0) {
-	    System.out.println(biogas / count);
+	    System.out.println(kapazitaet / count);
 	} else {
 	    System.out.println("0");
 	}
 
-	System.out.print("Durchschnittlicher Biogasverbrauch aller Biogas Drillmaschinen: ");
-	if(countDrillmaschine != 0) {
-	    System.out.println(biogasDrillmaschine / countDrillmaschine);
+	System.out.print("Durchschnittliche Fassungskapazitaet des Duengerbehaelters aller Diesel Traktoren: ");
+	if(countDiesel != 0) {
+	    System.out.println(kapazitaetDiesel / countDiesel);
 	} else {
 	    System.out.println("0");
 	}
 
-	System.out.print("Durchschnittlicher Biogasverbrauch aller Biogas Duengerstreuer: ");
-	if(countDuengerstreuer != 0) {
-	    System.out.println(biogasDuengerstreuer / countDuengerstreuer);
+	System.out.print("Durchschnittliche Fassungskapazitaet des Duengerbehaelters aller Biogas Traktoren: ");
+	if(countBiogas != 0) {
+	    System.out.println(kapazitaetBiogas / countBiogas);
 	} else {
 	    System.out.println("0");
 	}
     }
-    */
 }
