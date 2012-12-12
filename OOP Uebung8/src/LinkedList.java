@@ -48,29 +48,29 @@ class LinkedList {
 	
 	@Member("Julian Großhauser")
 	public void remove() {
-	    //removes prev element
-	    Node elem;
+        //removes prev element
+        Node elem;
 
-	    //last element
-	    if(this.p == null) {
-		LinkedList.this.tail = LinkedList.this.tail.prev;
-		LinkedList.this.tail.next = null;
-		return;
-	    }
+        //last element
+        if(this.p == null) {
+        LinkedList.this.tail = LinkedList.this.tail.prev;
+        LinkedList.this.tail.next = null;
+        return;
+        }
 
-	    if(this.p.prev.prev == null) {
-	      //remove first element
-	      LinkedList.this.head=this.p;
-	      if(LinkedList.this.head != null) {
-		LinkedList.this.head.prev = null;
-	      }
-	    } else {
-	      //remove element somewhere in the list
-	      elem = this.p.prev.prev;
-	      elem.next = this.p;
-		elem.next.prev=elem;
-	    }
-	}
+        if(this.p.prev.prev == null) {
+          //remove first element
+          LinkedList.this.head=this.p;
+          if(LinkedList.this.head != null) {
+        LinkedList.this.head.prev = null;
+          }
+        } else {
+          //remove element somewhere in the list
+          elem = this.p.prev.prev;
+          elem.next = this.p;
+        elem.next.prev=elem;
+        }
+    }
     }
 
     @Member("Julian Großhauser")

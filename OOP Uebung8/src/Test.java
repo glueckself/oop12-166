@@ -54,34 +54,62 @@ class Test {
     get(bauernhoefe,"Bauernhof3").insert(diesel11);
     get(bauernhoefe,"Bauernhof3").insert(biogas12);
 	
+    get(bauernhoefe,"Bauernhof1").increaseBetriebsstunden(1, 4);
+    get(bauernhoefe,"Bauernhof1").increaseBetriebsstunden(2, 3);
+    get(bauernhoefe,"Bauernhof1").increaseBetriebsstunden(3, 9);
+    get(bauernhoefe,"Bauernhof1").increaseBetriebsstunden(4, 6);
+    get(bauernhoefe,"Bauernhof1").increaseBetriebsstunden(5, 7);
+    get(bauernhoefe,"Bauernhof2").increaseBetriebsstunden(6, 14);
+    get(bauernhoefe,"Bauernhof2").increaseBetriebsstunden(7, 6);
+    get(bauernhoefe,"Bauernhof2").increaseBetriebsstunden(8, 9);
+    get(bauernhoefe,"Bauernhof2").increaseBetriebsstunden(9, 8);
+    get(bauernhoefe,"Bauernhof3").increaseBetriebsstunden(10, 7);
+    get(bauernhoefe,"Bauernhof3").increaseBetriebsstunden(11, 9);
+    get(bauernhoefe,"Bauernhof3").increaseBetriebsstunden(12, 12);
     
+    get(bauernhoefe,"Bauernhof1").increaseBiogas(1, 12.2);
+    get(bauernhoefe,"Bauernhof1").increaseDiesel(2, 11);
+    get(bauernhoefe,"Bauernhof1").increaseBiogas(3, 6.3);
+    get(bauernhoefe,"Bauernhof1").increaseBiogas(4, 9.6);
+    get(bauernhoefe,"Bauernhof1").increaseDiesel(5, 9);
+    get(bauernhoefe,"Bauernhof2").increaseDiesel(6, 25);
+    get(bauernhoefe,"Bauernhof2").increaseDiesel(7, 4);
+    get(bauernhoefe,"Bauernhof2").increaseBiogas(8, 11.7);
+    get(bauernhoefe,"Bauernhof2").increaseBiogas(9, 4.0);
+    get(bauernhoefe,"Bauernhof3").increaseDiesel(10, 8);
+    get(bauernhoefe,"Bauernhof3").increaseDiesel(11, 13);
+    get(bauernhoefe,"Bauernhof3").increaseBiogas(12, 8.9);
+     
     get(bauernhoefe,"Bauernhof1").remove(1);
     get(bauernhoefe,"Bauernhof1").changeRole(4, drill8);
     get(bauernhoefe,"Bauernhof1").changeRole(2, drill9);
-    
     get(bauernhoefe,"Bauernhof3").remove(12);
     get(bauernhoefe,"Bauernhof3").changeRole(10, duenger5_6);
-    
-    get(bauernhoefe,"Bauernhof1").increaseBetriebsstunden(1, 4);
-    get(bauernhoefe,"Bauernhof1").increaseBetriebsstunden(2, 3);
-    get(bauernhoefe,"Bauernhof1").increaseBetriebsstunden(4, 9);
 	
     
     
-    
-    
-    
-	
-	
+
 	System.out.println("Bauernhof1");
 	get(bauernhoefe,"Bauernhof1").getBetriebsstunden();
     get(bauernhoefe,"Bauernhof1").getBetriebsstundenArt();
+    get(bauernhoefe,"Bauernhof1").getDiesel();
+    get(bauernhoefe,"Bauernhof1").getBiogas();
+    get(bauernhoefe,"Bauernhof1").getMinMaxSaescharen();
+    get(bauernhoefe,"Bauernhof1").getKapazitaet();
     System.out.println("Bauernhof2");
     get(bauernhoefe,"Bauernhof2").getBetriebsstunden();
     get(bauernhoefe,"Bauernhof2").getBetriebsstundenArt();
+    get(bauernhoefe,"Bauernhof2").getDiesel();
+    get(bauernhoefe,"Bauernhof2").getBiogas();
+    get(bauernhoefe,"Bauernhof2").getMinMaxSaescharen();
+    get(bauernhoefe,"Bauernhof2").getKapazitaet();
     System.out.println("Bauernhof3");
     get(bauernhoefe,"Bauernhof3").getBetriebsstunden();
     get(bauernhoefe,"Bauernhof3").getBetriebsstundenArt();
+    get(bauernhoefe,"Bauernhof3").getDiesel();
+    get(bauernhoefe,"Bauernhof3").getBiogas();
+    get(bauernhoefe,"Bauernhof3").getMinMaxSaescharen();
+    get(bauernhoefe,"Bauernhof3").getKapazitaet();
 
 	MetaPrinter printer = new MetaPrinter();
 	printer.print(printer);

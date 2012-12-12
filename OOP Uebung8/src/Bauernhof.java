@@ -46,23 +46,11 @@ class Bauernhof {
 	}
     }
 
-    /*
-    public void change(Traktor traktor) {
-	Traktor oldTraktor = this.getTraktor(traktor.getNummer());
-
-	if(oldTraktor != null) {
-	    this.remove(traktor.getNummer());
-	    this.insert(traktor);
-	}
-    }
-    */
-
     public void changeRole(int nummer, Role role) {
 	Traktor traktor = this.getTraktor(nummer);
 	
 	if(traktor != null) {
 	    traktor.changeRole(role);
-	    //this.change(traktor);
 	}
     }
 
@@ -71,7 +59,6 @@ class Bauernhof {
 
 	if(traktor != null) {
 	    traktor.increaseBetriebsstunden(betriebsstunden);
-	    //this.change(traktor);
 	}
     }
 
@@ -79,7 +66,6 @@ class Bauernhof {
 	if(this.getTraktor(nummer) instanceof DieselTraktor) {
 	    DieselTraktor traktor = (DieselTraktor)this.getTraktor(nummer);
 	    traktor.increaseDiesel(diesel);
-	    //this.change(traktor);
 	}
     }
 
@@ -87,7 +73,6 @@ class Bauernhof {
 	if(this.getTraktor(nummer) instanceof BiogasTraktor) {
 	    BiogasTraktor traktor = (BiogasTraktor)this.getTraktor(nummer);
 	    traktor.increaseBiogas(biogas);
-	    //this.change(traktor);
 	}
     }
 
@@ -286,44 +271,6 @@ class Bauernhof {
 	int minSaeschareBiogas = 0;
 	int maxSaeschareBiogas = 0;
 
-	// erste werte fuer min und max finden
-	while(iterator.hasNext()) {
-	    next = (Traktor)iterator.next();
-
-	    if(next.getRole() instanceof Drillmaschine) {
-		drillmaschine = (Drillmaschine)next.getRole();
-		minSaeschare = drillmaschine.getSaeschare();
-		maxSaeschare = minSaeschare;
-		break;
-	    }
-	}
-
-	iterator = this.traktoren.iterator();
-
-	while(iterator.hasNext()) {
-	    next = (Traktor)iterator.next();
-
-	    if(next instanceof DieselTraktor && next.getRole() instanceof Drillmaschine) {
-		drillmaschine = (Drillmaschine)next.getRole();
-		minSaeschareDiesel = drillmaschine.getSaeschare();
-		maxSaeschareDiesel = minSaeschareDiesel;
-		break;
-	    }
-	}
-
-	iterator = this.traktoren.iterator();
-
-	while(iterator.hasNext()) {
-	    next = (Traktor)iterator.next();
-
-	    if(next instanceof DieselTraktor && next.getRole() instanceof Drillmaschine) {
-		drillmaschine = (Drillmaschine)next.getRole();
-		minSaeschareBiogas = drillmaschine.getSaeschare();
-		maxSaeschareBiogas = minSaeschareBiogas;
-		break;
-	    }
-	}
-
 	iterator = this.traktoren.iterator();
 
 	while(iterator.hasNext()) {
@@ -332,7 +279,7 @@ class Bauernhof {
 	    if(next.getRole() instanceof Drillmaschine) {
 		drillmaschine = (Drillmaschine)next.getRole();
 
-		if(drillmaschine.getSaeschare() < minSaeschare) {
+		if(drillmaschine.getSaeschare() < minSaeschare || minSaeschare == 0) {
 		    minSaeschare = drillmaschine.getSaeschare();
 		}
 
@@ -341,7 +288,7 @@ class Bauernhof {
 		}
 
 		if(next instanceof DieselTraktor) {
-		    if(drillmaschine.getSaeschare() < minSaeschareDiesel) {
+		    if(drillmaschine.getSaeschare() < minSaeschareDiesel || minSaeschareDiesel == 0) {
 			minSaeschareDiesel = drillmaschine.getSaeschare();
 		    }
 
@@ -349,7 +296,7 @@ class Bauernhof {
 			maxSaeschareDiesel = drillmaschine.getSaeschare();
 		    }
 		} else {
-		    if(drillmaschine.getSaeschare() < minSaeschareBiogas) {
+		    if(drillmaschine.getSaeschare() < minSaeschareBiogas || minSaeschareBiogas == 0) {
 			minSaeschareBiogas = drillmaschine.getSaeschare();
 		    }
 
@@ -360,14 +307,14 @@ class Bauernhof {
 	    }
 	}
 
-	System.out.print("Min. Saeschare insgesamt: " + minSaeschare);
-	System.out.print("Max. Saeschare insgesamt: " + maxSaeschare);
+	System.out.println("Min. Saeschare insgesamt: " + minSaeschare);
+	System.out.println("Max. Saeschare insgesamt: " + maxSaeschare);
 
-	System.out.print("Min. Saeschare der Diesel Traktoren: " + minSaeschareDiesel);
-	System.out.print("Max. Saeschare der Diesel Traktoren: " + maxSaeschareDiesel);
+	System.out.println("Min. Saeschare der Diesel Traktoren: " + minSaeschareDiesel);
+	System.out.println("Max. Saeschare der Diesel Traktoren: " + maxSaeschareDiesel);
 
-	System.out.print("Min. Saeschare der Biogas Traktoren: " + minSaeschareBiogas);
-	System.out.print("Max. Saeschare der Biogas Traktoren: " + maxSaeschareBiogas);
+	System.out.println("Min. Saeschare der Biogas Traktoren: " + minSaeschareBiogas);
+	System.out.println("Max. Saeschare der Biogas Traktoren: " + maxSaeschareBiogas);
     }
 
     public void getKapazitaet() {
