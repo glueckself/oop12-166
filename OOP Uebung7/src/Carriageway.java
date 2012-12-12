@@ -61,6 +61,8 @@ public class Carriageway {
     /**
      * Adds a player to a field.
      * 
+     * As the player is added, a thread for the player is automatically started.
+     * 
      * @detail If the requested field is invalid, the player is added to (0,0).
      * @param x Horizontal position of the player.
      * @param y Vertical position of the player.
