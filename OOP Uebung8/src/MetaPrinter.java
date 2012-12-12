@@ -1,7 +1,7 @@
 import java.lang.reflect.Method;
 
 @Member("Alex Huber")
-public class MetaPrinter {
+class MetaPrinter {
     @Member("Alex Huber")
     public void print(Object obj) {
         System.out.println("-------------------------------------");

@@ -1,5 +1,5 @@
 @Member("Alex Huber")
-public class Duengerstreuer implements Role {
+class Duengerstreuer implements Role {
     private double kapazitaet;
     
     @Member("Alex Huber")
