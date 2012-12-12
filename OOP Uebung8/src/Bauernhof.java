@@ -7,6 +7,10 @@ class Bauernhof {
 	this.traktoren = new LinkedList();
     }
 
+    public String getName() {
+	return this.name;
+    }
+
     public Traktor getTraktor(int nummer) {
 	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
 	Traktor next = null;
