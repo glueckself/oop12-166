@@ -116,21 +116,21 @@ class Bauernhof {
 	    count++;
 	}
 
-	System.out.print("Durchschnittliche Betriebsstunden aller Traktoren: ");
+	System.out.print("Durchschnittliche Betriebsstunden der "+count+" Traktoren: ");
 	if(count != 0) {
 	    System.out.println((double)betriebsstunden / count);
 	} else {
 	    System.out.println("0");
 	}
 
-	System.out.print("Durchschnittliche Betriebsstunden aller Drillmaschinen: ");
+	System.out.print("Durchschnittliche Betriebsstunden der "+countDrillmaschine+" Drillmaschinen: ");
 	if(countDrillmaschine != 0) {
 	    System.out.println((double)betriebsstundenDrillmaschine / countDrillmaschine);
 	} else {
 	    System.out.println("0");
 	}
 
-	System.out.print("Durchschnittliche Betriebsstunden aller Duengerstreuer: ");
+	System.out.print("Durchschnittliche Betriebsstunden der "+countDuengerstreuer+" Duengerstreuer: ");
 	if(countDuengerstreuer != 0) {
 	    System.out.println((double)betriebsstundenDuengerstreuer / countDuengerstreuer);
 	} else {
@@ -158,14 +158,14 @@ class Bauernhof {
 	    }
 	}
 
-	System.out.print("Durchschnittliche Betriebsstunden aller Diesel Traktoren: ");
+	System.out.print("Durchschnittliche Betriebsstunden der "+countDiesel+" Diesel Traktoren: ");
 	if(countDiesel != 0) {
 	    System.out.println((double)betriebsstundenDiesel / countDiesel);
 	} else {
 	    System.out.println("0");
 	}
 
-	System.out.print("Durchschnittliche Betriebsstunden aller Biogas Traktoren: ");
+	System.out.print("Durchschnittliche Betriebsstunden der "+countBiogas+" Biogas Traktoren: ");
 	if(countBiogas != 0) {
 	    System.out.println((double)betriebsstundenBiogas / countBiogas);
 	} else {
@@ -202,21 +202,21 @@ class Bauernhof {
 	    }
 	}
 
-	System.out.print("Durchschnittlicher Dieselverbrauch aller Diesel Traktoren: ");
+	System.out.print("Durchschnittlicher Dieselverbrauch der "+count+" Diesel Traktoren: ");
 	if(count != 0) {
 	    System.out.println((double)diesel / count);
 	} else {
 	    System.out.println("0");
 	}
 
-	System.out.print("Durchschnittlicher Dieselverbrauch aller Diesel Drillmaschinen: ");
+	System.out.print("Durchschnittlicher Dieselverbrauch der "+countDrillmaschine+" Diesel Drillmaschinen: ");
 	if(countDrillmaschine != 0) {
 	    System.out.println((double)dieselDrillmaschine / countDrillmaschine);
 	} else {
 	    System.out.println("0");
 	}
 
-	System.out.print("Durchschnittlicher Dieselverbrauch aller Diesel Duengerstreuer: ");
+	System.out.print("Durchschnittlicher Dieselverbrauch der "+countDuengerstreuer+" Diesel Duengerstreuer: ");
 	if(countDuengerstreuer != 0) {
 	    System.out.println((double)dieselDuengerstreuer / countDuengerstreuer);
 	} else {
@@ -253,21 +253,21 @@ class Bauernhof {
 	    }
 	}
 
-	System.out.print("Durchschnittlicher Biogasverbrauch aller Biogas Traktoren: ");
+	System.out.print("Durchschnittlicher Biogasverbrauch der "+count+" Biogas Traktoren: ");
 	if(count != 0) {
 	    System.out.println(biogas / count);
 	} else {
 	    System.out.println("0");
 	}
 
-	System.out.print("Durchschnittlicher Biogasverbrauch aller Biogas Drillmaschinen: ");
+	System.out.print("Durchschnittlicher Biogasverbrauch der "+countDrillmaschine+" Biogas Drillmaschinen: ");
 	if(countDrillmaschine != 0) {
 	    System.out.println(biogasDrillmaschine / countDrillmaschine);
 	} else {
 	    System.out.println("0");
 	}
 
-	System.out.print("Durchschnittlicher Biogasverbrauch aller Biogas Duengerstreuer: ");
+	System.out.print("Durchschnittlicher Biogasverbrauch der "+countDuengerstreuer+" Biogas Duengerstreuer: ");
 	if(countDuengerstreuer != 0) {
 	    System.out.println(biogasDuengerstreuer / countDuengerstreuer);
 	} else {

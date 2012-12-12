@@ -73,11 +73,13 @@ class Test {
     
 	
 	
-	
+	System.out.println("Bauernhof1");
 	get(bauernhoefe,"Bauernhof1").getBetriebsstunden();
     get(bauernhoefe,"Bauernhof1").getBetriebsstundenArt();
+    System.out.println("Bauernhof2");
     get(bauernhoefe,"Bauernhof2").getBetriebsstunden();
     get(bauernhoefe,"Bauernhof2").getBetriebsstundenArt();
+    System.out.println("Bauernhof3");
     get(bauernhoefe,"Bauernhof3").getBetriebsstunden();
     get(bauernhoefe,"Bauernhof3").getBetriebsstundenArt();
 
