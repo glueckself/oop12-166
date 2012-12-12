@@ -125,10 +125,10 @@ class Test {
 	MetaPrinter printer = new MetaPrinter();
 	printer.print(printer);
 	printer.print(duenger4_3);
+    printer.print(drill4);
 	printer.print(bauernhof1);
 	printer.print(biogas1);
     printer.print(diesel2);
-    printer.print(drill4);
     printer.print(bauernhoefe);
     }
     
