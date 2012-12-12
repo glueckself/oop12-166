@@ -29,7 +29,7 @@ class LinkedList {
     public class LinkedListIterator {
 	//current element
 	private Node p = LinkedList.this.head;
-
+	
 	@Member("Julian Großhauser")
 	public boolean hasNext() {
 	    return p != null;
