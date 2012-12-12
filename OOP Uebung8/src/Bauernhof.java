@@ -224,4 +224,55 @@ class Bauernhof {
 	    System.out.println("0");
 	}
     }
+
+    public void getBiogas() {
+	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
+	Object next = null;
+	BiogasTraktor traktor = null;
+	double biogas = 0;
+	double biogasDrillmaschine = 0;
+	double biogasDuengerstreuer = 0;
+	int count = 0;
+	int countDrillmaschine = 0;
+	int countDuengerstreuer = 0;
+
+	while(iterator.hasNext()) {
+	    next = iterator.next();
+
+	    if(next instanceof BiogasTraktor) {
+		traktor = (BiogasTraktor)next;
+		biogas += traktor.getBiogas();
+		count++;
+
+		if(traktor.getRole() instanceof Drillmaschine) {
+		    biogasDrillmaschine += traktor.getBiogas();
+		    countDrillmaschine++;
+		} else {
+		   biogasDuengerstreuer += traktor.getBiogas(); 
+		   countDuengerstreuer++;
+		}
+	    }
+	}
+
+	System.out.print("Durchschnittlicher Biogasverbrauch aller Biogas Traktoren: ");
+	if(count != 0) {
+	    System.out.println(biogas / count);
+	} else {
+	    System.out.println("0");
+	}
+
+	System.out.print("Durchschnittlicher Biogasverbrauch aller Biogas Drillmaschinen: ");
+	if(countDrillmaschine != 0) {
+	    System.out.println(biogasDrillmaschine / countDrillmaschine);
+	} else {
+	    System.out.println("0");
+	}
+
+	System.out.print("Durchschnittlicher Biogasverbrauch aller Biogas Duengerstreuer: ");
+	if(countDuengerstreuer != 0) {
+	    System.out.println(biogasDuengerstreuer / countDuengerstreuer);
+	} else {
+	    System.out.println("0");
+	}
+    }
 }
