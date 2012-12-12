@@ -1,10 +1,10 @@
-@Member("Julian Großhauser")
+@Member("Julian Grosshauser")
 abstract class Traktor {
     protected final int nummer;
     protected int betriebsstunden;
     protected Role role;
     
-    @Member("Julian Großhauser")
+    @Member("Julian Grosshauser")
     public Traktor(int nummer, Role role) {
         this.nummer = nummer;
         this.role = role;
@@ -15,7 +15,7 @@ abstract class Traktor {
         return this.nummer;
     }
     
-    @Member("Julian Großhauser")
+    @Member("Julian Grosshauser")
     public void increaseBetriebsstunden(int value) {
 	// negative values could lead to negative betriebsstunden
 	if(value > 0) {
@@ -23,7 +23,7 @@ abstract class Traktor {
 	}
     }
     
-    @Member("Julian Großhauser")
+    @Member("Julian Grosshauser")
     public int getBetriebsstunden() {
 	return this.betriebsstunden;
     }

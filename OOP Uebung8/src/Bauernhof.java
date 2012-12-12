@@ -1,4 +1,4 @@
-@Member("Julian Großhauser")
+@Member("Julian Grosshauser")
 class Bauernhof {
     private final String name;
     private LinkedList traktoren;
@@ -61,7 +61,7 @@ class Bauernhof {
 	}
     }
 
-    @Member("Julian Großhauser")
+    @Member("Julian Grosshauser")
     public void increaseBetriebsstunden(int nummer, int betriebsstunden) {
 	Traktor traktor = this.getTraktor(nummer);
 
@@ -70,7 +70,7 @@ class Bauernhof {
 	}
     }
 
-    @Member("Julian Großhauser")
+    @Member("Julian Grosshauser")
     public void increaseDiesel(int nummer, int diesel) {
 	if(this.getTraktor(nummer) instanceof DieselTraktor) {
 	    DieselTraktor traktor = (DieselTraktor)this.getTraktor(nummer);
@@ -78,7 +78,7 @@ class Bauernhof {
 	}
     }
 
-    @Member("Julian Großhauser")
+    @Member("Julian Grosshauser")
     public void increaseBiogas(int nummer, double biogas) {
 	if(this.getTraktor(nummer) instanceof BiogasTraktor) {
 	    BiogasTraktor traktor = (BiogasTraktor)this.getTraktor(nummer);
@@ -86,7 +86,7 @@ class Bauernhof {
 	}
     }
 
-    @Member("Julian Großhauser")
+    @Member("Julian Grosshauser")
     public void getBetriebsstunden() {
 	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
 	Traktor next = null;
@@ -134,7 +134,7 @@ class Bauernhof {
 	}
     }
 
-    @Member("Julian Großhauser")
+    @Member("Julian Grosshauser")
     public void getBetriebsstundenArt() {
 	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
 	Traktor next = null;
@@ -170,7 +170,7 @@ class Bauernhof {
 	}
     }
 
-    @Member("Julian Großhauser")
+    @Member("Julian Grosshauser")
     public void getDiesel() {
 	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
 	Object next = null;
@@ -222,7 +222,7 @@ class Bauernhof {
 	}
     }
 
-    @Member("Julian Großhauser")
+    @Member("Julian Grosshauser")
     public void getBiogas() {
 	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
 	Object next = null;
@@ -332,7 +332,7 @@ class Bauernhof {
 	System.out.println("Max. Saeschare der Biogas Traktoren: " + maxSaeschareBiogas);
     }
 
-    @Member("Julian Großhauser")
+    @Member("Julian Grosshauser")
     public void getKapazitaet() {
 	LinkedList.LinkedListIterator iterator = this.traktoren.iterator();
 	Traktor next = null;
