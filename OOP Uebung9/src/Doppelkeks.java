@@ -8,4 +8,8 @@ class Doppelkeks implements Keks {
         this.deckel = deckel;
         this.fuellung = fuellung;
     }
+    
+    public String toString() {
+        return "Doppelkeks "+this.boden.form.toString()+" "+this.boden.teig.toString()+" "+this.fuellung.toString();
+    }
 }

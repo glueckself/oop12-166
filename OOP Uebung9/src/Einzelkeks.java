@@ -16,4 +16,8 @@ class Einzelkeks implements Keks {
             return null;
         }
     }
+    
+    public String toString() {
+        return "Einzelkeks "+this.form.toString()+" "+this.teig.toString();
+    }
 }
