@@ -3,6 +3,10 @@ import java.util.ArrayList;
 class Keksdose {
     private ArrayList<Keks> kekse;
     
+    public Keksdose() {
+        this.kekse = new ArrayList<Keks>();
+    }
+    
     public void addKeks(Keks keks) {
         this.kekse.add(keks);
     }

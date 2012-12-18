@@ -1,4 +1,4 @@
 
 abstract class Backmaschine {
-    protected abstract Keks backe();
+    protected abstract Keks backe(Teig teig);
 }

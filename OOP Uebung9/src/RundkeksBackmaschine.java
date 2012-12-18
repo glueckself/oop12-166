@@ -1,6 +1,10 @@
 
 class RundkeksBackmaschine extends Backmaschine {
-    protected Keks backe() {
-        return null;
+    public RundkeksBackmaschine() {
+        
+    }
+    
+    protected Keks backe(Teig teig) {
+        return new Einzelkeks(new Rund(),teig);
     }
 }
