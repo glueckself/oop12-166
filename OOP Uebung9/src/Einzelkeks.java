@@ -1,11 +1,19 @@
 
 class Einzelkeks implements Keks {
-    Form form;
-    Teig teig;
+    private Form form;
+    private Teig teig;
     
     public Einzelkeks(Form form, Teig teig) {
         this.form = form;
         this.teig = teig;
+    }
+    
+    public Form getForm() {
+        return this.form;
+    }
+    
+    public Teig getTeig() {
+        return this.teig;
     }
     
     public Einzelkeks duplicate(Einzelkeks orig) {

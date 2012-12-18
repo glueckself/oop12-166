@@ -1,7 +1,7 @@
 
 class Doppelkeks implements Keks {
-    Einzelkeks boden,deckel;
-    Fuellung fuellung;
+    private Einzelkeks boden,deckel;
+    private Fuellung fuellung;
     
     public Doppelkeks(Einzelkeks boden, Einzelkeks deckel, Fuellung fuellung) {
         this.boden = boden;
@@ -10,6 +10,6 @@ class Doppelkeks implements Keks {
     }
     
     public String toString() {
-        return "Doppelkeks "+this.boden.form.toString()+" "+this.boden.teig.toString()+" "+this.fuellung.toString();
+        return "Doppelkeks "+this.boden.getForm().toString()+" "+this.boden.getTeig().toString()+" "+this.fuellung.toString();
     }
 }
