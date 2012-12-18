@@ -1,9 +1,9 @@
 
 class Position {
-    protected int anzahl;
-    protected Form form;
-    protected Teig teig;
-    protected Fuellung fuellung;
+    private int anzahl;
+    private Form form;
+    private Teig teig;
+    private Fuellung fuellung;
     
     public Position(int anzahl, Form form, Teig teig) {
         this.anzahl = anzahl;
@@ -17,6 +17,22 @@ class Position {
         this.form = form;
         this.teig = teig;
         this.fuellung = fuellung;
+    }
+    
+    public int getAnzahl() {
+        return this.anzahl;
+    }
+    
+    public Form getForm() {
+        return this.form;
+    }
+    
+    public Teig getTeig() {
+        return this.teig;
+    }
+    
+    public Fuellung getFuellung() {
+        return this.fuellung;
     }
     
     public String toString() {
