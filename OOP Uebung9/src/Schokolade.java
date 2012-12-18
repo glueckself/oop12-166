@@ -1,0 +1,4 @@
+
+class Schokolade implements Fuellung {
+
+}

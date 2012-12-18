@@ -1,0 +1,4 @@
+
+class Marmelade implements Fuellung {
+
+}

@@ -1,0 +1,4 @@
+
+class Muerbteig implements Teig {
+
+}

@@ -1,0 +1,4 @@
+
+class Mond implements Form {
+
+}

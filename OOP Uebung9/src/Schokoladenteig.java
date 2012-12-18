@@ -1,0 +1,4 @@
+
+class Schokoladenteig implements Teig {
+
+}

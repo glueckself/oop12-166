@@ -1,0 +1,4 @@
+
+class Weihnachtsmann implements Form {
+
+}
