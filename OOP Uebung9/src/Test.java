@@ -8,7 +8,9 @@ class Test {
         best1.addPosition(pos1);
         best1.addPosition(pos2);
         best1.drucke();
-
+        Einzelkeks keks1 = new Einzelkeks(new Rund(),new Muerbteig());
+        DoppelkeksBackmaschine dkb = new DoppelkeksBackmaschine();
+        System.out.println(dkb.backe(keks1, new Schokolade()));
     }
 
 }
