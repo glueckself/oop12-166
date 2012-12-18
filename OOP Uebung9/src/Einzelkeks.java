@@ -16,9 +16,9 @@ class Einzelkeks implements Keks {
         return this.teig;
     }
     
-    public Einzelkeks duplicate(Einzelkeks orig) {
+    public Einzelkeks duplicate() {
         try {
-            Einzelkeks copy = (Einzelkeks)orig.clone();
+            Einzelkeks copy = (Einzelkeks)this.clone();
             return copy;
         } catch (CloneNotSupportedException e) {
             return null;
