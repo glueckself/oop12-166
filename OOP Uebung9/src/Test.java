@@ -1,11 +1,11 @@
 
 class Test {
 
-    /**
-     * @param args
-     */
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
+        Position pos1 = new Position(5,new Rund(),new Muerbteig());
+        Bestellung best1 = new Bestellung();
+        best1.addPosition(pos1);
+        best1.drucke();
 
     }
 

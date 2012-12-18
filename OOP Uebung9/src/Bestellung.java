@@ -18,7 +18,7 @@ class Bestellung{
     public void drucke() {
         System.out.println("Bestellung");
         for(Position pos : positionen) {
-            System.out.println(pos.anzahl+" "+pos.form+" "+pos.teig+" "+pos.fuellung);
+            System.out.println(pos.toString());
         }
     }
 }

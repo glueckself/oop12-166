@@ -18,4 +18,11 @@ class Position {
         this.teig = teig;
         this.fuellung = fuellung;
     }
+    
+    public String toString() {
+        if(this.fuellung != null)
+            return this.anzahl+" "+this.form.toString()+" "+this.teig.toString()+" "+this.fuellung.toString();
+        else
+            return this.anzahl+" "+this.form.toString()+" "+this.teig.toString();
+    }
 }
