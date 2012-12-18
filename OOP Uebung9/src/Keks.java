@@ -1,4 +1,4 @@
 
-class Keks {
-    
+interface Keks {
+
 }

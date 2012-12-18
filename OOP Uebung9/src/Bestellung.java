@@ -1,4 +1,9 @@
+import java.util.ArrayList;
 
-class Bestellung {
-
+class Bestellung{
+    private ArrayList<Position> positionen;
+    
+    public void drucke() {
+        
+    }
 }
