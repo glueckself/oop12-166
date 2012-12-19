@@ -1,4 +1,2 @@
-
 interface Fuellung {
-
 }

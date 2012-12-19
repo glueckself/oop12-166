@@ -1,9 +1,10 @@
-
 class MondkeksBackmaschine extends Backmaschine {
-    public MondkeksBackmaschine() {
-        
-    }
-    
+    /**
+     * Backt Keks.
+     *
+     * @param teig Der fuer den Keks zu verwendende Teig != null
+     * @return Keks Der fertige Keks
+     */
     protected Keks backe(Teig teig) {
         return new Einzelkeks(new Mond(),teig);
     }

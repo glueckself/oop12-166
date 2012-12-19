@@ -1,10 +1,12 @@
-
 class Baeckerei {
     private RundkeksBackmaschine rundkeksBM;
     private MondkeksBackmaschine mondkeksBM;
     private WMannkeksBackmaschine wmannkeksBM;
     private DoppelkeksBackmaschine doppelkeksBM;
     
+    /**
+     * Alle benoetigten Backmaschinen erstellen.
+     */
     public Baeckerei() {
         this.rundkeksBM = new RundkeksBackmaschine();
         this.mondkeksBM = new MondkeksBackmaschine();
@@ -12,6 +14,12 @@ class Baeckerei {
         this.doppelkeksBM = new DoppelkeksBackmaschine();
     }
     
+    /**
+     * Alle Kekse aus einer Bestellung in einer Keksdose sammeln.
+     *
+     * @param bestellung Bestellung die gebacken werden soll != null
+     * @return Keksdose Fertige Keksdose die alle geforderten Kekse enthaelt
+     */
     public Keksdose bestellen(Bestellung bestellung) {
         Keksdose dose = new Keksdose();
         KeksbackManager manager = new KeksbackManager();

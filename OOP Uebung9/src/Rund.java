@@ -1,9 +1,9 @@
-
 class Rund implements Form {
-    public Rund() {
-        
-    }
-    
+    /**
+     * Gibt Art der From als String zurueck.
+     *
+     * @return String Art der Form
+     */
     public String toString() {
         return "Rundkeks";
     }

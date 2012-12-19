@@ -1,9 +1,9 @@
-
 class Zimtsternteig implements Teig {
-    public Zimtsternteig() {
-        
-    }
-    
+    /**
+     * Gibt Art des Teiges als String zurueck.
+     *
+     * @return String Art des Teiges
+     */
     public String toString() {
         return "Zimtsternteig";
     }

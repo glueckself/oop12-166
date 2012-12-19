@@ -1,9 +1,9 @@
-
 class Mond implements Form {
-    public Mond() {
-        
-    }
-    
+    /**
+     * Gibt Art der Form als String zurueck.
+     *
+     * @return String Art der Form
+     */
     public String toString() {
         return "Mondkeks";
     }
