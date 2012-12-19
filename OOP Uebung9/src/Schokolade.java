@@ -5,6 +5,6 @@ class Schokolade implements Fuellung {
     }
     
     public String toString() {
-        return "Schokolade";
+        return "Schokoladenfuellung";
     }
 }
